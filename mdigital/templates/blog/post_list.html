@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- post list section -->
+<section class="xs-section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-post-lists">
+
+                    <div class="post-list format-standard">
+                        {% for post in post_list %}
+                        <div class="post-image">
+                            <img src="{{ post.image.url|safe }}" alt="">
+                        </div>
+                        <div class="post-body">
+                            <div class="entry-header">
+                                <div class="entry-meta">
+                                    <span class="post-author"><a href="#"><i class="icon icon-user2"></i> {{ post.author }}</a></span>
+                                    <span class="post-cat"><a href="#"><i class="icon icon-folders"></i> {{ post.category }}</a></span>
+                                    <span class="post-comments"><a href="#"><i class="icon icon-chat-1"></i> 278</a></span>
+                                    <span class="post-date"><strong>{{ post.create_at|date:"d"}}</strong>{{ post.create_at|date:"M"}}</span>
+                                </div>
+                                <h2 class="entry-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                                <div class="entry-content">
+                                    <p>{{ post.text|truncatewords:30 }}...</p>
+                                </div>
+                                <div class="btn-wraper">
+                                    <a href="{{ post.get_absolute_url }}" class="btn btn-primary icon-right">Читать далее...<i class="icon icon-arrow-right"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                          {% endfor %}
+                    </div><!-- .post-list .format-standard END -->
+                </div><!-- .blog-post-lists END -->
+                <!-- pagination -->
+                <ul class="pagination">
+    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+    <li class="page-item">
+        <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item">
+        <a class="page-link" href="#"><i class="icon icon-double-angle-pointing-to-right"></i></a>
+    </li>
+</ul>                <!-- end pagination -->
+            </div>
+            <div class="col-md-4">
+                <!-- blog sidebar start -->
+                <div class="blog-sidebar-wraper right-sidebar">
+    <div class="widget widget-search">
+        <form action="#" class="xs-serach style2" method="post">
+            <div class="input-group">
+                <input type="search" name="search" placeholder="Search Here...">
+                <button class="search-btn"><i class="icon icon-search"></i></button>
+            </div>
+        </form>
+    </div><!-- .widget .widget-search END -->
+
+    <div class="widget widget-categories">
+        <div class="widget-header">
+            <h3 class="xs-title">Категории</h3>
+            <span class="border-divider"></span>
+        </div>
+        <ul class="list-group">
+            <li>
+                <a href="#">Поисковая оптимизация </a>
+                <span>(54)</span>
+            </li>
+            <li>
+                <a href="#">Маркетинг </a>
+                <span>(12)</span>
+            </li>
+            <li>
+                <a href="#">Рост бизнеса </a>
+                <span>(02)</span>
+            </li>
+            <li>
+                <a href="#">Рейтинг сайта </a>
+                <span>(18)</span>
+            </li>
+            <li>
+                <a href="#">Увеличение продаж</a>
+                <span>(25)</span>
+            </li>
+            <li>
+                <a href="#">Социальный маркетинг</a>
+                <span>(35)</span>
+            </li>
+        </ul>
+    </div><!-- .widget .widget-categories END -->
+
+    <div class="widget widget_popular_entries">
+        <div class="widget-header">
+            <h3 class="xs-title">Недавние посты</h3>
+            <span class="border-divider"></span>
+        </div>
+        <div class="widget-posts">
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <img src="assets/images/sidebar/sidebar-latest-post-1.jpg" class="d-flex" alt="popular post image">
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <img src="assets/images/sidebar/sidebar-latest-post-2.jpg" class="d-flex" alt="popular post image">
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="blog-single.html">Двукратная прибыль, чем раньше, когда вы сами занимались бизнесом</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <img src="assets/images/sidebar/sidebar-latest-post-3.jpg" class="d-flex" alt="popular post image">
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <img src="assets/images/sidebar/sidebar-latest-post-4.jpg" class="d-flex" alt="popular post image">
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+        </div><!-- .widget-posts END -->
+    </div><!-- .widget .widget_popular_entries END -->
+
+    <div class="widget widget-banner">
+        <a href="https://themeforest.net/user/xpeedstudio/portfolio" target="_blank">
+            <img src="assets/images/sidebar/banner.png" alt="">
+        </a>
+    </div><!-- .widget .widget-banner END -->
+
+    <div class="widget widget-tag">
+        <div class="widget-header">
+            <h3 class="xs-title">TAGs</h3>
+            <span class="border-divider"></span>
+        </div>
+        <div class="tag-lists">
+            <a href="#">Бизнес</a>
+            <a href="#">Agency</a>
+            <a href="#">City</a>
+            <a href="#">Разработка</a>
+            <a href="#">Corporate</a>
+            <a href="#">Дизайн</a>
+            <a href="#">Тренды</a>
+        </div>
+    </div><!-- .widget .widget-tag END -->
+</div>                <!-- blog sidebar end -->
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section>
+<!-- END post list section -->
+
+{% endblock content %}
