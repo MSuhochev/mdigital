@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- posts grid sidebar start -->
+<section class="xs-section-padding blog-grid-sidebar-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row blog-inner-page">
+                    {% for post in posts %}
+                        <div class="col-md-6">
+                            <div class="single-blog-post-thumb">
+                                <div class="post-image">
+                                    <img src="{{ post.image.url|safe }}" alt="">
+                                </div>
+                                <div class="post-body">
+                                    <div class="entry-header">
+                                        <h2 class="entry-title">
+                                            <a href="{% url 'post_single' slug=post.category.slug post_slug=post.slug %}">{{ post.title }}</a></h2>
+                                        <div class="entry-meta">
+                                            <span class="meta-date"><i class="icon icon-clock"></i> {{ post.create_at }} </span>
+                                        </div>
+                                        <div class="entry-content">
+                                            <p>{{ post.text | truncatewords:20|safe}} </p>
+                                        </div>
+
+                                        <div class="btn-wraper">
+                                            <a href="{{ post.get_absolute_url }}" class="btn btn-primary icon-right">Читать далее...<i class="icon icon-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- .single-blog-post-thumb END -->
+                        </div>
+                    {% endfor %}
+                    <div class="col-md-12">
+                        <ul>
+                            <!-- pagination -->
+                            <ul class="pagination">
+                                {% if posts.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ posts.previous_page_number }}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link" aria-hidden="true">&laquo;</span>
+                                    </li>
+                                {% endif %}
+
+                                {% for i in posts.paginator.page_range %}
+                                    {% if posts.number == i %}
+                                        <li class="page-item active"><span class="page-link">{{ i }}</span></li>
+                                    {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if posts.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled">
+                                        <span class="page-link" aria-hidden="true">&raquo;</span>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </ul>
+                        <!-- end pagination -->
+                    </div>
+                </div><!-- .row END -->
+            </div>
+            <div class="col-md-4">
+                <!-- blog sidebar start -->
+                <div class="blog-sidebar-wraper right-sidebar">
+    <div class="widget widget-search">
+        <form action="#" class="xs-serach style2" method="post">
+            <div class="input-group">
+                <input type="search" name="search" placeholder="Search Here...">
+                <button class="search-btn"><i class="icon icon-search"></i></button>
+            </div>
+        </form>
+    </div><!-- .widget .widget-search END -->
+
+    <div class="widget widget-categories">
+        <div class="widget-header">
+            <h3 class="xs-title">Category</h3>
+            <span class="border-divider"></span>
+        </div>
+        <ul class="list-group">
+            <li>
+                <a href="#">Search Engine Optimization </a>
+                <span>(54)</span>
+            </li>
+            <li>
+                <a href="#">Marketing </a>
+                <span>(12)</span>
+            </li>
+            <li>
+                <a href="#">Business Growth </a>
+                <span>(02)</span>
+            </li>
+            <li>
+                <a href="#">Site Ranking </a>
+                <span>(18)</span>
+            </li>
+            <li>
+                <a href="#">Growth Hacking</a>
+                <span>(25)</span>
+            </li>
+            <li>
+                <a href="#">Social Marketing</a>
+                <span>(35)</span>
+            </li>
+        </ul>
+    </div><!-- .widget .widget-categories END -->
+
+    <div class="widget widget_popular_entries">
+        <div class="widget-header">
+            <h3 class="xs-title">Recent Post</h3>
+            <span class="border-divider"></span>
+        </div>
+        <div class="widget-posts">
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <img src="assets/images/sidebar/sidebar-latest-post-1.jpg" class="d-flex" alt="popular post image">
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <img src="assets/images/sidebar/sidebar-latest-post-2.jpg" class="d-flex" alt="popular post image">
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <img src="assets/images/sidebar/sidebar-latest-post-3.jpg" class="d-flex" alt="popular post image">
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <img src="assets/images/sidebar/sidebar-latest-post-4.jpg" class="d-flex" alt="popular post image">
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+        </div><!-- .widget-posts END -->
+    </div><!-- .widget .widget_popular_entries END -->
+
+    <div class="widget widget-banner">
+        <a href="https://themeforest.net/user/xpeedstudio/portfolio" target="_blank">
+            <img src="assets/images/sidebar/banner.png" alt="">
+        </a>
+    </div><!-- .widget .widget-banner END -->
+
+    <div class="widget widget-tag">
+        <div class="widget-header">
+            <h3 class="xs-title">TAGs</h3>
+            <span class="border-divider"></span>
+        </div>
+        <div class="tag-lists">
+            <a href="#">Business</a>
+            <a href="#">Agency</a>
+            <a href="#">City</a>
+            <a href="#">Development</a>
+            <a href="#">Corporate</a>
+            <a href="#">Design</a>
+            <a href="#">Trend</a>
+        </div>
+    </div><!-- .widget .widget-tag END -->
+</div>                <!-- blog sidebar end -->
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section>
+<!-- blog grid sidebar end -->
+
+<!-- call to action section -->
+<section class="call-to-action-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="call-to-action-content">
+                    <h2>Interested To Get Our Featured Service</h2>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="btn-wraper">
+                    <a href="contact.html" class="btn btn-info icon-right"><i class="icon icon-arrow-right"></i>Get Started Now</a>
+                </div>
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section>
+<!-- end call to action section -->
+
+{% endblock content %}
