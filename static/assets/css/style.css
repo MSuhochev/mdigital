@@ -148,10 +148,18 @@ img {
   border: none;
   max-width: 100%; }
 
-ul, li {
-  margin: 0;
-  padding: 0;
-  list-style: none; }
+/* Применить стили к ul с классом, кроме .my-ckeditor */
+ul:not(.my-ckeditor) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Применить стили к li с классом, кроме .my-ckeditor */
+li:not(.my-ckeditor) {
+    margin: 0;
+    padding: 0;
+}
 
 .clear-both:before,
 .clear-both:after {

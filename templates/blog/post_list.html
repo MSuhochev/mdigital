@@ -25,7 +25,7 @@
                                 </div>
                                 <h2 class="entry-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
                                 <div class="entry-content">
-                                    <p>{{ post.text|truncatewords:30 }}...</p>
+                                    <p>{{ post.text|truncatewords:30|safe }}</p>
                                 </div>
                                 <div class="btn-wraper">
                                     <a href="{{ post.get_absolute_url }}" class="btn btn-primary icon-right">Читать далее...<i class="icon icon-arrow-right"></i></a>
@@ -103,7 +103,7 @@
         <div class="widget-posts">
             <div class="widget-post media">
                 <div class="post-thumb">
-                    <img src="assets/images/sidebar/sidebar-latest-post-1.jpg" class="d-flex" alt="popular post image">
+                    <img src="{% static 'assets/images/sidebar/sidebar-latest-post-1.jpg' %}" class="d-flex" alt="popular post image">
                 </div>
                 <div class="media-body">
                     <h4 class="entry-title">
@@ -113,7 +113,7 @@
             </div><!-- .widget-post END -->
             <div class="widget-post media">
                 <div class="post-thumb">
-                    <img src="assets/images/sidebar/sidebar-latest-post-2.jpg" class="d-flex" alt="popular post image">
+                    <img src="{% static 'assets/images/sidebar/sidebar-latest-post-2.jpg' %}" class="d-flex" alt="popular post image">
                 </div>
                 <div class="media-body">
                     <h4 class="entry-title">
@@ -123,7 +123,7 @@
             </div><!-- .widget-post END -->
             <div class="widget-post media">
                 <div class="post-thumb">
-                    <img src="assets/images/sidebar/sidebar-latest-post-3.jpg" class="d-flex" alt="popular post image">
+                    <img src="{% static 'assets/images/sidebar/sidebar-latest-post-3.jpg' %}" class="d-flex" alt="popular post image">
                 </div>
                 <div class="media-body">
                     <h4 class="entry-title">
@@ -133,7 +133,7 @@
             </div><!-- .widget-post END -->
             <div class="widget-post media">
                 <div class="post-thumb">
-                    <img src="assets/images/sidebar/sidebar-latest-post-4.jpg" class="d-flex" alt="popular post image">
+                    <img src="{% static 'assets/images/sidebar/sidebar-latest-post-4.jpg' %}" class="d-flex" alt="popular post image">
                 </div>
                 <div class="media-body">
                     <h4 class="entry-title">
@@ -146,7 +146,7 @@
 
     <div class="widget widget-banner">
         <a href="https://themeforest.net/user/xpeedstudio/portfolio" target="_blank">
-            <img src="assets/images/sidebar/banner.png" alt="">
+            <img src="{% static 'assets/images/sidebar/banner.png' %}" alt="">
         </a>
     </div><!-- .widget .widget-banner END -->
 
