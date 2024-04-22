@@ -6,6 +6,9 @@ from .models import Post
 
 class HomeView(ListView):
     model = Post
+    paginate_by = 2
+    context_object_name = 'posts'
+    ordering = ['-create_at']
     template_name = 'index.html'
 
 

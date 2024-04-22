@@ -778,15 +778,15 @@ $(document).ready(function() {
 	=========================================================================*/
 	let url = window.location.pathname,
     	activePage = url.substr(url.lastIndexOf('/')+1);
-    $('.xs-menus .nav-menu li a').each(function(e, i){  
+    $('.xs-menus .nav-menu li a').each(function(e, i){
         var currentPage = this.href.substr(this.href.lastIndexOf('/')+1);
         if (activePage == currentPage) {
-			$([i]).addClass("active");
+			$([i]).removeClass("active");
 			if ($([i]).parents().closest('.nav-submenu').parent('li')) {
-				$([i]).parents().closest('.nav-submenu').parent('li').addClass('active')
+				$([i]).parents().closest('.nav-submenu').parent('li').removeClass('active')
 			}
-			$([i]).parent().addClass('active');
-        } 
+			$([i]).parent().removeClass('active');
+        }
 	});
 
 	/*=============================================================

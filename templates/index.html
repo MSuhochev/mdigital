@@ -1,6 +1,8 @@
 <!doctype html>
 <html class="no-js" lang="ru">
+
 {% load static %}
+
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -10,9 +12,9 @@
 		
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900%7COpen+Sans:400,700,700i" rel="stylesheet">
 
-		<link rel="icon" type="image/png" href="favicon.ico">
+		<link rel="icon" type="image/png" href="{% static 'assets/images/favicon.ico' %}">
 		<!-- Place favicon.ico in the root directory -->
-		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<link rel="apple-touch-icon" href="{% static 'assets/images/favicon.ico' %}">
 		<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
 
 		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
@@ -32,6 +34,7 @@
 		<!--Theme Responsive css-->
 		<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
 	</head>
+
 	<body>
 	<!--[if lt IE 10]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -54,138 +57,28 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="xs-logo-wraper">
-                    <a href="index.html" class="xs-logo">
+                    <a href="/" class="xs-logo">
                         <img src="{% static 'assets/images/logo-transparent-header.png' %}" alt="" class="logo-transparent">
                         <img src="{% static 'assets/images/logo.png' %}" alt="" class="logo-sticky">
                     </a>
                 </div>
             </div>
             <div class="col-lg-7 col-md-6">
-                <nav class="xs-menus align-to-right">
-                    <div class="nav-header">
-                        <a class="nav-brand" href="index.html"></a>
-                        <div class="nav-toggle"></div>
-                    </div>
-                    <div class="nav-menus-wrapper">
-                        <ul class="nav-menu align-to-right">
-                            <li><a href="#">HOME</a>
-                                <ul class="nav-dropdown xs-icon-menu clearfix">
-                                    <li class="single-menu-item">
-                                        <a href="index.html"><i class="icon icon-home2"></i> Home 1</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="index-2.html"><i class="icon icon-home2"></i> Home 2</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="index-3.html"><i class="icon icon-home2"></i> Home 3</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="index-4.html"><i class="icon icon-home3"></i> One Page Style</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="index-5.html"><i class="icon icon-home3"></i> One Page Style Two</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">PAGES</a>
-                                <div class="megamenu-panel xs-icon-menu">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="single-menu-item">
-                                                <a href="about.html"><i class="icon icon-briefcase"></i>About</a>
-                                            </div>
-                                            <div class="single-menu-item">
-                                                <a href="case-studies.html"><i class="icon icon-line-chart"></i>Case Studies</a>
-                                            </div>
-                                            <div class="single-menu-item">
-                                                <a href="case-details.html"><i class="icon icon-agenda3"></i>Case Details</a>
-                                            </div>
-                                            <div class="single-menu-item">
-                                                <a href="faq.html"><i class="icon icon-question-circle"></i>FAQ</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="single-menu-item">
-                                                <a href="team.html"><i class="icon icon-folder2"></i>Team</a>
-                                            </div>
-                                            <div class="single-menu-item">
-                                                <a href="map.html"><i class="icon icon-chat"></i>Map</a>
-                                            </div>
-                                            <div class="single-menu-item">
-                                                <a href="shop.html"><i class="icon icon-shopping-cart-1"></i>Shop</a>
-                                            </div>
-                                            <div class="single-menu-item">
-                                                <a href="shop-single.html"><i class="icon icon-wallet"></i>Shop Single</a>
-                                            </div>    
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="single-menu-item">
-                                                <a href="404.html"><i class="icon icon-padlock-1"></i>404</a>
-                                            </div>    
-                                            <div class="single-menu-item">
-                                                <a href="pricing.html"><i class="icon icon-direction"></i>Pricing</a>
-                                            </div>
-                                            <div class="single-menu-item">
-                                                <a href="typography.html"><i class="icon icon-agenda-1"></i>Typography</a>
-                                            </div>  
-                                            <div class="single-menu-item">
-                                                <a href="testimonial.html"><i class="icon icon-users"></i>Testimonial</a>
-                                            </div>  
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li><a href="#">SERVICES</a>
-                                <ul class="nav-dropdown xs-icon-menu clearfix">
-                                    <li class="single-menu-item">
-                                        <a href="email-marketing.html"><i class="icon icon-envelope2"></i> Email Marketing</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="offline-seo.html"><i class="icon icon-dart-board"></i> Offline SEO</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="social-media-marketing.html"><i class="icon icon-like"></i> Social Media Marketing</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="lead-generation.html"><i class="icon icon-stats-3"></i> Lead Generation</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="growth-hacking.html"><i class="icon icon-stats-4"></i> Growth Hacking</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="search-engine-optimization.html"><i class="icon icon-search2"></i> Search Engine Optimization</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">BLOG</a>
-                                <ul class="nav-dropdown xs-icon-menu clearfix">
-                                    <li class="single-menu-item">
-                                        <a href="blog-grid-with-sidebar.html"><i class="icon icon-file-2"></i>Blog Grid Sidebar</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="blog-list.html"><i class="icon icon-file-2"></i>Blog List</a>
-                                    </li>
-                                    <li class="single-menu-item">
-                                        <a href="blog-single.html"><i class="icon icon-contract"></i>Blog single</a>
-                                    </li>    
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">CONTACT</a></li>
-                        </ul>
-                    </div>
-                </nav>
+				<!--Nav menu start -->
+               {% include 'blog/include/top_nav.html' %}
+				<!--Nav menu end -->
             </div>
             <div class="col-lg-2 col-md-6">
                 <ul class="xs-menu-tools">
-                    <li>
-                        <a href="#modal-popup-1" class="languageSwitcher-button xs-modal-popup">
-                            <span class="xs-flag" style="background-image: url({% static 'assets/images/flags/006-united-states.svg' %});"></span>
-                            <span class="lang-title">RU</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="offset-side-bar"><i class="icon icon-online-shopping-cart"></i></a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="#modal-popup-1" class="languageSwitcher-button xs-modal-popup">-->
+<!--                            <span class="xs-flag" style="background-image: url({% static 'assets/images/flags/006-united-states.svg' %});"></span>-->
+<!--                            <span class="lang-title">RU</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a href="#" class="offset-side-bar"><i class="icon icon-online-shopping-cart"></i></a>-->
+<!--                    </li>-->
                     <li>
                         <a href="#modal-popup-2" class="navsearch-button xs-modal-popup"><i class="icon icon-search"></i></a>
                     </li>
@@ -206,7 +99,8 @@
 <div id="rev_slider_6_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="slider-2" data-source="gallery" style="margin:0px auto;background:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
 <!-- START REVOLUTION SLIDER 5.4.8 fullwidth mode -->
 	<div id="rev_slider_6_1" class="rev_slider fullwidthabanner tp-overflow-hidden" style="display:none;" data-version="5.4.8">
-<ul>	<!-- SLIDE  -->
+<ul>
+	<!-- SLIDE MDigital -->
     <li data-index="rs-25" data-transition="slideoverhorizontal" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="{% static 'assets/images/rev-slider/banner-01/100x50_18fc4-slider-bg-1.jpg' %}"  data-delay="5120"  data-rotate="0"  data-saveperformance="off"  data-title="Slider" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 		<!-- MAIN IMAGE -->
         <img src="{% static 'assets/images/rev-slider/banner-01/18fc4-slider-bg-1.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
@@ -344,7 +238,7 @@
             style="z-index: 10;">
 <div class="rs-looped rs-wave"  data-speed="2" data-angle="0" data-radius="10" data-origin="50% 50%"><img src="{% static 'assets/images/rev-slider/banner-01/search.png' %}" alt="" data-ww="" data-hh="" data-no-retina> </div></div>
 
-		<!-- LAYER NR. 7 -->
+		<!-- LAYER NR. 7 (текст "Рост бизнеса")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-25-layer-4" 
 			 data-x="['left','left','left','left']" data-hoffset="['111','111','50','58']" 
@@ -363,9 +257,9 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 11; min-width: 183px; max-width: 183px; max-width: 32px; max-width: 32px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Grow business by </div>
+            style="z-index: 11; min-width: 183px; max-width: 383px; max-width: 132px; max-width: 132px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Рост бизнеса </div>
 
-		<!-- LAYER NR. 8 -->
+		<!-- LAYER NR. 8 (текст "MDigital")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-25-layer-5" 
 			 data-x="['left','left','left','left']" data-hoffset="['108','108','50','58']" 
@@ -386,7 +280,7 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 12; min-width: 540px; max-width: 540px; white-space: normal; font-size: 56px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Digital Marketing </div>
+            style="z-index: 12; min-width: 540px; max-width: 540px; white-space: normal; font-size: 36px; margin-top: 30px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px; font-family:Lato;">MDigital </div>
 
 		<!-- LAYER NR. 9 -->
 		<div class="tp-caption   tp-resizeme" 
@@ -407,10 +301,9 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 13; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Share processes and data securely on a need to know basis 
-need for reconciliation it combines. </div>
+            style="z-index: 13; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Ваш путь к эффективной динамической монетизации и инновационным решениям в IT-сфере</div>
 
-		<!-- LAYER NR. 10 -->
+		<!-- LAYER NR. 10 (кнопка "продолжить")-->
 		<div class="tp-caption rev-btn " 
 			 id="slide-25-layer-8" 
 			 data-x="['left','left','left','left']" data-hoffset="['104','104','44','56']" 
@@ -431,15 +324,15 @@ need for reconciliation it combines. </div>
             data-paddingbottom="[21,21,21,15]"
             data-paddingleft="[51,51,51,30]"
 
-            style="z-index: 14; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Get Started </div>
+            style="z-index: 14; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Продолжить </div>
 	</li>
-	<!-- SLIDE  -->
+	<!-- SLIDE Динамическая монетизация -->
     <li data-index="rs-26" data-transition="slideup" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="{% static 'assets/images/rev-slider/banner-02/100x50_665d1-slider-bg-2.jpg' %}"  data-delay="4060"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 		<!-- MAIN IMAGE -->
         <img src="{% static 'assets/images/rev-slider/banner-02/665d1-slider-bg-2.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
 		<!-- LAYERS -->
 
-		<!-- LAYER NR. 11 -->
+		<!-- LAYER NR. 11 (текст "Динамическая монетизация")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-26-layer-4" 
 			 data-x="['right','right','left','left']" data-hoffset="['398','398','413','59']" 
@@ -458,9 +351,9 @@ need for reconciliation it combines. </div>
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 5; min-width: 183px; max-width: 183px; max-width: 32px; max-width: 32px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Digital Marketing </div>
+            style="z-index: 5; min-width: 183px; max-width: 183px; max-width: 32px; max-width: 32px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Динамическая монетизация </div>
 
-		<!-- LAYER NR. 12 -->
+		<!-- LAYER NR. 12 (текст "Увеличьте прибыль на 70%") -->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-26-layer-5" 
 			 data-x="['right','right','left','left']" data-hoffset="['40','40','413','58']" 
@@ -481,10 +374,9 @@ need for reconciliation it combines. </div>
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 6; min-width: 540px; max-width: 540px; white-space: normal; font-size: 56px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Boosts your website 
-Traffic </div>
+            style="z-index: 6; min-width: 540px; max-width: 540px; white-space: normal; font-size: 56px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Увеличьте прибыль вашего сайта на 70% </div>
 
-		<!-- LAYER NR. 13 -->
+		<!-- LAYER NR. 13 (текст "доверьте нам Ваш трафик")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-26-layer-7" 
 			 data-x="['right','right','left','left']" data-hoffset="['130','132','412','57']" 
@@ -503,8 +395,7 @@ Traffic </div>
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 7; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Share processes and data securely on a need to know basis 
-need for reconciliation it combines. </div>
+            style="z-index: 7; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Доверьте нам Ваш трафик, и Вы увидите, как Ваш бизнес процветает. </div>
 
 		<!-- LAYER NR. 14 -->
 		<div class="tp-caption rev-btn  tp-resizeme" 
@@ -528,7 +419,7 @@ need for reconciliation it combines. </div>
             data-paddingbottom="[21,21,21,15]"
             data-paddingleft="[51,51,51,30]"
 
-            style="z-index: 8; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 100; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Get Started </div>
+            style="z-index: 8; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 100; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Продолжить </div>
 
 		<!-- LAYER NR. 15 -->
 		<div class="tp-caption   tp-resizeme rs-parallaxlevel-1" 
@@ -640,7 +531,7 @@ need for reconciliation it combines. </div>
 
             style="z-index: 13;"><img src="{% static 'assets/images/rev-slider/banner-02/dollar.png' %}" alt="" data-ww="['118auto','118auto','118auto','118auto']" data-hh="['100px','100px','100px','100px']" data-no-retina> </div>
 	</li>
-	<!-- SLIDE  -->
+	<!-- SLIDE  Разработка -->
     <li data-index="rs-24" data-transition="slideright" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="{% static 'assets/images/rev-slider/banner-03/100x50_aa09a-slider-bg-3.jpg' %}"  data-delay="4520"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 		<!-- MAIN IMAGE -->
         <img src="{% static 'assets/images/rev-slider/banner-03/aa09a-slider-bg-3.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
@@ -754,7 +645,7 @@ need for reconciliation it combines. </div>
 
             style="z-index: 9;"><img src="{% static 'assets/images/rev-slider/banner-03/screen.png' %}" alt="" data-ww="['244px','244px','244px','244px']" data-hh="['278px','278px','278px','278px']" data-no-retina> </div>
 
-		<!-- LAYER NR. 25 -->
+		<!-- LAYER NR. 25 (текст "Разработка")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-24-layer-4" 
 			 data-x="['left','left','left','left']" data-hoffset="['111','111','50','58']" 
@@ -773,9 +664,9 @@ need for reconciliation it combines. </div>
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 10; min-width: 183px; max-width: 183px; max-width: 32px; max-width: 32px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Digital Marketing </div>
+            style="z-index: 10; min-width: 183px; max-width: 183px; max-width: 32px; max-width: 32px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Разработка </div>
 
-		<!-- LAYER NR. 26 -->
+		<!-- LAYER NR. 26 (текст "Telegram ботов и веб приложений")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-24-layer-5" 
 			 data-x="['left','left','left','left']" data-hoffset="['111','111','50','58']" 
@@ -796,10 +687,9 @@ need for reconciliation it combines. </div>
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 11; min-width: 540px; max-width: 540px; white-space: normal; font-size: 56px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Boosts your website 
-Traffic </div>
+            style="z-index: 11; min-width: 540px; max-width: 540px; white-space: normal; font-size: 36px; margin-top: 30px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Telegram-ботов и Python веб-приложений </div>
 
-		<!-- LAYER NR. 27 -->
+		<!-- LAYER NR. 27 (текст "Превратим ваши концепции...")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-24-layer-7" 
 			 data-x="['left','left','left','left']" data-hoffset="['109','109','46','57']" 
@@ -818,10 +708,9 @@ Traffic </div>
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 12; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Share processes and data securely on a need to know basis 
-need for reconciliation it combines. </div>
+            style="z-index: 12; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Превратим Ваши концепции в реальность и успех в мире IT. </div>
 
-		<!-- LAYER NR. 28 -->
+		<!-- LAYER NR. 28 (кнопка "Продолжить")-->
 		<div class="tp-caption rev-btn " 
 			 id="slide-24-layer-8" 
 			 data-x="['left','left','left','left']" data-hoffset="['107','107','44','56']" 
@@ -842,7 +731,7 @@ need for reconciliation it combines. </div>
             data-paddingbottom="[21,21,21,15]"
             data-paddingleft="[51,51,51,30]"
 
-            style="z-index: 13; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Get Started </div>
+            style="z-index: 13; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Продолжить </div>
 	</li>
 </ul>
 <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>	</div>
@@ -854,8 +743,8 @@ need for reconciliation it combines. </div>
         <div class="row">
             <div class="col-lg-4 mx-auto">
                 <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Best SEO</h2>
-                    <h3 class="section-title ">Why Choose us</h3>
+                    <h2 class="section-subtitle">Арбитраж трафика</h2>
+                    <h3 class="section-title ">Почему динамическая монетизация</h3>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
@@ -865,8 +754,8 @@ need for reconciliation it combines. </div>
                     <div class="choose-us-img">
                         <img src="{% static 'assets/images/features/features-1.png' %}" alt="hostinza hosting image">
                     </div>
-                    <h4 class="xs-content-title">High-End Anaylizing</h4>
-                    <p>Share processes and data secure <br> lona need to know basis</p>
+                    <h4 class="xs-content-title">Получайте самые выгодные условия</h4>
+                    <p>Объединим рекламные сети и прямых рекламодателей <br> в одном аукционе.</p>
                 </div><!-- .why-choose-us-block END -->
             </div>
             <div class="col-lg-4 col-md-6">
@@ -874,8 +763,8 @@ need for reconciliation it combines. </div>
                     <div class="choose-us-img">
                         <img src="{% static 'assets/images/features/features-2.png' %}" alt="hostinza hosting image">
                     </div>
-                    <h4 class="xs-content-title">Excellence Track Record</h4>
-                    <p>Our team assured your web site is always safe and secure</p>
+                    <h4 class="xs-content-title">Повышайте доходность <br> на 70%</h4>
+                    <p>Каждый показ будет куплен по максимальной цене.</p>
                 </div><!-- .why-choose-us-block END -->
             </div>
             <div class="col-lg-4 col-md-6">
@@ -883,8 +772,8 @@ need for reconciliation it combines. </div>
                     <div class="choose-us-img">
                         <img src="{% static 'assets/images/features/features-3.png' %}" alt="hostinza hosting image">
                     </div>
-                    <h4 class="xs-content-title">Our Dedicated Support</h4>
-                    <p>We finally found a host that truly understood the unique</p>
+                    <h4 class="xs-content-title">Пользуйтесь широким выбором форматов</h4>
+                    <p>Текстово-графические блоки, баннеры, видео <br> и эксклюзивные форматы.</p>
                 </div><!-- .why-choose-us-block END -->
             </div>
         </div>
@@ -897,8 +786,8 @@ need for reconciliation it combines. </div>
         <div class="row">
             <div class="col-lg-6 mx-auto">
                 <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Ready to grow</h2>
-                    <h3 class="section-title ">Get your free quote today</h3>
+                    <h2 class="section-subtitle">Готов к росту?</h2>
+                    <h3 class="section-title ">Получите выгодное предложение сегодня!</h3>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
@@ -907,13 +796,13 @@ need for reconciliation it combines. </div>
                 <form action="#" class="xs-inline-form" method="post">
                     <div class="row no-gutters">
                         <div class="col-lg-6">
-                            <input type="url" name="website" id="website" placeholder="Web URL" class="form-control">
+                            <input type="url" name="website" id="website" placeholder="Web URL - вашего сайта" class="form-control">
                         </div>
                         <div class="col-lg-6">
-                            <input type="email" name="email" id="emails" placeholder="Email Address" class="form-control">
+                            <input type="email" name="email" id="emails" placeholder="Email - адрес" class="form-control">
                         </div>
                     </div>
-                    <input type="submit" name="submit" value="Check" class="check-btn">
+                    <input type="submit" name="submit" value="Проверить" class="check-btn">
                 </form>
             </div>
         </div><!-- .row END -->
@@ -936,14 +825,14 @@ need for reconciliation it combines. </div>
             <div class="col-lg-6 align-self-center">
                 <div class="xs-info-wraper wow fadeInUp">
                     <div class="xs-heading">
-                        <h3 class="section-title">Get best plans for more Power</h3>
+                        <h3 class="section-title">Масштабируйте ваш бизнес</h3>
                         <span class="line"></span>
                     </div>
-                    <p>Our best-in-class WordPress solution, with additional optimization to make running a WooCommerce online store easy. Our prices are clear and straight forward so you can</p>
+                    <p>MDigital - ваш партнер для роста в цифровой сфере.</p>
                     <ul class="xs-list check">
-                        <li>We've been supporting WordPress since the beginning.</li>
-                        <li>Perfect for large sites or agencies managing multiple clients.</li>
-                        <li>Our easy-to-use control panel and API let you spend</li>
+                        <li>Динамическая монетизация.</li>
+                        <li>Чат-боты и приложения в телеграмм.</li>
+                        <li>Разработка инновационных программных решений</li>
                     </ul>
                     <a href="#" class="btn btn-secondary">Get Started</a>
                 </div><!-- .xs-info-wraper END -->
@@ -958,8 +847,8 @@ need for reconciliation it combines. </div>
         <div class="row">
             <div class="col-lg-6 mx-auto">
                 <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Work Flow</h2>
-                    <h3 class="section-title ">Our Working Process</h3>
+                    <h2 class="section-subtitle">Рабочий процесс</h2>
+                    <h3 class="section-title ">Этапы решения задач</h3>
                 </div><!-- .xs-heading END -->
             </div>
         </div>
@@ -971,7 +860,7 @@ need for reconciliation it combines. </div>
                             <div class="work-process-icon">
                                 <img src="{% static 'assets/images/work-process/1.png' %}" alt="">
                             </div>
-                            <h4 class="small">Planning</h4>
+                            <h4 class="small">Планирование</h4>
                         </div><!-- .single-work-process END -->
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -979,7 +868,7 @@ need for reconciliation it combines. </div>
                             <div class="work-process-icon">
                                 <img src="{% static 'assets/images/work-process/2.png' %}" alt="">
                             </div>
-                            <h4 class="small">Research</h4>
+                            <h4 class="small">Исследование</h4>
                         </div><!-- .single-work-process END -->
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -987,7 +876,7 @@ need for reconciliation it combines. </div>
                             <div class="work-process-icon">
                                 <img src="{% static 'assets/images/work-process/3.png' %}" alt="">
                             </div>
-                            <h4 class="small">Optimizing</h4>
+                            <h4 class="small">Оптимизация</h4>
                         </div><!-- .single-work-process END -->
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -995,7 +884,7 @@ need for reconciliation it combines. </div>
                             <div class="work-process-icon">
                                 <img src="{% static 'assets/images/work-process/4.png' %}" alt="">
                             </div>
-                            <h4 class="small">Results</h4>
+                            <h4 class="small">Результат</h4>
                         </div><!-- .single-work-process END -->
                     </div>
                 </div><!-- .row end -->
@@ -1010,8 +899,8 @@ need for reconciliation it combines. </div>
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="xs-heading text-center style2">
-                    <h2 class="section-subtitle">BEST SEO</h2>
-                    <h3 class="section-title">Services We Provide</h3>
+                    <h2 class="section-subtitle">Лучшие решения</h2>
+                    <h3 class="section-title">Услуги, которые мы предоставляем</h3>
                     <span class="line"></span>
                 </div><!-- .xs-heading END -->
             </div>
@@ -1020,13 +909,13 @@ need for reconciliation it combines. </div>
             <div class="col-lg-12">
                 <ul class="nav nav-tabs main-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="tab-one-area" data-toggle="tab" href="#tab-one" role="tab" aria-controls="tab-one" aria-selected="true"><span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-1.png' %}" alt=""></span> Real Time Analytics</a>
+                        <a class="nav-link active" id="tab-one-area" data-toggle="tab" href="#tab-one" role="tab" aria-controls="tab-one" aria-selected="true"><span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-1.png' %}" alt=""></span> Монетизация трафика</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="tab-two-area" data-toggle="tab" href="#tab-two" role="tab" aria-controls="tab-two" aria-selected="false"><span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-2.png' %}" alt=""></span> Online Marketing</a>
+                        <a class="nav-link" id="tab-two-area" data-toggle="tab" href="#tab-two" role="tab" aria-controls="tab-two" aria-selected="false"><span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-2.png' %}" alt=""></span> Сопровождение и поддержка</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="tab-three-area" data-toggle="tab" href="#tab-three" role="tab" aria-controls="tab-three" aria-selected="false"><span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-3.png' %}" alt=""></span> Pay Per Click</a>
+                        <a class="nav-link" id="tab-three-area" data-toggle="tab" href="#tab-three" role="tab" aria-controls="tab-three" aria-selected="false"><span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-3.png' %}" alt=""></span> Увеличение доходов</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="tab-four-area" data-toggle="tab" href="#tab-four" role="tab" aria-controls="tab-four" aria-selected="false"><span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-4.png' %}" alt=""></span> Email Marketing</a>
@@ -1149,16 +1038,17 @@ need for reconciliation it combines. </div>
             </div>
         </div><!-- .row END -->
     </div><!-- .container END -->
-</section><!-- END services section -->
+</section>
+<!-- END services section -->
 
-<!-- services section -->
+<!-- services section (наши проекты)-->
 <section class="xs-section-padding gray-bg" id="case">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 mx-auto">
                 <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Previous Projects</h2>
-                    <h3 class="section-title ">Our Case Studies</h3>
+                    <h2 class="section-subtitle">MDigital</h2>
+                    <h3 class="section-title ">Портфолио</h3>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
@@ -1169,8 +1059,8 @@ need for reconciliation it combines. </div>
                         <img src="{% static 'assets/images/case/case-1.png' %}" alt="">
                     </div>
                     <div class="case-body">
-                        <h4 class="small"><a href="case-details.html">Million visitor growth</a></h4>
-                        <p>Visitor, Sales</p>
+                        <h4 class="small"><a href="case-details.html">Динамическая монетизация</a></h4>
+                        <p>Аукционы ADFOX</p>
                     </div>
                 </div><!-- .single-case-studies END -->
             </div>
@@ -1180,8 +1070,8 @@ need for reconciliation it combines. </div>
                         <img src="{% static 'assets/images/case/case-2.png' %}" alt="">
                     </div>
                     <div class="case-body">
-                        <h4 class="small"><a href="case-details.html">Twice profit than before</a></h4>
-                        <p>Marketing, SEO</p>
+                        <h4 class="small"><a href="case-details.html">Разработка сайтов</a></h4>
+                        <p>Python, Bootstrap, Django</p>
                     </div>
                 </div><!-- .single-case-studies END -->
             </div>
@@ -1191,203 +1081,205 @@ need for reconciliation it combines. </div>
                         <img src="{% static 'assets/images/case/case-3.png' %}" alt="">
                     </div>
                     <div class="case-body">
-                        <h4 class="small"><a href="case-details.html">Built web faster & better</a></h4>
-                        <p>Marketing, Web</p>
+                        <h4 class="small"><a href="case-details.html">Telegram WebApp</a></h4>
+                        <p>Telegram Bot API, Python</p>
                     </div>
                 </div><!-- .single-case-studies END -->
             </div>
         </div><!-- .row END -->
     </div><!-- .container END -->
-</section><!-- END services section -->
+</section>
+<!-- END services section -->
 
-<!-- pricing section -->
-<section class="pricing-section xs-section-padding" id="pricing">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 mx-auto">
-                <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Best Pricing</h2>
-                    <h3 class="section-title ">Our Pricing Plans</h3>
-                </div><!-- .xs-heading END -->
-            </div>
-        </div><!-- .row END -->
-        <div class="row">
-            <div class="col-md-12 xs-pricing-group">
-                <ul class="nav nav-tabs main-nav-tab tab-swipe wow fadeIn" role="tablist">
-                    <li>
-                        <a id="monthly-tab" class="active show" data-toggle="tab" href="#monthly" role="tab" aria-controls="monthly" aria-selected="true">Monthly</a>
-                    </li>
-                    <li>
-                        <a id="yearly-tab" data-toggle="tab" href="#yearly" role="tab" aria-controls="yearly" aria-selected="false">Yearly</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fadeIn animated show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="xs-single-pricing">
-                                    <div class="pricing-header">
-                                        <h3 class="xs-content-title">Starter Plan</h3>
-                                        <div class="pricing-img-block">
-                                            <img src="{% static 'assets/images/pricing/pricing-1.png' %}" alt="hostinza pricing image">
-                                        </div>
-                                        <h2 class="price-table"><sup>$</sup>49.99 <sub>/mo</sub></h2>
-                                    </div><!-- .pricing-header END -->
-                                    <div class="pricing-body">
-                                        <ul class="xs-list">
-                                            <li>Increase traffic 130%</li>
-                                            <li>Backlink analysis</li>
-                                            <li>Organic traffic 215%</li>
-                                            <li>10 Free Optimization</li>
-                                            <li>24/7 support</li>
-                                        </ul>
-                                    </div><!-- .pricing-body END -->
-                                    <div class="pricing-footer">
-                                        <a href="#" class="btn btn-primary">Buy Now</a>
-                                    </div><!-- .pricing-footer END -->
-                                    <div class="pulse-anim"></div>
-                                </div><!-- .xs-single-pricing END -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="xs-single-pricing active">
-                                    <div class="pricing-header">
-                                        <h3 class="xs-content-title">Basic Plan</h3>
-                                        <div class="pricing-img-block">
-                                            <img src="{% static 'assets/images/pricing/pricing-2.png' %}" alt="hostinza pricing image">
-                                        </div>
-                                        <h2 class="price-table"><sup>$</sup>69.99 <sub>/mo</sub></h2>
-                                    </div><!-- .pricing-header END -->
-                                    <div class="pricing-body">
-                                        <ul class="xs-list">
-                                            <li>25 Analytics Compaign</li>
-                                            <li>1,300 Keywords</li>
-                                            <li>25 social media reviews</li>
-                                            <li>1 Free Optimization</li>
-                                            <li>24/7 support</li>
-                                        </ul>
-                                    </div><!-- .pricing-body END -->
-                                    <div class="pricing-footer">
-                                        <a href="#" class="btn btn-primary">Buy Now</a>
-                                    </div><!-- .pricing-footer END -->
-                                    <div class="pulse-anim"></div>
-                                </div><!-- .xs-single-pricing END -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="xs-single-pricing">
-                                    <div class="pricing-header">
-                                        <h3 class="xs-content-title">Business Plan</h3>
-                                        <div class="pricing-img-block">
-                                            <img src="{% static 'assets/images/pricing/pricing-3.png' %}" alt="hostinza pricing image">
-                                        </div>
-                                        <h2 class="price-table"><sup>$</sup>49.99 <sub>/mo</sub></h2>
-                                    </div><!-- .pricing-header END -->
-                                    <div class="pricing-body">
-                                        <ul class="xs-list">
-                                            <li>Increase traffic 130%</li>
-                                            <li>Backlink analysis</li>
-                                            <li>Organic traffic 215%</li>
-                                            <li>10 Free Optimization</li>
-                                            <li>24/7 support</li>
-                                        </ul>
-                                    </div><!-- .pricing-body END -->
-                                    <div class="pricing-footer">
-                                        <a href="#" class="btn btn-primary">Buy Now</a>
-                                    </div><!-- .pricing-footer END -->
-                                    <div class="pulse-anim"></div>
-                                </div><!-- .xs-single-pricing END -->
-                            </div>
-                        </div>
-                    </div><!-- #monthly END -->
-                    <div class="tab-pane fadeIn animated" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="xs-single-pricing">
-                                    <div class="pricing-header">
-                                        <h3 class="xs-content-title">Basic Plan</h3>
-                                        <div class="pricing-img-block">
-                                            <img src="{% static 'assets/images/pricing/pricing-1.png' %}" alt="hostinza pricing image">
-                                        </div>
-                                        <h2 class="price-table"><sup>$</sup>10.99 <sub>/mo</sub></h2>
-                                    </div><!-- .pricing-header END -->
-                                    <div class="pricing-body">
-                                        <ul class="xs-list">
-                                            <li>Increase traffic 130%</li>
-                                            <li>Backlink analysis</li>
-                                            <li>Organic traffic 215%</li>
-                                            <li>10 Free Optimization</li>
-                                            <li>24/7 support</li>
-                                        </ul>
-                                    </div><!-- .pricing-body END -->
-                                    <div class="pricing-footer">
-                                        <a href="#" class="btn btn-primary">Buy Now</a>
-                                    </div><!-- .pricing-footer END -->
-                                    <div class="pulse-anim"></div>
-                                </div><!-- .xs-single-pricing END -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="xs-single-pricing active">
-                                    <div class="pricing-header">
-                                        <h3 class="xs-content-title">Advanced Plan</h3>
-                                        <div class="pricing-img-block">
-                                            <img src="{% static 'assets/images/pricing/pricing-2.png' %}" alt="hostinza pricing image">
-                                        </div>
-                                        <h2 class="price-table"><sup>$</sup>30.99 <sub>/mo</sub></h2>
-                                    </div><!-- .pricing-header END -->
-                                    <div class="pricing-body">
-                                        <ul class="xs-list">
-                                            <li>25 Analytics Compaign</li>
-                                            <li>1,300 Keywords</li>
-                                            <li>25 social media reviews</li>
-                                            <li>1 Free Optimization</li>
-                                            <li>24/7 support</li>
-                                        </ul>
-                                    </div><!-- .pricing-body END -->
-                                    <div class="pricing-footer">
-                                        <a href="#" class="btn btn-primary">Buy Now</a>
-                                    </div><!-- .pricing-footer END -->
-                                    <div class="pulse-anim"></div>
-                                </div><!-- .xs-single-pricing END -->
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="xs-single-pricing">
-                                    <div class="pricing-header">
-                                        <h3 class="xs-content-title">Business Plan</h3>
-                                        <div class="pricing-img-block">
-                                            <img src="{% static 'assets/images/pricing/pricing-3.png' %}" alt="hostinza pricing image">
-                                        </div>
-                                        <h2 class="price-table"><sup>$</sup>50.00 <sub>/mo</sub></h2>
-                                    </div><!-- .pricing-header END -->
-                                    <div class="pricing-body">
-                                        <ul class="xs-list">
-                                            <li>Increase traffic 130%</li>
-                                            <li>Backlink analysis</li>
-                                            <li>Organic traffic 215%</li>
-                                            <li>10 Free Optimization</li>
-                                            <li>24/7 support</li>
-                                        </ul>
-                                    </div><!-- .pricing-body END -->
-                                    <div class="pricing-footer">
-                                        <a href="#" class="btn btn-primary">Buy Now</a>
-                                    </div><!-- .pricing-footer END -->
-                                    <div class="pulse-anim"></div>
-                                </div><!-- .xs-single-pricing END -->
-                            </div>
-                        </div>
-                    </div><!-- #yearly END -->
-                </div>
-            </div>
-        </div><!-- .row END -->
-    </div><!-- .container END -->
-</section><!-- END pricing section -->
+   <!-- pricing section -->
+<!--   <section class="pricing-section xs-section-padding" id="pricing">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-4 mx-auto">-->
+<!--                <div class="xs-heading text-center">-->
+<!--                    <h2 class="section-subtitle">Best Pricing</h2>-->
+<!--                    <h3 class="section-title ">Our Pricing Plans</h3>-->
+<!--                </div>&lt;!&ndash; .xs-heading END &ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>&lt;!&ndash; .row END &ndash;&gt;-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12 xs-pricing-group">-->
+<!--                <ul class="nav nav-tabs main-nav-tab tab-swipe wow fadeIn" role="tablist">-->
+<!--                    <li>-->
+<!--                        <a id="monthly-tab" class="active show" data-toggle="tab" href="#monthly" role="tab" aria-controls="monthly" aria-selected="true">Monthly</a>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <a id="yearly-tab" data-toggle="tab" href="#yearly" role="tab" aria-controls="yearly" aria-selected="false">Yearly</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <div class="tab-content">-->
+<!--                    <div class="tab-pane fadeIn animated show active" id="monthly" role="tabpanel" aria-labelledby="monthly-tab">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-4 col-md-6">-->
+<!--                                <div class="xs-single-pricing">-->
+<!--                                    <div class="pricing-header">-->
+<!--                                        <h3 class="xs-content-title">Starter Plan</h3>-->
+<!--                                        <div class="pricing-img-block">-->
+<!--                                            <img src="{% static 'assets/images/pricing/pricing-1.png' %}" alt="hostinza pricing image">-->
+<!--                                        </div>-->
+<!--                                        <h2 class="price-table"><sup>$</sup>49.99 <sub>/mo</sub></h2>-->
+<!--                                    </div>&lt;!&ndash; .pricing-header END &ndash;&gt;-->
+<!--                                    <div class="pricing-body">-->
+<!--                                        <ul class="xs-list">-->
+<!--                                            <li>Increase traffic 130%</li>-->
+<!--                                            <li>Backlink analysis</li>-->
+<!--                                            <li>Organic traffic 215%</li>-->
+<!--                                            <li>10 Free Optimization</li>-->
+<!--                                            <li>24/7 support</li>-->
+<!--                                        </ul>-->
+<!--                                    </div>&lt;!&ndash; .pricing-body END &ndash;&gt;-->
+<!--                                    <div class="pricing-footer">-->
+<!--                                        <a href="#" class="btn btn-primary">Buy Now</a>-->
+<!--                                    </div>&lt;!&ndash; .pricing-footer END &ndash;&gt;-->
+<!--                                    <div class="pulse-anim"></div>-->
+<!--                                </div>&lt;!&ndash; .xs-single-pricing END &ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-4 col-md-6">-->
+<!--                                <div class="xs-single-pricing active">-->
+<!--                                    <div class="pricing-header">-->
+<!--                                        <h3 class="xs-content-title">Basic Plan</h3>-->
+<!--                                        <div class="pricing-img-block">-->
+<!--                                            <img src="{% static 'assets/images/pricing/pricing-2.png' %}" alt="hostinza pricing image">-->
+<!--                                        </div>-->
+<!--                                        <h2 class="price-table"><sup>$</sup>69.99 <sub>/mo</sub></h2>-->
+<!--                                    </div>&lt;!&ndash; .pricing-header END &ndash;&gt;-->
+<!--                                    <div class="pricing-body">-->
+<!--                                        <ul class="xs-list">-->
+<!--                                            <li>25 Analytics Compaign</li>-->
+<!--                                            <li>1,300 Keywords</li>-->
+<!--                                            <li>25 social media reviews</li>-->
+<!--                                            <li>1 Free Optimization</li>-->
+<!--                                            <li>24/7 support</li>-->
+<!--                                        </ul>-->
+<!--                                    </div>&lt;!&ndash; .pricing-body END &ndash;&gt;-->
+<!--                                    <div class="pricing-footer">-->
+<!--                                        <a href="#" class="btn btn-primary">Buy Now</a>-->
+<!--                                    </div>&lt;!&ndash; .pricing-footer END &ndash;&gt;-->
+<!--                                    <div class="pulse-anim"></div>-->
+<!--                                </div>&lt;!&ndash; .xs-single-pricing END &ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-4 col-md-6">-->
+<!--                                <div class="xs-single-pricing">-->
+<!--                                    <div class="pricing-header">-->
+<!--                                        <h3 class="xs-content-title">Business Plan</h3>-->
+<!--                                        <div class="pricing-img-block">-->
+<!--                                            <img src="{% static 'assets/images/pricing/pricing-3.png' %}" alt="hostinza pricing image">-->
+<!--                                        </div>-->
+<!--                                        <h2 class="price-table"><sup>$</sup>49.99 <sub>/mo</sub></h2>-->
+<!--                                    </div>&lt;!&ndash; .pricing-header END &ndash;&gt;-->
+<!--                                    <div class="pricing-body">-->
+<!--                                        <ul class="xs-list">-->
+<!--                                            <li>Increase traffic 130%</li>-->
+<!--                                            <li>Backlink analysis</li>-->
+<!--                                            <li>Organic traffic 215%</li>-->
+<!--                                            <li>10 Free Optimization</li>-->
+<!--                                            <li>24/7 support</li>-->
+<!--                                        </ul>-->
+<!--                                    </div>&lt;!&ndash; .pricing-body END &ndash;&gt;-->
+<!--                                    <div class="pricing-footer">-->
+<!--                                        <a href="#" class="btn btn-primary">Buy Now</a>-->
+<!--                                    </div>&lt;!&ndash; .pricing-footer END &ndash;&gt;-->
+<!--                                    <div class="pulse-anim"></div>-->
+<!--                                </div>&lt;!&ndash; .xs-single-pricing END &ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; #monthly END &ndash;&gt;-->
+<!--                    <div class="tab-pane fadeIn animated" id="yearly" role="tabpanel" aria-labelledby="yearly-tab">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-lg-4 col-md-6">-->
+<!--                                <div class="xs-single-pricing">-->
+<!--                                    <div class="pricing-header">-->
+<!--                                        <h3 class="xs-content-title">Basic Plan</h3>-->
+<!--                                        <div class="pricing-img-block">-->
+<!--                                            <img src="{% static 'assets/images/pricing/pricing-1.png' %}" alt="hostinza pricing image">-->
+<!--                                        </div>-->
+<!--                                        <h2 class="price-table"><sup>$</sup>10.99 <sub>/mo</sub></h2>-->
+<!--                                    </div>&lt;!&ndash; .pricing-header END &ndash;&gt;-->
+<!--                                    <div class="pricing-body">-->
+<!--                                        <ul class="xs-list">-->
+<!--                                            <li>Increase traffic 130%</li>-->
+<!--                                            <li>Backlink analysis</li>-->
+<!--                                            <li>Organic traffic 215%</li>-->
+<!--                                            <li>10 Free Optimization</li>-->
+<!--                                            <li>24/7 support</li>-->
+<!--                                        </ul>-->
+<!--                                    </div>&lt;!&ndash; .pricing-body END &ndash;&gt;-->
+<!--                                    <div class="pricing-footer">-->
+<!--                                        <a href="#" class="btn btn-primary">Buy Now</a>-->
+<!--                                    </div>&lt;!&ndash; .pricing-footer END &ndash;&gt;-->
+<!--                                    <div class="pulse-anim"></div>-->
+<!--                                </div>&lt;!&ndash; .xs-single-pricing END &ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-4 col-md-6">-->
+<!--                                <div class="xs-single-pricing active">-->
+<!--                                    <div class="pricing-header">-->
+<!--                                        <h3 class="xs-content-title">Advanced Plan</h3>-->
+<!--                                        <div class="pricing-img-block">-->
+<!--                                            <img src="{% static 'assets/images/pricing/pricing-2.png' %}" alt="hostinza pricing image">-->
+<!--                                        </div>-->
+<!--                                        <h2 class="price-table"><sup>$</sup>30.99 <sub>/mo</sub></h2>-->
+<!--                                    </div>&lt;!&ndash; .pricing-header END &ndash;&gt;-->
+<!--                                    <div class="pricing-body">-->
+<!--                                        <ul class="xs-list">-->
+<!--                                            <li>25 Analytics Compaign</li>-->
+<!--                                            <li>1,300 Keywords</li>-->
+<!--                                            <li>25 social media reviews</li>-->
+<!--                                            <li>1 Free Optimization</li>-->
+<!--                                            <li>24/7 support</li>-->
+<!--                                        </ul>-->
+<!--                                    </div>&lt;!&ndash; .pricing-body END &ndash;&gt;-->
+<!--                                    <div class="pricing-footer">-->
+<!--                                        <a href="#" class="btn btn-primary">Buy Now</a>-->
+<!--                                    </div>&lt;!&ndash; .pricing-footer END &ndash;&gt;-->
+<!--                                    <div class="pulse-anim"></div>-->
+<!--                                </div>&lt;!&ndash; .xs-single-pricing END &ndash;&gt;-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-4 col-md-6">-->
+<!--                                <div class="xs-single-pricing">-->
+<!--                                    <div class="pricing-header">-->
+<!--                                        <h3 class="xs-content-title">Business Plan</h3>-->
+<!--                                        <div class="pricing-img-block">-->
+<!--                                            <img src="{% static 'assets/images/pricing/pricing-3.png' %}" alt="hostinza pricing image">-->
+<!--                                        </div>-->
+<!--                                        <h2 class="price-table"><sup>$</sup>50.00 <sub>/mo</sub></h2>-->
+<!--                                    </div>&lt;!&ndash; .pricing-header END &ndash;&gt;-->
+<!--                                    <div class="pricing-body">-->
+<!--                                        <ul class="xs-list">-->
+<!--                                            <li>Increase traffic 130%</li>-->
+<!--                                            <li>Backlink analysis</li>-->
+<!--                                            <li>Organic traffic 215%</li>-->
+<!--                                            <li>10 Free Optimization</li>-->
+<!--                                            <li>24/7 support</li>-->
+<!--                                        </ul>-->
+<!--                                    </div>&lt;!&ndash; .pricing-body END &ndash;&gt;-->
+<!--                                    <div class="pricing-footer">-->
+<!--                                        <a href="#" class="btn btn-primary">Buy Now</a>-->
+<!--                                    </div>&lt;!&ndash; .pricing-footer END &ndash;&gt;-->
+<!--                                    <div class="pulse-anim"></div>-->
+<!--                                </div>&lt;!&ndash; .xs-single-pricing END &ndash;&gt;-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>&lt;!&ndash; #yearly END &ndash;&gt;-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>&lt;!&ndash; .row END &ndash;&gt;-->
+<!--    </div>&lt;!&ndash; .container END &ndash;&gt;-->
+<!--   </section>-->
+	<!-- END pricing section -->
 
-<!-- testimonials section -->
+<!-- testimonials section (Отзывы клиентов) -->
 <section class="xs-section-padding primary-bg testimonial-section" id="testimonial">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 mx-auto">
                 <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Client’s love</h2>
-                    <h3 class="section-title ">Love from Clients</h3>
+                    <h2 class="section-subtitle">О нас</h2>
+                    <h3 class="section-title ">Тёплые слова от клиентов</h3>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
@@ -1395,19 +1287,19 @@ need for reconciliation it combines. </div>
             <div class="col-lg-10 mx-auto">
                 <div class="testimonial-slider-preview owl-carousel" id="sync1">
                     <div class="single-testimonial-preview">
-                        <p>“ We work systematically to integrated corporate responsibility in our corein business and make our expertise available for the benefit ”</p>
+                        <p>“ "MDigital разработали для нашего бизнеса телеграмм бота, который превзошел наши ожидания. Они проявили высокий профессионализм, оперативность и гибкость в реагировании на наши требования. Спасибо за отличную работу!" ”</p>
                         <span class="border-line"></span>
                     </div><!-- .single-testimonial-preview END -->
                     <div class="single-testimonial-preview">
-                        <p>“ We work systematically to integrated corporate responsibility in our corein business and make our expertise available for the benefit We work systematically to integrated corporate responsibility in our corein business and make our expertise available for the benefit ”</p>
+                        <p>“ Работа с MDigital была приятным опытом для нашей компании. Они не только разработали для нас Python веб-приложение, но и предоставили отличную поддержку и консультации на протяжении всего процесса. Рекомендую их всем, кто ищет надежного партнера в сфере IT-разработки. ”</p>
                         <span class="border-line"></span>
                     </div><!-- .single-testimonial-preview END -->
                     <div class="single-testimonial-preview">
-                        <p>“ We work systematically to integrated corporate responsibility in our corein business and make our expertise available for the benefit ”</p>
+                        <p>“ MDigital помогли нам значительно увеличить прибыль с помощью их арбитража трафика. Их профессионализм и экспертное понимание рынка позволили нам оптимизировать наши маркетинговые усилия и добиться значительного роста конверсии. Очень довольны результатами и с нетерпением ждем продолжения сотрудничества! ”</p>
                         <span class="border-line"></span>
                     </div><!-- .single-testimonial-preview END -->
                     <div class="single-testimonial-preview">
-                        <p>“ We work systematically to integrated corporate responsibility in our corein business and make our expertise available for the benefit We work systematically to integrated corporate responsibility in our corein business and make our expertise available for the benefit ”</p>
+                        <p>“ MDigital оказались идеальным партнером для нашего проекта. Их команда профессионалов разработала для нас высококачественное веб-приложение для Telegram, которое точно соответствует нашим требованиям. Они были отзывчивы к нашим запросам, предоставляли четкие обновления и всегда были на связи. Спасибо за отличное сотрудничество! ”</p>
                         <span class="border-line"></span>
                     </div><!-- .single-testimonial-preview END -->
                 </div>
@@ -1417,8 +1309,8 @@ need for reconciliation it combines. </div>
                             <img src="{% static 'assets/images/testimonial/testimonial-1.jpg' %}" alt="">
                         </div>
                         <div class="bio-info">
-                            <h4 class="small">Sir Pobon</h4>
-                            <p>Finance Head</p>
+                            <h4 class="small">Иван Соколов </h4>
+                            <p>"Elis-Group"</p>
                         </div>
                     </div><!-- .single-bio-thumb END -->
                     <div class="single-bio-thumb">
@@ -1426,8 +1318,8 @@ need for reconciliation it combines. </div>
                             <img src="{% static 'assets/images/testimonial/testimonial-2.jpg' %}" alt="">
                         </div>
                         <div class="bio-info">
-                            <h4 class="small">Sir Pobon</h4>
-                            <p>Finance Head</p>
+                            <h4 class="small">Дарья Светличная</h4>
+                            <p>"Acuamarine"</p>
                         </div>
                     </div><!-- .single-bio-thumb END -->
                     <div class="single-bio-thumb">
@@ -1435,8 +1327,8 @@ need for reconciliation it combines. </div>
                             <img src="{% static 'assets/images/testimonial/testimonial-3.jpg' %}" alt="">
                         </div>
                         <div class="bio-info">
-                            <h4 class="small">Sir Pobon</h4>
-                            <p>Finance Head</p>
+                            <h4 class="small">Юлия Петренко</h4>
+                            <p>"Друзья"</p>
                         </div>
                     </div><!-- .single-bio-thumb END -->
                     <div class="single-bio-thumb">
@@ -1444,8 +1336,8 @@ need for reconciliation it combines. </div>
                             <img src="{% static 'assets/images/testimonial/testimonial-4.jpg' %}" alt="">
                         </div>
                         <div class="bio-info">
-                            <h4 class="small">Sir Pobon</h4>
-                            <p>Finance Head</p>
+                            <h4 class="small">Павел Груздь</h4>
+                            <p>"AllGiveBank"</p>
                         </div>
                     </div><!-- .single-bio-thumb END -->
                 </div>
@@ -1455,7 +1347,8 @@ need for reconciliation it combines. </div>
     <div class="big-watermark-icon">
         <i class="icon icon-quote"></i>
     </div>
-</section><!-- END testimonials section -->
+</section>
+<!-- END testimonials section -->
 
 <!-- latest media section -->
 <section class="xs-section-padding gray-bg" id="blogs">
@@ -1463,58 +1356,43 @@ need for reconciliation it combines. </div>
         <div class="row">
             <div class="col-lg-4 mx-auto">
                 <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Latest News</h2>
-                    <h3 class="section-title ">Our Latest Media</h3>
+                    <h2 class="section-subtitle">Последние посты</h2>
+                    <h3 class="section-title ">Может быть интересно</h3>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
         <div class="row">
+			{% for post in posts %}
             <div class="col-lg-4 col-md-6">
                 <div class="single-blog-post-thumb">
-                    <div class="post-image">
-                        <img src="{% static 'assets/images/blog/blog-1.jpg' %}" alt="">
-                    </div>
-                    <div class="post-body">
-                        <div class="entry-header">
-                            <h4 class="entry-title"><a href="blog-single.html">Twice profit than before you ever got in business</a></h4>
-                            <div class="entry-content">
-                                <p>Join our award winning teams thats enjoy </p>
-                            </div>
-                            <div class="entry-meta">
-                                <span class="meta-date"><i class="icon icon-clock"></i> January 14, 2018</span>
-                            </div>
-                        </div>
-                    </div>
+						<div class="post-image">
+							<img src="{{ post.image.url|safe }}" alt="">
+						</div>
+						<div class="post-body">
+							<div class="entry-header">
+								<h4 class="entry-title"><a href="blog-single.html">{{ post.title }}</a></h4>
+								<div class="entry-content">
+									<p>{{ post.text | truncatewords:20|safe}} </p>
+								</div>
+								<div class="entry-meta">
+									<span class="meta-date"><i class="icon icon-clock"></i>{{ post.create_at }}</span>
+								</div>
+							</div>
+						</div>
                 </div><!-- .single-blog-post-thumb END -->
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog-post-thumb">
-                    <div class="post-image">
-                        <img src="{% static 'assets/images/blog/blog-2.jpg' %}" alt="">
-                    </div>
-                    <div class="post-body">
-                        <div class="entry-header">
-                            <h4 class="entry-title"><a href="blog-single.html">Twice profit than before you ever got in business</a></h4>
-                            <div class="entry-content">
-                                <p>Join our award winning teams thats enjoy </p>
-                            </div>
-                            <div class="entry-meta">
-                                <span class="meta-date"><i class="icon icon-clock"></i> January 14, 2018</span>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- .single-blog-post-thumb END -->
-            </div>
+			{% endfor %}
+
             <div class="col-lg-4 col-md-6">
                 <div class="newsletter-thumb-wraper">
                     <i class="icon icon-message fly-icons"></i>
                     <div class="newsletter-thumb-content">
-                        <h4 class=xs-content-title>Get Newsletter</h4>
-                        <p>Enter your email in the box below to receive latest news and information about our activities</p>
+                        <h4 class=xs-content-title>Подпишитесь на рассылку</h4>
+                        <p>Введите свой адрес электронной почты в поле ниже, чтобы получать последние Digital новости.</p>
                         <form action="#" method="POST" class="subscribe-form2">
                             <input type="email" class="form-control" name="email" placeholder="Email" id="newsletter-thumb">
                             <label for="newsletter-thumb"></label>
-                            <input type="submit" class="submit-btn" value="Submit now">
+                            <input type="submit" class="submit-btn" value="Подписаться">
                         </form>
                     </div>
                 </div>

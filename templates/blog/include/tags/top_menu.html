@@ -1,0 +1,10 @@
+{% load mptt_tags %}
+
+{% recursetree list_category %}
+
+<a href="{% url 'post_list' node.slug %}"><i class="icon icon-file-2"></i>{{ node.name }}</a>
+
+{% endrecursetree %}
+
+
+
