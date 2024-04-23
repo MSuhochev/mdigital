@@ -2,7 +2,7 @@
 	border-radius: $radius;
 }
 
-//usage: @include shift([property],[duration],[easing]);
+//usage: @includes shift([property],[duration],[easing]);
 @mixin transition($property: all, $duration: .4s, $ease: ease){
 	transition: $property $duration $ease;
 }
@@ -133,7 +133,7 @@
 // example
 
 // div {
-//     @include responsive-ratio(16,9);
+//     @includes responsive-ratio(16,9);
 // }
 
 @mixin inputPlaceholder() {
@@ -165,6 +165,6 @@
 }
 
 // Example
-// @include inputPlaceholder() {
+// @includes inputPlaceholder() {
 // 	color: #919191;
 // };

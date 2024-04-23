@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="xs-sidebar-group info-group">
+    <div class="xs-overlay black-bg"></div>
+    <div class="xs-sidebar-widget">
+        <div class="sidebar-widget-container">
+            <div class="widget-heading">
+                <a href="#" class="close-side-widget">
+                    <i class="icon icon-cross"></i>
+                </a>
+            </div>
+            <div class="sidebar-textwidget">
+                <div class="sidebar-logo-wraper">
+                    <a href="index.html">
+                        <img src="{%  static 'assets/images/logo.png' %}" alt="sidebar logo">
+                    </a>
+                </div>
+                <p> Добро пожаловать! Мы рады видеть вас здесь. Если у вас возникли вопросы или вам нужна дополнительная информация, мы готовы помочь вам в любое время. Просто позвоните или заполните форму ниже, и мы свяжемся с вами в кратчайшие сроки. Спасибо за ваш интерес к нашей компании! </p>
+                <ul class="sideabr-list-widget">
+                    <li>
+                        <div class="media">
+                            <div class="d-flex">
+                                <img src="{% static 'assets/images/location.png' %}" alt="">
+                            </div>
+                            <div class="address-info">
+                                <a href="https://yandex.ru/maps/org/mdigital/128234723196/?ll=38.279200%2C46.680868&z=16">353680 г.Ейск, Россия <br>Мичурина ул., 16/1, Этаж 2</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="media">
+                            <div class="d-flex">
+                                <img src="{% static 'assets/images/mail.png' %}" alt="">
+                            </div>
+                            <div class="media-body">
+                                <a href="mailto:mdigital@mdigital.su">mailto@mdigital.su</a>
+                                <span>Онлайн поддержка</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="media">
+                            <div class="d-flex">
+                                <img src="{% static 'assets/images/phone.png' %}" alt="">
+                            </div>
+                            <div class="media-body">
+                                <p><a href="tel:+7%20(902)%407-7776">+7 (902) 407-7776</a></p>
+                                <span>Пн-Пт 8-17 ч.</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul><!-- .sideabr-list-widget -->
+                <div class="subscribe-from">
+                    <p>Оформить подписку</p>
+                    <form action="#" method="POST" class="subscribe-form">
+                        <label for="sub-input"></label>
+                        <div class="form-group">
+                            <input type="email" name="email" id="sub-input" placeholder="Введите Ваш email здесь" class="form-control">
+                            <button class="sub-btn" type="submit"><i class="icon icon-arrow-right"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <ul class="social-list version-2">
+                    <li><a href="https://t.me/MDigital_ibot" class="facebook"><i class="fa fa-telegram"></i></a></li>
+                </ul><!-- .social-list -->
+                <div class="text-center">
+                    <a href="/" class="btn btn-primary">На главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
