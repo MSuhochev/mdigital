@@ -1,0 +1,49 @@
+{% load static %}
+
+<!-- team section -->
+<section class="xs-section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="xs-heading text-center">
+                    <h2 class="section-subtitle">Вас приветствует</h2>
+                    <h3 class="section-title">Команда профессионалов!</h3>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div><!-- .row END -->
+            <div class="row">
+              {% for employee in employees %}
+                <div class="col-lg-3 col-md-6">
+                  <div class="single-box text-center">
+                    <div class="image">
+                      {% if employee.photo %}
+                        <img src="{{ employee.photo.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}">
+                      {% else %}
+                        <img src="{% static 'assets/images/team/default_photo.jpg' %}" alt="Default Photo">
+                      {% endif %}
+                      <div class="hover-area">
+                        <h4 class="title"><a href="#">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
+                        <p class="description">{{ employee.position }}</p>
+                        <span class="line"></span>
+                        <ul class="xs-list list-inline">
+                          {% if employee.telegram_id %}
+                            <li><a href="https://t.me/{{ employee.telegram_id }}"><i class="fa fa-telegram"></i></a></li>
+                          {% endif %}
+                          {% if employee.vk_id %}
+                            <li><a href="https://vk.com/{{ employee.vk_id }}"><i class="fa fa-vk"></i></a></li>
+                          {% endif %}
+                          <!-- Добавьте другие социальные сети по аналогии -->
+                        </ul>
+                      </div><!-- .hover-area END -->
+                    </div><!-- .image END -->
+                    <div class="box-footer">
+                      <h4 class="title"><a href="#">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
+                    </div><!-- .box-footer END -->
+                  </div><!-- .single-box END -->
+                </div>
+              {% endfor %}
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section><!-- END team section -->

@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- contact info strart -->
+<section class="xs-section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="xs-heading text-center style4">
+                    <h2 class="section-title">Контакты</h2>
+                    <span class="line"></span>
+                    <p>MDigital - команда профессионалов, специализирующихся на веб-разработке и разработке телеграм ботов. Мы предлагаем широкий спектр услуг, включая создание качественных веб-сайтов, разработку функциональных и интуитивно понятных телеграм ботов, а также дополнительные услуги по адаптации и поддержке.</p>
+                </div><!-- .xs-heading END -->
+            </div>
+        </div><!-- .row END -->
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="contact-info-wraper">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-contact-info">
+                                <div class="round-icon">
+                                    <i class="icon icon-map-marker2"></i>
+                                </div><!-- .round-icon END -->
+                                <a href="https://yandex.ru/maps/org/mdigital/128234723196/?ll=38.279200%2C46.680868&z=16" target="_blank" class="info-content">353680 г.Ейск, Россия <br>Мичурина ул., 16/1, Этаж 2</a>
+                                </div><!-- .single-contact-info END -->
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-contact-info">
+                                <div class="round-icon">
+                                    <i class="icon icon-phone-call3"></i>
+                                </div><!-- .round-icon END -->
+                                <a href="tel:+7%20(902)%407-7776" class="info-content">+7 (902) 407-7776</a>
+                            </div><!-- .single-contact-info END -->
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-contact-info">
+                                <div class="round-icon">
+                                    <i class="icon icon-envelope4"></i>
+                                </div><!-- .round-icon END -->
+                                <a href="mailto:mdigital@mdigital.su" class="info-content">mailto@mdigital.su</a>
+                            </div><!-- .single-contact-info END -->
+                        </div>
+                    </div><!-- .row END -->
+                </div><!-- .contact-info-wraper END -->
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section><!-- end contact info -->
+
+<!-- map area start -->
+<div class="map-area">
+    <div class="container">
+        <div class="xs-map map" id="map-1" style="height: 400px;"></div>
+    </div><!-- .container END -->
+</div><!-- end map area -->
+
+<!-- contact strart -->
+<section class="xs-section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-8 mx-auto">
+                <div class="xs-heading text-center style4">
+                    <h3 class="section-title">Форма обратной связи</h3>
+                    <span class="line"></span>
+                    <p>Если у вас есть вопросы или вам нужна дополнительная информация о наших услугах, не стесняйтесь связаться с нами. Мы всегда готовы помочь вам воплотить ваши идеи в реальность!</p>
+                </div><!-- .xs-heading END -->
+            </div>
+        </div><!-- .row END -->
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="contact-from-wraper wow fadeIn">
+                    <form action="#" class="xs-from" method="post" id="xs-contact-form">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" id="xs_contact_name" class="form-control" placeholder="Имя *">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input type="email" name="email" id="xs_contact_email" class="form-control" placeholder="email *">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input type="number" name="phone" id="xs_contact_phone" class="form-control" placeholder="Телефон *">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <input type="text" name="subject" id="xs_contact_subject" class="form-control" placeholder="Тема *">
+                                </div>
+                            </div>
+                        </div><!-- .row END -->
+                        <div class="form-group">
+                            <textarea name="massage" id="x_contact_massage" class="form-control" placeholder="Ваше сообщение *" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" name="submit" value="Отправить" class="btn btn-primary style2" id="xs_contact_submit">
+                        </div>
+                    </form><!-- .xs-from 3xs-contact-form END -->
+                </div><!-- .contact-from-wraper END -->
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section>
+<!-- end contact -->
+
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<script type="text/javascript">
+    ymaps.ready(init);
+
+    function init() {
+        var myMap = new ymaps.Map('map-1', {
+            center: [46.680868, 38.279200], // Координаты адреса
+            zoom: 12 // Масштаб карты
+        });
+
+        var myPlacemark = new ymaps.Placemark(
+            [46.680868, 38.279200],
+            {
+                iconCaption: 'MDigital', // Название метки
+                balloonContent: '353680 г.Ейск, Россия, Мичурина ул., 16/1, Этаж 2'
+            },
+            {
+                hideIconOnBalloonOpen: false,
+                preset: 'islands#blueDotIconWithCaption', // Стиль метки
+                iconCaptionMaxWidth: '200' // Максимальная ширина названия метки
+            }
+        );
+
+        myMap.geoObjects.add(myPlacemark);
+    }
+</script>
+{% endblock content %}

@@ -64,3 +64,22 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_single', kwargs={'slug': self.category.slug, 'post_slug': self.slug})
+
+
+class Employee(models.Model):
+    first_name = models.CharField(max_length=100, verbose_name='Имя')
+    last_name = models.CharField(max_length=100, verbose_name='Фамилия')
+    position = models.CharField(max_length=100, verbose_name='Должность')
+    direction = models.CharField(max_length=100, verbose_name='Направление')
+    phone = models.CharField(max_length=14, blank=True, null=True, verbose_name='Phone')
+    email = models.EmailField(verbose_name='E-mail')
+    telegram_id = models.CharField(max_length=100, blank=True, null=True, verbose_name='Telegram ID')
+    vk_id = models.CharField(max_length=100, blank=True, null=True, verbose_name='VK ID')
+    photo = models.ImageField(upload_to='employees/', blank=True, null=True, verbose_name='Фото')
+
+    class Meta:
+        verbose_name = 'Сотрудник'
+        verbose_name_plural = 'Сотрудники'
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'

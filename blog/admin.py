@@ -3,7 +3,7 @@ from django.contrib import admin
 from django_ckeditor_5.widgets import CKEditor5Widget
 from mptt.admin import MPTTModelAdmin
 from . import models
-from .models import Post
+from .models import Post, Employee
 
 
 class PostAdminForm(forms.ModelForm):
@@ -24,6 +24,13 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'category', 'author', 'create_at', 'id']
 
 
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'position', 'direction', 'email')
+    search_fields = ('first_name', 'last_name', 'position', 'direction', 'email')
+    list_filter = ('position', 'direction')
+
+
 admin.site.register(models.Category, MPTTModelAdmin)
 admin.site.register(models.Tag)
 admin.site.register(models.Post, PostAdmin)
+admin.site.register(Employee, EmployeeAdmin)

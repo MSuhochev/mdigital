@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>MDigital - Home Page</title>
+	<title>{{ title }}</title>
 	{% include 'blog/includes/head.html' %}
 </head>
 
@@ -199,12 +199,12 @@
             style="z-index: 10;">
 <div class="rs-looped rs-wave"  data-speed="2" data-angle="0" data-radius="10" data-origin="50% 50%"><img src="{% static 'assets/images/rev-slider/banner-01/search.png' %}" alt="" data-ww="" data-hh="" data-no-retina> </div></div>
 
-		<!-- LAYER NR. 7 (текст "Рост бизнеса")-->
+		<!-- LAYER NR. 7 (текст "Динамическая монетизация сайтов")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-25-layer-4" 
 			 data-x="['left','left','left','left']" data-hoffset="['111','111','50','58']" 
 			 data-y="['middle','middle','middle','middle']" data-voffset="['-81','-81','-97','-303']" 
-						data-width="183"
+						data-width="500"
 			data-height="32"
 			data-whitespace="nowrap"
  
@@ -218,9 +218,9 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 11; min-width: 183px; max-width: 383px; max-width: 132px; max-width: 132px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Рост бизнеса </div>
+            style="z-index: 11; min-width: 500px; max-width: 500px; white-space: nowrap; font-size: 24px; margin-bottom: 50px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Динамическая монетизация сайтов</div>
 
-		<!-- LAYER NR. 8 (текст "MDigital")-->
+		<!-- LAYER NR. 8 (текст "Увеличьте прибыль Вашего сайта на 70%")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-25-layer-5" 
 			 data-x="['left','left','left','left']" data-hoffset="['108','108','50','58']" 
@@ -241,9 +241,9 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 12; min-width: 540px; max-width: 540px; white-space: normal; font-size: 36px; margin-top: 30px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px; font-family:Lato;">MDigital </div>
+            style="z-index: 12; min-width: 540px; max-width: 540px; white-space: normal; font-size: 32px; margin-top: 50px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px; font-family:Lato;">Увеличьте прибыль Вашего сайта<br>на 70%</div>
 
-		<!-- LAYER NR. 9 -->
+		<!-- LAYER NR. 9 (текст "доверьте нам Ваш трафик")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-25-layer-7" 
 			 data-x="['left','left','left','left']" data-hoffset="['106','106','46','57']" 
@@ -262,7 +262,7 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 13; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Ваш путь к эффективной динамической монетизации и инновационным решениям в IT-сфере</div>
+            style="z-index: 13; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; margin-top: 70px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Доверьте нам Ваш трафик, и Вы увидите, как Ваш бизнес процветает.</div>
 
 		<!-- LAYER NR. 10 (кнопка "продолжить")-->
 		<div class="tp-caption rev-btn " 
@@ -275,7 +275,7 @@
 			data-whitespace="normal"
  
 			data-type="button" 
-			data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"about.html","delay":""}]'
+			data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"javascript:void(0);","delay":""}]'
 			data-responsive_offset="on" 
 			data-responsive="off"
             data-frames='[{"delay":2950,"speed":1500,"frame":"0","from":"y:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"y:[-100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"nothing"},{"frame":"hover","speed":"500","ease":"Power3.easeIn","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(255,255,255);bg:rgb(0,19,142);bs:solid;bw:0 0 0 0;"}]'
@@ -284,16 +284,17 @@
             data-paddingright="[51,51,51,30]"
             data-paddingbottom="[21,21,21,15]"
             data-paddingleft="[51,51,51,30]"
+			onclick="window.location.href='{% url 'monetization' %}';"
 
             style="z-index: 14; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Продолжить </div>
 	</li>
-	<!-- SLIDE Динамическая монетизация -->
+	<!-- SLIDE WEB разработка -->
     <li data-index="rs-26" data-transition="slideup" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="default"  data-thumb="{% static 'assets/images/rev-slider/banner-02/100x50_665d1-slider-bg-2.jpg' %}"  data-delay="4060"  data-rotate="0"  data-saveperformance="off"  data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
 		<!-- MAIN IMAGE -->
         <img src="{% static 'assets/images/rev-slider/banner-02/665d1-slider-bg-2.jpg' %}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
 		<!-- LAYERS -->
 
-		<!-- LAYER NR. 11 (текст "Динамическая монетизация")-->
+		<!-- LAYER NR. 11 (текст "WEB разработка")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-26-layer-4" 
 			 data-x="['right','right','left','left']" data-hoffset="['398','398','413','59']" 
@@ -312,9 +313,9 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 5; min-width: 183px; max-width: 183px; max-width: 32px; max-width: 32px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Динамическая монетизация </div>
+            style="z-index: 5; min-width: 183px; max-width: 183px; max-width: 32px; max-width: 32px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">WEB - разработка</div>
 
-		<!-- LAYER NR. 12 (текст "Увеличьте прибыль на 70%") -->
+		<!-- LAYER NR. 12 (текст "WEB приложения на Python") -->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-26-layer-5" 
 			 data-x="['right','right','left','left']" data-hoffset="['40','40','413','58']" 
@@ -335,9 +336,9 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 6; min-width: 540px; max-width: 540px; white-space: normal; font-size: 56px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Увеличьте прибыль вашего сайта на 70% </div>
+            style="z-index: 6; min-width: 540px; max-width: 540px; white-space: normal; font-size: 56px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">WEB приложения на Python</div>
 
-		<!-- LAYER NR. 13 (текст "доверьте нам Ваш трафик")-->
+		<!-- LAYER NR. 13 (текст "Функционально, безопасно, масштабируемо.")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-26-layer-7" 
 			 data-x="['right','right','left','left']" data-hoffset="['130','132','412','57']" 
@@ -356,7 +357,7 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 7; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Доверьте нам Ваш трафик, и Вы увидите, как Ваш бизнес процветает. </div>
+            style="z-index: 7; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Функционально, безопасно, масштабируемо.</div>
 
 		<!-- LAYER NR. 14 -->
 		<div class="tp-caption rev-btn  tp-resizeme" 
@@ -369,7 +370,7 @@
 			data-whitespace="normal"
  
 			data-type="button"
-			data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"case-studies.html","delay":""}]'
+			data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"javascript:void(0);","delay":""}]'
 			
 			data-responsive_offset="on" 
 
@@ -379,6 +380,7 @@
             data-paddingright="[51,51,51,30]"
             data-paddingbottom="[21,21,21,15]"
             data-paddingleft="[51,51,51,30]"
+			onclick="window.location.href='{% url 'web_development' %}';"
 
             style="z-index: 8; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 100; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Продолжить </div>
 
@@ -611,7 +613,7 @@
 			 id="slide-24-layer-4" 
 			 data-x="['left','left','left','left']" data-hoffset="['111','111','50','58']" 
 			 data-y="['middle','middle','middle','middle']" data-voffset="['-119','-119','-137','-303']" 
-						data-width="183"
+						data-width="300"
 			data-height="32"
 			data-whitespace="nowrap"
  
@@ -625,9 +627,9 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 10; min-width: 183px; max-width: 183px; max-width: 32px; max-width: 32px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Разработка </div>
+            style="z-index: 10; min-width: 183px; max-width: 300px; white-space: nowrap; font-size: 24px; line-height: 22px; font-weight: 300; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Разработка в Telegram</div>
 
-		<!-- LAYER NR. 26 (текст "Telegram ботов и веб приложений")-->
+		<!-- LAYER NR. 26 (текст "Разработка Telegram ботов")-->
 		<div class="tp-caption   tp-resizeme" 
 			 id="slide-24-layer-5" 
 			 data-x="['left','left','left','left']" data-hoffset="['111','111','50','58']" 
@@ -648,7 +650,7 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 11; min-width: 540px; max-width: 540px; white-space: normal; font-size: 36px; margin-top: 30px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Telegram-ботов и Python веб-приложений </div>
+            style="z-index: 11; min-width: 540px; max-width: 540px; white-space: normal; font-size: 36px; margin-top: 50px; line-height: 61.6px; font-weight: 900; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Разработка Telegram ботов</div>
 
 		<!-- LAYER NR. 27 (текст "Превратим ваши концепции...")-->
 		<div class="tp-caption   tp-resizeme" 
@@ -669,7 +671,7 @@
             data-paddingbottom="[0,0,0,0]"
             data-paddingleft="[0,0,0,0]"
 
-            style="z-index: 12; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Превратим Ваши концепции в реальность и успех в мире IT. </div>
+            style="z-index: 12; min-width: 445px; max-width: 445px; white-space: normal; font-size: 15px; margin-top: 50px; line-height: 26px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Lato;">Превратим Ваши концепции в реальность и успех в мире IT. </div>
 
 		<!-- LAYER NR. 28 (кнопка "Продолжить")-->
 		<div class="tp-caption rev-btn " 
@@ -682,7 +684,7 @@
 			data-whitespace="normal"
  
 			data-type="button" 
-			data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"team.html","delay":""}]'
+			data-actions='[{"event":"click","action":"simplelink","target":"_self","url":"javascript:void(0);","delay":""}]'
 			data-responsive_offset="on" 
 			data-responsive="off"
             data-frames='[{"delay":3000,"speed":1500,"frame":"0","from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"frame":"999","to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"500","ease":"Power3.easeIn","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(255,255,255);bg:rgb(0,19,142);bs:solid;bw:0 0 0 0;"}]'
@@ -691,7 +693,7 @@
             data-paddingright="[51,51,51,30]"
             data-paddingbottom="[21,21,21,15]"
             data-paddingleft="[51,51,51,30]"
-
+			onclick="window.location.href='{% url 'tg_development' %}';"
             style="z-index: 13; min-width: 179px; max-width: 179px; white-space: normal; font-size: 15px; line-height: 17px; font-weight: 400; color: rgba(255,255,255,1); letter-spacing: 0px;font-family:Lato;background-color:rgba(0,19,142,0.75);border-color:rgba(0,0,0,1);border-radius:3px 3px 3px 3px;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Продолжить </div>
 	</li>
 </ul>
@@ -806,56 +808,8 @@
 </section><!-- END seo info section -->
 
 <!-- working process section -->
-<section class="xs-section-padding primary-bg working-process-anim">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mx-auto">
-                <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Рабочий процесс</h2>
-                    <h3 class="section-title ">Этапы решения задач</h3>
-                </div><!-- .xs-heading END -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <div class="row no-gutters working-process-group">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process">
-                            <div class="work-process-icon">
-                                <img src="{% static 'assets/images/work-process/1.png' %}" alt="">
-                            </div>
-                            <h4 class="small">Планирование</h4>
-                        </div><!-- .single-work-process END -->
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process">
-                            <div class="work-process-icon">
-                                <img src="{% static 'assets/images/work-process/2.png' %}" alt="">
-                            </div>
-                            <h4 class="small">Исследование</h4>
-                        </div><!-- .single-work-process END -->
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process">
-                            <div class="work-process-icon">
-                                <img src="{% static 'assets/images/work-process/3.png' %}" alt="">
-                            </div>
-                            <h4 class="small">Оптимизация</h4>
-                        </div><!-- .single-work-process END -->
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process">
-                            <div class="work-process-icon">
-                                <img src="{% static 'assets/images/work-process/4.png' %}" alt="">
-                            </div>
-                            <h4 class="small">Результат</h4>
-                        </div><!-- .single-work-process END -->
-                    </div>
-                </div><!-- .row end -->
-            </div>
-        </div><!-- .row END -->
-    </div><!-- .container END -->
-</section><!-- END working process section -->
+{% include 'blog/includes/workflow.html' %}
+<!-- END working process section -->
 
 <!-- services section -->
 <section class="xs-section-padding" id="service">
