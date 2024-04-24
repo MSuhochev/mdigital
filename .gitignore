@@ -10,6 +10,7 @@ dist
 db.sqlite3
 
 .venv
+staticfiles
 log
 
 prod_settings.py
