@@ -93,7 +93,7 @@ element inheritance
   font-size: 15px; }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'FuturaPT', Arial, sans-serif;
   font-weight: 400;
   line-height: 1.7333333333;
   color: #7a7a7a;
@@ -1709,6 +1709,10 @@ button:focus {
 /*=================================================
     18. blog thumb post
 ==============================================================*/
+.post-image-container img {
+    max-width: 80px;
+}
+
 .single-blog-post-thumb {
   background-color: #FFFFFF;
   border-radius: 5px;
@@ -3228,9 +3232,8 @@ button:focus {
     top: 7px; }
 .pagination .page-item:first-child .page-link,
 .pagination .page-item:last-child .page-link {
-  border-radius: 100%; }
-.pagination .page-item:last-child .page-link {
-  font-size: 0.8rem; }
+  border-radius: 100%;
+  font-size: 20px; }
 .pagination .page-item.disabled a,
 .pagination li a {
   border-color: #f1f1f1; }
@@ -5319,7 +5322,7 @@ a {
 
 h1, h2, h3, h4, h5 {
   color: #181818;
-  font-family: "Lato", sans-serif; }
+  font-family: 'FuturaPT', Arial, sans-serif; }
 
 h1, .banner-title {
   color: #FFFFFF;
@@ -5336,7 +5339,9 @@ h3, .section-title {
 
 h4, .xs-content-title {
   font-size: 1.6rem;
-  font-weight: 700; }
+  font-weight: 700;
+  padding-bottom: 20px; }
+
   h4.small, .xs-content-title.small {
     font-size: 1.3333333333rem;
     font-weight: 700; }
@@ -5407,4 +5412,85 @@ img[data-scrollax] {
     font-size: 20rem;
     color: #000000; }
 
+  .single-menu-item .search_page-link {
+    color: #282828;
+    text-decoration: none; line-height: 2.5;
+    padding-left: 20px;
+    margin-top: 50px; }
+  .single-menu-item .search_page-link:hover {
+    color: #005aee; }
 
+#question-message {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#question-message:not(:empty) {
+    display: block; /* Показываем рамку, только если внутри есть текст */
+}
+
+.success-message {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+#orders-message {
+    position: absolute; /* Позиционируем элемент абсолютно относительно родительского контейнера */
+    width: 500px; /* Устанавливаем ширину в пикселях */
+    left: 50%; /* Положение элемента по центру относительно родительского контейнера */
+    transform: translateX(-50%); /* Центрируем элемент относительно его ширины */
+    bottom: -55px; /* Отодвигаем элемент вниз на 50 пикселей от нижнего края формы */
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 10px;
+    display: none; /* По умолчанию скрываем элемент */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+#orders-message:not(:empty) {
+    display: block; /* Показываем рамку, только если внутри есть текст */
+}
+
+.success-message {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+#subscribe-message {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#subscribe-message:not(:empty) {
+    display: block; /* Показываем рамку, только если внутри есть текст */
+}
+
+.success-message {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}

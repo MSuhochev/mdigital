@@ -2,8 +2,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="xs-search-panel">
-                <form action="#" method="POST" class="xs-search-group">
-                    <input type="search" class="form-control" name="search" id="search" placeholder="Найти">
+                <form action="{% url 'search' %}" method="get" class="xs-search-group">
+                    <input type="search" class="form-control" name="q" id="search" placeholder="Поиск по публикациям...">
                     <button type="submit" class="search-button"><i class="icon icon-search"></i></button>
                 </form>
             </div>

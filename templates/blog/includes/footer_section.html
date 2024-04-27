@@ -73,10 +73,13 @@
 						<div class="col-md-6 col-lg-3">
 							<div class="footer-widget">
 								<h4 class="xs-content-title">Задать вопрос</h4>
-								<form action="#" class="contact-form" method="post">
-									<input type="email" name="email" placeholder="Введите Ваш Email" class="form-control">
-									<textarea name="message" class="form-control" placeholder="Ваш вопрос" cols="30" rows="10"></textarea>
+								<form action="{% url 'submit_question' %}" class="contact-form" method="post">
+									{% csrf_token %}
+									<input type="email" id="email" name="email" placeholder="Введите Ваш Email" class="form-control">
+									<textarea name="message" id="message" class="form-control" placeholder="Ваш вопрос" cols="30" rows="10"></textarea>
 									<input type="submit" value="Отправить" class="submit-btn">
+									<!-- Поле вывода сообщений пользователю -->
+									<div id="question-message" class="question-message"></div>
 								</form>
 							</div><!-- .footer-widget END -->
 						</div>
@@ -110,7 +113,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="copyright-text">
-								<p>Copyright &copy; 2018, Все права защищены <a href="#">MDigital</a></p>
+								<p>Copyright &copy; 2018, Все права защищены <a href="/">MDigital</a></p>
 							</div><!-- .copyright-text END -->
 						</div>
 						<div class="col-md-6">

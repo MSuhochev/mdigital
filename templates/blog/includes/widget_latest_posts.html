@@ -1,0 +1,22 @@
+<div class="widget widget_popular_entries">
+    <div class="widget-header">
+        <h3 class="xs-title">Последние посты</h3>
+        <span class="border-divider"></span>
+    </div>
+        <div class="widget-posts">
+            {% for post in recent_posts %}
+            <div class="widget-post media">
+                <div class="post-thumb">
+                    <div class="post-image-container">
+                        <img src="{{ post.image.url }}" class="d-flex" alt="{{ post.title }}">
+                    </div>
+                </div>
+                <div class="media-body">
+                    <h4 class="entry-title">
+                        <a href="{{ post.get_absolute_url }}">{{ post.title | truncatewords:5|safe }}</a>
+                    </h4>
+                </div>
+            </div><!-- .widget-post END -->
+            {% endfor %}
+        </div><!-- .widget-posts END -->
+    </div><!-- .widget .widget_popular_entries END -->

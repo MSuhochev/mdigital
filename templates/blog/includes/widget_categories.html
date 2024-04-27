@@ -1,0 +1,14 @@
+<div class="widget widget-categories">
+    <div class="widget-header">
+        <h3 class="xs-title">Категории</h3>
+        <span class="border-divider"></span>
+    </div>
+    <ul class="list-group">
+        {% for category in categories %}
+        <li>
+            <a href="#">{{ category.name }}</a>
+            <span>({{ category.num_posts }})</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div><!-- .widget .widget-categories END -->

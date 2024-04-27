@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="xs-section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% if query %}
+                    <div><h4>Результат поиска по запросу "{{ query }}"</h4></div>
+                {% else %}
+                    <div><h4>Результат поиска</h4></div>
+                {% endif %}
+                <!-- .blog-post-lists START -->
+                <div class="blog-post-lists">
+                    <div class="post-list format-text">
+                        {% if query %}
+                            {% if posts %}
+                                <div class="single-menu-item">
+                                    {% for post in posts %}
+                                        {% with total_index=total_start_index|add:forloop.counter0 %}
+                                            <div>
+                                                <a href="{{ post.get_absolute_url }}" class="search_page-link">{{ total_index }}. {{ post.title }}</a>
+                                                <span> - {{ post.create_at|date:"Y-m-d" }}</span>
+                                            </div>
+                                        {% endwith %}
+                                    {% empty %}
+                                        <p>Публикаций не найдено, попробуйте изменить ваш запрос.</p>
+                                    {% endfor %}
+
+                                </div>
+                            {% else %}
+                                {% if query %}
+                                    <p>Публикаций по запросу "{{ query }}" не найдено.</p>
+                                {% endif %}
+                            {% endif %}
+                        {% else %}
+                                <p>Введите ключевое слово для поиска.</p>
+                        {% endif %}
+                    </div><!-- .post-list .format-standard END -->
+                </div>
+                <!-- .blog-post-lists END -->
+                <!-- pagination -->
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}{% if category %}&category={{ category }}{% endif %}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" aria-hidden="true">&laquo;</a>
+                        </li>
+                    {% endif %}
+
+                    {% for i in page_obj.paginator.page_range %}
+                        {% if page_obj.number == i %}
+                            <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ i }}{% if query %}&q={{ query }}{% endif %}{% if category %}&category={{ category }}{% endif %}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}{% if category %}&category={{ category }}{% endif %}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" aria-hidden="true">&raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <!-- end pagination -->
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section>
+
+{% endblock %}

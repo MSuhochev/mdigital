@@ -71,6 +71,7 @@ class Employee(models.Model):
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     position = models.CharField(max_length=100, verbose_name='Должность')
     direction = models.CharField(max_length=100, verbose_name='Направление')
+    quote = models.CharField(max_length=200, verbose_name='Девиз', blank=True, null=True)
     phone = models.CharField(max_length=14, blank=True, null=True, verbose_name='Phone')
     email = models.EmailField(verbose_name='E-mail')
     telegram_id = models.CharField(max_length=100, blank=True, null=True, verbose_name='Telegram ID')
@@ -83,3 +84,50 @@ class Employee(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username if self.user else ''
+
+
+class UserMessage(models.Model):
+    email = models.EmailField()
+    message = models.TextField(verbose_name='Сообщение')
+    date_sent = models.DateTimeField(auto_now_add=True, verbose_name='Дата отправки')
+    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('done', 'Done')], default='pending', verbose_name='Статус')
+
+    class Meta:
+        verbose_name = 'Сообщение пользователя'
+        verbose_name_plural = 'Сообщения пользователей'
+
+    def __str__(self):
+        return f"Message from {self.email} sent on {self.date_sent}"
+
+
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Подписка на рассылку'
+
+    def __str__(self):
+        return self.email
+
+
+class IncomingOrders(models.Model):
+    site = models.CharField(max_length=200, verbose_name='Сайт')
+    email = models.EmailField()
+    date_sent = models.DateTimeField(auto_now_add=True, verbose_name='Дата отправки')
+    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('done', 'Done')], default='pending', verbose_name='Статус')
+
+    class Meta:
+        verbose_name = 'Заявка на монетизацию'
+        verbose_name_plural = 'Заявки на монетизацию'
+
+    def __str__(self):
+        return f"Message from {self.email} sent on {self.date_sent}"

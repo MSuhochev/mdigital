@@ -49,7 +49,9 @@
 43. case study slideer
 44. rev slider init
 45. XpeedStudio Maps
-
+46. submit_question
+47. subscribe_question
+48. incoming_orders
 -------------------------------------------------------------------*/
 
 /*==========================================================
@@ -1469,3 +1471,120 @@ if ($('.map').length > 0) {
 }
 
 })(jQuery);
+
+/*==========================================================
+			46. submit_question
+======================================================================*/
+$(document).ready(function(){
+    $('.contact-form').on('submit', function(event){
+        event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+		// Получаем значения полей формы
+        var email = $('#email').val();
+        var message = $('#message').val();
+
+        // Проверяем, заполнены ли поля
+        if (email.trim() === '' || message.trim() === '') {
+            // Если одно из полей пустое, показываем сообщение об ошибке
+            $('#question-message').text('Пожалуйста, заполните все поля.').addClass('error-message response-message');
+            hideMessageAfterDelay('#question-message'); // Скрываем сообщение через время по умолчанию
+			return; // Прерываем выполнение функции
+        }
+
+        var formData = $(this).serialize(); // Получаем данные формы
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: formData,
+            dataType: 'json',
+            success: function(data){
+                // Вставляем ответ на страницу
+                $('#question-message').text(data.message).addClass('success-message response-message');
+				hideMessageAfterDelay('#question-message'); // Скрываем сообщение через время по умолчанию
+				$('.contact-form')[0].reset();
+            },
+            error: function(xhr, status, error){
+                console.error('Ошибка:', error);
+                $('#question-message').text('Произошла ошибка при отправке вопроса.');
+				hideMessageAfterDelay('#question-message'); // Скрываем сообщение через время по умолчанию
+            }
+        });
+    });
+});
+
+/*==========================================================
+			47. subscribe_question
+======================================================================*/
+$(document).ready(function(){
+    $('#subscribe-form').submit(function(e){
+        e.preventDefault();
+
+        var form = $(this); // Сохраняем ссылку на форму
+        var url = form.data('url'); // Получаем URL из атрибута data-url
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: form.serialize(),
+            success: function(response){
+                // Очищаем форму
+                form.trigger('reset');
+
+                // Обновляем содержимое поля вывода сообщений пользователю
+                $('#subscribe-message').text(response.message).addClass('success-message response-message');
+				hideMessageAfterDelay('#subscribe-message'); // Скрываем сообщение через время по умолчанию
+            },
+            error: function(response) {
+                // Обновляем содержимое поля вывода сообщений пользователю в случае ошибки
+                $('#subscribe-message').text("Произошла ошибка при отправке формы подписки.");
+				hideMessageAfterDelay('#subscribe-message'); // Скрываем сообщение через время по умолчанию
+            }
+        });
+    });
+});
+/*==========================================================
+			48. incoming_orders
+======================================================================*/
+$(document).ready(function(){
+    $('.xs-inline-form').on('submit', function(event){
+        event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+		// Получаем значения полей формы
+        var site = $('#website').val();
+        var email = $('#emails').val();
+
+        // Проверяем, заполнены ли поля
+        if (site.trim() === '' || email.trim() === '') {
+            // Если одно из полей пустое, показываем сообщение об ошибке
+            $('#orders-message').text('Пожалуйста, заполните все поля.').addClass('error-message response-message');
+            hideMessageAfterDelay('#orders-message'); // Скрываем сообщение через время по умолчанию
+			return; // Прерываем выполнение функции
+        }
+
+        var formData = $(this).serialize(); // Получаем данные формы
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: formData,
+            dataType: 'json',
+            success: function(data){
+                // Вставляем ответ на страницу
+                $('#orders-message').text(data.message).addClass('success-message response-message');
+				hideMessageAfterDelay('#orders-message'); // Скрываем сообщение через время по умолчанию
+                $('.xs-inline-form')[0].reset(); // Очищаем форму
+            },
+            error: function(xhr, status, error){
+                console.error('Ошибка:', error);
+                $('#orders-message').text('Произошла ошибка при отправке запроса.');
+				hideMessageAfterDelay('#orders-message'); // Скрываем сообщение через время по умолчанию
+            }
+        });
+    });
+});
+
+// Функция для скрытия сообщения после задержки
+function hideMessageAfterDelay(selector, delay = 5000) {
+    setTimeout(function() {
+        $(selector).text('').removeClass('error-message success-message response-message');
+    }, delay);
+}

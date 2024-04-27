@@ -1,8 +1,17 @@
-from django.contrib.auth.models import User
+from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Count
+from django.http import JsonResponse, HttpResponse
+from django.urls import reverse_lazy
+from django.utils import timezone
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, DetailView
-from .models import Post, Employee
+from django.views import View
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView, DetailView, FormView
+
+from .forms import SubscriberForm
+from .models import Post, Employee, Category, UserMessage, IncomingOrders
+import requests
 
 
 class HomeView(ListView):
@@ -15,40 +24,91 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'MDigital - Главная'
+        context['form'] = SubscriberForm()  # Добавляем форму подписки в контекст
         return context
 
+    def post(self, request, *args, **kwargs):
+        form = SubscriberForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Вы успешно подписались на рассылку!")
+            return JsonResponse({'message': "Вы успешно подписались на рассылку!"})
+        else:
+            messages.error(request, "Произошла ошибка при подписке.")
+            return JsonResponse({'message': "Произошла ошибка при подписке."})
 
-class PostDetailView(DetailView):
+
+class CategoryMixin:
+    @staticmethod
+    def get_category_queryset():
+        # Получаем все категории и количество постов в каждой категории
+        return Category.objects.annotate(num_posts=Count('post')).order_by('name')
+
+    @staticmethod
+    def get_recent_posts(num_posts=8):
+        # Получаем последние статьи
+        return Post.objects.order_by('-create_at')[:num_posts]
+
+
+class PostDetailView(CategoryMixin, DetailView):
     model = Post
     context_object_name = 'post'
     slug_url_kwarg = 'post_slug'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Пост'
+        context['title'] = f'MDigital'
+        context['categories'] = self.get_category_queryset()
+        context['recent_posts'] = self.get_recent_posts()
+        # Получение предыдущего и следующего постов
+        current_post = context['post']
+        try:
+            previous_post = Post.objects.filter(create_at__lt=current_post.create_at).latest('create_at')
+        except Post.DoesNotExist:
+            previous_post = None
+
+        try:
+            next_post = Post.objects.filter(create_at__gt=current_post.create_at).earliest('create_at')
+        except Post.DoesNotExist:
+            next_post = None
+
+        context['previous_post'] = previous_post
+        context['next_post'] = next_post
         return context
 
 
-class PostListView(ListView):
+class PostListView(CategoryMixin, ListView):
     model = Post
+    paginate_by = 3  # Устанавливаем количество постов на страницу
+    template_name = "blog/post_list.html"
 
     def get_queryset(self):
-        return Post.objects.select_related('category').filter(category__slug=self.kwargs.get('slug'))
+        return Post.objects.select_related('category').filter(category__slug=self.kwargs.get('slug')).order_by('-create_at')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        first_post = self.get_queryset().first()
-        category_name = first_post.category.name if first_post else None
+        category_name = self.get_queryset().first().category.name if self.get_queryset().exists() else None
         context['title'] = f'MDigital - Посты категории {category_name}'
+        queryset = self.get_queryset()
+        paginator = Paginator(queryset, self.paginate_by)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        context['page_obj'] = page_obj
+        context['total_posts'] = paginator.count
+        context['categories'] = self.get_category_queryset()
+        context['recent_posts'] = self.get_recent_posts()
         return context
 
 
-class PostGridView(ListView):
+class PostGridView(CategoryMixin, ListView):
     model = Post
     paginate_by = 4
     template_name = "blog/post_grid.html"
     context_object_name = 'posts'
     ordering = ['-create_at']
+
+    def get_queryset(self):
+        return Post.objects.order_by('-create_at')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -63,10 +123,9 @@ class PostGridView(ListView):
             posts = paginator.page(paginator.num_pages)
         context['posts'] = posts
         context['title'] = 'MDigital - Все Посты'
+        context['categories'] = self.get_category_queryset()
+        context['recent_posts'] = self.get_recent_posts()
         return context
-
-    def get_queryset(self):
-        return Post.objects.order_by('-create_at')
 
 
 class AboutView(ListView):
@@ -172,3 +231,95 @@ class CareerView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'MDigital - Карьера'
         return context
+
+
+class PostSearchView(CategoryMixin, ListView):
+    model = Post
+    template_name = 'blog/search_results.html'
+    context_object_name = 'posts'
+    paginate_by = 8
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        # category = self.request.GET.get('category')  # Получаем выбранный раздел из запроса
+
+        queryset = super().get_queryset().order_by('-create_at')  # Получаем базовый QuerySet
+
+        if query:
+            queryset = queryset.filter(text__icontains=query)  # Фильтруем по тексту поста
+
+        # if category:
+        #     queryset = queryset.filter(category=category)  # Фильтруем по выбранному разделу
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.get('q')
+        context['query'] = query
+        context['title'] = 'MDigital - Результат поиска'
+
+        paginator = context.get('paginator')
+        page = context.get('page_obj')
+
+        if paginator and page:
+            # Вычисляем общее количество элементов на предыдущих страницах
+            total_previous_items = paginator.per_page * (page.number - 1)
+            # Вычисляем общий номер элемента на текущей странице
+            total_start_index = total_previous_items + 1
+            context['total_start_index'] = total_start_index
+
+        return context
+
+
+class BaseTelegramNotificationView(View):
+    telegram_bot_token = '1324392228:AAE0FzG9fMD_nX622EwMmC0_FlDPnmTNRN0'
+
+    def send_telegram_message(self, message):
+        url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendMessage"
+        payload = {
+            'chat_id': self.telegram_chat_id,
+            'text': message
+        }
+        response = requests.post(url, json=payload)
+        return response.json()
+
+
+class SubmitQuestionView(BaseTelegramNotificationView):
+    telegram_chat_id = '-1002053479136'
+
+    def post(self, request):
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        UserMessage.objects.create(
+            email=email,
+            message=message,
+            date_sent=timezone.now(),
+            status='pending'
+        )
+        message_text = f"Новое сообщение от: {email}\n\n{message}"
+        self.send_telegram_message(message_text)
+
+        response_data = {'message': "Спасибо за ваш вопрос! Ответим в ближайшее время."}
+        return JsonResponse(response_data)
+
+
+class IncomingOrdersView(BaseTelegramNotificationView):
+    telegram_chat_id = '-1002003513414'
+
+    def post(self, request):
+        email = request.POST.get('email')
+        site = request.POST.get('site')
+
+        IncomingOrders.objects.create(
+            email=email,
+            site=site,
+            date_sent=timezone.now(),
+            status='pending'
+        )
+        message_text = f"Новая заявка: {email}\n\n{site}"
+        self.send_telegram_message(message_text)
+
+        response_data = {'message': "Спасибо за ваше обращение! Рассмотрим в ближайшее время."}
+        return JsonResponse(response_data)

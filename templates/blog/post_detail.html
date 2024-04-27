@@ -10,31 +10,23 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                <!-- .single-blog-post START -->
                 <div class="single-blog-post post-list format-gallery">
                     <div class="post-image">
                             <img src="{{ post.image.url|safe }}" alt="">
                     </div><!-- .post-image END -->
+                    <div class="text-lg-left"><H3>{{ post.title }}</H3></div>
                     <div class="post-body">
                         <div class="entry-header">
                             <div class="entry-meta">
                                 <span class="post-author"><a href="#"><i class="icon icon-user2"></i> {{ post.author }}</a></span>
                                 <span class="post-publish-date"><a href="#"><i class="icon icon-calendar-1"></i> {{ post.create_at|date:"d M Y"}}</a></span>
                                 <span class="post-cat"><a href="#"><i class="icon icon-folders"></i> {{ post.category }}</a></span>
-                                <span class="post-comments"><a href="#"><i class="icon icon-chat-1"></i> 278</a></span>
                             </div>
                             <div class="my-ckeditor">
                                 <p>{{ post.text | safe }}</p>
                             </div>
-                            <div>
-                                <ul class="xs-list bullet">
-                                    <li>A wonderful serenity has taken possession</li>
-                                    <li>Of my entire soul, like these sweet mornings of spring which</li>
-                                    <li>I enjoy with my whole heart.</li>
-                                    <li>I am alone, and feel the charm of existence</li>
-                                    <li>This spot, which was created For the bliss of souls like mine.</li>
-                                    <li>I am so happy, my dear friend, so absorbed in</li>
-                                </ul>
-                            </div>
+
                             <div class="post-footer">
                                 <div class="divider">
                                     <span class="border-divider"></span>
@@ -47,21 +39,17 @@
                                 </div>
                                 <div class="social-share">
                                     <ul class="social-list version-2">
-                                        <li class="title">Social Share</li>
-                                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                                        <li class="title">Поделиться в </li>
+                                        <li><a href="#" class="twitter"><i class="fa fa-telegram"></i></a></li>
+                                        <li><a href="#" class="linkedin"><i class="fa fa-vk"></i></a></li>
+                                        <li><a href="#" class="twitter"><i class="fa fa-whatsapp"></i></a></li>
                                         <li class="floating-btn-wraper">
                                             <a href="#" class="btn-floating">
                                                 <span class="vertical-dots"></span>
                                             </a>
                                             <ul class="floating-icons-list social-list version-2">
-                                                <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                                <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                                <li><a href="#" class="vimeo"><i class="fa fa-vimeo"></i></a></li>
+                                                <li><a href="#" class="twitter"><i class="fa fa-telegram"></i></a></li>
+                                                <li><a href="#" class="linkedin"><i class="fa fa-vk"></i></a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -69,178 +57,104 @@
                             </div>
                         </div>
                     </div><!-- .post-body END -->
-                </div><!-- .single-blog-post .post-list .format-gallery END -->
-                <div class="author-card">
+                </div>
+                <!-- .single-blog-post .post-list .format-gallery END -->
+
+                <!-- .author-card START -->
+               <div class="author-card">
                     <div class="author-header">
-                        <h2 class="author-title">Meet Author</h2>
+                        <h2 class="author-title">Колонка автора</h2>
                         <span class="border-divider style-white"></span>
                     </div>
                     <div class="author-details media">
                         <div class="author-img">
-                            <img src="{% static 'assets/images/team/team-5.jpg' %}" alt="">
+                            <!-- Получаем профиль пользователя -->
+                            {% with profile=post.author.userprofile %}
+                                <!-- Получаем сотрудника, связанного с профилем пользователя -->
+                                {% with employee=profile.employee %}
+                                    <img src="{{ employee.photo.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}">
+                                {% endwith %}
+                            {% endwith %}
                         </div>
                         <div class="author-bio">
-                            <h3 class="author-name">Katy W.Perry</h3>
-                            <h4 class="authr-designation">SEO Expert</h4>
-                            <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence</p>
-                            <ul class="simple-social-list">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                            </ul>
+                            <!-- Получаем профиль пользователя -->
+                            {% with profile=post.author.userprofile %}
+                                <!-- Получаем сотрудника, связанного с профилем пользователя -->
+                                {% with employee=profile.employee %}
+                                    <h3 class="author-name">{{ employee.first_name }} {{ employee.last_name }}</h3>
+                                    <h4 class="authr-designation">{{ employee.position }}</h4>
+                                    <p>{{ employee.quote }}</p>
+                                    <ul class="simple-social-list">
+                                        <li><a href="{{ employee.telegram_id }}" target="_blank"><i class="fa fa-telegram" ></i></a></li>
+                                        <li><a href="{{ employee.vk_id }}" target="_blank"><i class="fa fa-vk"></i></a></li>
+                                    </ul>
+
+                                    <!-- Здесь можете вывести дополнительные данные сотрудника, если они есть -->
+                                {% endwith %}
+                            {% endwith %}
+                            <!-- Здесь можете вывести дополнительные данные профиля пользователя, если они есть -->
                         </div>
                     </div>
-                </div><!-- .author-card END -->
-                <div class="post-navigation">
-                    <div class="row no-gutters">
-                        <div class="col-md-6">
-                            <div class="post-previous">
-                                <a href="blog-single.html" class="single-post-nav">
-                                    <h3 class="post-nav-title icon-left"><i class="icon icon-arrow-left"></i> Previous Post</h3>
-                                    <div class="media align-items-center">
-                                        <img class="post-nav-img" src="{% static 'assets/images/post-naviation-1.png' %}" alt="">
-                                        <h4 class="post-title">Twice profit than before you ever got in business</h4>
-                                    </div>
-                                </a><!-- .single-post-nav END -->
-                            </div><!-- .post-previous END -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="post-next">
-                                <a href="blog-single.html" class="single-post-nav">
-                                    <h3 class="post-nav-title icon-right"><i class="icon icon-arrow-right"></i> Next Post</h3>
-                                    <div class="media align-items-center">
-                                        <img class="post-nav-img" src="{% static 'assets/images/post-naviation-2.png' %}" alt="">
-                                        <h4 class="post-title">Twice profit than before you ever got in business</h4>
-                                    </div>
-                                </a><!-- .single-post-nav END -->
-                            </div><!-- .post-next END -->
-                        </div>
-                    </div><!-- .row END -->
-                </div><!-- .post-navigation END -->
+                </div>
+                <!-- .author-card END -->
 
+                    <div class="post-navigation">
+    <div class="row no-gutters">
+        <div class="col-md-6">
+            <div class="post-previous">
+                {% if previous_post %}
+                <a href="{{ previous_post.get_absolute_url }}" class="single-post-nav">
+                    <h3 class="post-nav-title icon-left"><i class="icon icon-arrow-left"></i>Предыдущий</h3>
+                    <div class="media align-items-center">
+                        <div class="post-image-container">
+                            <img class="post-nav-img" src="{{ previous_post.image.url }}" alt="{{ previous_post.title }}">
+                        </div>
+                        <h4 class="post-title">{{ previous_post.title }}</h4>
+                    </div>
+                </a><!-- .single-post-nav END -->
+                {% endif %}
+            </div><!-- .post-previous END -->
+        </div>
+        <div class="col-md-6">
+            <div class="post-next">
+                {% if next_post %}
+                <a href="{{ next_post.get_absolute_url }}" class="single-post-nav">
+                    <h3 class="post-nav-title icon-right"><i class="icon icon-arrow-right"></i>Следующий</h3>
+                    <div class="media align-items-center">
+                        <div class="post-image-container">
+                            <img src="{{ next_post.image.url }}" class="post-nav-img" alt="{{ next_post.title }}">
+                        </div>
+                        <h4 class="post-title">{{ next_post.title }}</h4>
+                    </div>
+                </a><!-- .single-post-nav END -->
+                {% endif %}
+            </div><!-- .post-next END -->
+        </div>
+    </div><!-- .row END -->
+</div><!-- .post-navigation END -->
 
             </div>
             <div class="col-md-4">
                 <!-- blog sidebar start -->
                 <div class="blog-sidebar-wraper right-sidebar">
-    <div class="widget widget-search">
-        <form action="#" class="xs-serach style2" method="post">
-            <div class="input-group">
-                <input type="search" name="search" placeholder="Search Here...">
-                <button class="search-btn"><i class="icon icon-search"></i></button>
-            </div>
-        </form>
-    </div><!-- .widget .widget-search END -->
 
-    <div class="widget widget-categories">
-        <div class="widget-header">
-            <h3 class="xs-title">Category</h3>
-            <span class="border-divider"></span>
-        </div>
-        <ul class="list-group">
-            <li>
-                <a href="#">Search Engine Optimization </a>
-                <span>(54)</span>
-            </li>
-            <li>
-                <a href="#">Marketing </a>
-                <span>(12)</span>
-            </li>
-            <li>
-                <a href="#">Business Growth </a>
-                <span>(02)</span>
-            </li>
-            <li>
-                <a href="#">Site Ranking </a>
-                <span>(18)</span>
-            </li>
-            <li>
-                <a href="#">Growth Hacking</a>
-                <span>(25)</span>
-            </li>
-            <li>
-                <a href="#">Social Marketing</a>
-                <span>(35)</span>
-            </li>
-        </ul>
-    </div><!-- .widget .widget-categories END -->
+    {% include 'blog/includes/widget_search_posts.html' %}
+    <!-- .widget .widget-search END -->
 
-    <div class="widget widget_popular_entries">
-        <div class="widget-header">
-            <h3 class="xs-title">Recent Post</h3>
-            <span class="border-divider"></span>
-        </div>
-        <div class="widget-posts">
-            <div class="widget-post media">
-                <div class="post-thumb">
-                    <img src="{% static 'assets/images/sidebar/sidebar-latest-post-1.jpg' %}" class="d-flex" alt="popular post image">
-                </div>
-                <div class="media-body">
-                    <h4 class="entry-title">
-                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
-                    </h4>
-                </div>
-            </div><!-- .widget-post END -->
-            <div class="widget-post media">
-                <div class="post-thumb">
-                    <img src="{% static 'assets/images/sidebar/sidebar-latest-post-2.jpg' %}" class="d-flex" alt="popular post image">
-                </div>
-                <div class="media-body">
-                    <h4 class="entry-title">
-                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
-                    </h4>
-                </div>
-            </div><!-- .widget-post END -->
-            <div class="widget-post media">
-                <div class="post-thumb">
-                    <img src="{% static 'assets/images/sidebar/sidebar-latest-post-3.jpg' %}" class="d-flex" alt="popular post image">
-                </div>
-                <div class="media-body">
-                    <h4 class="entry-title">
-                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
-                    </h4>
-                </div>
-            </div><!-- .widget-post END -->
-            <div class="widget-post media">
-                <div class="post-thumb">
-                    <img src="{% static 'assets/images/sidebar/sidebar-latest-post-4.jpg' %}" class="d-flex" alt="popular post image">
-                </div>
-                <div class="media-body">
-                    <h4 class="entry-title">
-                        <a href="blog-single.html">Twice profit than before you ever got in business</a>
-                    </h4>
-                </div>
-            </div><!-- .widget-post END -->
-        </div><!-- .widget-posts END -->
-    </div><!-- .widget .widget_popular_entries END -->
+    {% include 'blog/includes/widget_categories.html' %}
+    <!-- .widget .widget-categories END -->
 
-    <div class="widget widget-banner">
-        <a href="https://themeforest.net/user/xpeedstudio/portfolio" target="_blank">
-            <img src="{% static 'assets/images/sidebar/banner.png' %}" alt="">
-        </a>
-    </div><!-- .widget .widget-banner END -->
+    {% include 'blog/includes/widget_latest_posts.html' %}
+    <!-- .widget .widget_popular_entries END -->
 
-    <div class="widget widget-tag">
-        <div class="widget-header">
-            <h3 class="xs-title">TAGs</h3>
-            <span class="border-divider"></span>
-        </div>
-        <div class="tag-lists">
-            <a href="#">Business</a>
-            <a href="#">Agency</a>
-            <a href="#">City</a>
-            <a href="#">Development</a>
-            <a href="#">Corporate</a>
-            <a href="#">Design</a>
-            <a href="#">Trend</a>
-        </div>
-    </div><!-- .widget .widget-tag END -->
-</div>                <!-- blog sidebar end -->
+    {% include 'blog/includes/widget_banner_adfinity.html' %}
+    <!-- .widget .widget-banner END -->
+
+</div><!-- blog sidebar end -->
             </div>
         </div><!-- .row END -->
     </div><!-- .container END -->
-</section><!-- end single blog section -->
+</section>
+<!-- end single blog section -->
 
 {% endblock content %}

@@ -702,6 +702,72 @@
 <!-- END REVOLUTION SLIDER -->
 <!-- end rev slider start -->
 
+<!-- seo info section -->
+<section class="xs-section-padding xs-seo-info" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="xs-info-img">
+                    <img src="{% static 'assets/images/info/info-1.png' %}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 align-self-center">
+                <div class="xs-info-wraper wow fadeInUp">
+                    <div class="xs-heading">
+                        <h3 class="section-title">Масштабируйте ваш бизнес</h3>
+                        <span class="line"></span>
+                    </div>
+                    <p>MDigital - ваш партнер для роста в цифровой сфере.</p>
+                    <ul class="xs-list check">
+                        <li>Динамическая монетизация.</li>
+                        <li>Чат-боты и приложения в телеграмм.</li>
+                        <li>Разработка инновационных программных решений</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Начать</a>
+                </div><!-- .xs-info-wraper END -->
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section>
+<!-- END seo info section -->
+
+<!-- get free quote section -->
+<section class="primary-bg xs-section-padding free-quote-area" data-delighter="start:0.3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="xs-heading text-center">
+                    <h2 class="section-subtitle">Готов к росту?</h2>
+                    <h3 class="section-title ">Получите выгодное предложение сегодня!</h3>
+                </div><!-- .xs-heading END -->
+            </div>
+        </div><!-- .row END -->
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <form action="{% url 'incoming_order' %}" class="xs-inline-form" method="post">
+					{% csrf_token %}
+					<div class="row no-gutters">
+						<div class="col-lg-6">
+							<input type="url" name="site" id="website" placeholder="Web URL - вашего сайта" class="form-control">
+						</div>
+						<div class="col-lg-6">
+							<input type="email" name="email" id="emails" placeholder="Email - адрес" class="form-control">
+						</div>
+					</div>
+					<input type="submit" name="submit" value="Проверить" class="check-btn">
+					<!-- Поле вывода сообщений пользователю -->
+					<div id="orders-message" class="orders-message"></div>
+				</form>
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+    <div class="parallax-icon-wraper">
+        <img src="{% static 'assets/images/hand-bloom.png' %}" class="parallax-icon icon-one" alt="">
+        <img src="{% static 'assets/images/chart.png' %}" class="parallax-icon icon-two" alt="">
+    </div>
+</section>
+<!-- end get free quote section -->
+
 <!-- why choose section -->
 <section class="why-choose-section xs-section-padding">
     <div class="container">
@@ -745,67 +811,6 @@
     </div><!-- .container END -->
 </section>
 <!-- END why choose section -->
-
-<!-- get free quote section -->
-<section class="primary-bg xs-section-padding free-quote-area" data-delighter="start:0.3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mx-auto">
-                <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Готов к росту?</h2>
-                    <h3 class="section-title ">Получите выгодное предложение сегодня!</h3>
-                </div><!-- .xs-heading END -->
-            </div>
-        </div><!-- .row END -->
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <form action="#" class="xs-inline-form" method="post">
-                    <div class="row no-gutters">
-                        <div class="col-lg-6">
-                            <input type="url" name="website" id="website" placeholder="Web URL - вашего сайта" class="form-control">
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="email" name="email" id="emails" placeholder="Email - адрес" class="form-control">
-                        </div>
-                    </div>
-                    <input type="submit" name="submit" value="Проверить" class="check-btn">
-                </form>
-            </div>
-        </div><!-- .row END -->
-    </div><!-- .container END -->
-    <div class="parallax-icon-wraper">
-        <img src="{% static 'assets/images/hand-bloom.png' %}" class="parallax-icon icon-one" alt="">
-        <img src="{% static 'assets/images/chart.png' %}" class="parallax-icon icon-two" alt="">
-    </div>
-</section><!-- end get free quote section -->
-
-<!-- seo info section -->
-<section class="xs-section-padding xs-seo-info" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="xs-info-img">
-                    <img src="{% static 'assets/images/info/info-1.png' %}" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 align-self-center">
-                <div class="xs-info-wraper wow fadeInUp">
-                    <div class="xs-heading">
-                        <h3 class="section-title">Масштабируйте ваш бизнес</h3>
-                        <span class="line"></span>
-                    </div>
-                    <p>MDigital - ваш партнер для роста в цифровой сфере.</p>
-                    <ul class="xs-list check">
-                        <li>Динамическая монетизация.</li>
-                        <li>Чат-боты и приложения в телеграмм.</li>
-                        <li>Разработка инновационных программных решений</li>
-                    </ul>
-                    <a href="#" class="btn btn-secondary">Начать</a>
-                </div><!-- .xs-info-wraper END -->
-            </div>
-        </div><!-- .row END -->
-    </div><!-- .container END -->
-</section><!-- END seo info section -->
 
 <!-- working process section -->
 {% include 'blog/includes/workflow.html' %}
@@ -1172,20 +1177,22 @@
             </div>
 			{% endfor %}
 
-            <div class="col-lg-4 col-md-6">
-                <div class="newsletter-thumb-wraper">
-                    <i class="icon icon-message fly-icons"></i>
-                    <div class="newsletter-thumb-content">
-                        <h4 class=xs-content-title>Подпишитесь на рассылку</h4>
-                        <p>Введите свой адрес электронной почты в поле ниже, чтобы получать последние Digital новости.</p>
-                        <form action="#" method="POST" class="subscribe-form2">
-                            <input type="email" class="form-control" name="email" placeholder="Ведите Ваш Email здесь" id="newsletter-thumb">
-                            <label for="newsletter-thumb"></label>
-                            <input type="submit" class="submit-btn" value="Подписаться">
-                        </form>
-                    </div>
-                </div>
-            </div>
+           <div class="col-lg-4 col-md-6">
+				<div class="newsletter-thumb-wraper">
+					<i class="icon icon-message fly-icons"></i>
+					<div class="newsletter-thumb-content">
+						<h4 class=xs-content-title>Подпишитесь на рассылку</h4>
+						<p>Введите свой адрес электронной почты в поле ниже, чтобы получать последние Digital новости.</p>
+						 <form id="subscribe-form" class="subscribe-form2" data-url="{{ request.path }}">
+							{% csrf_token %}
+							{{ form.as_p }}
+							<input type="submit" class="submit-btn" value="Подписаться">
+							 <!-- Поле вывода сообщений пользователю -->
+							<div id="subscribe-message" class="subscribe-message"></div>
+						</form>
+					</div>
+				</div>
+			</div>
         </div><!-- .row END -->
     </div><!-- .container END -->
 </section>
