@@ -2,12 +2,42 @@
 
 {% block content %}
 
-<!-- Team section -->
-{% include 'blog/includes/team.html' %}
-<!-- END team section -->
+<!-- single text section start -->
+<section class="xs-section-padding blog-single-post-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="post-body">
+                    <div class="entry-content">
+                        <span class="line"></span>
+                        <div><H4 style="font-weight: 700;">MDigital - партнер для роста в цифровой сфере</H4></div>
+                        <div><p style="font-weight: bold">Направления:</p>
+                            <ul class="xs-list bullet">
+                                <li>Динамическая монетизация сайтов - увеличение дохода сайта на 70%</li>
+                                <li>Чат-боты в Telegram - автоматизация взаимодействия с клиентами</li>
+                                <li>Разработка WEB-сайтов и приложений - помощь в достижении бизнес-целей</li>
+                            </ul>
+                            <blockquote style="margin-top: 20px">
+                            <p>Индивидуальный подход к каждому проекту - учитываем потребности и цели наших клиентов</p>
+                            </blockquote>
+                            <p style="margin-top: 20px">MDigital постоянно исследует новые технологии и тенденции,
+                                чтобы предоставлять нашим клиентам <br> передовые решения и практики в цифровой сфере</p>
+                                <p>Наша команда готова предложить экспертные советы и помочь реализовать амбициозные проекты</p>
+                        </div>
+                    </div>
+                </div><!-- .post-body END -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end text section -->
 
 <!-- working process section -->
 {% include 'blog/includes/workflow.html' %}
 <!-- END working process section -->
+
+<!-- Team section -->
+{% include 'blog/includes/team.html' %}
+<!-- END team section -->
 
 {% endblock content %}

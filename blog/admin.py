@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django_ckeditor_5.widgets import CKEditor5Widget
 from mptt.admin import MPTTModelAdmin
 from . import models
-from .models import Post, Employee, UserProfile, UserMessage
+from .models import Post, Employee, UserProfile, UserMessage, ContactFormSubmission
 
 
 class PostAdminForm(forms.ModelForm):
@@ -55,6 +55,12 @@ class UserMessageAdmin(admin.ModelAdmin):
     list_filter = ('status',)
 
 
+class ContactFormSubmissionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'subject', 'email', 'message', 'created_at', 'status')
+    search_fields = ('email', 'message')
+    list_filter = ('status',)
+
+
 admin.site.register(models.Category, MPTTModelAdmin)
 admin.site.register(models.Tag)
 admin.site.register(Post, PostAdmin)
@@ -62,3 +68,4 @@ admin.site.register(Employee, EmployeeAdmin)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(UserMessage, UserMessageAdmin)
+admin.site.register(ContactFormSubmission, ContactFormSubmissionAdmin)

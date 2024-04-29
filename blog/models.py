@@ -101,8 +101,8 @@ class UserMessage(models.Model):
     status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('done', 'Done')], default='pending', verbose_name='Статус')
 
     class Meta:
-        verbose_name = 'Сообщение пользователя'
-        verbose_name_plural = 'Сообщения пользователей'
+        verbose_name = 'Вопрос пользователя'
+        verbose_name_plural = 'Вопросы пользователей'
 
     def __str__(self):
         return f"Message from {self.email} sent on {self.date_sent}"
@@ -131,3 +131,21 @@ class IncomingOrders(models.Model):
 
     def __str__(self):
         return f"Message from {self.email} sent on {self.date_sent}"
+
+
+class ContactFormSubmission(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Имя')
+    email = models.EmailField()
+    phone = models.CharField(max_length=20, verbose_name='Телефон')
+    subject = models.CharField(max_length=200, verbose_name='Тема')
+    message = models.TextField(verbose_name='Сообщение')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    status = models.CharField(max_length=20, choices=[('pending', 'Pending'), ('done', 'Done')], default='pending',
+                              verbose_name='Статус')
+
+    class Meta:
+        verbose_name = 'Сообщение пользователя'
+        verbose_name_plural = 'Сообщения пользователей'
+
+    def __str__(self):
+        return self.subject

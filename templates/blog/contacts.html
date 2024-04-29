@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- contact info strart -->
+<!-- contact info start -->
 <section class="xs-section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="xs-heading text-center style4">
-                    <h2 class="section-title">Контакты</h2>
                     <span class="line"></span>
-                    <p>MDigital - команда профессионалов, специализирующихся на веб-разработке и разработке телеграм ботов. Мы предлагаем широкий спектр услуг, включая создание качественных веб-сайтов, разработку функциональных и интуитивно понятных телеграм ботов, а также дополнительные услуги по адаптации и поддержке.</p>
+                    <p>Мы рады общению с нашими клиентами и партнерами. <br>Если у вас возникли вопросы, предложения или хотите узнать больше о наших услугах,
+                        <br>пожалуйста, не стесняйтесь связаться с нами. <br>Готовы помочь вам воплотить ваши идеи в реальность</p>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
@@ -55,50 +55,55 @@
     </div><!-- .container END -->
 </div><!-- end map area -->
 
-<!-- contact strart -->
+<!-- contact start -->
 <section class="xs-section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-8 mx-auto">
                 <div class="xs-heading text-center style4">
-                    <h3 class="section-title">Форма обратной связи</h3>
+                    <h5 class="section-title">Форма обратной связи</h5>
                     <span class="line"></span>
-                    <p>Если у вас есть вопросы или вам нужна дополнительная информация о наших услугах, не стесняйтесь связаться с нами. Мы всегда готовы помочь вам воплотить ваши идеи в реальность!</p>
+                    <p>Мы ценим ваше мнение. <br>Если у вас есть предложения или замечания по поводу нашей работы, пожалуйста, напишите нам.
+                        <br>Мы всегда рады помочь и ответить на ваши вопросы.</p>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
         <div class="row">
             <div class="col-lg-10 mx-auto">
-                <div class="contact-from-wraper wow fadeIn">
-                    <form action="#" class="xs-from" method="post" id="xs-contact-form">
+                <div class="contact-from-wrapper wow fadeIn">
+                    <form action="{% url 'contact_form_submit' %}" class="xs-contact-form" method="post" id="xs-contact-form">
+                        {% csrf_token %}
                         <div class="row">
+
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="name" id="xs_contact_name" class="form-control" placeholder="Имя *">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Имя *">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="email" name="email" id="xs_contact_email" class="form-control" placeholder="email *">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="email *">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="number" name="phone" id="xs_contact_phone" class="form-control" placeholder="Телефон *">
+                                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="Телефон в формате +7ХХХХХХХХХХ">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" name="subject" id="xs_contact_subject" class="form-control" placeholder="Тема *">
+                                    <input type="text" name="subject" id="subject" class="form-control" placeholder="Тема сообщения *">
                                 </div>
                             </div>
                         </div><!-- .row END -->
                         <div class="form-group">
-                            <textarea name="massage" id="x_contact_massage" class="form-control" placeholder="Ваше сообщение *" cols="30" rows="10"></textarea>
+                            <textarea name="message" id="message" class="form-control" placeholder="Текст сообщения *" cols="30" rows="10"></textarea>
                         </div>
                         <div class="text-center">
                             <input type="submit" name="submit" value="Отправить" class="btn btn-primary style2" id="xs_contact_submit">
                         </div>
+                        <!-- Поле вывода сообщений пользователю -->
+                        <div id="xs-form-message" class="xs-form-message"></div>
                     </form><!-- .xs-from 3xs-contact-form END -->
                 </div><!-- .contact-from-wraper END -->
             </div>
@@ -107,31 +112,4 @@
 </section>
 <!-- end contact -->
 
-
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script type="text/javascript">
-    ymaps.ready(init);
-
-    function init() {
-        var myMap = new ymaps.Map('map-1', {
-            center: [46.680868, 38.279200], // Координаты адреса
-            zoom: 12 // Масштаб карты
-        });
-
-        var myPlacemark = new ymaps.Placemark(
-            [46.680868, 38.279200],
-            {
-                iconCaption: 'MDigital', // Название метки
-                balloonContent: '353680 г.Ейск, Россия, Мичурина ул., 16/1, Этаж 2'
-            },
-            {
-                hideIconOnBalloonOpen: false,
-                preset: 'islands#blueDotIconWithCaption', // Стиль метки
-                iconCaptionMaxWidth: '200' // Максимальная ширина названия метки
-            }
-        );
-
-        myMap.geoObjects.add(myPlacemark);
-    }
-</script>
 {% endblock content %}

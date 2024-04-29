@@ -51,7 +51,7 @@
 3. element list
 4. element newsletter
 5. element pagination
-6. element prelaoder
+6. element preloader
 7. element section title
 8. element social list
 9. element video popup
@@ -3243,7 +3243,7 @@ button:focus {
   margin-top: 30px; }
 
 /*=================================================
-    6. element prelaoder
+    6. element preloader
 ==============================================================*/
 #preloader {
   position: fixed;
@@ -3269,7 +3269,7 @@ button:focus {
     #preloader.loaded .preloader-cancel-btn {
       bottom: 150%; }
 
-.prelaoder-btn {
+.preloader-btn {
   padding: 10px 30px; }
 
 .preloader-wrapper {
@@ -3281,11 +3281,16 @@ button:focus {
   position: absolute; }
 
 .spinner {
+  /*background-image: url('../images/logo.png');*/
+  /*background-size: contain; !* Масштабируем изображение по размеру контейнера *!*/
+  /*background-repeat: no-repeat; !* Не повторять изображение *!*/
+  /*background-position: center; !* Выравниваем изображение по центру *!*/
   width: 40px;
   height: 40px;
   background-color: #FFFFFF;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
-  animation: sk-rotateplane 1.2s infinite ease-in-out; }
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+  }
 
 @-webkit-keyframes sk-rotateplane {
   0% {
@@ -5480,6 +5485,35 @@ img[data-scrollax] {
 }
 
 #subscribe-message:not(:empty) {
+    display: block; /* Показываем рамку, только если внутри есть текст */
+}
+
+.success-message {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+#xs-form-message {
+    position: absolute; /* Позиционируем элемент абсолютно относительно родительского контейнера */
+    width: 500px; /* Устанавливаем ширину в пикселях */
+    left: 50%; /* Положение элемента по центру относительно родительского контейнера */
+    transform: translateX(-50%); /* Центрируем элемент относительно его ширины */
+    bottom: -90px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    padding: 10px;
+    display: none; /* По умолчанию скрываем элемент */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+#xs-form-message:not(:empty) {
     display: block; /* Показываем рамку, только если внутри есть текст */
 }
 

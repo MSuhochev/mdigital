@@ -1,16 +1,13 @@
+import phonenumbers
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count
-from django.http import JsonResponse, HttpResponse
-from django.urls import reverse_lazy
+from django.http import JsonResponse
 from django.utils import timezone
-from django.utils.decorators import method_decorator
 from django.views import View
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView, DetailView, FormView
-
+from django.views.generic import ListView, DetailView
 from .forms import SubscriberForm
-from .models import Post, Employee, Category, UserMessage, IncomingOrders
+from .models import Post, Employee, Category, UserMessage, IncomingOrders, ContactFormSubmission
 import requests
 
 
@@ -31,11 +28,11 @@ class HomeView(ListView):
         form = SubscriberForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Вы успешно подписались на рассылку!")
-            return JsonResponse({'message': "Вы успешно подписались на рассылку!"})
+            messages.success(request, "Вы успешно подписались на рассылку")
+            return JsonResponse({'message': "Вы успешно подписались на рассылку"})
         else:
-            messages.error(request, "Произошла ошибка при подписке.")
-            return JsonResponse({'message': "Произошла ошибка при подписке."})
+            messages.error(request, "Произошла ошибка при подписке")
+            return JsonResponse({'message': "Произошла ошибка при подписке"})
 
 
 class CategoryMixin:
@@ -273,7 +270,7 @@ class PostSearchView(CategoryMixin, ListView):
 
 
 class BaseTelegramNotificationView(View):
-    telegram_bot_token = 'TOKEN'
+    telegram_bot_token = ''
 
     def send_telegram_message(self, message):
         url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendMessage"
@@ -301,7 +298,7 @@ class SubmitQuestionView(BaseTelegramNotificationView):
         message_text = f"Новое сообщение от: {email}\n\n{message}"
         self.send_telegram_message(message_text)
 
-        response_data = {'message': "Спасибо за ваш вопрос! Ответим в ближайшее время."}
+        response_data = {'message': "Спасибо за ваш вопрос! Ответим в ближайшее время"}
         return JsonResponse(response_data)
 
 
@@ -321,5 +318,43 @@ class IncomingOrdersView(BaseTelegramNotificationView):
         message_text = f"Новая заявка: {email}\n\n{site}"
         self.send_telegram_message(message_text)
 
-        response_data = {'message': "Спасибо за ваше обращение! Рассмотрим в ближайшее время."}
+        response_data = {'message': "Спасибо за ваше обращение! Рассмотрим в ближайшее время"}
+        return JsonResponse(response_data)
+
+
+class ContactFormSubmitView(BaseTelegramNotificationView):
+    telegram_chat_id = '-1002053479136'
+
+    def post(self, request):
+        # Обработка данных формы
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        try:
+            parsed_phone = phonenumbers.parse(phone, None)
+            if not phonenumbers.is_valid_number(parsed_phone):
+                # Если номер телефона недействителен, возвращаем ошибку
+                response_data = {'message': 'Пожалуйста, введите корректный номер телефона'}
+                return JsonResponse(response_data)
+        except phonenumbers.phonenumberutil.NumberParseException:
+            # Если возникла ошибка при разборе номера телефона, также возвращаем ошибку
+            response_data = {'message': 'Пожалуйста, введите корректный номер телефона'}
+            return JsonResponse(response_data)
+
+        message_text = f"Новое сообщение от: {name}\n\n{email}\n\n{message}"
+        self.send_telegram_message(message_text)
+
+        # Далее обработайте данные по вашим потребностям, например, сохраните их в базе данных
+        ContactFormSubmission.objects.create(
+            name=name,
+            email=email,
+            phone=phone,
+            subject=subject,
+            message=message,
+        )
+
+        response_data = {'message': "Спасибо за сообщение! Ответим в ближайшее время"}
         return JsonResponse(response_data)

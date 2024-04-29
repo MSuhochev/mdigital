@@ -16,7 +16,7 @@
 10. scroll view function
 11. select function
 12. case portfolio grid
-13. prelaoder
+13. preloader
 14. preloader close button	
 15. mega navigation menu init
 16. contact form init
@@ -467,17 +467,18 @@ $(window).on('load', function() {
 	setWidth();
 
 	/*==========================================================
-				13. prelaoder
+				13. preloader
 	======================================================================*/
-	// $('#preloader').addClass('loaded');
+	$('#preloader').addClass('loaded');
 
-}); // END load Function 
+
+}); // END load Function
 
 $(document).ready(function() {
 
 	initparallax();
 
-	/* content to center */ 
+	/* content to center */
 	contentToCenter();
 
 	// equal height
@@ -492,12 +493,10 @@ $(document).ready(function() {
 	/*==========================================================
 				14. preloader close button	
 	======================================================================*/
-	// $('.prelaoder-btn').on('click', function (e) {
-	// 	e.preventDefault();
-	// 	if (!($('#preloader').hasClass('loaded'))) {
-	// 		$('#preloader').addClass('loaded');
-	// 	}
-	// })
+	$('.preloader-btn').on('click', function (e) {
+        e.preventDefault();
+        $('#preloader').addClass('loaded');
+    });
 
 	/*==========================================================
 			15. mega navigation menu init
@@ -1437,43 +1436,39 @@ $(window).on('resize', function() {
 			45. XpeedStudio Maps
 ======================================================================*/
 if ($('.map').length > 0) {
-	google.maps.event.addDomListener(window, 'load', initMap);
+    ymaps.ready(init);
 
-	function initMap() {
-		var map;
-		var mapPosition = {lat: 40.712775, lng: -74.005973};
-		var contentString = '<img src="assets/images/position.png" alt="">';
-		var pointer = 'assets/images/map-marker.png';
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString,
-			maxWidth: 483
-		});
-		var marker = new google.maps.Marker({
-			position: mapPosition,
-			map: map,
-			title: 'Xpeed Studio',
-			icon: pointer
-		});
-		var mapOptions = {
-			zoom: 13,
-			center: mapPosition,
-			infowindow,
-			marker
-		}
-		map = document.getElementsByClassName('map');
-		for (let i = 0; i < map.length; i++) {
-			const element = new google.maps.Map(map[i], mapOptions);
-		}
-		marker.addListener('click', function() {
-			infowindow.open(map, marker);
-		});
-	}
+    function init() {
+        var mapOptions = {
+            center: [46.680868, 38.279200], // Координаты адреса
+            zoom: 12 // Масштаб карты
+        };
+
+        var maps = document.getElementsByClassName('map');
+        for (var i = 0; i < maps.length; i++) {
+            var map = new ymaps.Map(maps[i], mapOptions);
+
+            var placemark = new ymaps.Placemark(
+                [46.680868, 38.279200],
+                {
+                    iconCaption: 'MDigital', // Название метки
+                    balloonContent: '353680 г.Ейск, Россия, Мичурина ул., 16/1, Этаж 2'
+                },
+                {
+                    preset: 'islands#blueDotIconWithCaption', // Стиль метки
+                    iconCaptionMaxWidth: '200' // Максимальная ширина названия метки
+                }
+            );
+
+            map.geoObjects.add(placemark);
+        }
+    }
 }
 
 })(jQuery);
 
 /*==========================================================
-			46. submit_question
+			46. submit_question(contact-form, xs-contact-form)
 ======================================================================*/
 $(document).ready(function(){
     $('.contact-form').on('submit', function(event){
@@ -1507,6 +1502,55 @@ $(document).ready(function(){
                 console.error('Ошибка:', error);
                 $('#question-message').text('Произошла ошибка при отправке вопроса.');
 				hideMessageAfterDelay('#question-message'); // Скрываем сообщение через время по умолчанию
+            }
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('.xs-contact-form').on('submit', function(event){
+        event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+		// Получаем значения полей формы
+		var name = $('#name').val();
+        var email = $('#email').val();
+        var phone = $('#phone').val();
+		var subject = $('#subject').val();
+		var message = $('#message').val();
+
+        // Проверяем, заполнены ли поля
+        if (name.trim() === '' || email.trim() === ''|| message.trim() === '') {
+            // Если одно из полей пустое, показываем сообщение об ошибке
+            $('#xs-form-message').text('Пожалуйста, заполните все поля.').addClass('error-message response-message');
+            hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время по умолчанию
+			return; // Прерываем выполнение функции
+        }
+
+		// Проверяем формат телефона
+        var phoneRegex = /^\+?7?\d{9,15}$/;
+        if (!phoneRegex.test(phone)) {
+            // Если формат телефона некорректен, показываем сообщение об ошибке
+            $('#xs-form-message').text('Пожалуйста, введите корректный номер телефона.').addClass('error-message response-message');
+            hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время по умолчанию
+            return; // Прерываем выполнение функции
+        }
+
+        var formData = $(this).serialize(); // Получаем данные формы
+
+        $.ajax({
+            url: $(this).attr('action'),
+            type: $(this).attr('method'),
+            data: formData,
+            dataType: 'json',
+            success: function(data){
+                // Вставляем ответ на страницу
+                $('#xs-form-message').text(data.message).addClass('success-message response-message');
+				hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время по умолчанию
+				$('.xs-contact-form')[0].reset();
+            },
+            error: function(xhr, status, error){
+                console.error('Ошибка:', error);
+                $('#xs-form-message').text('Произошла ошибка при отправке формы.');
+				hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время по умолчанию
             }
         });
     });
@@ -1582,9 +1626,12 @@ $(document).ready(function(){
     });
 });
 
+
+
 // Функция для скрытия сообщения после задержки
 function hideMessageAfterDelay(selector, delay = 5000) {
     setTimeout(function() {
         $(selector).text('').removeClass('error-message success-message response-message');
     }, delay);
 }
+
