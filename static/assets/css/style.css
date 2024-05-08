@@ -1398,11 +1398,12 @@ button:focus {
 ==============================================================*/
 .single-service-preview {
   border: 1px solid #f5f5f5;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: white;
   -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.06);
   box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.06);
-  padding: 50px 80px; }
+  padding: 50px 80px;
+  margin-top: -18px;}
 
 .service-preview-content {
   padding-left: 35px; }
@@ -3031,7 +3032,7 @@ button:focus {
 .btn {
   height: 55px;
   line-height: 55px;
-  border-radius: 3px;
+  border-radius: 10px;
   padding: 0 51px;
   -webkit-transition: all 0.4s ease;
   -o-transition: all 0.4s ease;
@@ -3606,7 +3607,7 @@ button:focus {
       -webkit-transition: all 0.4s ease;
       -o-transition: all 0.4s ease;
       transition: all 0.4s ease;
-      border-radius: 2px;
+      border-radius: 15px;
       border: 1px solid #e5e8ed;
       padding: 27px 10px 26px;
       position: relative;
@@ -5527,4 +5528,17 @@ img[data-scrollax] {
     background-color: #f8d7da;
     border-color: #f5c6cb;
     color: #721c24;
+}
+
+#service {
+    /*background-image: url('images/backgroung-1.jpg'); !* Замените 'путь_к_изображению.jpg' на путь к вашему изображению *!*/
+    background-size: cover; /* Задает размер изображения так, чтобы оно полностью покрывало фоновую область */
+    background-position: center; /* Центрирует изображение на фоне */
+    background-color: #037bf2; /* Если у вас нет изображения, вы можете использовать цвет фона */
+    padding-top: 50px; /* Добавляет верхний отступ для контента */
+    padding-bottom: 50px; /* Добавляет нижний отступ для контента */
+}
+
+#service .container {
+    padding-top: 70px;
 }
