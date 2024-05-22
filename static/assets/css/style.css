@@ -1885,7 +1885,7 @@ button:focus {
     21. footer
 ==============================================================*/
 .xs-footer-section {
-  background-color: #042355;
+  background-color: #0c5adb;
   background-image: url(../images/footer-overlay-bg.png);
   background-repeat: no-repeat;
   background-size: 100% 40%;
@@ -5534,11 +5534,24 @@ img[data-scrollax] {
     /*background-image: url('images/backgroung-1.jpg'); !* Замените 'путь_к_изображению.jpg' на путь к вашему изображению *!*/
     background-size: cover; /* Задает размер изображения так, чтобы оно полностью покрывало фоновую область */
     background-position: center; /* Центрирует изображение на фоне */
-    background-color: #037bf2; /* Если у вас нет изображения, вы можете использовать цвет фона */
+    background-color: #0c5adb; /* Если у вас нет изображения, вы можете использовать цвет фона */
     padding-top: 50px; /* Добавляет верхний отступ для контента */
     padding-bottom: 50px; /* Добавляет нижний отступ для контента */
 }
 
 #service .container {
     padding-top: 70px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.nav-link.active {
+    background-color: #007bff;
+    color: white;
 }

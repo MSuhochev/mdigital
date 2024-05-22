@@ -28,10 +28,10 @@
                         <span class="line"></span>
                         <ul class="xs-list list-inline">
                           {% if employee.telegram_id %}
-                            <li><a href="https://t.me/{{ employee.telegram_id }}"><i class="fa fa-telegram"></i></a></li>
+                            <li><a href="{{ employee.telegram_id }}"><i class="fa fa-telegram"></i></a></li>
                           {% endif %}
                           {% if employee.vk_id %}
-                            <li><a href="https://vk.com/{{ employee.vk_id }}"><i class="fa fa-vk"></i></a></li>
+                            <li><a href="{{ employee.vk_id }}"><i class="fa fa-vk"></i></a></li>
                           {% endif %}
                           <!-- Добавьте другие социальные сети по аналогии -->
                         </ul>

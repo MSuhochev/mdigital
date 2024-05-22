@@ -1635,3 +1635,24 @@ function hideMessageAfterDelay(selector, delay = 5000) {
     }, delay);
 }
 
+
+// Подтягиваем описание направлений в мобильной версии
+document.addEventListener('DOMContentLoaded', function() {
+    var tabs = document.querySelectorAll('.nav-link');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function(event) {
+            if (window.innerWidth < 768) { // Проверка ширины экрана
+                // Задержка для завершения переключения вкладки
+                setTimeout(function() {
+                    var targetPaneId = tab.getAttribute('href');
+                    var targetElement = document.querySelector(targetPaneId + ' .single-service-preview');
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 300); // 300 мс достаточно для завершения анимации переключения вкладки
+            }
+        });
+    });
+});
