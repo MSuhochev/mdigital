@@ -141,10 +141,10 @@ Author URI: http://themeforest.net/user/XpeedStudio/portfolio
         padding: 15px;
     }
     .nav-brand > img {
-        margin-top: 13px;
+        margin-top: 24px;
     }
     .nav-brand img.logo-sticky {
-        margin-top: 0;
+        margin-top: 10px;
     }
     .xs-header.header-main .xs-menus .nav-menu > li > a::before {
         display: none;

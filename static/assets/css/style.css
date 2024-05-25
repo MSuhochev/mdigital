@@ -90,7 +90,7 @@ element inheritance
     1. body reset content
 ==============================================================*/
 :root {
-  font-size: 15px; }
+  font-size: 14px; }
 
 body {
   font-family: 'FuturaPT', Arial, sans-serif;
@@ -204,7 +204,7 @@ button:focus {
     -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1); }
     .header-transparent .xs-header.header-main .xs-menus .nav-menu > li:not(:last-child) {
-      margin-right: 25px;
+      margin-right: 15px;
       padding-right: 25px; }
     .header-transparent .xs-header.header-main .xs-menus .nav-menu > li.active > a {
       color: #181818; }
@@ -339,7 +339,7 @@ button:focus {
         height: calc(100% - 12px);
         width: calc(100% - 12px);
         border-radius: 50%;
-        background-color: #00138e;
+        background-color: #008dd2;
         display: block;
         text-align: center;
         margin: 0 auto;
@@ -368,9 +368,9 @@ button:focus {
       right: auto !important; }
     .xs-header.header-main .xs-menus .nav-menu > li > a {
       padding: 44px 0;
-      color: #00138e;
+      color: #008dd2;
       font-weight: 700;
-      font-family: "Lato", sans-serif;
+      font-family: 'FuturaPT', Arial, sans-serif;
       position: relative; }
       .xs-header.header-main .xs-menus .nav-menu > li > a::before {
         position: absolute;
@@ -507,11 +507,11 @@ button:focus {
         color: #181818; }
     .nav-sticky.sticky-header .xs-header .xs-menus .nav-menu > li > a {
       padding: 33px 0;
-      color: #181818; }
+      color: #008dd2; }
       .nav-sticky.sticky-header .xs-header .xs-menus .nav-menu > li > a::before {
-        background-color: #181818;
+        background-color: #008dd2;
         -webkit-box-shadow: 9px 0px 0px 0px #181818, 18px 0px 0px 0px #181818;
-        box-shadow: 9px 0px 0px 0px #181818, 18px 0px 0px 0px #181818;
+        box-shadow: 9px 0px 0px 0px #008dd2, 18px 0px 0px 0px #008dd2;
         bottom: calc(0% + 25px); }
       .nav-sticky.sticky-header .xs-header .xs-menus .nav-menu > li > a .submenu-indicator-chevron {
         border-color: transparent #181818 #181818 transparent; }
@@ -1118,8 +1118,10 @@ button:focus {
       border-radius: 0 32.5px 32.5px 0; }
   .xs-inline-form .check-btn {
     height: 65px;
-    background-color: #00138e;
-    border: 0px;
+    background-color: #008dd2;
+    border: 2px;
+    border-style: solid;
+    border-color: #ffff;
     border-radius: 32.5px 0 0 32.5px;
     padding: 0 40px;
     color: #FFFFFF;
@@ -1128,7 +1130,7 @@ button:focus {
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease; }
     .xs-inline-form .check-btn:hover {
-      background-color: #0018b2; }
+      background-color: #0c5adb; }
     .xs-inline-form .check-btn + .row [class*=col-] .form-control {
       border-radius: 0; }
     .xs-inline-form .check-btn + .row [class*=col-] + [class*=col-] .form-control {
@@ -1244,7 +1246,7 @@ button:focus {
   text-align: center;
   cursor: pointer; }
   .single-work-process h4 {
-    color: #7897e6;
+    color: #FFFFFF;
     margin-bottom: 0px;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
@@ -1255,7 +1257,7 @@ button:focus {
     -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1); }
   .single-work-process:hover h4 {
-    color: #FFFFFF; }
+    color: #0c5adb; }
 
 .work-process-icon {
   text-align: center;
@@ -1773,7 +1775,7 @@ button:focus {
     19. news letter thumd
 ==============================================================*/
 .newsletter-thumb-wraper {
-  background-color: #0c5adb;
+  background-color: #008dd2;
   text-align: center;
   border-radius: 5px;
   -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.15);
@@ -1836,7 +1838,7 @@ button:focus {
     color: #a5b4dd; }
 .subscribe-form2 .submit-btn {
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 3px;
+  border-radius: 10px;
   height: 49px;
   background-color: transparent;
   color: #FFFFFF;
@@ -1846,8 +1848,8 @@ button:focus {
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease; }
   .subscribe-form2 .submit-btn:hover {
-    background-color: #00138e;
-    border-color: #00138e; }
+    background-color: #0c5adb;
+    border-color: #ffffff; }
 .subscribe-form2 label {
   display: block; }
 
@@ -1857,7 +1859,7 @@ button:focus {
 .contact-form .form-control {
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.251);
+  background-color: rgba(249, 249, 249);
   height: 49px;
   margin-bottom: 20px;
   padding-left: 20px; }
@@ -1866,8 +1868,8 @@ button:focus {
   height: 85px;
   padding-top: 10px; }
 .contact-form .submit-btn {
-  border: 1px solid #0c5adb;
-  border-radius: 3px;
+  border: 1px solid #FFFFFF;
+  border-radius: 10px;
   height: 49px;
   background-color: transparent;
   color: #FFFFFF;
@@ -1877,15 +1879,15 @@ button:focus {
   -o-transition: all 0.4s ease;
   transition: all 0.4s ease; }
   .contact-form .submit-btn:hover {
-    background-color: #FFFFFF;
-    color: #0c5adb;
+    background-color: #0c5adb;
+    color: #FFFFFF;
     border-color: #FFFFFF; }
 
 /*=================================================
     21. footer
 ==============================================================*/
 .xs-footer-section {
-  background-color: #0c5adb;
+  background-color: #008dd2;
   background-image: url(../images/footer-overlay-bg.png);
   background-repeat: no-repeat;
   background-size: 100% 40%;
@@ -2011,7 +2013,7 @@ button:focus {
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  background-color: #0c5adb;
+  background-color: #008dd2;
   z-index: 1; }
   .inner-banner-area .banner-image {
     position: absolute;
@@ -3045,11 +3047,11 @@ button:focus {
     -webkit-box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.12);
     box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.12); }
   .btn.btn-primary {
-    background-color: #0c5adb; }
+    background-color: #008dd2; }
     .btn.btn-primary:hover {
-      background-color: #00138e; }
+      background-color: #0c5adb; }
   .btn.btn-secondary {
-    background-color: #00138e; }
+    background-color: #008dd2; }
     .btn.btn-secondary:hover {
       background-color: #0c5adb; }
   .btn.icon-left i {
@@ -3253,7 +3255,7 @@ button:focus {
   height: 100%;
   width: 100%;
   z-index: 9999999999;
-  background-color: #0c5adb;
+  background-color: #008dd2;
   -webkit-transition: all 1s ease-in;
   -o-transition: all 1s ease-in;
   transition: all 1s ease-in; }
@@ -3587,10 +3589,12 @@ button:focus {
 ==============================================================*/
 /* reset tabs */
 .nav-tabs .nav-item {
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+  }
   .nav-tabs .nav-item .nav-link {
     background-color: transparent;
-    border: 0px; }
+    border: 0px;
+    }
 
 /* service tab */
 .main-tabs {
@@ -3724,7 +3728,7 @@ button:focus {
 ==============================================================*/
 /* top bar */
 .xs-top-bar {
-  background-color: #0c5adb;
+  background-color: #008dd2;
   padding: 14px 0; }
   .xs-top-bar .xs-list {
     text-align: right;
@@ -5226,11 +5230,11 @@ blockquote {
 
 /* color */
 .primary-color {
-  color: #0c5adb; }
+  color: #008dd2; }
 
 /* background color */
 .primary-bg {
-  background-color: #0c5adb; }
+  background-color: #008dd2; }
 
 /* color */
 .secondary-color {
@@ -5534,7 +5538,7 @@ img[data-scrollax] {
     /*background-image: url('images/backgroung-1.jpg'); !* Замените 'путь_к_изображению.jpg' на путь к вашему изображению *!*/
     background-size: cover; /* Задает размер изображения так, чтобы оно полностью покрывало фоновую область */
     background-position: center; /* Центрирует изображение на фоне */
-    background-color: #0c5adb; /* Если у вас нет изображения, вы можете использовать цвет фона */
+    background-color: #008dd2; /* Если у вас нет изображения, вы можете использовать цвет фона */
     padding-top: 50px; /* Добавляет верхний отступ для контента */
     padding-bottom: 50px; /* Добавляет нижний отступ для контента */
 }
@@ -5554,4 +5558,33 @@ img[data-scrollax] {
 .nav-link.active {
     background-color: #007bff;
     color: white;
+}
+
+body.fixed-scroll {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+/* Стили для кнопки "Наверх" */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    width: 50px;
+    height: 50px;
+    background-color: #008dd2;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+#back-to-top:hover {
+    background-color: #0c5adb;
 }

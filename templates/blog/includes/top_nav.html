@@ -8,46 +8,6 @@
     <div class="nav-menus-wrapper">
         <ul class="nav-menu align-to-right">
 
-            <li><a href="#">СТРАНИЦЫ</a>
-                <div class="megamenu-panel xs-icon-menu">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="single-menu-item">
-                                <a href="{% url 'about' %}"><i class="icon icon-briefcase"></i>О нас</a>
-                            </div>
-                            <div class="single-menu-item">
-                                <a href="{% url 'projects' %}"><i class="icon icon-line-chart"></i>Проекты</a>
-                            </div>
-                            <div class="single-menu-item">
-                                <a href="{% url 'contacts' %}"><i class="icon icon-agenda3"></i>Контакты</a>
-                            </div>
-                            <div class="single-menu-item">
-                                <a href="{% url 'career' %}"><i class="icon icon-users"></i>Карьера</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="single-menu-item">
-                                <a href="{% url 'monetization' %}"><i class="icon icon-folder2"></i>Монетизация сайтов</a>
-                            </div>
-                            <div class="single-menu-item">
-                                <a href="{% url 'tg_development' %}"><i class="icon icon-chat"></i>Разработка Telegram</a>
-                            </div>
-                            <div class="single-menu-item">
-                                <a href="{% url 'web_development' %}"><i class="icon icon-business2"></i>Web Разработка</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="single-menu-item">
-                                <a href="{% url 'analytics' %}"><i class="icon icon-padlock-1"></i>Аналитика</a>
-                            </div>
-                            <div class="single-menu-item">
-                                <a href="{% url 'support' %}"><i class="icon icon-direction"></i>Сопровождение</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
             <li><a href="#">НАПРАВЛЕНИЯ</a>
                 <ul class="nav-dropdown xs-icon-menu clearfix">
                     <li class="single-menu-item">
@@ -68,6 +28,23 @@
                 </ul>
             </li>
 
+            <li><a href="#">О НАС</a>
+                <ul class="nav-dropdown xs-icon-menu clearfix">
+                    <li class="single-menu-item">
+                        <a href="{% url 'about' %}"><i class="icon icon-briefcase"></i>Команда</a>
+                    </li>
+                    <li class="single-menu-item">
+                        <a href="{% url 'projects' %}"><i class="icon icon-line-chart"></i>Проекты</a>
+                    </li>
+                    <li class="single-menu-item">
+                        <a href="{% url 'career' %}"><i class="icon icon-users"></i>Карьера</a>
+                    </li>
+                    <li class="single-menu-item">
+                        <a href="{% url 'contacts' %}"><i class="icon icon-agenda3"></i>Контакты</a>
+                    </li>
+                </ul>
+            </li>
+
             <!-- Menu - Blog -->
             <li><a href="#">БЛОГ</a>
                 <ul class="nav-dropdown xs-icon-menu clearfix">
@@ -81,12 +58,12 @@
             </li>
             <!-- ENDmenu - Blog -->
 
-<!--            <li>-->
-<!--                <a href="{% url 'about' %}">О НАС</a>-->
-<!--            </li>-->
-
             <li>
                 <a href="{% url 'contacts' %}">КОНТАКТЫ</a>
+            </li>
+
+            <li>
+                <a href="{% url 'contacts' %}">КОНСУЛЬТАЦИЯ</a>
             </li>
         </ul>
     </div>

@@ -23,7 +23,7 @@
                         <img src="{% static 'assets/images/team/default_photo.jpg' %}" alt="Default Photo">
                       {% endif %}
                       <div class="hover-area">
-                        <h4 class="title"><a href="#">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
+                        <h4 class="title"><a href="{{ employee.telegram_id }}">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
                         <p class="description">{{ employee.position }}</p>
                         <span class="line"></span>
                         <ul class="xs-list list-inline">
@@ -38,7 +38,7 @@
                       </div><!-- .hover-area END -->
                     </div><!-- .image END -->
                     <div class="box-footer">
-                      <h4 class="title"><a href="#">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
+                      <h4 class="title"><a href="{{ employee.telegram_id }}">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
                     </div><!-- .box-footer END -->
                   </div><!-- .single-box END -->
                 </div>

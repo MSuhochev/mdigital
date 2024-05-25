@@ -1643,6 +1643,9 @@ document.addEventListener('DOMContentLoaded', function() {
     tabs.forEach(function(tab) {
         tab.addEventListener('click', function(event) {
             if (window.innerWidth < 768) { // Проверка ширины экрана
+                // Отключить вертикальную прокрутку
+                document.body.style.overflowY = 'hidden';
+
                 // Задержка для завершения переключения вкладки
                 setTimeout(function() {
                     var targetPaneId = tab.getAttribute('href');
@@ -1651,8 +1654,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (targetElement) {
                         targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
-                }, 300); // 300 мс достаточно для завершения анимации переключения вкладки
+
+                    // Включить вертикальную прокрутку после завершения анимации
+                    setTimeout(function() {
+                        document.body.style.overflowY = 'auto';
+                    }, 800); // Увеличьте время, если нужно больше для завершения анимации
+                }, 800);
             }
         });
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var backToTopButton = document.getElementById('back-to-top');
+
+    window.onscroll = function() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            backToTopButton.style.display = 'block';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    };
+
+    backToTopButton.onclick = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
 });
