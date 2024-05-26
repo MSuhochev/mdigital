@@ -20,7 +20,7 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Главная'
+        context['title'] = 'Telegram боты - Веб-Разработка - Динамическая монетизация | mdigital.su'
         context['form'] = SubscriberForm()  # Добавляем форму подписки в контекст
         return context
 
@@ -54,7 +54,7 @@ class PostDetailView(CategoryMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = f'MDigital'
+        context['title'] = f'{self.object.title}'
         context['categories'] = self.get_category_queryset()
         context['recent_posts'] = self.get_recent_posts()
         # Получение предыдущего и следующего постов

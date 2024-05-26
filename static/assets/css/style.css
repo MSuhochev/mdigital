@@ -5588,3 +5588,7 @@ body.fixed-scroll {
 #back-to-top:hover {
     background-color: #0c5adb;
 }
+
+.nav-menu .consultation-menu {
+    color: rgba(255, 55, 55, 0.82) !important;
+}
