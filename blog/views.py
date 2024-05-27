@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count
 from django.http import JsonResponse
+from django.shortcuts import render
 from django.utils import timezone
 from django.views import View
 from django.views.generic import ListView, DetailView
@@ -33,6 +34,11 @@ class HomeView(ListView):
         else:
             messages.error(request, "Произошла ошибка при подписке")
             return JsonResponse({'message': "Произошла ошибка при подписке"})
+
+
+class Custom404View(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, '404.html', status=404)
 
 
 class CategoryMixin:

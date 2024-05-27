@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import PostSearchView, SubmitQuestionView, IncomingOrdersView, ContactFormSubmitView
+from .views import PostSearchView, SubmitQuestionView, IncomingOrdersView, ContactFormSubmitView, Custom404View
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
@@ -21,3 +21,5 @@ urlpatterns = [
     path('<slug:slug>/<slug:post_slug>/', views.PostDetailView.as_view(), name='post_single'),
     path('<slug:slug>/', views.PostListView.as_view(), name='post_list'),
 ]
+
+handler404 = Custom404View.as_view()
