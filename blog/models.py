@@ -63,6 +63,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        category_slug = self.category.slug if self.category else 'no-category'
         return reverse('post_single', kwargs={'slug': self.category.slug, 'post_slug': self.slug})
 
 

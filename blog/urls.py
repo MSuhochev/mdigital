@@ -1,6 +1,10 @@
-from django.urls import path
+from django.contrib.sitemaps.views import sitemap
+from django.urls import path, re_path
+from django.views.generic import TemplateView
+
 from . import views
 from .views import PostSearchView, SubmitQuestionView, IncomingOrdersView, ContactFormSubmitView, Custom404View
+
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),

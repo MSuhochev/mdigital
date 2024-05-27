@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /search/
+Disallow: /submit-question/
+Disallow: /incoming-order/
+Disallow: /contact-form-submit/
+Disallow: /monetization/
+Disallow: /tg_development/
+Disallow: /web_development/
+Disallow: /analytics/
+Disallow: /support/
+Disallow: /projects/
+Disallow: /career/
+Disallow: /submit-question/
+Disallow: /submit-question/
+Disallow: /submit-question/
