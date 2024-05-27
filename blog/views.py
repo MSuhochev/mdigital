@@ -21,7 +21,7 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Telegram боты - Веб-Разработка - Динамическая монетизация | mdigital.su'
+        context['title'] = 'Telegram боты - Веб-Разработка - Динамическая монетизация сайтов'
         context['form'] = SubscriberForm()  # Добавляем форму подписки в контекст
         return context
 
