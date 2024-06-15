@@ -150,7 +150,7 @@ img {
 
 /* Применить стили к ul с классом, кроме .my-ckeditor */
 ul:not(.my-ckeditor) {
-    margin: 0;
+    margin: 0 40px 0 0;
     padding: 0;
     list-style: none;
 }
@@ -1099,6 +1099,7 @@ button:focus {
       font-size: 0.9333333333rem; }
   .xs-inline-form [class*=col-] + [class*=col-] .form-control {
     border-radius: 0px; }
+
   .xs-inline-form .row {
     width: 100%;
     position: relative; }
@@ -1111,7 +1112,7 @@ button:focus {
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       background-color: rgba(12, 90, 219, 0.25);
-      width: 1px;
+      /*width: 1px;*/
       height: 32px;
       z-index: 1; }
     .xs-inline-form .row + .check-btn {
@@ -1122,7 +1123,7 @@ button:focus {
     border: 2px;
     border-style: solid;
     border-color: #ffff;
-    border-radius: 32.5px 0 0 32.5px;
+    border-radius: 0 32.5px 32.5px 0;
     padding: 0 40px;
     color: #FFFFFF;
     cursor: pointer;
@@ -1174,6 +1175,32 @@ button:focus {
     -webkit-transform: translateY(0%);
     -ms-transform: translateY(0%);
     transform: translateY(0%); }
+
+.xs-inline-form .separator::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: rgba(12, 90, 219, 0.25);
+    width: 1px;
+    height: 70%;
+    z-index: 1;
+}
+
+.row.no-gutters {
+    display: flex;
+    align-items: center;
+}
+
+.form-control {
+    margin-bottom: 0 !important;
+}
+
+.check-btn {
+    width: 100%;
+    height: 100%;
+}
 
 /*=================================================
     12. seo info
@@ -3065,7 +3092,7 @@ button:focus {
   .btn.style2 {
     -webkit-box-shadow: none;
     box-shadow: none;
-    border-radius: 0px; }
+    border-radius: 15px; }
   .btn.style3 {
     background-color: #FFFFFF;
     color: #0c5adb; }
@@ -5204,9 +5231,9 @@ blockquote {
 
 .gradient-bg {
   background: #1bc4fd;
-  background: -webkit-gradient(linear, left top, right top, from(#1bc4fd), to(#383bff));
-  background: -webkit-linear-gradient(left, #1bc4fd 0%, #383bff 100%);
-  background: -o-linear-gradient(left, #1bc4fd 0%, #383bff 100%);
+  /*background: -webkit-gradient(linear, left top, right top, from(#1bc4fd), to(#383bff));*/
+  /*background: -webkit-linear-gradient(left, #1bc4fd 0%, #383bff 100%);*/
+  /*background: -o-linear-gradient(left, #1bc4fd 0%, #383bff 100%);*/
   background: linear-gradient(90deg, #1bc4fd 0%, #383bff 100%); }
   .gradient-bg .xs-heading .section-title,
   .gradient-bg .xs-heading .section-subtitle {
@@ -5589,12 +5616,219 @@ body.fixed-scroll {
     background-color: #0c5adb;
 }
 
-.nav-menu .consultation-menu {
-    color: rgba(255, 55, 55, 0.82) !important;
-}
+/*Скрыть заголовки H1*/
 
 .hidden-h1 {
         position: absolute;
         left: -9999px;
         top: -9999px;
     }
+
+/*кнопка консультация Основные стили кнопки */
+.consultation-menu-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    min-width: 150px; /* Минимальная ширина */
+    height: 50px; /* Фиксированная высота */
+    line-height: 30px; /* Вертикальное выравнивание текста */
+}
+
+.consultation-menu-button:hover {
+    background-color: #ff784e;
+}
+
+/* Распределение элементов в меню */
+.nav-menus-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu > li > .nav-dropdown {
+    display: none; /* Скрываем подменю по умолчанию */
+    position: absolute; /* Абсолютное позиционирование для десктопной версии */
+    /*left: 0; !* Слева от родительского элемента *!*/
+    top: 100%; /* Под родительским элементом */
+    background-color: #fff;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.nav-menu > li:hover > .nav-dropdown {
+    display: block; /* Показываем подменю при наведении */
+}
+
+/* Стили для последнего элемента подменю */
+.xs-menus .nav-menu .nav-dropdown li:last-child a {
+    border-bottom: 0px;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 934px) {
+    .nav-menus-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu > li {
+        width: 100%;
+        position: relative;
+    }
+
+    .nav-menu > li > .nav-dropdown {
+        position: relative !important; /* Изменяем позиционирование для мобильных устройств */
+        left: 0 !important; /* Сбрасываем смещение слева */
+        top: auto !important; /* Сбрасываем смещение сверху */
+        right: auto !important; /* Отменяем любые правые смещения */
+        width: 100%; /* Занимаем всю ширину родительского элемента */
+        display: none; /* Скрываем подменю по умолчанию */
+        margin-top: 0; /* Отменяем отступ сверху */
+        background-color: #fff;
+        box-shadow: none; /* Убираем тень */
+    }
+
+    .nav-menu > li > .nav-dropdown > li {
+        width: 100%; /* Элементы подменю занимают всю ширину подменю */
+        padding: 10px 0; /* Добавляем отступы для элементов подменю */
+    }
+
+    .nav-menu > li.active > .nav-dropdown,
+    .nav-menu > li:hover > .nav-dropdown {
+        display: block; /* Показываем подменю при активном или наведенном родительском элементе */
+    }
+
+    .consultation-menu-button {
+        width: 100%;
+        min-width: unset; /* Отменяем минимальную ширину */
+        height: auto; /* Отменяем фиксированную высоту */
+        line-height: normal; /* Отменяем вертикальное выравнивание текста */
+        padding: 10px; /* Регулируем padding для мобильных устройств */
+    }
+}
+
+
+/*кнопка консультация end*/
+
+/*Стилизация модального окна консультации*/
+/* Модальное окно (фон) */
+#consultation-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+/* Модальное окно (контейнер) */
+/* Стили для модального окна */
+#consultation-modal .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Кнопка закрытия модального окна */
+#consultation-modal .close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#consultation-modal .close-modal:hover,
+#consultation-modal .close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Стили для формы */
+#consultation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Стили для кнопки отправки */
+#consultation-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #008dd2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#consultation-form button:hover {
+    background-color: #0c5adb;
+}
+/*End стилизации модального окна консультации*/
+
+/*стили для текста в чекбоксе*/
+.checkbox-text {
+    color: #ffffff; /* черный цвет текста */
+    font-weight: normal; /* обычный вес шрифта */
+}
+.checkbox-contacts-text {
+    color: black; /* черный цвет текста */
+    font-weight: normal; /* обычный вес шрифта */
+}
+
+.modal-link {
+    color: #00ccff; /* синий цвет ссылки */
+    text-decoration: none; /* без подчеркивания */
+    font-style: italic; /* курсив */
+}
+
+.external-link {
+    color: #00ccff;
+    text-decoration: none; /* без подчеркивания */
+    font-style: italic; /* курсив */
+}
+

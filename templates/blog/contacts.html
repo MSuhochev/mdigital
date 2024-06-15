@@ -38,7 +38,7 @@
                                 <div class="round-icon">
                                     <i class="icon icon-envelope4"></i>
                                 </div><!-- .round-icon END -->
-                                <a href="mailto:mdigital@mdigital.su" class="info-content">mailto@mdigital.su</a>
+                                <a href="mailto:partners@mdigital.su" class="info-content">partners@mdigital.su</a>
                             </div><!-- .single-contact-info END -->
                         </div>
                     </div><!-- .row END -->
@@ -99,6 +99,15 @@
                         <div class="form-group">
                             <textarea name="message" id="message" class="form-control" placeholder="Текст сообщения *" cols="30" rows="10"></textarea>
                         </div>
+                        <div class="form-check">
+							<input type="checkbox" class="form-check-input" id="agree_to_privacy_policy" name="agree_to_privacy_policy" required>
+							<label class="form-check-label">
+								<span class=".checkbox-contacts-text">Согласие с</span>
+								<a href="#" data-toggle="modal" data-target="#privacyPolicyModal" class="modal-link">правилами обработки персональных данных</a>
+								<span class=".checkbox-contacts-text"> ознакомиться </span>
+								<a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">здесь</a>.
+                        	</label>
+						</div>
                         <div class="text-center">
                             <input type="submit" name="submit" value="Отправить" class="btn btn-primary style2" id="xs_contact_submit">
                         </div>
@@ -107,6 +116,8 @@
                     </form><!-- .xs-from 3xs-contact-form END -->
                 </div><!-- .contact-from-wraper END -->
             </div>
+            <!-- Модальное окно для политики конфиденциальности -->
+        {% include 'blog/includes/privacy_policy_modal.html' %}
         </div><!-- .row END -->
     </div><!-- .container END -->
 </section>

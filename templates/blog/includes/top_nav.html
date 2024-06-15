@@ -7,7 +7,6 @@
     </div>
     <div class="nav-menus-wrapper">
         <ul class="nav-menu align-to-right">
-
             <li><a href="#">НАПРАВЛЕНИЯ</a>
                 <ul class="nav-dropdown xs-icon-menu clearfix">
                     <li class="single-menu-item">
@@ -61,10 +60,44 @@
             <li>
                 <a href="{% url 'contacts' %}">КОНТАКТЫ</a>
             </li>
-
-            <li>
-                <a href="{% url 'contacts' %}" class="consultation-menu">КОНСУЛЬТАЦИЯ</a>
-            </li>
         </ul>
+        <a href="#" class="consultation-menu-button" id="open-consultation-modal">КОНСУЛЬТАЦИЯ</a>
     </div>
 </nav>
+
+<!-- Modal Structure -->
+<div id="consultation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-consultation-modal">&times;</span>
+            <h2>Заявка на консультацию</h2>
+            <form id="consultation-form" method="post" action="{% url 'consultation_submit' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="modal-name">Как к вам обращаться:</label>
+                    <input type="text" id="modal-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-phone">Ваш телефон:</label>
+                    <input type="text" id="modal-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-preferred-time">Удобное время для связи:</label>
+                    <input type="text" id="modal-preferred-time" name="preferred_time" required>
+                </div>
+                 <div class="form-check">
+                                <label class="form-check-label">
+                                    {{ form.agree_to_privacy_policy }}
+                                    Оставляя заявку, вы соглашаетесь с
+                                    <a href="#" data-toggle="modal" data-target="#privacyPolicyModal">правилами обработки персональных данных</a>
+                                    ознакомиться <a href="{% url 'privacy_policy' %}" target="_blank">здесь</a>.
+                                </label>
+                                {% if form.agree_to_privacy_policy.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.agree_to_privacy_policy.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>

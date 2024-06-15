@@ -9,13 +9,23 @@
     <meta name="description" content="Разработка Telegram ботов и веб-приложений, динамическая монетизация сайтов mdigital.su.">
     <meta property="og:title" content="Разработка Telegram ботов и веб-приложений, динамическая монетизация сайтов">
     <meta property="og:description" content="Telegram боты, веб-приложения и динамическая монетизация сайтов на mdigital.su.">
-    <meta property="og:image" content="{% static 'assets/images/logo.png' %}">
+    <meta property="og:image" content="{% static 'assets/images/og_logo.png' %}">
     <meta property="og:url" content="https://mdigital.su/">
 	<title>{{ title }}</title>
 	{% include 'blog/includes/head.html' %}
+    {% include 'blog/includes/yandex_metric.html' %}
 </head>
 
 <body>
+<!-- Окно согласия на использование куки -->
+    <div id="cookie-consent" class="cookie-consent">
+        <div class="cookie-content">
+            <p>Мы используем куки для улучшения пользовательского опыта на сайте. Продолжая использовать сайт, вы соглашаетесь на использование куки.</p>
+            <button id="accept-cookies">Согласен</button>
+        </div>
+    </div>
+<!-- End окна согласия на использование куки -->
+
 <!--[if lt IE 10]>
 	{% include 'blog/includes/browserupgrade.html' %}
 <![endif]-->
@@ -74,13 +84,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="tab-two-area" data-toggle="tab" href="#tab-two" role="tab" aria-controls="tab-two" aria-selected="false">
-                           <span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-1.png' %}" alt="icon dynamic monetization"></span>Монетизация
+                        <a class="nav-link" id="tab-three-area" data-toggle="tab" href="#tab-three" role="tab" aria-controls="tab-three" aria-selected="false">
+                            <span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-3.png' %}" alt="icon web development"></span>Веб-разработка
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="tab-three-area" data-toggle="tab" href="#tab-three" role="tab" aria-controls="tab-three" aria-selected="false">
-                            <span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-3.png' %}" alt="icon web development"></span>Веб-разработка
+                        <a class="nav-link" id="tab-two-area" data-toggle="tab" href="#tab-two" role="tab" aria-controls="tab-two" aria-selected="false">
+                           <span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-1.png' %}" alt="icon dynamic monetization"></span>Монетизация
                         </a>
                     </li>
                 </ul>
@@ -118,41 +128,6 @@
                     </div><!-- #tab-one END -->
 					<!-- End TG-Development block -->
 
-					<!-- Start Monetization block -->
-                    <div class="tab-pane fadeInRight animated" id="tab-two" role="tabpanel" aria-labelledby="tab-two-area">
-                        <div class="single-service-preview" id="service-two-preview">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-6">
-                                    <div class="service-preview-img">
-                                        <img src="{% static 'assets/images/service-tab/preview-1.png' %}" alt="dynamic monetization">
-                                    </div><!-- .service-preview-img END -->
-                                </div>
-                                <div class="col-lg-7 col-md-6">
-                                    <div class="service-preview-content">
-                                        <h4 class="xs-content-title">Динамическая монетизация сайтов</h4>
-											<ul>
-												<li>- Header Bidding</li>
-												<li>- Прямые рекламодатели</li>
-												<li>- 15 рекламных сетей вместо одной</li>
-												<li>- 15 рекламных сетей вместо одной</li>
-												<li>- CPM выше среднего на 30%</li>
-												<li>- Автоматическое размещение блоков</li>
-											</ul>
-										<p style="color: black; font-weight: bold;">На монетизации - 1127 сайтов</p>
-
-
-                                        <div class="btn-wraper">
-                                            <a href="#" class="btn btn-primary">Узнать больше</a>
-                                        </div>
-                                    </div><!-- .service-preview-content END -->
-                                </div>
-                            </div><!-- .row END -->
-                        </div><!-- .single-service-preview END -->
-
-
-                    </div><!-- #tab-two END -->
-					<!-- End Monetization block -->
-
 					<!-- Start WEB-Development block -->
                     <div class="tab-pane fadeInRight animated" id="tab-three" role="tabpanel" aria-labelledby="tab-three-area">
                         <div class="single-service-preview" id="service-three-preview">
@@ -184,6 +159,39 @@
                         </div><!-- .single-service-preview END -->
                     </div><!-- #tab-three END -->
 					<!-- End WEB-Development block -->
+
+                    <!-- Start Monetization block -->
+                    <div class="tab-pane fadeInRight animated" id="tab-two" role="tabpanel" aria-labelledby="tab-two-area">
+                        <div class="single-service-preview" id="service-two-preview">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="service-preview-img">
+                                        <img src="{% static 'assets/images/service-tab/preview-1.png' %}" alt="dynamic monetization">
+                                    </div><!-- .service-preview-img END -->
+                                </div>
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="service-preview-content">
+                                        <h4 class="xs-content-title">Динамическая монетизация сайтов</h4>
+											<ul>
+												<li>- Header Bidding</li>
+												<li>- Прямые рекламодатели</li>
+												<li>- 15 рекламных сетей вместо одной</li>
+												<li>- 15 рекламных сетей вместо одной</li>
+												<li>- CPM выше среднего на 30%</li>
+												<li>- Автоматическое размещение блоков</li>
+											</ul>
+										<p style="color: black; font-weight: bold;">На монетизации - 1127 сайтов</p>
+
+
+                                        <div class="btn-wraper">
+                                            <a href="#" class="btn btn-primary">Узнать больше</a>
+                                        </div>
+                                    </div><!-- .service-preview-content END -->
+                                </div>
+                            </div><!-- .row END -->
+                        </div><!-- .single-service-preview END -->
+                    </div><!-- #tab-two END -->
+					<!-- End Monetization block -->
 
 				</div>
             </div>
@@ -228,29 +236,47 @@
             <div class="col-lg-6 mx-auto">
                 <div class="xs-heading text-center">
                     <h2 class="section-subtitle">Готов к росту?</h2>
-                    <h3 class="section-title ">Получите выгодное предложение сегодня!</h3>
+                    <h3 class="section-title">Получите выгодное предложение сегодня!</h3>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <form action="{% url 'incoming_order' %}" class="xs-inline-form" method="post">
-					{% csrf_token %}
-					<div class="row no-gutters">
-						<div class="col-lg-6">
-							<input type="url" name="site" id="website" placeholder="Web URL - вашего сайта" class="form-control">
-						</div>
-						<div class="col-lg-6">
-							<input type="email" name="email" id="emails" placeholder="Email - адрес" class="form-control">
-						</div>
-					</div>
-					<input type="submit" name="submit" value="Проверить" class="check-btn">
-					<!-- Поле вывода сообщений пользователю -->
-					<div id="orders-message" class="orders-message"></div>
-				</form>
+        <form action="{% url 'incoming_order' %}" class="xs-inline-form" method="post">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            {% csrf_token %}
+            <div class="row no-gutters position-relative">
+                <div class="col-lg-5 col-md-12 mb-2">
+                    <input type="url" name="site" id="website" placeholder="Web URL - вашего сайта" class="form-control">
+                </div>
+                <div class="col-lg-4 col-md-12 mb-2">
+                    <input type="email" name="email" id="emails" placeholder="Email - адрес" class="form-control">
+                </div>
+                <div class="col-lg-3 col-md-12 mb-2">
+                    <input type="submit" name="submit" value="Проверить" class="check-btn btn btn-primary w-100">
+                </div>
             </div>
-        </div><!-- .row END -->
-    </div><!-- .container END -->
+
+            <!-- Поле вывода сообщений пользователю -->
+            <div id="orders-message" class="orders-message"></div>
+
+            <!-- Чекбокс согласия с правилами обработки персональных данных -->
+            <div class="form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="agree_to_privacy_policy_order" name="agree_to_privacy_policy" required>
+                <label class="form-check-label" for="agree_to_privacy_policy_order">
+                    <span class="checkbox-text">Согласие с</span>
+                    <a href="#" data-toggle="modal" data-target="#privacyPolicyModal" class="modal-link">правилами обработки персональных данных</a>
+                    <span class="checkbox-text"> ознакомиться </span>
+                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">здесь</a>.
+                </label>
+            </div>
+        </div>
+    </div>
+</form>
+
+        <!-- Модальное окно для политики конфиденциальности -->
+        {% include 'blog/includes/privacy_policy_modal.html' %}
+
+    </div><!-- .row END -->
     <div class="parallax-icon-wraper">
         <img src="{% static 'assets/images/hand-bloom.png' %}" class="parallax-icon icon-one" alt="hand-bloom">
         <img src="{% static 'assets/images/chart.png' %}" class="parallax-icon icon-two" alt="chart">
@@ -306,8 +332,6 @@
 {% include 'blog/includes/workflow.html' %}
 <!-- END working process section -->
 
-
-
 <!-- services section (наши проекты)-->
 <section class="xs-section-padding primary-bg" id="case">
     <div class="container">
@@ -362,84 +386,6 @@
 {% include 'blog/includes/pricing_section.html' %}
 <!-- END pricing section -->
 
-<!-- testimonials section (Отзывы клиентов) -->
-<!--<section class="xs-section-padding primary-bg testimonial-section" id="testimonial">-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-lg-4 mx-auto">-->
-<!--                <div class="xs-heading text-center">-->
-<!--                    <h2 class="section-subtitle">О нас</h2>-->
-<!--                    <h3 class="section-title ">Тёплые слова от клиентов</h3>-->
-<!--                </div>&lt;!&ndash; .xs-heading END &ndash;&gt;-->
-<!--            </div>-->
-<!--        </div>&lt;!&ndash; .row END &ndash;&gt;-->
-<!--        <div class="row">-->
-<!--            <div class="col-lg-10 mx-auto">-->
-<!--                <div class="testimonial-slider-preview owl-carousel" id="sync1">-->
-<!--                    <div class="single-testimonial-preview">-->
-<!--                        <p>“ "MDigital разработали для нашего бизнеса Telegram бота, который превзошел наши ожидания. Они проявили высокий профессионализм, оперативность и гибкость в реагировании на наши требования. Спасибо за отличную работу!" ”</p>-->
-<!--                        <span class="border-line"></span>-->
-<!--                    </div>&lt;!&ndash; .single-testimonial-preview END &ndash;&gt;-->
-<!--                    <div class="single-testimonial-preview">-->
-<!--                        <p>“ Работа с MDigital была приятным опытом для нашей компании. Они не только разработали для нас Python веб-приложение, но и предоставили отличную поддержку и консультации на протяжении всего процесса. Рекомендую их всем, кто ищет надежного партнера в сфере IT-разработки. ”</p>-->
-<!--                        <span class="border-line"></span>-->
-<!--                    </div>&lt;!&ndash; .single-testimonial-preview END &ndash;&gt;-->
-<!--                    <div class="single-testimonial-preview">-->
-<!--                        <p>“ MDigital помогли нам значительно увеличить прибыль с помощью их арбитража трафика. Их профессионализм и экспертное понимание рынка позволили нам оптимизировать наши маркетинговые усилия и добиться значительного роста конверсии. Очень довольны результатами и с нетерпением ждем продолжения сотрудничества! ”</p>-->
-<!--                        <span class="border-line"></span>-->
-<!--                    </div>&lt;!&ndash; .single-testimonial-preview END &ndash;&gt;-->
-<!--                    <div class="single-testimonial-preview">-->
-<!--                        <p>“ MDigital оказались идеальным партнером для нашего проекта. Их команда профессионалов разработала для нас высококачественное веб-приложение для Telegram, которое точно соответствует нашим требованиям. Они были отзывчивы к нашим запросам, предоставляли четкие обновления и всегда были на связи. Спасибо за отличное сотрудничество! ”</p>-->
-<!--                        <span class="border-line"></span>-->
-<!--                    </div>&lt;!&ndash; .single-testimonial-preview END &ndash;&gt;-->
-<!--                </div>-->
-<!--                <div class="testimonial-slider-thumb owl-carousel" id="sync2">-->
-<!--                    <div class="single-bio-thumb">-->
-<!--                        <div class="bio-image">-->
-<!--                            <img src="{% static 'assets/images/testimonial/testimonial-1.jpg' %}" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="bio-info">-->
-<!--                            <h4 class="small">Иван Соколов </h4>-->
-<!--                            <p>"Elis-Group"</p>-->
-<!--                        </div>-->
-<!--                    </div>&lt;!&ndash; .single-bio-thumb END &ndash;&gt;-->
-<!--                    <div class="single-bio-thumb">-->
-<!--                        <div class="bio-image">-->
-<!--                            <img src="{% static 'assets/images/testimonial/testimonial-2.jpg' %}" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="bio-info">-->
-<!--                            <h4 class="small">Дарья Светличная</h4>-->
-<!--                            <p>"Acuamarine"</p>-->
-<!--                        </div>-->
-<!--                    </div>&lt;!&ndash; .single-bio-thumb END &ndash;&gt;-->
-<!--                    <div class="single-bio-thumb">-->
-<!--                        <div class="bio-image">-->
-<!--                            <img src="{% static 'assets/images/testimonial/testimonial-3.jpg' %}" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="bio-info">-->
-<!--                            <h4 class="small">Юлия Петренко</h4>-->
-<!--                            <p>"Друзья"</p>-->
-<!--                        </div>-->
-<!--                    </div>&lt;!&ndash; .single-bio-thumb END &ndash;&gt;-->
-<!--                    <div class="single-bio-thumb">-->
-<!--                        <div class="bio-image">-->
-<!--                            <img src="{% static 'assets/images/testimonial/testimonial-4.jpg' %}" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="bio-info">-->
-<!--                            <h4 class="small">Павел Груздь</h4>-->
-<!--                            <p>"AllGiveBank"</p>-->
-<!--                        </div>-->
-<!--                    </div>&lt;!&ndash; .single-bio-thumb END &ndash;&gt;-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>&lt;!&ndash; .row END &ndash;&gt;-->
-<!--    </div>&lt;!&ndash; .container END &ndash;&gt;-->
-<!--    <div class="big-watermark-icon">-->
-<!--        <i class="icon icon-quote"></i>-->
-<!--    </div>-->
-<!--</section>-->
-<!-- END testimonials section -->
-
 <!-- latest media section -->
 <section class="xs-section-padding gray-bg" id="blogs">
     <div class="container">
@@ -455,71 +401,74 @@
 			{% for post in posts %}
             <div class="col-lg-4 col-md-6">
                 <div class="single-blog-post-thumb">
-						<div class="post-image">
-							<img src="{{ post.image.url|safe }}" alt="post image">
-						</div>
-						<div class="post-body">
-							<div class="entry-header">
-								<h4 class="entry-title"><a href="blog-single.html">{{ post.title }}</a></h4>
-								<div class="entry-content">
-									<p>{{ post.text | truncatewords:20|safe}} </p>
-								</div>
-								<div class="entry-meta">
-									<span class="meta-date"><i class="icon icon-clock"></i>{{ post.create_at }}</span>
-								</div>
-							</div>
-						</div>
+                    <div class="post-image">
+                        <img src="{{ post.image.url|safe }}" alt="post image">
+                    </div>
+                    <div class="post-body">
+                        <div class="entry-header">
+                            <h4 class="entry-title"><a href="blog-single.html">{{ post.title }}</a></h4>
+                            <div class="entry-content">
+                                <p>{{ post.text | truncatewords:20|safe}} </p>
+                            </div>
+                            <div class="entry-meta">
+                                <span class="meta-date"><i class="icon icon-clock"></i>{{ post.create_at }}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div><!-- .single-blog-post-thumb END -->
             </div>
 			{% endfor %}
 
-           <div class="col-lg-4 col-md-6">
-				<div class="newsletter-thumb-wraper">
-					<i class="icon icon-message fly-icons"></i>
-					<div class="newsletter-thumb-content">
-						<h4 class=xs-content-title>Подпишитесь на рассылку</h4>
-						<p>Введите свой адрес электронной почты в поле ниже, чтобы получать последние Digital новости</p>
-						 <form id="subscribe-form" class="subscribe-form2" data-url="{{ request.path }}">
-							{% csrf_token %}
-							{{ form.as_p }}
-							<input type="submit" class="submit-btn" value="Подписаться">
-							 <!-- Поле вывода сообщений пользователю -->
-							<div id="subscribe-message" class="subscribe-message"></div>
-						</form>
-					</div>
-				</div>
-			</div>
-        </div><!-- .row END -->
+            <div class="col-lg-4 col-md-6">
+                <div class="newsletter-thumb-wraper">
+                    <i class="icon icon-message fly-icons"></i>
+                    <div class="newsletter-thumb-content">
+                        <h4 class="xs-content-title">Подпишитесь на рассылку</h4>
+                        <p>Введите свой адрес электронной почты в поле ниже, чтобы получать последние Digital новости</p>
+                        <form id="subscribe-form" class="subscribe-form2" data-url="{{ request.path }}">
+                            {% csrf_token %}
+                            {{ form.email }}
+                            <div class="form-check">
+                                <label class="form-check-label" for="agree_to_privacy_policy_order">
+                                    {{ form.agree_to_privacy_policy }}
+                                    <span class="checkbox-text">Согласие с</span>
+                                    <a href="#" data-toggle="modal" data-target="#privacyPolicyModal" class="modal-link">правилами обработки персональных данных</a>
+                                    <span class="checkbox-text"> ознакомиться </span>
+                                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">здесь</a>..
+                                </label>
+                                {% if form.agree_to_privacy_policy.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.agree_to_privacy_policy.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <input type="submit" class="submit-btn" value="Подписаться">
+                            <!-- Поле вывода сообщений пользователю -->
+                            <div id="subscribe-message" class="subscribe-message"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно для политики конфиденциальности -->
+        {% include 'blog/includes/privacy_policy_modal.html' %}
+
     </div><!-- .container END -->
 </section>
 <!-- END latest media section -->
 
-<!-- Кнопка "Наверх" -->
+<!-- Button "Up" -->
 <div id="back-to-top">&#8679;</div>
-
-<!-- language switcher start -->
-<!-- xs modal -->
-    <!-- DELETED from HERE -->
-<!-- End xs modal -->
-<!-- end language switcher -->
+<!-- Button "Up" end -->
 
 <!-- search panel start -->
-<!-- xs modal -->
 {% include 'blog/includes/search_panel.html' %}
-<!-- End xs modal -->
 <!-- end search panel -->
 
-<!-- offset cart start -->
-<!-- sidebar cart item -->
-        <!-- DELETED from HERE -->
-<!-- END sidebar cart item -->
-<!-- END offset cart -->
-
-<!-- info panel start -->
 <!-- sidebar info panel item -->
 {% include 'blog/includes/sidebar_info.html' %}
-<!-- END sidebar widget item -->
-<!-- END info panel -->
+<!-- END sidebar info panel item -->
 
 <!-- footer section start -->
 {% include 'blog/includes/footer_section.html' %}

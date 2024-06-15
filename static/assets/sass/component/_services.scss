@@ -18,3 +18,32 @@
 .service-preview-img {
     margin-top: 24px;
 }
+
+@media (min-width: 768px) {
+    .service-description {
+        max-height: none;
+    }
+
+    .single-service-preview.active .service-description {
+        max-height: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .single-service-preview {
+        cursor: pointer;
+    }
+
+    .single-service-preview.active .service-description {
+        transition: none;
+        max-height: 500px; /* Установите нужное значение, чтобы полностью отображать контент */
+    }
+
+    .service-preview-content {
+        position: relative;
+    }
+
+    .tab-pane {
+        animation: none !important;
+    }
+}

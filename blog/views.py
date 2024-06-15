@@ -3,11 +3,14 @@ from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.utils import timezone
+from django.utils.decorators import method_decorator
 from django.views import View
-from django.views.generic import ListView, DetailView
-from .forms import SubscriberForm
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import ListView, DetailView, TemplateView, FormView
+from .forms import SubscriberForm, ConsultationForm
 from .models import Post, Employee, Category, UserMessage, IncomingOrders, ContactFormSubmission
 import requests
 
@@ -276,7 +279,7 @@ class PostSearchView(CategoryMixin, ListView):
 
 
 class BaseTelegramNotificationView(View):
-    telegram_bot_token = 'token'
+    telegram_bot_token = 'TOKEN'
 
     def send_telegram_message(self, message):
         url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendMessage"
@@ -364,3 +367,42 @@ class ContactFormSubmitView(BaseTelegramNotificationView):
 
         response_data = {'message': "Спасибо за сообщение! Ответим в ближайшее время"}
         return JsonResponse(response_data)
+
+
+class PrivacyPolicyView(TemplateView):
+    template_name = 'blog/privacy_policy.html'
+
+
+class ConsultationRequestView(BaseTelegramNotificationView, FormView):
+    telegram_chat_id = '-1002229106132'
+    form_class = ConsultationForm
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        consultation = form.save()
+
+        # Отправка данных в Telegram
+        message = (
+            f"Новая заявка на консультацию:\n"
+            f"Имя: {consultation.name}\n"
+            f"Телефон: {consultation.phone}\n"
+            f"Удобное время: {consultation.preferred_time}\n"
+        )
+        self.send_telegram_message(message)
+
+        return JsonResponse({'success': True})
+
+    def form_invalid(self, form):
+        return JsonResponse({'success': False, 'errors': form.errors})
+
+
+class CookieConsentView(View):
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        response = JsonResponse({'status': 'success'})
+        response.set_cookie('cookie_consent', 'yes', max_age=365 * 24 * 60 * 60)  # Устанавливаем куку на 1 год
+        return response

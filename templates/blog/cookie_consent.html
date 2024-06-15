@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Consent</title>
+    <link rel="stylesheet" href="{% static 'assets/css/cookie_consent.css' %}">
+</head>
+<body>
+    <div id="cookie-consent" class="cookie-consent">
+        <div class="cookie-content">
+            <h1>Cookie Consent</h1>
+            <p>We use cookies to improve your experience on our site. By using our site, you consent to cookies.</p>
+            <button id="accept-cookies">I Agree</button>
+        </div>
+    </div>
+    <script src="{% static 'assets/js/cookie_consent.js' %}"></script>
+</body>
+</html>
