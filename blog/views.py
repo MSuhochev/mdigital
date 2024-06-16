@@ -406,3 +406,18 @@ class CookieConsentView(View):
         response = JsonResponse({'status': 'success'})
         response.set_cookie('cookie_consent', 'yes', max_age=365 * 24 * 60 * 60)  # Устанавливаем куку на 1 год
         return response
+
+
+class TgCaseView(ListView):
+    model = Post
+    template_name = 'blog/tg_cases.html'
+
+
+class WebDevCaseView(ListView):
+    model = Post
+    template_name = 'blog/development_cases.html'
+
+
+class MonetizationCaseView(ListView):
+    model = Post
+    template_name = 'blog/monetization_cases.html'

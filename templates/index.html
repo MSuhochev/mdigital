@@ -119,7 +119,7 @@
 											</ul>
 										<p style="color: black; font-weight: bold;">Реализовано - 104 бота</p>
                                         <div class="btn-wraper">
-                                            <a href="#" class="btn btn-primary">Узнать больше</a>
+                                            <a href="tg_development/" class="btn btn-primary">Узнать больше</a>
                                         </div>
                                     </div><!-- .service-preview-content END -->
                                 </div>
@@ -151,7 +151,7 @@
 											</ul>
 										<p style="color: black; font-weight: bold;">Реализовано - 33 сайта</p>
                                         <div class="btn-wraper">
-                                            <a href="#" class="btn btn-primary">Узнать больше</a>
+                                            <a href="web_development/" class="btn btn-primary">Узнать больше</a>
                                         </div>
                                     </div><!-- .service-preview-content END -->
                                 </div>
@@ -184,7 +184,7 @@
 
 
                                         <div class="btn-wraper">
-                                            <a href="#" class="btn btn-primary">Узнать больше</a>
+                                            <a href="monetization/" class="btn btn-primary">Узнать больше</a>
                                         </div>
                                     </div><!-- .service-preview-content END -->
                                 </div>
@@ -229,105 +229,6 @@
 </section>
 <!-- END seo info section -->
 
-<!-- get free quote section -->
-<section class="primary-bg xs-section-padding free-quote-area" data-delighter="start:0.3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 mx-auto">
-                <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Готов к росту?</h2>
-                    <h3 class="section-title">Получите выгодное предложение сегодня!</h3>
-                </div><!-- .xs-heading END -->
-            </div>
-        </div><!-- .row END -->
-        <form action="{% url 'incoming_order' %}" class="xs-inline-form" method="post">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            {% csrf_token %}
-            <div class="row no-gutters position-relative">
-                <div class="col-lg-5 col-md-12 mb-2">
-                    <input type="url" name="site" id="website" placeholder="Web URL - вашего сайта" class="form-control">
-                </div>
-                <div class="col-lg-4 col-md-12 mb-2">
-                    <input type="email" name="email" id="emails" placeholder="Email - адрес" class="form-control">
-                </div>
-                <div class="col-lg-3 col-md-12 mb-2">
-                    <input type="submit" name="submit" value="Проверить" class="check-btn btn btn-primary w-100">
-                </div>
-            </div>
-
-            <!-- Поле вывода сообщений пользователю -->
-            <div id="orders-message" class="orders-message"></div>
-
-            <!-- Чекбокс согласия с правилами обработки персональных данных -->
-            <div class="form-check mt-3">
-                <input type="checkbox" class="form-check-input" id="agree_to_privacy_policy_order" name="agree_to_privacy_policy" required>
-                <label class="form-check-label" for="agree_to_privacy_policy_order">
-                    <span class="checkbox-text">Согласие с</span>
-                    <a href="#" data-toggle="modal" data-target="#privacyPolicyModal" class="modal-link">правилами обработки персональных данных</a>
-                    <span class="checkbox-text"> ознакомиться </span>
-                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">здесь</a>.
-                </label>
-            </div>
-        </div>
-    </div>
-</form>
-
-        <!-- Модальное окно для политики конфиденциальности -->
-        {% include 'blog/includes/privacy_policy_modal.html' %}
-
-    </div><!-- .row END -->
-    <div class="parallax-icon-wraper">
-        <img src="{% static 'assets/images/hand-bloom.png' %}" class="parallax-icon icon-one" alt="hand-bloom">
-        <img src="{% static 'assets/images/chart.png' %}" class="parallax-icon icon-two" alt="chart">
-    </div>
-</section>
-<!-- end get free quote section -->
-
-<!-- why choose section -->
-<section class="why-choose-section xs-section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 mx-auto">
-                <div class="xs-heading text-center">
-<!--                    <h2 class="section-subtitle">Арбитраж трафика</h2>-->
-                    <h3 class="section-title ">Почему динамическая монетизация</h3>
-                </div><!-- .xs-heading END -->
-            </div>
-        </div><!-- .row END -->
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="why-choose-us-block wow fadeInUp">
-                    <div class="choose-us-img">
-                        <img src="{% static 'assets/images/features/features-1.png' %}" alt="выгодные условия">
-                    </div>
-                    <h4 class="xs-content-title">Получайте самые выгодные условия</h4>
-                    <p>Объединим рекламные сети и прямых рекламодателей <br> в одном аукционе</p>
-                </div><!-- .why-choose-us-block END -->
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="why-choose-us-block wow fadeInUp" data-wow-duration="1.5s">
-                    <div class="choose-us-img">
-                        <img src="{% static 'assets/images/features/features-2.png' %}" alt="increase profitability">
-                    </div>
-                    <h4 class="xs-content-title">Повышайте доходность <br> на 70%</h4>
-                    <p>Каждый показ будет куплен по максимальной цене</p>
-                </div><!-- .why-choose-us-block END -->
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="why-choose-us-block wow fadeInUp" data-wow-duration="2s">
-                    <div class="choose-us-img">
-                        <img src="{% static 'assets/images/features/features-3.png' %}" alt="wide choice of formats">
-                    </div>
-                    <h4 class="xs-content-title">Пользуйтесь широким выбором форматов</h4>
-                    <p>Текстово-графические блоки, <br> баннеры, видео <br> и эксклюзивные форматы.</p>
-                </div><!-- .why-choose-us-block END -->
-            </div>
-        </div>
-    </div><!-- .container END -->
-</section>
-<!-- END why choose section -->
-
 <!-- working process section -->
 {% include 'blog/includes/workflow.html' %}
 <!-- END working process section -->
@@ -345,13 +246,13 @@
         </div><!-- .row END -->
         <div class="row">
             <div class="col-lg-4 col-md-6">
-                <div class="single-case-studies text-center wow fadeInUp">
+                <div class="single-case-studies text-center wow fadeInUp" data-wow-duration="1.4s">
                     <div class="image">
-                        <img src="{% static 'assets/images/case/case-1.png' %}" alt="dynamic monetization">
+                        <img src="{% static 'assets/images/case/case-3.png' %}" alt="Telegram WebApp">
                     </div>
                     <div class="case-body">
-                        <h4 class="small"><a href="case-details.html">Динамическая монетизация</a></h4>
-                        <p>Аукционы ADFOX</p>
+                        <h4 class="small"><a href="tg_cases/">Telegram WebApp</a></h4>
+                        <p>Telegram Bot API, Python</p>
                     </div>
                 </div><!-- .single-case-studies END -->
             </div>
@@ -361,19 +262,19 @@
                         <img src="{% static 'assets/images/case/case-2.png' %}" alt="web development">
                     </div>
                     <div class="case-body">
-                        <h4 class="small"><a href="case-details.html">Разработка сайтов</a></h4>
+                        <h4 class="small"><a href="development_cases/">Разработка сайтов</a></h4>
                         <p>Python, Bootstrap, Django</p>
                     </div>
                 </div><!-- .single-case-studies END -->
             </div>
             <div class="col-lg-4 col-md-6">
-                <div class="single-case-studies text-center wow fadeInUp" data-wow-duration="1.4s">
+                <div class="single-case-studies text-center wow fadeInUp">
                     <div class="image">
-                        <img src="{% static 'assets/images/case/case-3.png' %}" alt="Telegram WebApp">
+                        <img src="{% static 'assets/images/case/case-1.png' %}" alt="dynamic monetization">
                     </div>
                     <div class="case-body">
-                        <h4 class="small"><a href="case-details.html">Telegram WebApp</a></h4>
-                        <p>Telegram Bot API, Python</p>
+                        <h4 class="small"><a href="monetization_cases/">Динамическая монетизация</a></h4>
+                        <p>Аукционы ADFOX</p>
                     </div>
                 </div><!-- .single-case-studies END -->
             </div>

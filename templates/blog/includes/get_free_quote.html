@@ -1,0 +1,56 @@
+{% load static %}
+
+<!-- get free quote section -->
+<section class="primary-bg xs-section-padding free-quote-area" data-delighter="start:0.3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <div class="xs-heading text-center">
+                    <h2 class="section-subtitle">Готов к росту?</h2>
+                    <h3 class="section-title">Получите выгодное предложение сегодня!</h3>
+                </div><!-- .xs-heading END -->
+            </div>
+        </div><!-- .row END -->
+        <form action="{% url 'incoming_order' %}" class="xs-inline-form" method="post">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            {% csrf_token %}
+            <div class="row no-gutters position-relative">
+                <div class="col-lg-5 col-md-12 mb-2">
+                    <input type="url" name="site" id="website" placeholder="Web URL - вашего сайта" class="form-control">
+                </div>
+                <div class="col-lg-4 col-md-12 mb-2">
+                    <input type="email" name="email" id="emails" placeholder="Email - адрес" class="form-control">
+                </div>
+                <div class="col-lg-3 col-md-12 mb-2">
+                    <input type="submit" name="submit" value="Проверить" class="check-btn btn btn-primary w-100">
+                </div>
+            </div>
+
+            <!-- Поле вывода сообщений пользователю -->
+            <div id="orders-message" class="orders-message"></div>
+
+            <!-- Чекбокс согласия с правилами обработки персональных данных -->
+            <div class="form-check mt-3">
+                <input type="checkbox" class="form-check-input" id="agree_to_privacy_policy_order" name="agree_to_privacy_policy" required>
+                <label class="form-check-label" for="agree_to_privacy_policy_order">
+                    <span class="checkbox-text">Согласие с</span>
+                    <a href="#" data-toggle="modal" data-target="#privacyPolicyModal" class="modal-link">правилами обработки персональных данных</a>
+                    <span class="checkbox-text"> ознакомиться </span>
+                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">здесь</a>.
+                </label>
+            </div>
+        </div>
+    </div>
+</form>
+
+        <!-- Модальное окно для политики конфиденциальности -->
+        {% include 'blog/includes/privacy_policy_modal.html' %}
+
+    </div><!-- .row END -->
+    <div class="parallax-icon-wraper">
+        <img src="{% static 'assets/images/hand-bloom.png' %}" class="parallax-icon icon-one" alt="hand-bloom">
+        <img src="{% static 'assets/images/chart.png' %}" class="parallax-icon icon-two" alt="chart">
+    </div>
+</section>
+<!-- end get free quote section -->

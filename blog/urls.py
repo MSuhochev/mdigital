@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 from . import views
 from .views import PostSearchView, SubmitQuestionView, IncomingOrdersView, ContactFormSubmitView, Custom404View, \
-    PrivacyPolicyView, ConsultationRequestView, CookieConsentView
+    PrivacyPolicyView, ConsultationRequestView, CookieConsentView, TgCaseView, WebDevCaseView, MonetizationCaseView
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
@@ -20,6 +20,9 @@ urlpatterns = [
     path('post_grid/', views.PostGridView.as_view(), name='post_grid'),
     path('tg_development/', views.TelegramDevelopmentView.as_view(), name='tg_development'),
     path('web_development/', views.WebDevelopmentView.as_view(), name='web_development'),
+    path('tg_cases/', TgCaseView.as_view(), name='tg_cases'),
+    path('development_cases/', WebDevCaseView.as_view(), name='development_cases'),
+    path('monetization_cases/', MonetizationCaseView.as_view(), name='monetization_cases'),
     path('analytics/', views.AnalyticsView.as_view(), name='analytics'),
     path('support/', views.SupportView.as_view(), name='support'),
     path('projects/', views.ProjectsGridView.as_view(), name='projects'),
