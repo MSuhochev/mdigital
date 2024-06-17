@@ -1100,6 +1100,7 @@ button:focus {
   .xs-inline-form [class*=col-] + [class*=col-] .form-control {
     border-radius: 0px; }
 
+
   .xs-inline-form .row {
     width: 100%;
     position: relative; }
@@ -1136,6 +1137,22 @@ button:focus {
       border-radius: 0; }
     .xs-inline-form .check-btn + .row [class*=col-] + [class*=col-] .form-control {
       border-radius: 0 32.5px 32.5px 0; }
+
+/* Медиазапрос для мобильных устройств для кнопки FREE QUOTE*/
+@media (max-width: 912px) {
+    .xs-inline-form .check-btn {
+        border-radius: 15px; /* Закругленные углы со всех сторон */
+        width: 100%; /* Ширина кнопки 100% */
+        padding: 0; /* Убираем внутренние отступы */
+        height: auto; /* Высота кнопки автоматически подстраивается под содержимое */
+    }
+}
+/* Медиазапрос для устройств ниже 992px */
+@media (max-width: 991px) {
+    .xs-inline-form [class*=col-] + [class*=col-] .form-control {
+        border-radius: 15px; /* Закругленные углы 15px */
+    }
+}
 
 /* free quote area */
 .free-quote-area {

@@ -80,7 +80,7 @@ Author URI: http://themeforest.net/user/XpeedStudio/portfolio
 }
 
 /* Portrait tablets and small desktops */
-@media  (max-width: 991px) {
+@media  (max-width: 992px) {
     /* margin bottom list */
     .why-choose-us-block ,
     .xs-info-img ,
@@ -225,10 +225,10 @@ Author URI: http://themeforest.net/user/XpeedStudio/portfolio
     .xs-inline-form .form-control {
         padding-left: 20px;
         margin-bottom: 10px;
-        border-radius: 0px;
+        border-radius: 15px;
     }
     .xs-inline-form .row + .check-btn {
-        border-radius: 0;
+        border-radius: 15px;
     }
     /* work process */
     .work-process-icon::before ,
