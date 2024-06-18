@@ -5645,9 +5645,10 @@ body.fixed-scroll {
 .consultation-menu-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #ff5733;
+    background-color: #008dd2;
     color: white;
-    border-radius: 5px;
+    border: 2px solid white;
+    border-radius: 10px;
     text-align: center;
     text-decoration: none;
     min-width: 150px; /* Минимальная ширина */
@@ -5656,7 +5657,8 @@ body.fixed-scroll {
 }
 
 .consultation-menu-button:hover {
-    background-color: #ff784e;
+    background-color: #0c5adb;
+    color: white;
 }
 
 /* Распределение элементов в меню */
