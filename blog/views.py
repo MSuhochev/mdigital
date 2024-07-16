@@ -175,7 +175,7 @@ class MonetizationView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Динамическая монетизация'
+        context['title'] = 'Динамическая монетизация вашего сайта'
         return context
 
 
