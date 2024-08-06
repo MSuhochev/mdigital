@@ -4,7 +4,8 @@ from django.views.generic import TemplateView
 
 from . import views
 from .views import PostSearchView, SubmitQuestionView, IncomingOrdersView, ContactFormSubmitView, Custom404View, \
-    PrivacyPolicyView, ConsultationRequestView, CookieConsentView, TgCaseView, WebDevCaseView, MonetizationCaseView
+    PrivacyPolicyView, ConsultationRequestView, CookieConsentView, TgCaseView, WebDevCaseView, MonetizationCaseView, \
+    CostCalculationView
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
@@ -12,6 +13,7 @@ urlpatterns = [
     path('search/', PostSearchView.as_view(), name='search'),
     path('submit-question/', SubmitQuestionView.as_view(), name='submit_question'),
     path('incoming-order/', IncomingOrdersView.as_view(), name='incoming_order'),
+    path('calculate-cost/', CostCalculationView.as_view(), name='calculate_cost'),
     path('contact-form-submit/', ContactFormSubmitView.as_view(), name='contact_form_submit'),
     path('consultation/submit/', ConsultationRequestView.as_view(), name='consultation_submit'),
     path('about/', views.AboutView.as_view(), name='about'),

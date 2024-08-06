@@ -1786,3 +1786,76 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* End управления модальным окном консультации */
+
+/*FAQ js start*/
+document.addEventListener("DOMContentLoaded", function() {
+    const toggles = document.querySelectorAll(".faq-toggle");
+
+    toggles.forEach(toggle => {
+        toggle.addEventListener("click", function() {
+            const answer = this.closest(".faq-item").querySelector(".faq-answer");
+            const icon = this.querySelector(".plus-icon");
+
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+                icon.textContent = "+";
+            } else {
+                answer.style.display = "block";
+                icon.textContent = "−";
+            }
+        });
+    });
+});
+/*FAQ js end*/
+
+/*Cost TG bots START */
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('costCalculationForm');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const url = form.getAttribute('data-url');
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': csrfToken,
+      },
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        const successMessage = document.getElementById('successMessage');
+        successMessage.querySelector('p').innerText = data.message;
+        successMessage.style.display = 'block';
+        form.style.display = 'none';
+      } else {
+        alert(data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Произошла ошибка при отправке формы.');
+    });
+  });
+});
+/*Cost TG bots END */
+
+/*Swipe func START*/
+$(document).ready(function() {
+        $("#carouselExampleControls").swipe({
+            swipe: function(event, direction) {
+                if (direction === 'left') {
+                    $(this).carousel('next');
+                }
+                if (direction === 'right') {
+                    $(this).carousel('prev');
+                }
+            },
+            allowPageScroll: "vertical"
+        });
+    });
+/*Swipe func END*/

@@ -1,5 +1,181 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-6">
+            <div class="quote-block">
+                <p>Боты — это неотъемлемая часть экосистемы Telegram. Они предоставляют пользователям широкий спектр возможностей, от автоматизации задач до взаимодействия с различными сервисами.</p>
+                <div class="d-none d-md-block text-center">
+                    <figure>
+                        <img src="{% static 'assets/images/tg_bots/pavel_durov.png' %}" alt="Фото Павла Дурова" class="img-fluid desktop-img">
+                        <figcaption>Павел Дуров</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-block d-md-none">
+            <figure class="text-center">
+                <img src="{% static 'assets/images/tg_bots/pavel_durov.png' %}" alt="Фото Павла Дурова" class="img-fluid mobile-img">
+                <figcaption>Павел Дуров</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <!-- Индикаторы -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <img class="img-fluid" src="{% static 'assets/images/tg_bots/amour-flowers_bot.png' %}" alt="...">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <ul>
+                            <li>
+                                <h5>Создание клиентских баз</h5>
+                                Чат-боты умеют собирать и хранить внутри себя клиентскую базу
+                                с возможностью выгрузки в таблицу Excel
+                            </li>
+                            <li class="mt-3">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#costCalculationModal">
+                                    Рассчитать стоимость
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <img class="img-fluid" src="{% static 'assets/images/tg_bots/amour-flowers_bot.png' %}" alt="...">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <ul>
+                            <li>
+                                <h5>Рассылки</h5>
+                                - Запускайте рассылки по своей базе и ее отдельным сегментам
+                                - Гибкие настройки рассылок: запускайте рассылки вручную
+                                или планируйте их к отправке в заданное время
+                                - Задавайте сценарии отправки цепочек сообщений
+                            </li>
+                            <li class="mt-3">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#costCalculationModal">
+                                    Рассчитать стоимость
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <img class="img-fluid" src="{% static 'assets/images/tg_bots/amour-flowers_bot.png' %}" alt="...">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <ul>
+                            <li>
+                                <h5>Прием заявок</h5>
+                                - Чат-боты отвечают на запросы пользователей,
+                                - принимают заявки от потенциальных клиентов и передают их непосредственно сотрудникам отдела продаж
+                                (в том числе через CRM-системы)
+                            </li>
+                            <li class="mt-3">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#costCalculationModal">
+                                    Рассчитать стоимость
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-6">
+            <img class="img-fluid" src="{% static 'assets/images/tg_bots/amour-flowers_bot.png' %}" alt="...">
+        </div>
+        <div class="col-12 col-md-6">
+            <ul>
+                <li>
+                    <h4>4</h4>
+                    <h5>Интернет-магазин</h5>
+                    <p>
+                        - Совершайте автоматические продажи внутри чат-бота без участия сотрудников <br>
+                        Например: пользователь заинтересовался вашей онлайн-библиотекой, зашел в каталог книг, выбрал подходящую и положил ее в корзину.
+                        Затем оформил заказ, сразу произвел оплату и моментально получил электронную версию книги на свой смартфон <br>
+                        - Бот сам предложил ассортимент товаров, помог оформить заказ, принял оплату и выдал нужный товар клиенту.
+                    </p>
+                </li>
+                <li class="mt-3">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#costCalculationModal">
+                        Рассчитать стоимость
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+        </div>
+        <!-- Элементы управления -->
+        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Предыдущий</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Следующий</span>
+        </a>
+    </div>
+</div>
+
+<!-- Modal Window Start -->
+<div class="modal fade" id="costCalculationModal" tabindex="-1" role="dialog" aria-labelledby="costCalculationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="costCalculationModalLabel">Рассчитать стоимость</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="costCalculationForm" data-url="{% url 'calculate_cost' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="text" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="niche">Ниша</label>
+                        <input type="text" class="form-control" id="niche" name="niche" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="functionality">Желаемый функционал</label>
+                        <textarea class="form-control" id="functionality" name="functionality"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+                <div id="successMessage" style="display:none;">
+                    <p class="text-success"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Window End -->
 
 {% endblock content %}
