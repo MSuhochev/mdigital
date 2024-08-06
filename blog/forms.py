@@ -1,5 +1,5 @@
 from django import forms
-from .models import Subscriber, ConsultationRequest
+from .models import Subscriber, ConsultationRequest, CostCalculationRequest
 
 
 class SubscriberForm(forms.ModelForm):
@@ -23,3 +23,9 @@ class ConsultationForm(forms.ModelForm):
     class Meta:
         model = ConsultationRequest
         fields = ['name', 'phone', 'preferred_time']
+
+
+class CostCalculationForm(forms.ModelForm):
+    class Meta:
+        model = CostCalculationRequest
+        fields = ['name', 'phone', 'niche', 'functionality']

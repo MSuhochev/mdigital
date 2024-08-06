@@ -10,7 +10,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, TemplateView, FormView
-from .forms import SubscriberForm, ConsultationForm
+from .forms import SubscriberForm, ConsultationForm, CostCalculationForm
 from .models import Post, Employee, Category, UserMessage, IncomingOrders, ContactFormSubmission
 import requests
 
@@ -89,7 +89,8 @@ class PostListView(CategoryMixin, ListView):
     template_name = "blog/post_list.html"
 
     def get_queryset(self):
-        return Post.objects.select_related('category').filter(category__slug=self.kwargs.get('slug')).order_by('-create_at')
+        return Post.objects.select_related('category').filter(category__slug=self.kwargs.get('slug')).order_by(
+            '-create_at')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -369,6 +370,24 @@ class ContactFormSubmitView(BaseTelegramNotificationView):
         return JsonResponse(response_data)
 
 
+class CostCalculationView(BaseTelegramNotificationView):
+    telegram_chat_id = '-1002178365833'
+
+    def post(self, request, *args, **kwargs):
+        form = CostCalculationForm(request.POST)
+        if form.is_valid():
+            # Сохраняем форму, но не отправляем в базу данных сразу
+            cost_request = form.save(commit=False)
+            # Отправляем сообщение в Telegram
+            message = (f"Новая заявка:\nИмя: {cost_request.name}\nТелефон: {cost_request.phone}\n"
+                       f"Ниша: {cost_request.niche}\nФункционал: {cost_request.functionality}")
+            self.send_telegram_message(message)
+            # Теперь сохраняем в базу данных
+            cost_request.save()
+            return JsonResponse({'success': True, 'message': 'Заявка принята, мы свяжемся с вами в ближайшее время.'})
+        return JsonResponse({'success': False, 'message': 'Ошибка в заполнении формы.'})
+
+
 class PrivacyPolicyView(TemplateView):
     template_name = 'blog/privacy_policy.html'
 
@@ -382,13 +401,13 @@ class ConsultationRequestView(BaseTelegramNotificationView, FormView):
         consultation = form.save()
 
         # Отправка данных в Telegram
-        message = (
+        message_text = (
             f"Новая заявка на консультацию:\n"
             f"Имя: {consultation.name}\n"
             f"Телефон: {consultation.phone}\n"
             f"Удобное время: {consultation.preferred_time}\n"
         )
-        self.send_telegram_message(message)
+        self.send_telegram_message(message_text)
 
         return JsonResponse({'success': True})
 
