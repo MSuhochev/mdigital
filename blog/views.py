@@ -280,7 +280,7 @@ class PostSearchView(CategoryMixin, ListView):
 
 
 class BaseTelegramNotificationView(View):
-    telegram_bot_token = 'TOKEN'
+    telegram_bot_token = '1324392228:AAE0FzG9fMD_nX622EwMmC0_FlDPnmTNRN0'
 
     def send_telegram_message(self, message):
         url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendMessage"
