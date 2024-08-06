@@ -1846,16 +1846,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*Swipe func START*/
 $(document).ready(function() {
-        $("#carouselExampleControls").swipe({
-            swipe: function(event, direction) {
-                if (direction === 'left') {
-                    $(this).carousel('next');
-                }
-                if (direction === 'right') {
-                    $(this).carousel('prev');
-                }
-            },
-            allowPageScroll: "vertical"
-        });
+    // Инициализация карусели
+    $('#carouselExampleControls').carousel();
+
+    // Инициализация свайпов для карусели
+    $("#carouselExampleControls").swipe({
+        swipe: function(event, direction) {
+            if (direction === 'left') {
+                $(this).carousel('next');
+            }
+            if (direction === 'right') {
+                $(this).carousel('prev');
+            }
+        },
+        allowPageScroll: "vertical"
     });
+
+    // Инициализация кнопок управления
+	$('.carousel-control-prev, .carousel-control-next, .carousel-indicators li').click(function(event) {
+        event.preventDefault(); // Предотвращаем добавление якоря в URL
+    });
+
+    $('.carousel-control-prev').click(function() {
+        $('#carouselExampleControls').carousel('prev');
+    });
+
+    $('.carousel-control-next').click(function() {
+        $('#carouselExampleControls').carousel('next');
+    });
+});
 /*Swipe func END*/

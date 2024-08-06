@@ -5940,7 +5940,7 @@ margin: 0;
 }
 /*TG_development quote-block end*/
 
-/*Carousel Start*/
+/*Carousel control Start*/
 .carousel-control-next, .carousel-control-prev {
     position: absolute;
     top: 90%; /* Позиционирование по вертикали */
@@ -5956,11 +5956,11 @@ margin: 0;
 }
 
 .carousel-control-prev {
-    left: 50%; /* Позиционирование элемента управления 'prev' */
+    left: 35%; /* Позиционирование элемента управления 'prev' */
 }
 
 .carousel-control-next {
-    right: 20%; /* Позиционирование элемента управления 'next' */
+    right: 47%; /* Позиционирование элемента управления 'next' */
 }
 
 .carousel-control-next:hover, .carousel-control-prev:hover {
@@ -5980,3 +5980,49 @@ margin: 0;
         display: flex; /* Показать элементы управления на больших экранах */
     }
 }
+
+
+/*Carousel content style Start*/
+.text-container {
+    padding: 20px;
+}
+
+.text-container h5 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.text-container p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.text-container .btn {
+    font-size: 16px;
+    padding: 0px 20px;
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 767.98px) {
+    .text-container {
+        padding: 10px;
+    }
+
+    .text-container h5 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+
+    .text-container p {
+        font-size: 14px;
+        margin-left: 10px;
+    }
+
+    .text-container .btn {
+        font-size: 14px;
+        padding: 0px 16px;
+    }
+}
+/*Carousel content style End*/

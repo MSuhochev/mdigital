@@ -372,6 +372,7 @@ class ContactFormSubmitView(BaseTelegramNotificationView):
 
 class CostCalculationView(BaseTelegramNotificationView):
     telegram_chat_id = '-1002178365833'
+    template_name = "blog/tg_development.html"
 
     def post(self, request, *args, **kwargs):
         form = CostCalculationForm(request.POST)
