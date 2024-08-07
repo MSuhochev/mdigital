@@ -1851,13 +1851,11 @@ $(document).ready(function() {
 
     // Инициализация свайпов для карусели
     $("#carouselExampleControls").swipe({
-        swipe: function(event, direction) {
-            if (direction === 'left') {
-                $(this).carousel('next');
-            }
-            if (direction === 'right') {
-                $(this).carousel('prev');
-            }
+        swipeLeft: function(event, direction, distance, duration, fingerCount) {
+            $(this).carousel('next');
+        },
+        swipeRight: function(event, direction, distance, duration, fingerCount) {
+            $(this).carousel('prev');
         },
         allowPageScroll: "vertical"
     });

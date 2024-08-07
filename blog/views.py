@@ -95,7 +95,7 @@ class PostListView(CategoryMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         category_name = self.get_queryset().first().category.name if self.get_queryset().exists() else None
-        context['title'] = f'MDigital - Посты категории {category_name}'
+        context['title'] = f'Посты категории {category_name}'
         queryset = self.get_queryset()
         paginator = Paginator(queryset, self.paginate_by)
         page_number = self.request.GET.get('page')
@@ -129,7 +129,7 @@ class PostGridView(CategoryMixin, ListView):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
         context['posts'] = posts
-        context['title'] = 'MDigital - Все Посты'
+        context['title'] = 'Все Посты'
         context['categories'] = self.get_category_queryset()
         context['recent_posts'] = self.get_recent_posts()
         return context
@@ -142,7 +142,7 @@ class AboutView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - О нас'
+        context['title'] = 'О нас'
 
         # Получаем queryset сотрудников, отсортированный по ID
         employees = Employee.objects.all().order_by('id')
@@ -166,7 +166,7 @@ class ContactsView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Контакты'
+        context['title'] = 'Контакты'
         return context
 
 
@@ -186,7 +186,7 @@ class TelegramDevelopmentView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Разработка в Telegram'
+        context['title'] = 'Разработка в Telegram'
         return context
 
 
@@ -196,7 +196,7 @@ class WebDevelopmentView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - WEB Разработка'
+        context['title'] = 'WEB Разработка'
         return context
 
 
@@ -206,7 +206,7 @@ class AnalyticsView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Аналитика'
+        context['title'] = 'Аналитика'
         return context
 
 
@@ -216,7 +216,7 @@ class SupportView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Поддержка'
+        context['title'] = 'Поддержка'
         return context
 
 
@@ -226,7 +226,7 @@ class ProjectsGridView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Наши проекты'
+        context['title'] = 'Наши проекты'
         return context
 
 
@@ -236,7 +236,7 @@ class CareerView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'MDigital - Карьера'
+        context['title'] = 'Карьера'
         return context
 
 
@@ -264,7 +264,7 @@ class PostSearchView(CategoryMixin, ListView):
         context = super().get_context_data(**kwargs)
         query = self.request.GET.get('q')
         context['query'] = query
-        context['title'] = 'MDigital - Результат поиска'
+        context['title'] = 'Результат поиска'
 
         paginator = context.get('paginator')
         page = context.get('page_obj')
