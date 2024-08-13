@@ -1057,18 +1057,40 @@ button:focus {
   text-align: center;}
   .why-choose-us-block p {
     margin-bottom: 0px; }
+  .why-choose-us-block h5 {
+     font-weight: 300;}
 
 .why-choose-us-formats-block {
-  text-align: left;
-  text-indent: 1em;
-  padding: 0 35px;}
+  text-align: center;
+  padding: 0 10px;}
   .why-choose-us-formats-block p {
-    margin-bottom: 0px; }
+    margin-bottom: 10px; }
+
+.another-block h5 {
+    margin-bottom: 35px; /* Другой отступ для другого блока */
+}
 
 .choose-us-img {
   min-height: 145px;
-  margin-bottom: 38px;
+  margin-bottom: 10px;
   margin-left: 23px; }
+
+/* Специфичный стиль для заголовка h3 */
+.why-choose-h3 {
+    font-size: 24px; /* Устанавливаем размер шрифта */
+    font-weight: bold; /* Делаем текст жирным */
+    color: #333; /* Устанавливаем цвет шрифта */
+    margin-bottom: 0px; /* Добавляем нижний отступ */
+    /* Добавьте любые другие стили, которые вам нужны */
+}
+
+/* Медиазапросы для мобильной версии */
+@media (max-width: 767.98px) {
+    .why-choose-h3 {
+        font-size: 20px; /* Уменьшаем размер шрифта на мобильных устройствах */
+        margin-bottom: 15px; /* Уменьшаем нижний отступ на мобильных устройствах */
+    }
+}
 
 /*=================================================
     11. free quote
@@ -2055,7 +2077,7 @@ button:focus {
 ==============================================================*/
 /* inner-banner-area */
 .inner-banner-area {
-  min-height: 200px;
+  min-height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2081,7 +2103,8 @@ button:focus {
   font-size: 2.4rem;
   color: #fefefe;
   font-weight: 700;
-  margin-bottom: 15px; }
+  margin-top: 15px;
+  margin-bottom: 10px; }
 
 /* breadcumbs */
 .breadcumbs > li {
@@ -2092,6 +2115,34 @@ button:focus {
     padding: 0 7px 0 5px; }
   .breadcumbs > li > a {
     color: #fefefe; }
+
+  /* Специфичный селектор для ul внутри секции с классом inner-banner-area */
+.inner-banner-area .inner-banner-content ul.breadcumbs {
+    /* Ваши стили здесь */
+    padding-left: 0;
+    list-style: none;
+    margin: 10px 0;
+}
+
+.inner-banner-area .inner-banner-content ul.breadcumbs li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.inner-banner-area .inner-banner-content ul.breadcumbs li a {
+    text-decoration: none;
+    color: #FFFFFF; /* Цвет текста */
+}
+
+.inner-banner-area .inner-banner-content ul.breadcumbs li::after {
+    content: ">";
+    margin-left: 5px;
+    color: #6c757d; /* Серый цвет для разделителя */
+}
+
+.inner-banner-area .inner-banner-content ul.breadcumbs li:last-child::after {
+    content: ""; /* Убираем разделитель у последнего элемента */
+}
 
 /*=================================================
     23. funfact
@@ -5980,49 +6031,104 @@ margin: 0;
         display: flex; /* Показать элементы управления на больших экранах */
     }
 }
+/*Carousel control End*/
 
-
-/*Carousel content style Start*/
-.text-container {
+/* Carousel content style Start */
+.custom-carousel .text-container {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Располагаем элементы с отступом между ними */
+    height: 450px; /* Занимаем всю высоту контейнера */
 }
 
-.text-container h5 {
-    margin-bottom: 15px;
+.custom-carousel .text-container h4,
+.custom-carousel .text-container h5 {
+    margin: 0;
+}
+
+.custom-carousel .text-container h4 {
+    font-size: 24px;
+    padding-bottom: 45px;
+    padding-top: 20px;
+}
+
+.custom-carousel .text-container .black-text {
+    color: #000; /* Черный цвет */
+}
+
+.custom-carousel .text-container .gray-text {
+    color: #6c757d; /* Серый цвет */
+}
+
+.custom-carousel .text-container h5 {
+    margin-bottom: 10px; /* Отступ снизу */
+    margin-top: 10px; /* Отступ сверху */
     font-size: 24px;
     font-weight: bold;
 }
 
-.text-container p {
+.custom-carousel .text-container p {
+    text-align: justify;
     font-size: 16px;
     line-height: 1.5;
+    margin-bottom: 20px; /* Отступ снизу */
 }
 
-.text-container .btn {
+.custom-carousel .text-container .btn {
     font-size: 16px;
     padding: 0px 20px;
+    align-self: flex-start; /* Располагаем кнопку внизу */
 }
 
 /* Адаптация под мобильные устройства */
 @media (max-width: 767.98px) {
-    .text-container {
+    .custom-carousel .text-container {
         padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .text-container h5 {
-        font-size: 18px;
-        margin-bottom: 10px;
-        margin-left: 10px;
+    .custom-carousel .text-container h5,
+    .custom-carousel .text-container img,
+    .custom-carousel .text-container .btn {
+        text-align: center; /* Центрируем текст, изображение и кнопку */
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .text-container p {
-        font-size: 14px;
-        margin-left: 10px;
+    .custom-carousel .text-container h4,
+    .custom-carousel .text-container p {
+        text-align: justify;
+        align-self: center;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .text-container .btn {
+    .custom-carousel .text-container img {
+        margin-top: 10px;  /* Отступ сверху */
+        margin-bottom: 10px;  /* Отступ снизу */
+        max-width: 75%; /* Ограничиваем ширину изображения */
+    }
+
+    .custom-carousel .text-container .btn {
         font-size: 14px;
         padding: 0px 16px;
+        margin-top: 10px; /* Отступ сверху */
     }
 }
-/*Carousel content style End*/
+
+@media (max-width: 768px) {
+    .custom-carousel .img-fluid {
+        max-width: 75%;
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-carousel .img-fluid {
+        max-width: 75%;
+    }
+}
+/* Carousel content style End */
+

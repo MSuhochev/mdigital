@@ -1710,6 +1710,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function() {
     var modal = document.getElementById("consultation-modal");
     var btn = document.getElementById("open-consultation-modal");
+	var anotherBtn = document.getElementById("open-another-consultation-modal"); // Новая кнопка
     var span = document.getElementById("close-consultation-modal");
     var form = document.getElementById("consultation-form");
     var mobileMenu = document.querySelector(".nav-menus-wrapper");
@@ -1739,6 +1740,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     btn.onclick = openModal;
+	anotherBtn.onclick = openModal; // Обработка клика по новой кнопке
     span.onclick = closeModal;
 
     window.onclick = function(event) {
