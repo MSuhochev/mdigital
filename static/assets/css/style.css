@@ -3828,31 +3828,84 @@ button:focus {
     11. element top bar
 ==============================================================*/
 /* top bar */
+/* Основные стили */
 .xs-top-bar {
   background-color: #008dd2;
-  padding: 14px 0; }
-  .xs-top-bar .xs-list {
-    text-align: right;
-    line-height: 1; }
-    .xs-top-bar .xs-list li:not(:last-child) {
-      margin-right: 17px; }
-    .xs-top-bar .xs-list li a {
-      color: #FFFFFF;
-      font-size: 0.8666666667rem; }
+  padding: 14px 0;
+}
 
-.xs-top-bar-info {
-  line-height: 1; }
-  .xs-top-bar-info li {
-    display: inline-block; }
-    .xs-top-bar-info li:not(:last-child) {
-      padding-right: 30px;
-      margin-right: 30px;
-      border-right: 1px solid rgba(255, 255, 255, 0.2); }
-    .xs-top-bar-info li i {
-      padding-right: 5px; }
-    .xs-top-bar-info li a {
-      font-size: 0.8666666667rem;
-      color: #FFFFFF; }
+.xs-top-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.xs-top-bar-info-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.xs-top-bar-info-list li {
+  display: flex;
+  align-items: center;
+  margin-right: 15px; /* Отступ между элементами */
+}
+
+.xs-top-bar-info-list li a {
+  color: #FFFFFF;
+  font-size: 0.8666666667rem;
+  text-decoration: none;
+}
+
+.xs-top-bar-info-list li i {
+  margin-right: 5px; /* Отступ между иконкой и текстом */
+}
+
+.xs-top-bar-social {
+  display: flex;
+  align-items: center;
+}
+
+.xs-top-bar-social .xs-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: right;
+}
+
+.xs-top-bar-social .xs-list li {
+  display: inline-block;
+  margin-left: 15px; /* Отступ между иконками соцсетей */
+}
+
+.xs-top-bar-social .xs-list li a {
+  color: #FFFFFF;
+  font-size: 0.8666666667rem;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 768px) {
+  .xs-top-bar-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .xs-top-bar-info-list {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .xs-top-bar-info-list li {
+    margin-right: 15px; /* Можно уменьшить отступы для мобильных устройств */
+  }
+
+  .xs-top-bar-social {
+    margin-top: 5px; /* Отступ сверху для выравнивания */
+  }
+}
+
 
 /*=================================================
     12. hover box (team)
@@ -5649,6 +5702,9 @@ img[data-scrollax] {
 
 #service .container {
     padding-top: 70px;
+      @media (max-width: 768px) {
+        padding-top: 22px;
+    }
 }
 
 .tab-pane {
@@ -5669,6 +5725,7 @@ body.fixed-scroll {
     overflow-y: hidden;
     width: 100%;
 }
+
 
 /* Стили для кнопки "Наверх" */
 #back-to-top {
@@ -6096,15 +6153,17 @@ margin: 0;
         text-align: center; /* Центрируем текст, изображение и кнопку */
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 0;
     }
 
-    .custom-carousel .text-container h4,
-    .custom-carousel .text-container p {
-        text-align: justify;
-        align-self: center;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
+    .custom-carousel .text-container h4, .custom-carousel .text-container p {
+    text-align: justify;
+    align-self: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
     .custom-carousel .text-container img {
         margin-top: 10px;  /* Отступ сверху */
