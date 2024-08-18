@@ -253,10 +253,10 @@ Author URI: http://themeforest.net/user/XpeedStudio/portfolio
     .address-info-list li .address-icon {
         min-width: 56px;
     }
-    .partner-area .xs-lsit li:not(:last-child) {
+    .partner-area .xs-list li:not(:last-child) {
         margin-bottom: 10px;
     }
-    .partner-area .xs-lsit {
+    .partner-area .xs-list {
         margin-bottom: 20px;
     }
     .xs-list > li:not(:last-child) {

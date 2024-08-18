@@ -54,7 +54,7 @@
         color: $color-white;
         margin-bottom: 40px;
     }
-    .xs-lsit {
+    .xs-list {
         li {
             &:not(:last-child) {
                 margin-bottom: 22px;
@@ -107,7 +107,7 @@
     border-radius: 5px;
     background-color: #022967;
     padding: 40px;
-    .xs-lsit {
+    .xs-list {
         padding-top: 6px;
         li {
             &:not(:last-child) {
