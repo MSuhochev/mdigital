@@ -2658,13 +2658,13 @@ button:focus {
     overflow: hidden;
 }
 
-/* fotoer main */
+/* footer main */
 .footer-main {
     padding: 60px 0;
 }
 
 .footer-main + .partner-area-wraper {
-    margin-bottom: -61px;
+    margin-bottom: -51px;
     position: relative;
     z-index: 1;
 }
@@ -2723,25 +2723,60 @@ button:focus {
     padding-right: 9px;
 }
 
-/* partnre area */
+/* partner area */
 .partner-area {
     border-radius: 5px;
     background-color: #022967;
-    padding: 40px;
+    padding: 20px;
+    white-space: nowrap;
 }
 
-.partner-area .xs-list {
+.partner-block .xs-list {
     padding-top: 6px;
 }
 
-.partner-area .xs-list li:not(:last-child) {
+.partner-block .xs-list li:not(:last-child) {
     margin-right: 40px;
 }
 
-.partner-area .xs-list li.title {
+.partner-block .xs-list li.title {
     color: #FFFFFF;
     margin-right: 25px;
 }
+
+.payment-block {
+    margin-left: auto; /* Сдвигает блок оплаты вправо */
+}
+
+.payment-block .xs-list {
+    padding-top: 0;
+}
+
+.payment-block .xs-list li:not(:last-child) {
+    margin-right: 40px;
+}
+
+.payment-block .xs-list li.title {
+    color: #FFFFFF;
+    margin-right: 25px;
+}
+
+/* Мобильные стили */
+@media (max-width: 767px) {
+    .partner-area {
+        flex-direction: column; /* Размещаем блоки друг под другом на мобильных устройствах */
+        align-items: flex-start; /* Выравниваем блоки по левому краю на мобильных устройствах */
+    }
+
+    .partner-block .xs-list {
+        margin-bottom: 20px; /* Добавляем отступ снизу для разделения блоков */
+    }
+
+    .payment-block .xs-list {
+        margin-bottom: 20px; /* Добавляем отступ снизу для разделения блоков */
+    }
+}
+
 
 /* copyright text */
 .copyright-text {
@@ -4720,10 +4755,6 @@ button:focus {
 .xs-heading.text-right .line::before, .xs-heading.text-right .line::after {
     right: 0;
     left: inherit;
-}
-
-.xs-heading[class*=text-] {
-    margin-bottom: 55px;
 }
 
 .xs-heading.style4 .line {
@@ -7504,7 +7535,8 @@ h3 a:hover, .section-title a:hover {
 h4, .xs-content-title {
     font-size: 1.6rem;
     font-weight: 700;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 20px;
 }
 
 h4.small, .xs-content-title.small {
@@ -8077,7 +8109,6 @@ body.fixed-scroll {
         text-indent: 2em;
     }
 }
-
 /*TG_development quote-block end*/
 
 /*Carousel control Start*/
@@ -8110,16 +8141,52 @@ body.fixed-scroll {
 /* Медиа-запросы для мобильных устройств */
 @media (max-width: 768px) {
     .carousel-control-next, .carousel-control-prev {
-        display: none; /* Скрыть элементы управления на маленьких экранах */
+        width: 40px; /* Уменьшаем размер кнопок на мобильных устройствах */
+        height: 40px;
+        font-size: 1.2rem; /* Уменьшаем размер иконок */
+    }
+    .carousel-control-prev {
+        left: 3%; /* Позиционирование элемента управления 'prev' */
+        top: 35%;
+    }
+
+    .carousel-control-next {
+        right: 3%; /* Позиционирование элемента управления 'next' */
+        top: 35%;
     }
 }
 
 /* Медиа-запросы для планшетов и больших экранов */
-@media (max-width: 768px), (min-width: 769px) and (max-width: 991px) {
+@media (min-width: 769px) and (max-width: 991px) {
     .carousel-control-next, .carousel-control-prev {
-        display: none; /* Скрыть элементы управления на указанных экранах */
+        width: 45px; /* Размер кнопок для планшетов */
+        height: 45px;
+        font-size: 1.4rem; /* Размер иконок для планшетов */
+    }
+
+    .carousel-control-prev {
+        left: 70%; /* Позиционирование элемента управления 'prev' */
+        top: 86%;
+    }
+
+    .carousel-control-next {
+        right: 10%; /* Позиционирование элемента управления 'next' */
+        top: 86%;
     }
 }
+/*!* Медиа-запросы для мобильных устройств *!*/
+/*@media (max-width: 768px) {*/
+/*    .carousel-control-next, .carousel-control-prev {*/
+/*        display: none; !* Скрыть элементы управления на маленьких экранах *!*/
+/*    }*/
+/*}*/
+
+/*!* Медиа-запросы для планшетов и больших экранов *!*/
+/*@media (max-width: 768px), (min-width: 769px) and (max-width: 991px) {*/
+/*    .carousel-control-next, .carousel-control-prev {*/
+/*        display: none; !* Скрыть элементы управления на указанных экранах *!*/
+/*    }*/
+/*}*/
 
 /*Carousel control End*/
 
@@ -8169,6 +8236,36 @@ body.fixed-scroll {
     padding: 0 20px;
     align-self: flex-start; /* Располагаем кнопку внизу */
     margin-bottom: 40px;
+}
+
+/* Медиа-запросы для планшетов */
+@media (min-width: 769px) and (max-width: 991px) {
+    .custom-carousel .text-container {
+        padding: 15px;
+        height: 520px; /* Делаем высоту контейнера фикс */
+    }
+
+    .custom-carousel .text-container h4 {
+        font-size: 20px;
+        padding-bottom: 30px;
+        padding-top: 15px;
+    }
+
+    .custom-carousel .text-container h5 {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .custom-carousel .text-container p {
+        font-size: 16px; /* Увеличиваем размер шрифта для лучшей читаемости на планшетах */
+        line-height: 1.4; /* Увеличиваем межстрочный интервал */
+    }
+
+    .custom-carousel .text-container .btn {
+        font-size: 14px;
+        padding: 0 18px;
+        margin-bottom: 30px; /* Уменьшаем отступ снизу */
+    }
 }
 
 /* Адаптация под мобильные устройства */
