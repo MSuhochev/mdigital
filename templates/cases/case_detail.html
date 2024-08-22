@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!--CKEditor content-->
+<link rel="stylesheet" href="{% static 'assets/css/content-styles.css' %}" type="text/css">
+
+{% block content %}
+<!-- single case section start -->
+<section class="xs-section-padding case-single-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- .single-case-post START -->
+                <div class="single-case-post post-list format-gallery">
+                    <div class="post-image">
+                        {% if case.image %}
+                            <img src="{{ case.image.url }}" alt="{{ case.title }}">
+                        {% else %}
+                            <img src="{% static 'default_image.jpg' %}" alt="{{ case.title }}">
+                        {% endif %}
+                    </div><!-- .post-image END -->
+                    <div class="text-lg-left"><h3>{{ case.title }}</h3></div>
+                    <div class="post-body">
+                        <div class="entry-header">
+                            <div class="entry-meta">
+                                <span class="case-author"><i class="icon icon-user2"></i> {{ case.author }}</span>
+                                <span class="case-publish-date"><i class="icon icon-calendar-1"></i> {{ case.create_at|date:"d M Y" }}</span>
+                                <span class="case-cat"><i class="icon icon-folders"></i> {{ case.category }}</span>
+                            </div>
+                            <div class="case-content">
+                                <p>{{ case.text|safe }}</p>
+                            </div>
+
+                            <div class="case-footer">
+                                <div class="divider">
+                                    <span class="border-divider"></span>
+                                </div>
+                                <div class="case-tags">
+                                    <span class="icon icon-tags"></span>
+                                    {% for tag in case.tags.all %}
+                                        <a href="#">{{ tag.name }}</a>
+                                    {% endfor %}
+                                </div>
+                                <div class="social-share">
+                                    <ul class="social-list version-2">
+                                        <li class="title">Поделиться в </li>
+                                        <li><a href="#" class="twitter"><i class="fa fa-telegram"></i></a></li>
+                                        <li><a href="#" class="linkedin"><i class="fa fa-vk"></i></a></li>
+                                        <li><a href="#" class="twitter"><i class="fa fa-whatsapp"></i></a></li>
+                                        <li class="floating-btn-wraper">
+                                            <a href="#" class="btn-floating">
+                                                <span class="vertical-dots"></span>
+                                            </a>
+                                            <ul class="floating-icons-list social-list version-2">
+                                                <li><a href="#" class="twitter"><i class="fa fa-telegram"></i></a></li>
+                                                <li><a href="#" class="linkedin"><i class="fa fa-vk"></i></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- .post-body END -->
+                </div>
+                <!-- .single-case-post .post-list .format-gallery END -->
+
+                <!-- .author-card START -->
+                <div class="author-card">
+                    <div class="author-header">
+                        <h2 class="author-title">Колонка автора</h2>
+                        <span class="border-divider style-white"></span>
+                    </div>
+                    <div class="author-details media">
+                        <div class="author-img">
+                            <!-- Получаем профиль пользователя -->
+                            {% with profile=case.author.userprofile %}
+                                <!-- Получаем сотрудника, связанного с профилем пользователя -->
+                                {% with employee=profile.employee %}
+                                    <img src="{{ employee.photo.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}">
+                                {% endwith %}
+                            {% endwith %}
+                        </div>
+                        <div class="author-bio">
+                            <!-- Получаем профиль пользователя -->
+                            {% with profile=case.author.userprofile %}
+                                <!-- Получаем сотрудника, связанного с профилем пользователя -->
+                                {% with employee=profile.employee %}
+                                    <h3 class="author-name">{{ employee.first_name }} {{ employee.last_name }}</h3>
+                                    <h4 class="authr-designation">{{ employee.position }}</h4>
+                                    <p>{{ employee.quote }}</p>
+                                    <ul class="simple-social-list">
+                                        <li><a href="{{ employee.telegram_id }}" target="_blank"><i class="fa fa-telegram"></i></a></li>
+                                        <li><a href="{{ employee.vk_id }}" target="_blank"><i class="fa fa-vk"></i></a></li>
+                                    </ul>
+                                {% endwith %}
+                            {% endwith %}
+                        </div>
+                    </div>
+                </div>
+                <!-- .author-card END -->
+
+                <div class="case-navigation">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <div class="case-previous">
+                                {% if previous_case %}
+                                    <a href="{{ previous_case.get_absolute_url }}" class="single-post-nav">
+                                        <h3 class="case-nav-title icon-left"><i class="icon icon-arrow-left"></i>Предыдущий</h3>
+                                        <div class="media align-items-center">
+                                            <div class="case-image-container">
+                                                <img class="case-nav-img" src="{{ previous_case.image.url }}" alt="{{ previous_case.title }}">
+                                            </div>
+                                            <h4 class="case-title">{{ previous_case.title }}</h4>
+                                        </div>
+                                    </a><!-- .single-post-nav END -->
+                                {% endif %}
+                            </div><!-- .case-previous END -->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="case-next">
+                                {% if next_case %}
+                                    <a href="{{ next_case.get_absolute_url }}" class="single-post-nav">
+                                        <h3 class="case-nav-title icon-right"><i class="icon icon-arrow-right"></i>Следующий</h3>
+                                        <div class="media align-items-center">
+                                            <div class="case-image-container">
+                                                <img src="{{ next_case.image.url }}" class="case-nav-img" alt="{{ next_case.title }}">
+                                            </div>
+                                            <h4 class="case-title">{{ next_case.title }}</h4>
+                                        </div>
+                                    </a><!-- .single-post-nav END -->
+                                {% endif %}
+                            </div><!-- .case-next END -->
+                        </div>
+                    </div><!-- .row END -->
+                </div><!-- .case-navigation END -->
+
+            </div>
+            <div class="col-md-4">
+                <!-- case sidebar start -->
+                <div class="case-sidebar-wrapper right-sidebar">
+                    <!-- Sidebar content goes here -->
+                </div>
+                <!-- case sidebar end -->
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section><!-- .case-single-section END -->
+{% endblock content %}

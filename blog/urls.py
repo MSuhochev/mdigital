@@ -1,10 +1,7 @@
-from django.contrib.sitemaps.views import sitemap
 from django.urls import path, re_path
-from django.views.generic import TemplateView
-
 from . import views
 from .views import PostSearchView, SubmitQuestionView, IncomingOrdersView, ContactFormSubmitView, Custom404View, \
-    PrivacyPolicyView, ConsultationRequestView, CookieConsentView, TgCaseView, WebDevCaseView, MonetizationCaseView, \
+    PrivacyPolicyView, ConsultationRequestView, CookieConsentView, \
     CostCalculationView
 
 urlpatterns = [
@@ -22,16 +19,12 @@ urlpatterns = [
     path('post_grid/', views.PostGridView.as_view(), name='post_grid'),
     path('tg_development/', views.TelegramDevelopmentView.as_view(), name='tg_development'),
     path('web_development/', views.WebDevelopmentView.as_view(), name='web_development'),
-    path('tg_cases/', TgCaseView.as_view(), name='tg_cases'),
-    path('development_cases/', WebDevCaseView.as_view(), name='development_cases'),
-    path('monetization_cases/', MonetizationCaseView.as_view(), name='monetization_cases'),
     path('analytics/', views.AnalyticsView.as_view(), name='analytics'),
     path('support/', views.SupportView.as_view(), name='support'),
-    path('projects/', views.ProjectsGridView.as_view(), name='projects'),
     path('career/', views.CareerView.as_view(), name='career'),
     path('privacy-policy/', PrivacyPolicyView.as_view(), name='privacy_policy'),
-    path('<slug:slug>/<slug:post_slug>/', views.PostDetailView.as_view(), name='post_single'),
-    path('<slug:slug>/', views.PostListView.as_view(), name='post_list'),
+    path('post/<slug:slug>/<slug:post_slug>/', views.PostDetailView.as_view(), name='post_single'),
+    path('posts/<slug:slug>/', views.PostListView.as_view(), name='post_list'),
 ]
 
 handler404 = Custom404View.as_view()

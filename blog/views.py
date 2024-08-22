@@ -1,9 +1,10 @@
 import phonenumbers
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.decorators import method_decorator
@@ -70,12 +71,12 @@ class PostDetailView(CategoryMixin, DetailView):
         current_post = context['post']
         try:
             previous_post = Post.objects.filter(create_at__lt=current_post.create_at).latest('create_at')
-        except Post.DoesNotExist:
+        except ObjectDoesNotExist:
             previous_post = None
 
         try:
             next_post = Post.objects.filter(create_at__gt=current_post.create_at).earliest('create_at')
-        except Post.DoesNotExist:
+        except ObjectDoesNotExist:
             next_post = None
 
         context['previous_post'] = previous_post
@@ -217,16 +218,6 @@ class SupportView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Поддержка'
-        return context
-
-
-class ProjectsGridView(ListView):
-    template_name = "blog/projects.html"
-    model = Post
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Наши проекты'
         return context
 
 
@@ -426,18 +417,3 @@ class CookieConsentView(View):
         response = JsonResponse({'status': 'success'})
         response.set_cookie('cookie_consent', 'yes', max_age=365 * 24 * 60 * 60)  # Устанавливаем куку на 1 год
         return response
-
-
-class TgCaseView(ListView):
-    model = Post
-    template_name = 'blog/tg_cases.html'
-
-
-class WebDevCaseView(ListView):
-    model = Post
-    template_name = 'blog/development_cases.html'
-
-
-class MonetizationCaseView(ListView):
-    model = Post
-    template_name = 'blog/monetization_cases.html'

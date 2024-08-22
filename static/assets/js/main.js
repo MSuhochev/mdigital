@@ -521,26 +521,68 @@
                 if (target.length) {
                     $('html, body').animate({
                         scrollTop: target.offset().top
-                    }, 1000);
-                }
+                    }, 1000, function () {
+                        // Этот код выполнится после завершения анимации прокрутки
+                        var $panel = $('.nav-overlay-panel');
+                        var $menuWrapper = $('.nav-menus-wrapper');
 
-                // Закрытие меню и панели
-                var $panel = $('.nav-overlay-panel');
-                var $menuWrapper = $('.nav-menus-wrapper');
+                        if ($menuWrapper.hasClass('nav-menus-wrapper-open')) {
+                            $menuWrapper.removeClass('nav-menus-wrapper-open');
+                        }
 
-                if ($menuWrapper.hasClass('nav-menus-wrapper-open')) {
-                    $menuWrapper.removeClass('nav-menus-wrapper-open');
-                }
+                        if ($panel.css('display') === 'block') {
+                            $panel.css('display', 'none');
+                        }
 
-                if ($panel.css('display') === 'block') {
-                    $panel.css('display', 'none');
-                }
-
-                if ($('body').hasClass('no-scroll')) {
-                    $('body').removeClass('no-scroll');
+                        if ($('body').hasClass('no-scroll')) {
+                            $('body').removeClass('no-scroll');
+                        }
+                    });
                 }
             });
         });
+
+
+        // $(document).ready(function () {
+        //     // Инициализация плагина
+        //     if ($('.xs-menus').length > 0) {
+        //         $('.xs-menus').xs_nav({
+        //             mobileBreakpoint: 992
+        //         }, {
+        //             passive: true
+        //         });
+        //     }
+        //
+        //     // Обработка кликов по ссылкам меню
+        //     $('.single-page-menu li a').on('click', function (event) {
+        //         event.preventDefault();
+        //
+        //         var target = $(this.hash);
+        //         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        //
+        //         if (target.length) {
+        //             $('html, body').animate({
+        //                 scrollTop: target.offset().top
+        //             }, 1000);
+        //         }
+        //
+        //         // Закрытие меню и панели
+        //         var $panel = $('.nav-overlay-panel');
+        //         var $menuWrapper = $('.nav-menus-wrapper');
+        //
+        //         if ($menuWrapper.hasClass('nav-menus-wrapper-open')) {
+        //             $menuWrapper.removeClass('nav-menus-wrapper-open');
+        //         }
+        //
+        //         if ($panel.css('display') === 'block') {
+        //             $panel.css('display', 'none');
+        //         }
+        //
+        //         if ($('body').hasClass('no-scroll')) {
+        //             $('body').removeClass('no-scroll');
+        //         }
+        //     });
+        // });
 
         // if ($('.xs-menus').length > 0) {
         // 	$('.xs-menus').xs_nav({
