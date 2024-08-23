@@ -506,8 +506,6 @@
             if ($('.xs-menus').length > 0) {
                 $('.xs-menus').xs_nav({
                     mobileBreakpoint: 992
-                }, {
-                    passive: true
                 });
             }
 
