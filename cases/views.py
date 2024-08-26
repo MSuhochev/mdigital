@@ -48,7 +48,7 @@ class CaseDetailView(CaseCategoryMixin, DetailView):
 
 class CaseListView(CaseCategoryMixin, ListView):
     model = Case
-    paginate_by = 3  # Количество кейсов на страницу
+    paginate_by = 10  # Количество кейсов на страницу
     template_name = "cases/case_list.html"  # Убедитесь, что шаблон находится в папке 'cases'
     context_object_name = 'cases'
 
@@ -60,10 +60,15 @@ class CaseListView(CaseCategoryMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        # Получаем category_slug из kwargs
+        category_slug = self.kwargs.get('category_slug')
+
+        # Находим категорию по case_slug
+        category = CaseCategory.objects.filter(case_slug=category_slug).first()
+
         # Получаем имя категории для отображения в заголовке
-        queryset = self.get_queryset()
-        category_name = queryset.first().category.name if queryset.exists() else None
-        context['title'] = f'Кейсы категории {category_name}'
+        category_name = category.name if category else "Неизвестная категория"
+        context['title'] = f'Проекты категории {category_name}'
 
         # Данные о категориях и последние кейсы
         context['categories'] = self.get_category_queryset()
@@ -74,7 +79,7 @@ class CaseListView(CaseCategoryMixin, ListView):
 
 class CaseGridView(CaseCategoryMixin, ListView):
     model = Case
-    paginate_by = 4
+    paginate_by = 6
     template_name = "cases/case_grid.html"
     context_object_name = 'cases'
     ordering = ['-create_at']
@@ -97,7 +102,7 @@ class CaseGridView(CaseCategoryMixin, ListView):
             cases = paginator.page(paginator.num_pages)
 
         context['cases'] = cases
-        context['title'] = 'Все Кейсы'
+        context['title'] = 'Наши проекты'
         context['categories'] = self.get_category_queryset()
         context['recent_cases'] = self.get_recent_cases()
 

@@ -1,13 +1,13 @@
 <div class="widget widget-categories">
     <div class="widget-header">
-        <h3 class="xs-title">Категории</h3>
+        <h3 class="xs-title">Проекты по категориям</h3>
         <span class="border-divider"></span>
     </div>
     <ul class="list-group">
         {% for category in categories %}
         <li>
-            <a href="{% url 'post_list' category.slug %}">{{ category.name }}</a>
-            <span>({{ category.num_posts }})</span>
+            <a href="{% url 'case_list' category.case_slug %}">{{ category.name }}</a>
+            <span>({{ category.num_cases }})</span>
         </li>
         {% endfor %}
     </ul>

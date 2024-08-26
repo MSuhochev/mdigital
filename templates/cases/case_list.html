@@ -2,34 +2,113 @@
 {% load static %}
 
 {% block content %}
-<!-- case list section -->
-<h1>{{ title }}</h1>
-<ul>
-    {% for case in cases %}
-        <li>
-            <a href="{% url 'case_detail' category_slug=case.category.case_slug case_slug=case.slug %}">
-                {{ case.title }}</a>
-        </li>
-    {% endfor %}
-</ul>
+<section class="xs-section-padding blog-grid-sidebar-area cases-grid-sidebar-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- case list section -->
+                <div class="container case-carousel-container">
+                    <div id="caseCarouselControls" class="carousel slide case-carousel" data-ride="carousel">
+                        <!-- Индикаторы -->
+                        <ol class="carousel-indicators case-carousel-indicators">
+                            {% for case in cases %}
+                            <li data-target="#caseCarouselControls" data-slide-to="{{ forloop.counter0 }}"
+                                class="{% if forloop.first %}active{% endif %}"></li>
+                            {% endfor %}
+                        </ol>
+                        <div class="carousel-inner case-carousel-inner">
+                            {% for case in cases %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %} case-carousel-item">
+                                <div class="row flex-column flex-md-row align-items-center justify-content-center">
+                                    <div class="col-12 col-md-8 text-container order-md-2">
+                                        <h4 class="d-block d-md-none mt-3"><span style="color: #008dd2;">{{ forloop.counter }}</span><span
+                                                style="color: gray;">/{{ cases|length }}</span></h4>
+                                        <h5>{{ case.title }}</h5>
+                                        <img class="img-fluid d-block d-md-none mt-3"
+                                             src="{{ case.image.url }}" alt="{{ case.title }}">
+                                        {{ case.text | safe }}
+                                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                                data-target="#costCalculationModal">Рассчитать стоимость
+                                        </button>
+                                    </div>
+                                    <div class="col-12 col-md-4 d-none d-md-flex justify-content-center order-md-1">
+                                        <h4><span style="color: #008dd2;">{{ forloop.counter }}</span><span
+                                                style="color: gray;">/{{ cases|length }}</span></h4>
+                                        <img class="img-fluid" src="{{ case.image.url }}" alt="{{ case.title }}">
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!-- Элементы управления -->
+                        <a class="carousel-control-prev case-carousel-control-prev" href="#caseCarouselControls"
+                           role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Предыдущий</span>
+                        </a>
+                        <a class="carousel-control-next case-carousel-control-next" href="#caseCarouselControls"
+                           role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Следующий</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- cases sidebar start -->
+                <div class="blog-sidebar-wraper right-sidebar cases-sidebar-wraper">
+                    <div class="widget widget-search-cases">
+                        {% include 'cases/includes/widget_search_cases.html' %}
+                    </div>
 
-{% if is_paginated %}
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
+                    <div class="widget widget-categories-cases">
+                        {% include 'cases/includes/widget_categories_cases.html' %}
+                    </div>
+                </div> <!-- cases sidebar end -->
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section>
 
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
+<!-- Modal Window Start -->
+<div class="modal fade" id="costCalculationModal" tabindex="-1" role="dialog"
+     aria-labelledby="costCalculationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="costCalculationModalLabel">Рассчитать стоимость</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="costCalculationForm" data-url="{% url 'calculate_cost' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="text" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="niche">Ниша</label>
+                        <input type="text" class="form-control" id="niche" name="niche" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="functionality">Желаемый функционал</label>
+                        <textarea class="form-control" id="functionality" name="functionality"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+                <div id="successMessage" style="display:none;">
+                    <p class="text-success"></p>
+                </div>
+            </div>
+        </div>
     </div>
-{% endif %}
+</div>
+<!-- Modal Window End -->
+
 {% endblock content %}

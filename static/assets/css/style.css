@@ -1944,7 +1944,7 @@ button:focus {
     background-color: white;
     -webkit-box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.06);
     box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.06);
-    padding: 50px 80px;
+    padding: 20px 80px;
     margin-top: -18px;
 }
 
@@ -1958,7 +1958,14 @@ button:focus {
 }
 
 .service-preview-content p {
-    margin-bottom: 30px;
+    font-size: 18px;
+    margin: 20px 0;
+    /* margin-bottom: 20px; */
+}
+
+.service-preview-content li {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
 .service-preview-img {
@@ -2660,7 +2667,7 @@ button:focus {
 
 /* footer main */
 .footer-main {
-    padding: 60px 0;
+    padding: 10px 20px;
 }
 
 .footer-main + .partner-area-wraper {
@@ -3559,6 +3566,7 @@ button:focus {
     font-size: 0.9333333333rem;
     font-weight: 400;
     margin-bottom: 0;
+    padding-top: 0;
     font-family: "Lato", sans-serif;
     letter-spacing: -.25px;
 }
@@ -8109,86 +8117,8 @@ body.fixed-scroll {
         text-indent: 2em;
     }
 }
+
 /*TG_development quote-block end*/
-
-/*Carousel control Start*/
-.carousel-control-next, .carousel-control-prev {
-    position: absolute;
-    top: 90%; /* Позиционирование по вертикали */
-    transform: translateY(-50%); /* Центрирование по вертикали */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 5%; /* Ширина элементов управления */
-    height: 5%; /* Высота элементов управления */
-    color: #fff;
-    text-align: center;
-    opacity: .5;
-}
-
-.carousel-control-prev {
-    left: 35%; /* Позиционирование элемента управления 'prev' */
-}
-
-.carousel-control-next {
-    right: 47%; /* Позиционирование элемента управления 'next' */
-}
-
-.carousel-control-next:hover, .carousel-control-prev:hover {
-    opacity: 1; /* Увеличение видимости при наведении */
-}
-
-/* Медиа-запросы для мобильных устройств */
-@media (max-width: 768px) {
-    .carousel-control-next, .carousel-control-prev {
-        width: 40px; /* Уменьшаем размер кнопок на мобильных устройствах */
-        height: 40px;
-        font-size: 1.2rem; /* Уменьшаем размер иконок */
-    }
-    .carousel-control-prev {
-        left: 3%; /* Позиционирование элемента управления 'prev' */
-        top: 35%;
-    }
-
-    .carousel-control-next {
-        right: 3%; /* Позиционирование элемента управления 'next' */
-        top: 35%;
-    }
-}
-
-/* Медиа-запросы для планшетов и больших экранов */
-@media (min-width: 769px) and (max-width: 991px) {
-    .carousel-control-next, .carousel-control-prev {
-        width: 45px; /* Размер кнопок для планшетов */
-        height: 45px;
-        font-size: 1.4rem; /* Размер иконок для планшетов */
-    }
-
-    .carousel-control-prev {
-        left: 70%; /* Позиционирование элемента управления 'prev' */
-        top: 86%;
-    }
-
-    .carousel-control-next {
-        right: 10%; /* Позиционирование элемента управления 'next' */
-        top: 86%;
-    }
-}
-/*!* Медиа-запросы для мобильных устройств *!*/
-/*@media (max-width: 768px) {*/
-/*    .carousel-control-next, .carousel-control-prev {*/
-/*        display: none; !* Скрыть элементы управления на маленьких экранах *!*/
-/*    }*/
-/*}*/
-
-/*!* Медиа-запросы для планшетов и больших экранов *!*/
-/*@media (max-width: 768px), (min-width: 769px) and (max-width: 991px) {*/
-/*    .carousel-control-next, .carousel-control-prev {*/
-/*        display: none; !* Скрыть элементы управления на указанных экранах *!*/
-/*    }*/
-/*}*/
-
-/*Carousel control End*/
 
 /* Carousel content style Start */
 .custom-carousel .text-container {
@@ -8318,4 +8248,490 @@ body.fixed-scroll {
 }
 
 /* Carousel content style End */
+
+/*Carousel control Start*/
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 90%; /* Позиционирование по вертикали */
+    transform: translateY(-50%); /* Центрирование по вертикали */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%; /* Ширина элементов управления */
+    height: 5%; /* Высота элементов управления */
+    color: #fff;
+    text-align: center;
+    opacity: .5;
+}
+
+.carousel-control-prev {
+    left: 35%; /* Позиционирование элемента управления 'prev' */
+}
+
+.carousel-control-next {
+    right: 47%; /* Позиционирование элемента управления 'next' */
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover {
+    opacity: 1; /* Увеличение видимости при наведении */
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .carousel-control-next, .carousel-control-prev {
+        width: 40px; /* Уменьшаем размер кнопок на мобильных устройствах */
+        height: 40px;
+        font-size: 1.2rem; /* Уменьшаем размер иконок */
+    }
+
+    .carousel-control-prev {
+        left: 3%; /* Позиционирование элемента управления 'prev' */
+        top: 35%;
+    }
+
+    .carousel-control-next {
+        right: 3%; /* Позиционирование элемента управления 'next' */
+        top: 35%;
+    }
+}
+
+/* Медиа-запросы для планшетов и больших экранов */
+@media (min-width: 769px) and (max-width: 991px) {
+    .carousel-control-next, .carousel-control-prev {
+        width: 45px; /* Размер кнопок для планшетов */
+        height: 45px;
+        font-size: 1.4rem; /* Размер иконок для планшетов */
+    }
+
+    .carousel-control-prev {
+        left: 70%; /* Позиционирование элемента управления 'prev' */
+        top: 86%;
+    }
+
+    .carousel-control-next {
+        right: 10%; /* Позиционирование элемента управления 'next' */
+        top: 86%;
+    }
+}
+
+/*!* Медиа-запросы для мобильных устройств *!*/
+/*@media (max-width: 768px) {*/
+/*    .carousel-control-next, .carousel-control-prev {*/
+/*        display: none; !* Скрыть элементы управления на маленьких экранах *!*/
+/*    }*/
+/*}*/
+
+/*!* Медиа-запросы для планшетов и больших экранов *!*/
+/*@media (max-width: 768px), (min-width: 769px) and (max-width: 991px) {*/
+/*    .carousel-control-next, .carousel-control-prev {*/
+/*        display: none; !* Скрыть элементы управления на указанных экранах *!*/
+/*    }*/
+/*}*/
+/*Carousel control End*/
+
+/* Case Carousel Custom Styles Start */
+.case-carousel-container .case-carousel .case-carousel-inner .text-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 650px;
+}
+
+.case-carousel-container .case-carousel .text-container h4,
+.case-carousel-container .case-carousel .text-container h5 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.case-carousel-container .case-carousel .text-container h4 {
+    padding-bottom: 45px;
+    padding-top: 20px;
+}
+
+.case-carousel-container .case-carousel .text-container .black-text {
+    color: #000;
+}
+
+.case-carousel-container .case-carousel .text-container .gray-text {
+    color: #6c757d;
+}
+
+.case-carousel-container .case-carousel .text-container h5 {
+    margin-bottom: 10px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.case-carousel-container .case-carousel .text-container p {
+    text-align: justify;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.case-carousel-container .case-carousel .text-container .btn {
+    font-size: 16px;
+    padding: 0 20px;
+    align-self: flex-start;
+    margin-bottom: 40px;
+}
+
+/* Десктопный вид: Настройка выравнивания h4 и изображения */
+@media (min-width: 769px) {
+    .case-carousel-container .case-carousel .case-carousel-inner .case-carousel-item .col-md-4 {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Горизонтальное центрирование контента */
+        justify-content: flex-start; /* Выравнивание контента по верхнему краю */
+        text-align: center;
+    }
+
+    .case-carousel-container .case-carousel .case-carousel-inner .case-carousel-item .col-md-4 h4 {
+        margin-bottom: 20px; /* Настройка отступа */
+    }
+
+    .case-carousel-container .case-carousel .case-carousel-inner .case-carousel-item .col-md-4 img {
+        max-width: 100%; /* Обеспечение того, чтобы изображение вписывалось в контейнер */
+        margin-top: 20px; /* Отступ между h4 и изображением */
+        margin-bottom: 95px;
+    }
+}
+
+/* Media queries for tablets and larger screens */
+@media (min-width: 769px) and (max-width: 991px) {
+    .case-carousel-container .case-carousel .text-container {
+        padding: 15px;
+        height: 520px;
+    }
+
+    .case-carousel-container .case-carousel .text-container h4,
+    .case-carousel-container .case-carousel .text-container h5 {
+        font-size: 20px;
+    }
+
+    .case-carousel-container .case-carousel .text-container h4 {
+        padding-bottom: 30px;
+        padding-top: 15px;
+    }
+
+    .case-carousel-container .case-carousel .text-container h5 {
+        margin-top: 20px;
+    }
+
+    .case-carousel-container .case-carousel .text-container p {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .case-carousel-container .case-carousel .text-container .btn {
+        font-size: 14px;
+        padding: 0 18px;
+        margin-bottom: 30px;
+    }
+
+    .case-carousel-container .case-carousel-control-prev,
+    .case-carousel-container .case-carousel-control-next {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+    }
+
+    .case-carousel-container .case-carousel-control-prev {
+        left: 70%;
+        top: 86%;
+    }
+
+    .case-carousel-container .case-carousel-control-next {
+        right: 10%;
+        top: 86%;
+    }
+}
+
+/* Adaptation for mobile devices */
+@media (max-width: 768px) {
+    .case-carousel-container .case-carousel .text-container {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 800px;
+    }
+
+     /* Изменение порядка элементов для мобильной версии */
+    .case-carousel-container .case-carousel .text-container h4 {
+        order: 1;
+        text-align: justify;
+        align-self: center;
+        padding: 10px 10px;
+    }
+
+    .case-carousel-container .case-carousel .text-container h5 {
+        order: 2;
+        margin: 0 auto 10px 0;
+    }
+
+    .case-carousel-container .case-carousel .text-container p {
+        order: 3;
+        padding: 5px 20px 0 20px;
+    }
+
+    .case-carousel-container .case-carousel .text-container img {
+        order: 4;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        max-width: 50%;
+    }
+
+    .case-carousel-container .case-carousel .text-container .btn {
+        order: 5;
+        font-size: 14px;
+        padding: 0 16px;
+        margin-top: 10px;
+    }
+
+    .case-carousel-container .case-carousel .text-container h5,
+    .case-carousel-container .case-carousel .text-container img,
+    .case-carousel-container .case-carousel .text-container .btn {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+    }
+
+    .case-carousel-container .case-carousel .text-container h4,
+    .case-carousel-container .case-carousel .text-container p {
+        text-align: justify;
+        align-self: center;
+    }
+    .case-carousel-container .case-carousel .text-container h4 {
+        font-size: 16px;
+    }
+
+    .case-carousel-container .case-carousel .text-container img {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        max-width: 50%;
+    }
+
+    .case-carousel-container .case-carousel .text-container .btn {
+        font-size: 14px;
+        padding: 0 16px;
+        margin-top: 10px;
+    }
+
+    .case-carousel-container .case-carousel .img-fluid {
+        max-width: 75%;
+    }
+
+    .case-carousel-container .case-carousel-control-prev,
+    .case-carousel-container .case-carousel-control-next {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        top: 35%;
+    }
+
+    .case-carousel-container .case-carousel-control-prev {
+        left: 3%;
+    }
+
+    .case-carousel-container .case-carousel-control-next {
+        right: 3%;
+    }
+}
+
+@media (max-width: 576px) {
+    .case-carousel-container .case-carousel .img-fluid {
+        max-width: 75%;
+    }
+}
+
+/* Carousel control custom styles Start */
+.case-carousel-container .case-carousel-control-prev,
+.case-carousel-container .case-carousel-control-next {
+    position: absolute;
+    top: 90%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5%;
+    height: 5%;
+    color: #fff;
+    text-align: center;
+    opacity: .5;
+}
+
+.case-carousel-container .case-carousel-control-prev {
+    left: 5%;
+}
+
+.case-carousel-container .case-carousel-control-next {
+    right: 75%;
+}
+
+.case-carousel-container .case-carousel-control-prev:hover,
+.case-carousel-container .case-carousel-control-next:hover {
+    opacity: 1;
+}
+
+
+/* Позиционирование кнопок для мобильных устройств */
+@media (max-width: 768px) {
+    .case-carousel-container .case-carousel-control-prev,
+    .case-carousel-container .case-carousel-control-next {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        top: 54%;
+    }
+
+    .case-carousel-container .case-carousel-control-prev {
+        left: 0;
+    }
+
+    .case-carousel-container .case-carousel-control-next {
+        right: 0;
+    }
+}
+
+/* Позиционирование кнопок для планшетов */
+@media (min-width: 769px) and (max-width: 991px) {
+    .case-carousel-container .case-carousel-control-prev,
+    .case-carousel-container .case-carousel-control-next {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+        top: 86%;
+    }
+
+    .case-carousel-container .case-carousel-control-prev {
+        left: 10%;
+    }
+
+    .case-carousel-container .case-carousel-control-next {
+        right: 10%;
+    }
+}
+/* Carousel control custom styles End */
+
+/* Cases styles start */
+.cases-grid-sidebar-area .case-body {
+    display: flex; /* Используем Flexbox для выравнивания элементов */
+    align-items: flex-start; /* Выравнивание по верхнему краю контейнера */
+}
+
+.cases-grid-sidebar-area .col-md-6 {
+    padding: 0 15px 20px 0; /* Например, изменить ширину */
+}
+
+.cases-grid-sidebar-area .single-blog-post-thumb {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Заставляем контейнер занимать всю доступную высоту */
+}
+
+.cases-grid-sidebar-area .single-blog-post-thumb .post-body {
+    padding: 20px 10px;
+}
+
+.cases-grid-sidebar-area .blog-inner-page .single-blog-post-thumb {
+    margin-bottom: 0;
+}
+
+.cases-grid-sidebar-area .case-image {
+    flex-shrink: 0; /* Не позволяет изображению сжиматься */
+}
+
+.cases-grid-sidebar-area .case-image img {
+    width: 100px; /* Задайте фиксированную ширину для изображения */
+    height: auto; /* Автоматически подстраиваем высоту, чтобы сохранить пропорции */
+    transition: transform 0.3s ease-in-out; /* Добавляем плавный переход для эффекта при наведении */
+}
+
+.cases-grid-sidebar-area .case-image:hover img {
+    transform: scale(1.05); /* Увеличиваем изображение на 5% при наведении */
+    z-index: 999;
+}
+
+.cases-grid-sidebar-area .post-content {
+    flex: 1; /* Контент растягивается на оставшееся пространство */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Текст вверху, кнопка внизу */
+}
+
+.cases-grid-sidebar-area .case-header {
+    margin-bottom: 10px;
+}
+
+.cases-grid-sidebar-area .case-title {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.cases-grid-sidebar-area .case-meta {
+    margin-bottom: 10px;
+}
+
+.cases-grid-sidebar-area .case-content p {
+    margin: 0;
+}
+
+.cases-grid-sidebar-area .case-btn-wraper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start /* Выравнивание кнопки по правому краю */
+}
+
+.cases-grid-sidebar-area .case-btn-wraper .btn {
+    font-size: 0.75rem; /* Уменьшение размера шрифта для уменьшения высоты кнопки */
+    padding: 0 12px; /* Уменьшение отступов по вертикали, чтобы кнопка имела высоту 35px */
+    height: 35px; /* Установка фиксированной высоты кнопки */
+    border-radius: 10px; /* Радиус скругления углов кнопки */
+    min-width: 120px; /* Минимальная ширина кнопки */
+}
+
+/* Case Carousel Custom Styles End */
+
+/* Case grid Custom Styles Start */
+.single-case-studies {
+    position: relative;
+}
+
+.single-case-studies a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    text-decoration: none; /* Убираем подчеркивание, если не нужно */
+    color: inherit; /* Сохраняем цвет текста */
+}
+
+.single-case-studies .case-body {
+    position: relative;
+    z-index: 2; /* Чтобы текст и другие элементы были поверх ссылки */
+}
+
+.case-grid .case-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Выравнивание по центру горизонтально, если это нужно */
+}
+
+.case-grid .case-body h4,
+.case-grid .case-body p {
+    margin: 0; /* Обнуление отступов, если они есть */
+    padding: 5px 0; /* Добавление отступов сверху и снизу для равномерного расположения */
+}
+
+@media (max-width: 767px) {
+    .case-grid .col-md-6 {
+        padding: 0 15px 0 15px;
+    }
+}
+/* Case grid Custom Styles End */
+
 

@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.decorators import method_decorator
@@ -86,17 +86,23 @@ class PostDetailView(CategoryMixin, DetailView):
 
 class PostListView(CategoryMixin, ListView):
     model = Post
-    paginate_by = 3  # Устанавливаем количество постов на страницу
+    paginate_by = 3
     template_name = "blog/post_list.html"
 
+    def get_category(self):
+        if not hasattr(self, 'category'):
+            category_slug = self.kwargs.get('slug')
+            self.category = get_object_or_404(Category, slug=category_slug)
+        return self.category
+
     def get_queryset(self):
-        return Post.objects.select_related('category').filter(category__slug=self.kwargs.get('slug')).order_by(
-            '-create_at')
+        category = self.get_category()
+        return Post.objects.select_related('category').filter(category=category).order_by('-create_at')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        category_name = self.get_queryset().first().category.name if self.get_queryset().exists() else None
-        context['title'] = f'Посты категории {category_name}'
+        category = self.get_category()
+        context['title'] = f'Посты категории {category.name}'
         queryset = self.get_queryset()
         paginator = Paginator(queryset, self.paginate_by)
         page_number = self.request.GET.get('page')
@@ -106,7 +112,6 @@ class PostListView(CategoryMixin, ListView):
         context['categories'] = self.get_category_queryset()
         context['recent_posts'] = self.get_recent_posts()
         return context
-
 
 class PostGridView(CategoryMixin, ListView):
     model = Post
