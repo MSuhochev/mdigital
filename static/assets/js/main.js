@@ -1797,20 +1797,21 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function () {
     var modal = document.getElementById("consultation-modal");
     var btn = document.getElementById("open-consultation-modal");
-    var anotherBtn = document.getElementById("open-another-consultation-modal"); // Новая кнопка
+    var anotherBtn = document.getElementById("open-another-consultation-modal");
     var span = document.getElementById("close-consultation-modal");
     var form = document.getElementById("consultation-form");
     var mobileMenu = document.querySelector(".nav-menus-wrapper");
-    var menuToggleBtn = document.querySelector(".menu-toggle-btn"); // Кнопка для сворачивания/разворачивания меню
+    var menuToggleBtn = document.querySelector(".menu-toggle-btn");
 
     function openModal() {
-        modal.style.display = "block";
-        // Проверяем ширину экрана и скрываем мобильное меню, если ширина экрана <= 768px
-        if (window.innerWidth <= 933 && mobileMenu && mobileMenu.style.display !== "none") {
-            mobileMenu.style.display = "none";
-            mobileMenu.setAttribute('data-hidden-by-modal', 'true'); // Отметка, что меню было скрыто модальным окном
+        if (modal) {
+            modal.style.display = "block";
+        }
 
-            // Скрываем меню через кнопку меню (для корректного срабатывания всех событий)
+        if (window.innerWidth <= 768 && mobileMenu && mobileMenu.style.display !== "none") {
+            mobileMenu.style.display = "none";
+            mobileMenu.setAttribute('data-hidden-by-modal', 'true');
+
             if (menuToggleBtn && mobileMenu.classList.contains('open')) {
                 menuToggleBtn.click();
             }
@@ -1818,61 +1819,74 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function closeModal() {
-        modal.style.display = "none";
-        // Восстанавливаем видимость мобильного меню, если оно было скрыто модальным окном
-        if (window.innerWidth <= 933 && mobileMenu && mobileMenu.getAttribute('data-hidden-by-modal') === 'true') {
+        if (modal) {
+            modal.style.display = "none";
+        }
+
+        if (window.innerWidth <= 768 && mobileMenu && mobileMenu.getAttribute('data-hidden-by-modal') === 'true') {
             mobileMenu.style.display = "block";
             mobileMenu.removeAttribute('data-hidden-by-modal');
         }
     }
 
-    btn.onclick = openModal;
-    anotherBtn.onclick = openModal; // Обработка клика по новой кнопке
-    span.onclick = closeModal;
+    if (btn) {
+        btn.onclick = openModal;
+    }
+
+    if (anotherBtn) {
+        anotherBtn.onclick = openModal;
+    }
+
+    if (span) {
+        span.onclick = closeModal;
+    }
 
     window.onclick = function (event) {
-        if (event.target == modal) {
+        if (event.target === modal) {
             closeModal();
         }
     }
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        var formData = new FormData(form);
+            var formData = new FormData(form);
 
-        fetch(form.action, {
-            method: form.method,
-            body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value
-            }
-        })
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Создание и отображение сообщения об успешной отправке
                     var successMessage = document.createElement('p');
                     successMessage.textContent = 'Спасибо! Мы свяжемся с вами в ближайшее время.';
                     successMessage.style.color = 'green';
 
-                    // Очистка формы и отображение сообщения
                     form.reset();
                     form.innerHTML = '';
                     form.appendChild(successMessage);
 
-                    // Закрытие модального окна через 2 секунды
                     setTimeout(closeModal, 2000);
                 } else {
-                    alert('Произошла ошибка: ' + JSON.stringify(data.errors));
+                    var errorMessage = document.createElement('p');
+                    errorMessage.textContent = 'Ошибка: ' + JSON.stringify(data.errors);
+                    errorMessage.style.color = 'red';
+                    form.appendChild(errorMessage);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-    });
+        });
+    }
 });
+
 
 /* End управления модальным окном консультации */
 

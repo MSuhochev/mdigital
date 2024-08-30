@@ -20,6 +20,11 @@ class SubscriberForm(forms.ModelForm):
 
 
 class ConsultationForm(forms.ModelForm):
+    agree_to_privacy_policy = forms.BooleanField(
+        required=True,
+        label="Оставляя заявку, вы соглашаетесь с правилами обработки персональных данных"
+    )
+
     class Meta:
         model = ConsultationRequest
         fields = ['name', 'phone', 'preferred_time']

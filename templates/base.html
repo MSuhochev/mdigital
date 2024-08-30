@@ -11,45 +11,45 @@
 </head>
 
 <body>
-<!--[if lt IE 10]>
-    {% include 'blog/includes/browserupgrade.html' %}
-<![endif]-->
+    <!--[if lt IE 10]>
+        {% include 'blog/includes/browserupgrade.html' %}
+    <![endif]-->
 
-<!-- preloader -->
-    {% include 'blog/includes/preloader.html' %}
-<!-- END preloader -->
+    <!-- preloader -->
+        {% include 'blog/includes/preloader.html' %}
+    <!-- END preloader -->
 
-<div class="header">
-    <!-- topBar section -->
-    <div class="xs-top-bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- Phone + email and Social icons -->
-                    <div class="xs-top-bar-content">
-                        <!-- Phone + email -->
-                        <div class="xs-top-bar-info">
-                            <ul class="xs-top-bar-info-list">
-                                <li>
-                                    <p><a href="tel:+7%20(902)%407-7776"><i class="icon icon-phone3"></i>+7 (902) 407-7776</a></p>
-                                </li>
-                                <li>
-                                    <a href="mailto:partners@mdigital.su"><i class="icon icon-email"></i>partners@mdigital.su</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Social icons -->
-                        <div class="xs-top-bar-social">
-                            <ul class="xs-list list-inline">
-                               <li><a href="https://t.me/MDigital_ibot"><i class="fa fa-telegram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div><!-- .xs-top-bar-content END -->
-                </div>
-            </div><!-- .row END -->
-        </div><!-- .container END -->
+    <div class="header">
+        <!-- topBar section -->
+        <div class="xs-top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Phone + email and Social icons -->
+                        <div class="xs-top-bar-content">
+                            <!-- Phone + email -->
+                            <div class="xs-top-bar-info">
+                                <ul class="xs-top-bar-info-list">
+                                    <li>
+                                        <p><a href="tel:+7%20(902)%407-7776"><i class="icon icon-phone3"></i>+7 (902) 407-7776</a></p>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:partners@mdigital.su"><i class="icon icon-email"></i>partners@mdigital.su</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Social icons -->
+                            <div class="xs-top-bar-social">
+                                <ul class="xs-list list-inline">
+                                   <li><a href="https://t.me/MDigital_ibot"><i class="fa fa-telegram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div><!-- .xs-top-bar-content END -->
+                    </div>
+                </div><!-- .row END -->
+            </div><!-- .container END -->
+        </div>
     </div>
-</div>
     <!-- End topBar section -->
 
     <!-- header section -->
@@ -84,29 +84,29 @@
     </div><!-- .container END -->
 </header>
     <!-- End header section -->
-</div>
 
-<!-- inner banner start -->
-<!--breadcrumb start here-->
-<section class="inner-banner-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-                <h1 class="hidden-h1">{{title}}</h1>
-				<div class="inner-banner-content">
-					<h1 class="inner-banner-title">{{ title }}</h1>
-					<ul class="breadcumbs list-inline">
-						<li><a href="/">На главную</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="banner-image"
-         style="background-image: url('{% static 'assets/images/backgrounds/background-1.jpg' %}')">
-    </div>
-</section>
-<!--breadcrumb end here-->
+
+    <!-- inner banner start -->
+    <!--breadcrumb start here-->
+    <section class="inner-banner-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="hidden-h1">{{title}}</h1>
+                    <div class="inner-banner-content">
+                        <h1 class="inner-banner-title">{{ title }}</h1>
+                        <ul class="breadcumbs list-inline">
+                            <li><a href="/">На главную</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner-image"
+             style="background-image: url('{% static 'assets/images/backgrounds/background-1.jpg' %}')">
+        </div>
+    </section>
+    <!--breadcrumb end here-->
 	<!-- inner banner end -->
 
     {% block content %}

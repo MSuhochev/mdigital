@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- services section -->
+<section class="xs-section-padding career-section" id="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="hidden-h1">Карьера</h1>
+                <ul class="nav nav-tabs main-tabs nav-fill" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tab-one-area" data-toggle="tab" href="#tab-one" role="tab"
+                           aria-controls="tab-one" aria-selected="true">
+                            <span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-8.png' %}"
+                                                           alt="icon career"></span>Карьера
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-two-area" data-toggle="tab" href="#tab-two" role="tab"
+                           aria-controls="tab-two" aria-selected="false">
+                            <span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-1.png' %}"
+                                                           alt="Education"></span>Обучение
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-three-area" data-toggle="tab" href="#tab-three" role="tab"
+                           aria-controls="tab-three" aria-selected="false">
+                            <span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-3.png' %}"
+                                                           alt="Employee"></span>Подбор сотрудников
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab-four-area" data-toggle="tab" href="#tab-four" role="tab"
+                           aria-controls="tab-four" aria-selected="false">
+                            <span class="icon-holder"><img src="{% static 'assets/images/service-tab/icon-1.png' %}"
+                                                           alt="Vacancy"></span>Вакансии
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <!-- Start Career block -->
+                    <div class="tab-pane fadeInRight animated show active" id="tab-one" role="tabpanel"
+                         aria-labelledby="tab-one-area">
+                        <div class="single-service-preview" id="service-one-preview">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="service-preview-img">
+                                        <img src="{% static 'assets/images/service-tab/preview-2.png' %}"
+                                             alt="telegram development">
+                                    </div><!-- .service-preview-img END -->
+                                </div>
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="service-preview-content">
+                                        <ul>
+                                            <li><span>&#10003;</span> Наш коллектив это команда единомышленников, которые
+                                                любят своё дело и по-настоящему заряжаются от ответственности
+                                            </li>
+                                            <li><span>&#10003;</span> Это компания, которая ценит своих сотрудников,
+                                                уважает свободу мыслей и обеспечивает быстрый путь от идеи до
+                                                реализации. Мы проявляем заботу как в отношении клиентов, так и в
+                                                отношении друг друга.
+                                            </li>
+                                            <li><span>&#10003;</span> Мы работаем с потенциалами людей. Самое лучшее, что
+                                                может сделать компания для сотрудников это дать им возможность раскрыть
+                                                свой потенциал через образовательные программы, амбициозные вызовы,
+                                                доверие, большую ответственность, культурное обогащение и правильное
+                                                окружение
+                                            </li>
+                                            <li><span>&#10003;</span> Мы обеспечиваем неограниченный доступ к знаниям. Ты
+                                                знаешь в чём твой талант?
+                                            </li>
+                                        </ul>
+                                        <div class="btn-wraper">
+                                            <a href="tg_development/" class="btn btn-primary">Хочу узнать</a>
+                                        </div>
+                                    </div><!-- .service-preview-content END -->
+                                </div>
+                            </div><!-- .row END -->
+                        </div><!-- .single-service-preview END -->
+                    </div>
+                    <!-- End Career block -->
+
+                    <!-- Start Employees block -->
+                    <div class="tab-pane fadeInRight animated" id="tab-two" role="tabpanel"
+                         aria-labelledby="tab-two-area">
+                        <div class="single-service-preview" id="service-two-preview">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="service-preview-img">
+                                        <img src="{% static 'assets/images/service-tab/preview-1.png' %}"
+                                             alt="Employes">
+                                    </div><!-- .service-preview-img END -->
+                                </div>
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="service-preview-content">
+                                        <ul>
+                                            <li><span>&#10003;</span> Мы создаем команду, в которой каждый сможет
+                                                раскрыть свой потенциал, расти в том направлении, которое ближе, и
+                                                получать поддержку на этом пути
+                                            </li>
+                                            <li>
+                                                <span>&#10003;</span> Важно развиваться. Каждый новый день дарит нам
+                                                возможность стать лучше, чем вчера. Мы помним об этом, и постоянно
+                                                работаем над собой. Мы ждем к себе в команду тех, кто считает, что
+                                                развитие никогда не заканчивается
+                                            </li>
+                                            <li><span>&#10003;</span> Особое внимание мы уделяем эмоциональному комфорту
+                                                сотрудников, поэтому мы регулярно общаемся не только об успехах, но и о
+                                                проблемах в работе и решаем их вместе. На всех этапах вас будут окружать
+                                                разные специалисты, но всегда настоящие профи и отличные люди.
+                                            </li>
+                                        </ul>
+                                        <div class="btn-wraper">
+                                            <a href="monetization/" class="btn btn-primary">Стать частью команды</a>
+                                        </div>
+                                    </div><!-- .service-preview-content END -->
+                                </div>
+                            </div><!-- .row END -->
+                        </div><!-- .single-service-preview END -->
+                    </div>
+                    <!-- End Employees block -->
+
+                    <!-- Start Education block -->
+                    <div class="tab-pane fadeInRight animated" id="tab-three" role="tabpanel"
+                         aria-labelledby="tab-three-area">
+                        <div class="single-service-preview" id="service-three-preview">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="service-preview-img">
+                                        <img src="{% static 'assets/images/service-tab/preview-3.png' %}"
+                                             alt="web development">
+                                    </div><!-- .service-preview-img END -->
+                                </div>
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="service-preview-content">
+                                        <p> Наша жизнь – результат нашего выбора. Мы сами выбираем в каком месте
+                                            находиться, и какими людьми окружать себя. Мы трепетно относимся к выбору
+                                            людей, которые станут частью нашей команды. Думаем что и ты хочешь быть
+                                            уверенным в правильности своего выбора. Чтобы понять, насколько мы подходим
+                                            друг другу, есть несколько этапов:
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                <span>&#10003;</span> Отклик на вакансию или письмо на HR@mdigital.su
+                                            </li>
+                                            <li>
+                                                <span>&#10003;</span> Онлайн собеседование с HR на первой встрече мы
+                                                спросим о твоих скилах и опыте, ожиданиях и целях, расскажем о специфике
+                                                работы, ценностях команды
+                                            </li>
+                                            <li>
+                                                <span>&#10003;</span> Тестовое задание. Этот этап нужен, чтобы смогли
+                                                узнать о твоих hard-skill и показать тебе какие задачи придется решать
+                                                на новой позиции
+                                            </li>
+                                            <li>
+                                                <span>&#10003;</span> Собеседование с руководителем отдела. Обсудим
+                                                будущие задачи на позиции, поделимся обратной связью о прохождении
+                                                тестового задания и ответим на твои вопросы
+                                            </li>
+                                            <li>
+                                                <span>&#10003;</span> Предложение о работе. Оценка 360 и рекомендации от
+                                                команды. Решение о приеме нового сотрудника мы принимаем комплексно.
+                                                Если на предыдущих этапах все прошло хорошо, тебе на почту придет
+                                                предложение о работе.
+                                                Не стесняйся задавать вопросы, чтобы принять решение
+                                            </li>
+                                        </ul>
+                                        <div class="btn-wraper">
+                                            <a href="web_development/" class="btn btn-primary">Отправить резюме</a>
+                                        </div>
+                                    </div><!-- .service-preview-content END -->
+                                </div>
+                            </div><!-- .row END -->
+                        </div><!-- .single-service-preview END -->
+                    </div>
+                    <!-- End Education block -->
+
+                    <!-- Start Vacancy block -->
+                    <div class="tab-pane fadeInRight animated" id="tab-four" role="tabpanel"
+                         aria-labelledby="tab-four-area">
+                        <div class="single-service-preview" id="service-four-preview">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="service-preview-img">
+                                        <img src="{% static 'assets/images/service-tab/preview-3.png' %}" alt="vacancy">
+                                    </div><!-- .service-preview-img END -->
+                                </div>
+                                <div class="col-lg-7 col-md-6">
+                                    <div class="service-preview-content">
+                                        <h4>Специалист по работе с клиентами</h4>
+                                        <h4>Мы предлагаем</h4>
+                                        <ul>
+                                            <li><span>&#10003;</span> Дистанционная работа в комфортных для тебя
+                                                условиях, используя те инструменты и методы, которые максимально
+                                                эффективны именно для тебя
+                                            </li>
+                                            <li><span>&#10003;</span> Возможность реализации собственных инициатив при
+                                                поддержке коллег и компании
+                                            </li>
+                                            <li><span>&#10003;</span> Возможность Делиться знаниями и развиваться
+                                                самому: мы часто устраиваем как внутренние митапы, так и открытые
+                                                мероприятия с приглашением внешних спикеров
+                                            </li>
+                                            <li><span>&#10003;</span> Открыто высказывать своё мнение и влиять на
+                                                езультат работы
+                                            </li>
+                                            <li><span>&#10003;</span> Участвовать в жизни компании и социальных
+                                                проектах
+                                            </li>
+                                        </ul>
+                                        <h4>Цель</h4>
+                                        <ul>
+                                            <li><span>&#10003;</span> Поиск и привлечение потенциальных клиентов
+                                                компании
+                                            </li>
+                                            <li><span>&#10003;</span> Сопровождение полного цикла действующих клиентов
+                                                компании
+                                            </li>
+                                        </ul>
+                                        <h4>Требования</h4>
+                                        <ul>
+                                            <li><span>&#10003;</span> Навыки и понимание базовых принципов продаж и
+                                                ведения переговоров
+                                            </li>
+                                            <li><span>&#10003;</span> Работа с текущей клиентской базой в CRM системе
+                                            </li>
+                                            <li><span>&#10003;</span> Анализ качественных показателей и оперативное
+                                                реагирование на изменения
+                                            </li>
+                                        </ul>
+                                        <div class="btn-wraper">
+                                            <a href="web_development/" class="btn btn-primary">Откликнуться</a>
+                                        </div>
+                                    </div><!-- .service-preview-content END -->
+                                </div>
+                            </div><!-- .row END -->
+                        </div><!-- .single-service-preview END -->
+                    </div>
+                    <!-- End Vacancy block -->
+
+                </div>
+            </div>
+        </div><!-- .row END -->
+    </div><!-- .container END -->
+</section>
+<!-- END services section -->
+{% endblock content %}

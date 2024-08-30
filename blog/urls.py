@@ -21,7 +21,6 @@ urlpatterns = [
     path('web_development/', views.WebDevelopmentView.as_view(), name='web_development'),
     path('analytics/', views.AnalyticsView.as_view(), name='analytics'),
     path('support/', views.SupportView.as_view(), name='support'),
-    path('career/', views.CareerView.as_view(), name='career'),
     path('privacy-policy/', PrivacyPolicyView.as_view(), name='privacy_policy'),
     path('post/<slug:slug>/<slug:post_slug>/', views.PostDetailView.as_view(), name='post_single'),
     path('posts/<slug:slug>/', views.PostListView.as_view(), name='post_list'),

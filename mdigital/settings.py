@@ -20,6 +20,7 @@ INSTALLED_APPS = [
 
     "blog",
     "cases",
+    "career"
 ]
 
 SITE_ID = 2

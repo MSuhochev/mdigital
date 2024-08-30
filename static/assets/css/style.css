@@ -8734,4 +8734,16 @@ body.fixed-scroll {
 }
 /* Case grid Custom Styles End */
 
+/*Career Custom Styles Start*/
+.career-section .service-preview-content span {
+    color: #008dd2;
+    font-size: 16px;
+	font-weight: bold;
+}
+
+.career-section .service-preview-content li {
+    color: black;
+    font-size: 16px;
+}
+/*Career Custom Styles End*/
 

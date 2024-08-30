@@ -16,6 +16,7 @@ urlpatterns = [
     path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
     path('', include('blog.urls')),
     path('cases/', include('cases.urls')),
+    path('career/', include('career.urls')),
     re_path(r'^robots\.txt$', TemplateView.as_view(template_name='blog/robots.txt', content_type='text/plain')),
     re_path(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
