@@ -8161,6 +8161,12 @@ body.fixed-scroll {
     line-height: 1.2;
 }
 
+.custom-carousel .text-container span {
+    color: #008dd2;
+    font-size: 16px;
+	font-weight: bold;
+}
+
 .custom-carousel .text-container .btn {
     font-size: 16px;
     padding: 0 20px;
@@ -8741,9 +8747,32 @@ body.fixed-scroll {
 	font-weight: bold;
 }
 
-.career-section .service-preview-content li {
+section.career-section#service ul.nav.nav-tabs.main-tabs {
+    margin: 20px 40px 40px 40px;
+}
+
+.career-section li {
     color: black;
     font-size: 16px;
+}
+
+/* Повышенная специфичность селекторов */
+section.career-section#service .container {
+    padding: 0 10px 20px 10px;
+}
+
+section.career-section#service.xs-section-padding {
+    padding: 0 10px 20px 10px;
+}
+
+@media (max-width: 768px) {
+    section.career-section#service .container {
+        padding: 0 10px 20px 10px;
+    }
+
+    section.career-section#service.xs-section-padding {
+    padding: 0 10px 20px 10px;
+    }
 }
 /*Career Custom Styles End*/
 

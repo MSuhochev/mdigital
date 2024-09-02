@@ -1887,7 +1887,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
 /* End управления модальным окном консультации */
 
 /*FAQ js start*/
@@ -2004,3 +2003,39 @@ $(function () {
     $('.carousel-control-prev, .carousel-control-next, .carousel-indicators li').on('click', handleCarouselControl);
 });
 /*Swipe func END*/
+
+/* SendResumeForm Start */
+$(document).ready(function() {
+    $('.open-form').on('click', function(event) {
+        event.preventDefault();
+        $('#resumeModal').modal('show'); // Открытие модального окна
+    });
+
+    $('#resume-form').on('submit', function(event) {
+        event.preventDefault(); // Предотвращает стандартную отправку формы
+        var formData = new FormData(this); // Собирает данные формы
+
+        $.ajax({
+            url: $(this).data('url'), // Используем URL из атрибута data-url
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                $('#form-message').text(response.message).show();
+                $('#resume-form')[0].reset(); // Очищает форму
+                $('#resumeModal').modal('hide'); // Закрывает модальное окно после успешной отправки
+            },
+            error: function(xhr) {
+                var errors = xhr.responseJSON.errors;
+                var errorMessages = '';
+                for (var key in errors) {
+                    errorMessages += errors[key].join('<br>') + '<br>';
+                }
+                $('#form-message').html(errorMessages).show();
+            }
+        });
+    });
+});
+
+/* SendResumeForm END */

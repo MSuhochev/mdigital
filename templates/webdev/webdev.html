@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-12">
+            <div class="quote-block">
+                <p><b>Полный цикл веб-разработки "От идеи до результата — веб-решения, которые работают на ваш бизнес."
+                </b></p>
+                <div class="d-none d-md-block text-center">
+                    <figure>
+                        <img src="{% static 'assets/images/team/morozz.png' %}" alt="Фото Максима Морозова"
+                             class="img-fluid desktop-img">
+                        <figcaption>Максим Морозов</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-block d-md-none">
+            <figure class="text-center">
+                <img src="{% static 'assets/images/team/morozz.png' %}" alt="Фото Максима Морозова"
+                     class="img-fluid mobile-img">
+                <figcaption>Максим Морозов</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <!-- Индикаторы -->
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+            <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+            <li data-target="#carouselExampleControls" data-slide-to="3"></li>
+            <li data-target="#carouselExampleControls" data-slide-to="4"></li>
+            <li data-target="#carouselExampleControls" data-slide-to="5"></li>
+            <li data-target="#carouselExampleControls" data-slide-to="6"></li>
+            <li data-target="#carouselExampleControls" data-slide-to="7"></li>
+        </ol>
+        <div class="carousel-inner">
+            <!-- 1 Анализ требований и постановка целей -->
+            <div class="carousel-item active custom-carousel">
+                <div class="row flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-8 text-container order-md-2">
+                        <h5>Анализ требований и постановка целей</h5>
+                        <img class="img-fluid d-block d-md-none mt-3"
+                             src="{% static 'assets/images/tg_bots/clients_base.jpg' %}" alt="Clients-base">
+                        <h4><span style="color: #008dd2;">1</span><span style="color: gray;">/7</span></h4>
+                        <p>
+                            <span>&#10003;</span> На первом этапе мы вместе с вами собираем и формулируем основные требования к проекту <br>
+                            <span>&#10003;</span> Определяем цели и целевую аудиторию будущего приложения, учитывая специфику вашего
+                            бизнеса и особенности выбранной ниши <br>
+                            <span>&#10003;</span> Также проводится анализ конкурентов, что позволяет нам лучше понять рынок и учесть все
+                            необходимые детали при планировании
+                        </p>
+                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                data-target="#costCalculationModal">Оставить заявку
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 d-none d-md-flex justify-content-center order-md-1">
+                        <img class="img-fluid" src="{% static 'assets/images/tg_bots/clients_base.jpg' %}"
+                             alt="Clients-base">
+                    </div>
+                </div>
+            </div>
+            <!-- 2 Планирование и проектирование -->
+            <div class="carousel-item custom-carousel">
+                <div class="row flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-8 text-container order-md-2">
+                        <h5>Планирование и проектирование</h5>
+                        <img class="img-fluid d-block d-md-none mt-3"
+                             src="{% static 'assets/images/tg_bots/sending.jpg' %}" alt="Sending">
+                        <h4><span style="color: #008dd2;">2</span><span style="color: gray;">/7</span></h4>
+                        <p>
+                            <span>&#10003;</span> Разработка стратегии создания вашего продукта, выбор оптимального стека технологий и
+                            проектирование архитектуры<br>
+                            <span>&#10003;</span> Мы подбираем команду специалистов, которая соответствует вашим потребностям и опыту,
+                            необходимому для успешной реализации проекта<br>
+                            <span>&#10003;</span> Этот этап включает создание четкого плана, который станет основой для дальнейшей работы
+                        </p>
+                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                data-target="#costCalculationModal">Оставить заявку
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 d-none d-md-flex justify-content-center order-md-1">
+                        <img class="img-fluid"
+                             src="{% static 'assets/images/tg_bots/sending.jpg' %}" alt="Sending">
+                    </div>
+                </div>
+            </div>
+            <!-- 3 Разработка прототипа и UX/UI дизайн -->
+            <div class="carousel-item custom-carousel">
+                <div class="row flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-8 text-container order-md-2">
+                        <h5>Разработка прототипа и UX/UI дизайн</h5>
+                        <img class="img-fluid d-block d-md-none mt-3"
+                             src="{% static 'assets/images/tg_bots/orders.jpg' %}" alt="Orders">
+                        <h4><span style="color: #008dd2;">3</span><span style="color: gray;">/7</span></h4>
+                        <p>
+                            <span>&#10003;</span> На этом этапе мы создаем прототип приложения и разрабатываем его дизайн <br>
+                            <span>&#10003;</span> Прототип дает вам возможность визуализировать, как будет выглядеть и функционировать ваше
+                            приложение, а также внести необходимые правки до начала разработки <br>
+                            <span>&#10003;</span> Дизайн создается с учетом визуальной идентичности вашего бренда и целей проекта
+                        </p>
+                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                data-target="#costCalculationModal">Оставить заявку
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 d-none d-md-flex justify-content-center order-md-1">
+                        <img class="img-fluid"
+                             src="{% static 'assets/images/tg_bots/orders.jpg' %}" alt="Orders">
+                    </div>
+                </div>
+            </div>
+            <!-- 4 Разработка веб-приложения -->
+            <div class="carousel-item custom-carousel">
+                <div class="row flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-8 text-container order-md-2">
+                        <h5>Разработка веб-приложения</h5>
+                        <img class="img-fluid d-block d-md-none mt-3"
+                             src="{% static 'assets/images/tg_bots/shop_bot.jpg' %}" alt="Internet-shop">
+                        <h4><span style="color: #008dd2;">4</span><span style="color: gray;">/9</span></h4>
+                        <p>
+                            <span>&#10003;</span> После того как планирование завершено и прототип утвержден, наши разработчики приступают к
+                            реализации проекта <br>
+                            <span>&#10003;</span> Мы превращаем дизайн в функциональные веб-страницы и программируем все необходимые
+                            элементы <br>
+                            <span>&#10003;</span> В процессе разработки уделяется внимание каждой детали, чтобы приложение работало
+                            стабильно и эффективно
+                        </p>
+                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                data-target="#costCalculationModal">Оставить заявку
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 d-none d-md-flex justify-content-center order-md-1">
+                        <img class="img-fluid"
+                             src="{% static 'assets/images/tg_bots/shop_bot.jpg' %}" alt="Internet-shop">
+                    </div>
+                </div>
+            </div>
+            <!-- 5 Тестирование и отладка -->
+            <div class="carousel-item custom-carousel">
+                <div class="row flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-8 text-container order-md-2">
+                        <h5>Тестирование и отладка</h5>
+                        <img class="img-fluid d-block d-md-none mt-3"
+                             src="{% static 'assets/images/tg_bots/retention_return.jpg' %}" alt="Retention_return">
+                        <h4><span style="color: #008dd2;">5</span><span style="color: gray;">/7</span></h4>
+                        <p>
+                            <span>&#10003;</span> По завершении разработки начинается фаза тестирования <br>
+                            <span>&#10003;</span> Мы проверяем приложение на наличие ошибок, кросс-браузерную совместимость и адаптивность
+                            на различных устройствах <br>
+                            <span>&#10003;</span> В этом этапе также выявляются и устраняются дефекты кода, чтобы обеспечить высокое
+                            качество продукта
+                        </p>
+                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                data-target="#costCalculationModal">Оставить заявку
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 d-none d-md-flex justify-content-center order-md-1">
+                        <img class="img-fluid"
+                             src="{% static 'assets/images/tg_bots/retention_return.jpg' %}" alt="Retention_return">
+                    </div>
+                </div>
+            </div>
+            <!-- 6 Запуск и поддержка -->
+            <div class="carousel-item custom-carousel">
+                <div class="row flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-8 text-container order-md-2">
+                        <h5>Запуск и поддержка</h5>
+                        <img class="img-fluid d-block d-md-none mt-3"
+                             src="{% static 'assets/images/tg_bots/booking.jpg' %}" alt="Booking">
+                        <h4><span style="color: #008dd2;">6</span><span style="color: gray;">/7</span></h4>
+                        <p>
+                            <span>&#10003;</span> После успешного тестирования и исправления всех недочетов приложение готово к запуску <br>
+                            <span>&#10003;</span> Мы размещаем его на хостинге, привязываем к домену и делаем доступным для пользователей <br>
+                            <span>&#10003;</span> Но на этом работа не заканчивается — мы предлагаем услуги по дальнейшей поддержке и
+                            обновлению приложения, чтобы оно оставалось актуальным и соответствовало меняющимся
+                            потребностям вашего бизнеса
+                        </p>
+                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                data-target="#costCalculationModal">Оставить заявку
+                        </button>
+
+                    </div>
+                    <div class="col-12 col-md-4 d-none d-md-flex justify-content-center order-md-1">
+                        <img class="img-fluid"
+                             src="{% static 'assets/images/tg_bots/booking.jpg' %}" alt="Booking">
+                    </div>
+                </div>
+            </div>
+            <!-- 7 SEO оптимизация и монетизация -->
+            <div class="carousel-item custom-carousel">
+                <div class="row flex-column flex-md-row align-items-center justify-content-center">
+                    <div class="col-12 col-md-8 text-container order-md-2">
+                        <h5>SEO оптимизация и монетизация</h5>
+                        <img class="img-fluid d-block d-md-none mt-3"
+                             src="{% static 'assets/images/tg_bots/sales_funnel.jpg' %}" alt="Sales_funnel">
+                        <h4><span style="color: #008dd2;">7</span><span style="color: gray;">/7</span></h4>
+                        <p>
+                            <span>&#10003;</span> При необходимости наши специалисты займутся улучшение видимости сайта в поисковых системах
+                            через работу с контентом, ключевыми словами, техническими аспектами и пользовательским
+                            опытом <br>
+                            <span>&#10003;</span> Это позволит привлечь больше органического трафика, что является основой для дальнейшей
+                            монетизации <br>
+                            <span>&#10003;</span> Монетизация ресурса может осуществляться через рекламу, партнерские программы, продажи
+                            товаров или услуг, а также подписки, благодаря чему сайт будет приносить доход
+                        </p>
+                        <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
+                                data-target="#costCalculationModal">Оставить заявку
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 d-none d-md-flex justify-content-center order-md-1">
+                        <img class="img-fluid"
+                             src="{% static 'assets/images/tg_bots/sales_funnel.jpg' %}" alt="Sales_funnel">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Элементы управления -->
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Предыдущий</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Следующий</span>
+        </a>
+    </div>
+</div>
+
+<!-- Modal Window Start -->
+<div class="modal fade" id="costCalculationModal" tabindex="-1" role="dialog"
+     aria-labelledby="costCalculationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="costCalculationModalLabel">Оставить заявку</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="costCalculationForm" data-url="{% url 'calculate_web_cost' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="text" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="niche">Ниша</label>
+                        <input type="text" class="form-control" id="niche" name="niche" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="functionality">Желаемый функционал</label>
+                        <textarea class="form-control" id="functionality" name="functionality"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+                <div id="successMessage" style="display:none;">
+                    <p class="text-success"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Window End -->
+{% endblock content %}

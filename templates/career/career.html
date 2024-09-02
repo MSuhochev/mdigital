@@ -73,7 +73,7 @@
                                             </li>
                                         </ul>
                                         <div class="btn-wraper">
-                                            <a href="tg_development/" class="btn btn-primary">Хочу узнать</a>
+                                            <button class="open-form btn btn-primary">Хочу узнать</button>
                                         </div>
                                     </div><!-- .service-preview-content END -->
                                 </div>
@@ -113,7 +113,7 @@
                                             </li>
                                         </ul>
                                         <div class="btn-wraper">
-                                            <a href="monetization/" class="btn btn-primary">Стать частью команды</a>
+                                            <button class="open-form btn btn-primary">Стать частью команды</button>
                                         </div>
                                     </div><!-- .service-preview-content END -->
                                 </div>
@@ -169,7 +169,7 @@
                                             </li>
                                         </ul>
                                         <div class="btn-wraper">
-                                            <a href="web_development/" class="btn btn-primary">Отправить резюме</a>
+                                            <button class="open-form btn btn-primary">Отправить резюме</button>
                                         </div>
                                     </div><!-- .service-preview-content END -->
                                 </div>
@@ -232,7 +232,7 @@
                                             </li>
                                         </ul>
                                         <div class="btn-wraper">
-                                            <a href="web_development/" class="btn btn-primary">Откликнуться</a>
+                                            <button class="open-form btn btn-primary">Откликнуться</button>
                                         </div>
                                     </div><!-- .service-preview-content END -->
                                 </div>
@@ -240,6 +240,43 @@
                         </div><!-- .single-service-preview END -->
                     </div>
                     <!-- End Vacancy block -->
+
+                    <!-- Модальное окно -->
+                    <div id="resumeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="resumeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="resumeModalLabel">Отправить резюме</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="resume-form" method="post" enctype="multipart/form-data" data-url="{% url 'submit_resume' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="first_name">Имя:</label>
+                                            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Введите ваше имя" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last_name">Фамилия:</label>
+                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Введите вашу фамилию" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Введите ваш email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="resume_file">Резюме:</label>
+                                            <input type="file" name="resume_file" id="resume_file" class="form-control-file" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Отправить</button>
+                                    </form>
+                                    <div id="form-message" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>

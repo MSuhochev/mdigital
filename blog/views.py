@@ -204,17 +204,6 @@ class TelegramDevelopmentView(ListView):
         return context
 
 
-class WebDevelopmentView(ListView):
-    model = Post
-    template_name = "blog/web_development.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'WEB Разработка'
-        context['form'] = ConsultationForm()
-        return context
-
-
 class AnalyticsView(ListView):
     model = Post
     template_name = "blog/analytics.html"

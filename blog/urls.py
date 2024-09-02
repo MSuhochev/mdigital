@@ -18,7 +18,6 @@ urlpatterns = [
     path('monetization/', views.MonetizationView.as_view(), name='monetization'),
     path('post_grid/', views.PostGridView.as_view(), name='post_grid'),
     path('tg_development/', views.TelegramDevelopmentView.as_view(), name='tg_development'),
-    path('web_development/', views.WebDevelopmentView.as_view(), name='web_development'),
     path('analytics/', views.AnalyticsView.as_view(), name='analytics'),
     path('support/', views.SupportView.as_view(), name='support'),
     path('privacy-policy/', PrivacyPolicyView.as_view(), name='privacy_policy'),

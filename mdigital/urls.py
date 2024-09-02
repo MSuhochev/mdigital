@@ -17,6 +17,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('cases/', include('cases.urls')),
     path('career/', include('career.urls')),
+    path('webdev/', include('webdev.urls')),
     re_path(r'^robots\.txt$', TemplateView.as_view(template_name='blog/robots.txt', content_type='text/plain')),
     re_path(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

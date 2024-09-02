@@ -20,7 +20,8 @@ INSTALLED_APPS = [
 
     "blog",
     "cases",
-    "career"
+    "career",
+    "webdev",
 ]
 
 SITE_ID = 2
