@@ -5145,6 +5145,7 @@ button:focus {
     padding: 27px 10px 26px;
     position: relative;
     background-color: #FFFFFF;
+    font-weight: 600;
 }
 
 .main-tabs .nav-item .nav-link::before {
@@ -5179,6 +5180,7 @@ button:focus {
 .main-tabs .nav-item .nav-link.active {
     -webkit-box-shadow: 0 5px 10px 0 rgba(3, 27, 78, 0.08);
     box-shadow: 0 5px 10px 0 rgba(3, 27, 78, 0.08);
+    color: #008dd2;
 }
 
 .main-tabs .nav-item .nav-link.active::before {
@@ -8158,7 +8160,7 @@ body.fixed-scroll {
 .custom-carousel .text-container p {
     text-align: justify;
     font-size: 14px;
-    line-height: 1.2;
+    /*line-height: 1.2;*/
 }
 
 .custom-carousel .text-container span {
@@ -8706,7 +8708,7 @@ body.fixed-scroll {
 }
 
 .single-case-studies a {
-    position: absolute;
+    display: block;
     top: 0;
     left: 0;
     width: 100%;
@@ -8740,6 +8742,51 @@ body.fixed-scroll {
 }
 /* Case grid Custom Styles End */
 
+/* Case grid on index Custom Styles Start */
+#unique-selector-case .single-case-studies {
+    position: relative;
+}
+
+#unique-selector-case .single-case-studies a {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    text-decoration: none; /* Убираем подчеркивание, если не нужно */
+    color: inherit; /* Сохраняем цвет текста */
+}
+
+#unique-selector-case .single-case-studies .case-body {
+    position: relative;
+    padding: 0 15px 10px 15px;
+    z-index: 2; /* Чтобы текст и другие элементы были поверх ссылки */
+}
+
+#unique-selector-case .single-case-studies .case-body h4 {
+    padding-top: 0;
+}
+
+#unique-selector-case .case-grid .case-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Выравнивание по центру горизонтально, если это нужно */
+}
+
+#unique-selector-case .case-grid .case-body h4,
+#unique-selector-case .case-grid .case-body p {
+    margin: 0; /* Обнуление отступов, если они есть */
+    padding: 5px 0; /* Добавление отступов сверху и снизу для равномерного расположения */
+}
+
+@media (max-width: 767px) {
+    #unique-selector-case .case-grid .col-md-6 {
+        padding: 0 15px 0 15px;
+    }
+}
+/* Case grid on index Custom Styles End */
+
 /*Career Custom Styles Start*/
 .career-section .service-preview-content span {
     color: #008dd2;
@@ -8754,6 +8801,10 @@ section.career-section#service ul.nav.nav-tabs.main-tabs {
 .career-section li {
     color: black;
     font-size: 16px;
+}
+
+.career-section .btn {
+    margin-top: 20px;
 }
 
 /* Повышенная специфичность селекторов */
@@ -8776,3 +8827,14 @@ section.career-section#service.xs-section-padding {
 }
 /*Career Custom Styles End*/
 
+/*Webdev-section Custom Styles Start*/
+.webdev-section .quote-block p {
+    font-size: 16px;
+    text-indent: 0;
+    margin: 5px;
+}
+
+.webdev-section .custom-carousel .text-container .btn {
+    padding: 0 45px;
+}
+/*Webdev-section Custom Styles End*/
