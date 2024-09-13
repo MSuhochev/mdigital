@@ -1126,6 +1126,7 @@ button:focus {
 .sideabr-list-widget p, .sideabr-list-widget a {
     color: #000000;
     margin-bottom: 8px;
+    margin-top: 10px;
     display: block;
 }
 
@@ -1651,6 +1652,7 @@ button:focus {
 
 .xs-info-wraper {
     padding-left: 30px;
+    font-size: 18px;
 }
 
 .xs-info-wraper .content-title {
@@ -1958,14 +1960,20 @@ button:focus {
 }
 
 .service-preview-content p {
-    font-size: 18px;
     margin: 20px 0;
+    font-size: 18px;
     /* margin-bottom: 20px; */
 }
 
 .service-preview-content li {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 10px;
+}
+
+.service-preview-content span {
+    font-size: 20px;
+    color: #008dd2;
+    font-weight: bold;
 }
 
 .service-preview-img {
@@ -2855,7 +2863,15 @@ button:focus {
     margin-bottom: 10px;
 }
 
-/* breadcumbs */
+/* Стили для мобильных устройств */
+@media only screen and (max-width: 768px) {
+    .inner-banner-title {
+        font-size: 2rem;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+/* breadcrumbs */
 .breadcumbs > li {
     color: #fefefe;
     font-size: 0.9333333333rem;
@@ -2897,6 +2913,7 @@ button:focus {
 .inner-banner-area .inner-banner-content ul.breadcumbs li:last-child::after {
     content: ""; /* Убираем разделитель у последнего элемента */
 }
+
 
 /*=================================================
     23. funfact
@@ -3436,6 +3453,10 @@ button:focus {
 /*=================================================
     33. blog sidebar
 ==============================================================*/
+.btn-sidebar {
+    margin-top: 30px;
+}
+
 .widget {
     border-radius: 5px;
     -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.07);
@@ -4443,16 +4464,18 @@ button:focus {
 }
 
 .xs-list.check li::before, .xs-list.checkbox li::before, .xs-list.arrow li::before, .xs-list.hand li::before {
+    content: '\2713';
     padding-right: 16px;
-    font-family: "iconfont", sans-serif;
-    color: #0c5adb;
+    font-family: sans-serif;
+    color: #008dd2;
     position: relative;
     top: 3px;
-    font-size: 1rem;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .xs-list.check li::before {
-    content: "\ea73";
+    content: '\2713';
 }
 
 .xs-list.checkbox li::before {
@@ -7769,6 +7792,13 @@ img[data-scrollax] {
     }
 }
 
+@media only screen and (max-width: 768px) {
+    /* Скрываем все изображения в разделе services на мобильных устройствах */
+    .service-preview-img img {
+        display: none;
+    }
+}
+
 .tab-pane {
     display: none;
 }
@@ -8093,7 +8123,7 @@ body.fixed-scroll {
     padding: 0 15px 0 15px;
     margin: 0;
     text-align: justify;
-    text-indent: 2em;
+    font-weight: bold;
 }
 
 .desktop-img {
@@ -8103,6 +8133,8 @@ body.fixed-scroll {
 .mobile-img {
     width: 30%;
 }
+
+
 
 @media (min-width: 768px) {
     .quote-block {
@@ -8116,7 +8148,6 @@ body.fixed-scroll {
 
     .quote-block p {
         flex: 1;
-        text-indent: 2em;
     }
 }
 
@@ -8138,8 +8169,17 @@ body.fixed-scroll {
 
 .custom-carousel .text-container h4 {
     font-size: 24px;
-    padding-bottom: 45px;
-    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+
+.custom-carousel .text-container ul {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.custom-carousel .text-container li {
+    margin-bottom: 5px;
 }
 
 .custom-carousel .text-container .black-text {
@@ -8166,7 +8206,7 @@ body.fixed-scroll {
 .custom-carousel .text-container span {
     color: #008dd2;
     font-size: 16px;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .custom-carousel .text-container .btn {
@@ -8215,7 +8255,13 @@ body.fixed-scroll {
         align-items: center;
     }
 
-    .custom-carousel .text-container h5,
+    .custom-carousel .text-container h5 {
+        margin: 30px 10px 0 10px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
     .custom-carousel .text-container img,
     .custom-carousel .text-container .btn {
         text-align: center; /* Центрируем текст, изображение и кнопку */
@@ -8224,7 +8270,14 @@ body.fixed-scroll {
         margin-bottom: 0;
     }
 
-    .custom-carousel .text-container h4, .custom-carousel .text-container p {
+    .custom-carousel .text-container ul {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0 10px;
+    }
+
+    .custom-carousel .text-container h4,
+    .custom-carousel .text-container p {
         text-align: justify;
         align-self: center;
         padding: 10px 20px 10px 20px;
@@ -8243,19 +8296,21 @@ body.fixed-scroll {
     }
 }
 
+/* Объединение медиа-запросов для мобильных устройств */
 @media (max-width: 768px) {
     .custom-carousel .img-fluid {
         max-width: 75%;
+        margin: 0 auto;
     }
-}
 
-@media (max-width: 576px) {
-    .custom-carousel .img-fluid {
-        max-width: 75%;
+    /* Скрытие изображений на мобильных устройствах */
+    .custom-carousel .img-fluid.d-block.d-md-none.mt-3 {
+        display: none !important;
     }
 }
 
 /* Carousel content style End */
+
 
 /*Carousel control Start*/
 .carousel-control-next, .carousel-control-prev {
@@ -8294,12 +8349,12 @@ body.fixed-scroll {
 
     .carousel-control-prev {
         left: 3%; /* Позиционирование элемента управления 'prev' */
-        top: 35%;
+        top: 18%;
     }
 
     .carousel-control-next {
         right: 3%; /* Позиционирование элемента управления 'next' */
-        top: 35%;
+        top: 18%;
     }
 }
 

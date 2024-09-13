@@ -30,13 +30,13 @@
             <li><a href="#">О НАС</a>
                 <ul class="nav-dropdown xs-icon-menu clearfix">
                     <li class="single-menu-item">
-                        <a href="{% url 'about' %}"><i class="icon icon-briefcase"></i>Команда</a>
-                    </li>
-                    <li class="single-menu-item">
                         <a href="{% url 'case_grid' %}"><i class="icon icon-line-chart"></i>Проекты</a>
                     </li>
                     <li class="single-menu-item">
                         <a href="{% url 'career' %}"><i class="icon icon-users"></i>Карьера</a>
+                    </li>
+                    <li class="single-menu-item">
+                        <a href="{% url 'about' %}"><i class="icon icon-briefcase"></i>Команда</a>
                     </li>
                     <li class="single-menu-item">
                         <a href="{% url 'contacts' %}"><i class="icon icon-agenda3"></i>Контакты</a>
@@ -73,15 +73,15 @@
             <form id="consultation-form" method="post" action="{% url 'consultation_submit' %}">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="modal-name">Как к вам обращаться:</label>
+                    <label for="modal-name">Имя:</label>
                     <input type="text" id="modal-name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="modal-phone">Ваш телефон:</label>
+                    <label for="modal-phone">Телефон:</label>
                     <input type="text" id="modal-phone" name="phone" required>
                 </div>
                 <div class="form-group">
-                    <label for="modal-preferred-time">Удобное время для связи:</label>
+                    <label for="modal-preferred-time">Время для связи:</label>
                     <input type="text" id="modal-preferred-time" name="preferred_time" required>
                 </div>
                  <div class="form-check">
