@@ -150,6 +150,10 @@ class AboutView(ListView):
     template_name = "blog/about.html"
     paginate_by = 4
 
+    def get_queryset(self):
+        # Сортируем сотрудников по ID
+        return Employee.objects.all().order_by('id')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'О нас'

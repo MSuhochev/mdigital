@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="48px" height="48px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 48 48"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#E5E9EB}
+    .fil2 {fill:#0091EA}
+    .fil1 {fill:#4CAF50}
+   ]]>
+  </style>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0" x="1.14" y="9" width="45.86" height="28.26" rx="5.08" ry="4.86"/>
+  <polygon class="fil1" points="9,29 6,29 6,18.95 9.6,18.95 11.95,24.1 14.43,18.89 17.9,18.89 17.9,29 15.03,29 15,22 11.95,29 9,22 "/>
+  <polygon class="fil1" points="20.04,29 20.01,18.89 23.04,18.89 23.04,24.95 26.92,18.89 29.98,18.89 29.98,29 27.04,29 27,22 22.94,29 "/>
+  <polygon class="fil1" points="34.98,29 35,26 39.92,26 41.89,24 32.04,24 32.04,29 "/>
+  <polygon class="fil2" points="31.04,18.89 34,23 41.89,23 41.89,20.95 39.98,18.89 "/>
+ </g>
+</svg>

@@ -8124,6 +8124,8 @@ body.fixed-scroll {
     margin: 0;
     text-align: justify;
     font-weight: bold;
+    white-space: normal;
+    hyphens: auto;
 }
 
 .desktop-img {
@@ -8148,6 +8150,14 @@ body.fixed-scroll {
 
     .quote-block p {
         flex: 1;
+        font-size: 1.0357em;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .quote-block p {
+        font-size: 12px;
     }
 }
 
@@ -8349,12 +8359,12 @@ body.fixed-scroll {
 
     .carousel-control-prev {
         left: 3%; /* Позиционирование элемента управления 'prev' */
-        top: 18%;
+        top: 28%;
     }
 
     .carousel-control-next {
         right: 3%; /* Позиционирование элемента управления 'next' */
-        top: 18%;
+        top: 28%;
     }
 }
 
@@ -8891,5 +8901,22 @@ section.career-section#service.xs-section-padding {
 
 .webdev-section .custom-carousel .text-container .btn {
     padding: 0 45px;
+}
+
+@media (max-width: 768px) {
+    .webdev-section .carousel-control-prev {
+        right: 3%;
+        top: 16%;
+    }
+
+    .webdev-section .carousel-control-next {
+        right: 3%;
+        top: 16%;
+    }
+
+    .webdev-section .carousel-control-next-icon, .carousel-control-prev-icon {
+        width: 20px;
+        height: 20px;
+    }
 }
 /*Webdev-section Custom Styles End*/

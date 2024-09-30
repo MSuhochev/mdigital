@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="189px" height="127px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 189 127"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str2 {stroke:#0D61A9;stroke-miterlimit:22.9256}
+    .str0 {stroke:#0D61A9;stroke-width:2;stroke-miterlimit:22.9256}
+    .str4 {stroke:#5ED1BA;stroke-width:1.5;stroke-miterlimit:22.9256}
+    .str1 {stroke:#0D61A9;stroke-width:0.9;stroke-miterlimit:22.9256}
+    .str3 {stroke:#A1A8B2;stroke-width:0.9;stroke-miterlimit:22.9256}
+    .fil0 {fill:none}
+    .fil6 {fill:#FEFEFE}
+    .fil4 {fill:#008DD2}
+    .fil7 {fill:#1B3CBE}
+    .fil3 {fill:#2A5DE5}
+    .fil5 {fill:#A1A8B2}
+    .fil1 {fill:#FF6369}
+    .fil2 {fill:#FFE069}
+   ]]>
+  </style>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2249605887472">
+   <path class="fil0 str0" d="M167 86.47c0,2.23 -1.83,4.06 -4.06,4.06l-138.56 0c-2.24,0 -4.06,-1.83 -4.06,-4.06 0,-25.35 -0.05,-48.05 -0.05,-73.4 0,-9.28 2.64,-10.71 10.24,-10.56 8.96,0.18 17.99,0.01 26.96,0.01 33.09,0 66.22,0.14 99.3,0 2.42,-0.01 4.88,-0.67 6.73,0.98 2.1,1.88 3.51,3.75 3.5,6.39 -0.12,24.56 0,52.01 0,76.58z"/>
+   <path class="fil0 str1" d="M24.58 92.28c-1.48,0 1.37,4.48 3.42,5.72 1.79,1.09 2.47,3 5,3 38.48,-0.03 77.53,0.95 116,1 4.3,0 8.19,-0.4 10.4,-2.3 6.6,-5.7 6.92,-7.74 2.35,-7.95 -1.82,-0.08 -7.75,0 -9.96,0 -39.42,0.01 -87.79,0.67 -127.21,0.53z"/>
+   <path class="fil0 str1" d="M122.4 110.71l2.6 3.93c-22.48,0 -44.97,0 -67.45,0 0,-1.31 3.22,-2.62 3.22,-3.93 22.48,0 39.15,0 61.63,0z"/>
+   <rect class="fil0 str2" x="34.99" y="17.19" width="118.39" height="63.91"/>
+   <ellipse class="fil1" cx="30.05" cy="9.89" rx="2.4" ry="2.15"/>
+   <ellipse class="fil2" cx="42.06" cy="9.89" rx="2.4" ry="2.15"/>
+   <ellipse class="fil3" cx="54.06" cy="9.89" rx="2.4" ry="2.15"/>
+   <path class="fil4" d="M49.72 81.1l-0.07 -9.43 4.2 0 24.52 -22.53 1.53 0.87c0.52,0.43 2.28,1.86 2.74,1.86l1.08 0.68 0.29 0.49 3.03 2.45 0.3 0.1 0 0.1 4.3 3.81 0 0.19 1.27 0.79 0 0.09 0.2 0.1 0 0.1 0.19 0.1 0.3 0.39 0.58 0.39c0.21,0 0.2,0.12 0.2,0.29l0.29 0 0 0.3 0.2 0 0 0.1 0.29 0.09 0 0.1 0.1 0 0.39 0.49 0.19 0 0.2 0.39 0.1 0 0 0.29 2.25 0 0 1.42 2.13 -1.42 0 -0.26 40.28 -31.58 0 49.24 -91.08 0z"/>
+   <rect class="fil5 str3" x="67.54" y="102.31" width="48.51" height="8.4"/>
+   <ellipse class="fil1" cx="53.09" cy="61.37" rx="4.46" ry="4"/>
+   <ellipse class="fil2" cx="78.19" cy="39.52" rx="4.46" ry="4"/>
+   <ellipse class="fil3" cx="135.82" cy="24.86" rx="4.46" ry="4"/>
+   <line class="fil0 str4" x1="56.99" y1="58.2" x2="74.34" y2= "42.41" />
+   <line class="fil0 str4" x1="92.61" y1="59.7" x2="131.78" y2= "28.19" />
+   <line class="fil0 str4" x1="81.27" y1="42.68" x2="98.8" y2= "58.27" />
+   <ellipse class="fil6 str0" cx="96.14" cy="74.81" rx="29.86" ry="29.34"/>
+   <circle class="fil4" cx="96.46" cy="75.04" r="23.57"/>
+   <polygon class="fil6" points="82.32,71.37 78.13,71.37 78.13,77.57 82.32,77.66 84.41,80.8 80.75,84.45 85.46,89.18 88.6,86.04 92.16,89.18 92.16,93.16 98.94,93.16 99.08,89.18 103.54,87.4 106.41,91.28 111.65,87.09 108.51,83.94 110.61,78.71 114.8,78.71 114.8,71.37 110.75,71.37 108.4,68.26 112.23,64.62 107.46,59.85 103.27,64.04 99.08,60.9 99.08,56.7 92.69,56.7 92.79,60.9 88.6,62.99 85.95,59.36 81.27,64.04 84.41,67.18 "/>
+   <ellipse class="fil0 str0" cx="96.62" cy="75.04" rx="9.06" ry="8.9"/>
+   <ellipse class="fil7 str0" cx="96.46" cy="74.93" rx="2.78" ry="2.73"/>
+   <rect class="fil4" transform="matrix(0.849747 -0.61288 0.61288 0.849747 110.945 101.066)" width="6.31" height="11.8"/>
+   <path class="fil6 str1" d="M120.04 111.02l3.39 -2.46c3.23,4.48 6.48,8.9 9.72,13.35 0.44,0.6 1.77,2.59 1.65,3.33 -0.12,0.7 -1.88,1.94 -2.54,1.85 -1.24,-0.19 -6.07,-7.54 -7.08,-8.94 -1.72,-2.38 -3.43,-4.76 -5.14,-7.13z"/>
+  </g>
+ </g>
+</svg>

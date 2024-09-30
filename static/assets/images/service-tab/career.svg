@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="70px" height="70px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 70 70"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#008DD2}
+    .fil3 {fill:#0D61A9}
+    .fil1 {fill:#199BE2}
+    .fil4 {fill:#2CB4EB}
+    .fil5 {fill:#E8D47B}
+    .fil2 {fill:#EBD88A}
+   ]]>
+  </style>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_1501967314176">
+   <g>
+    <polygon class="fil0" points="5.27,29.89 20.3,13.3 15.67,6.92 30.32,6.92 30.32,23.72 25.62,18.41 9.89,35 "/>
+    <polygon class="fil1" points="0.77,53.57 13.3,53.57 13.3,68.33 0.77,68.33 "/>
+    <polygon class="fil2" points="13.93,45.02 24.35,45.02 24.35,68.33 13.93,68.33 "/>
+    <polygon class="fil1" points="24.88,35 35.3,35 35.3,68.2 24.88,68.2 "/>
+   </g>
+   <g>
+    <path class="fil3" d="M50.2 42.64l12.52 0c0.01,7.52 -0.01,15.01 0.14,22.52 0.06,3.26 -1,2.99 -4.02,3.06 -1.56,0.04 -6.51,0.35 -7.65,-0.32 -1.82,-1.07 -1.08,-5.85 -1.04,-7.78 0.09,-4.62 0.05,-9.27 0.05,-13.9l0 -0.4c0,-1.06 0,-2.12 0,-3.18z"/>
+    <path class="fil4" d="M50.2 42.64c-0.08,-3.97 -0.05,-8.19 -0.23,-12.13 -0.03,-0.65 -0.09,-0.38 -1.21,-0.4 -1.37,-0.03 -2.93,0.15 -4.23,-0.16 -0.76,-2.48 -0.15,-5.04 0.93,-7.3 2.62,-5.05 5.8,-6.27 11.38,-6.26 3.17,0 6.19,1.03 8.7,3.01 2.64,2.08 2.89,4.85 2.85,8.02 -0.02,0.72 -0.12,1.35 -0.2,2.06 -1.49,0.2 -3.76,0.11 -5.33,0.11 -0.07,4.34 -0.09,8.7 -0.14,13.05l-12.52 0z"/>
+    <path class="fil5" d="M44.44 29.52l5.53 0c0,4.68 0.11,9.4 0.1,14.07 -0.01,2.23 -0.47,3.09 -2.76,2.88 -3.92,-0.36 -3,-4.63 -2.9,-7.69 0.08,-2.9 0.03,-5.92 0.03,-8.84l0 -0.42z"/>
+    <path class="fil5" d="M62.86 29.59l5.54 0c0,4.27 -0.05,8.53 0.09,12.8 0.08,2.55 -0.23,4.27 -3.27,4.11 -2.61,-0.14 -2.48,-1.55 -2.42,-3.74 0.14,-4.35 0.06,-8.82 0.06,-13.17z"/>
+    <ellipse class="fil5" cx="56.29" cy="7.8" rx="7.1" ry="7.15"/>
+   </g>
+  </g>
+ </g>
+</svg>

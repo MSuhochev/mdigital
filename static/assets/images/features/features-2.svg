@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="193px" height="145px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 193 145"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str6 {stroke:#008DD2;stroke-miterlimit:22.9256}
+    .str1 {stroke:#0D61A9;stroke-miterlimit:22.9256}
+    .str7 {stroke:#A6DCF6;stroke-miterlimit:22.9256}
+    .str5 {stroke:#FEFEFE;stroke-width:2;stroke-miterlimit:22.9256}
+    .str4 {stroke:#FEFDFB;stroke-width:2;stroke-miterlimit:22.9256}
+    .str0 {stroke:#0D61A9;stroke-width:2;stroke-miterlimit:22.9256}
+    .str2 {stroke:#0D61A9;stroke-width:0.9;stroke-miterlimit:22.9256}
+    .str3 {stroke:#A1A8B2;stroke-width:0.9;stroke-miterlimit:22.9256}
+    .fil0 {fill:none}
+    .fil6 {fill:#FEFEFE}
+    .fil7 {fill:#008DD2}
+    .fil3 {fill:#2A5DE5}
+    .fil4 {fill:#A1A8B2}
+    .fil8 {fill:#A6DCF6}
+    .fil5 {fill:#CCE1FF}
+    .fil9 {fill:#D6DEEC}
+    .fil1 {fill:#FF6369}
+    .fil2 {fill:#FFE069}
+    .fil10 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2248971157232">
+   <path class="fil0 str0" d="M173.58 114.19c0,2.32 -1.9,4.22 -4.22,4.22l-144.17 0c-2.33,0 -4.23,-1.9 -4.23,-4.22 0,-26.38 -0.04,-50 -0.05,-76.37 0,-9.66 2.75,-11.15 10.66,-10.99 9.32,0.19 18.72,0.01 28.05,0.01 34.42,0 68.9,0.14 103.32,0 2.52,-0.01 5.08,-0.7 7,1.02 2.19,1.95 3.65,3.9 3.64,6.65 -0.12,25.55 0,54.12 0,79.68z"/>
+   <rect class="fil0 str1" x="36.23" y="42.1" width="123.18" height="66.5"/>
+   <ellipse class="fil1" cx="31.09" cy="34.51" rx="2.5" ry="2.24"/>
+   <ellipse class="fil2" cx="43.59" cy="34.51" rx="2.5" ry="2.24"/>
+   <ellipse class="fil3" cx="56.07" cy="34.51" rx="2.5" ry="2.24"/>
+   <path class="fil0 str2" d="M25.4 120.24c-1.55,-0.01 1.43,4.66 3.56,5.95 1.86,1.13 2.57,3.12 5.2,3.12 40.04,-0.04 80.66,0.99 120.7,1.04 4.47,0 8.52,-0.42 10.81,-2.39 6.87,-5.94 7.21,-8.06 2.45,-8.28 -1.9,-0.08 -8.06,0 -10.36,0 -41.02,0.01 -91.35,0.7 -132.36,0.56z"/>
+   <path class="fil0 str2" d="M127.18 139.41l2.7 4.09c-23.39,0 -46.78,0 -70.18,0 0,-1.36 3.35,-2.73 3.35,-4.09 23.39,0 40.74,0 64.13,0z"/>
+   <rect class="fil4 str3" x="70.09" y="130.67" width="50.47" height="8.74"/>
+  </g>
+  <g id="_2248971157616">
+   <path class="fil5" d="M148.11 107.2l-99.06 0c0,-33.54 0.02,-63.87 -0.05,-97.4 -0.01,-6.46 1.15,-6.65 7.66,-6.65 26.8,0 57.67,0.11 84.46,-0.01 5.63,-0.02 7.04,1.19 7.04,7.16 0,30.78 -0.05,66.11 -0.05,96.9z"/>
+   <rect class="fil6" x="53.32" y="8.34" width="90.52" height="18.73"/>
+   <rect class="fil6" x="53.32" y="29.15" width="90.52" height="18.73"/>
+   <rect class="fil7" x="125.74" y="9.13" width="16.29" height="16.64"/>
+   <ellipse class="fil0 str4" cx="131.58" cy="16.8" rx="3.52" ry="3.77"/>
+   <line class="fil0 str5" x1="135.1" y1="18.49" x2="141.59" y2= "22.39" />
+   <ellipse class="fil8" cx="116.31" cy="17.19" rx="4.72" ry="4.68"/>
+   <ellipse class="fil9" cx="104.28" cy="17.19" rx="4.72" ry="4.68"/>
+   <rect class="fil1" x="56.45" y="31.5" width="13.44" height="13.53"/>
+   <line class="fil0 str6" x1="77.26" y1="34.36" x2="104.28" y2= "34.41" />
+   <line class="fil0 str7" x1="77.26" y1="42.63" x2="127.72" y2= "42.68" />
+   <rect class="fil2" x="56.45" y="57.25" width="13.44" height="13.53"/>
+   <line class="fil0 str6" x1="77.26" y1="60.11" x2="104.28" y2= "60.16" />
+   <line class="fil0 str7" x1="77.26" y1="68.38" x2="127.72" y2= "68.43" />
+   <rect class="fil7" x="56.45" y="83.26" width="13.44" height="13.53"/>
+   <line class="fil0 str6" x1="77.26" y1="86.12" x2="104.28" y2= "86.17" />
+   <line class="fil0 str7" x1="77.26" y1="94.39" x2="127.72" y2= "94.44" />
+  </g>
+  <g id="_2248971155984">
+   <polygon class="fil7" points="140.28,98.77 140.28,119.92 142.37,124.78 145.55,130.5 148.27,133.65 152.99,136.9 161.14,141.27 169.42,136.23 172.54,134.15 176.7,129.98 179.82,125.82 182,120.1 182,98.77 170.21,95.84 161.14,88.88 151.73,95.65 "/>
+   <polygon class="fil10" points="152.02,117.96 158.26,124.2 173.87,108.59 170.75,105.47 158.26,117.96 154.98,114.84 "/>
+  </g>
+ </g>
+</svg>
