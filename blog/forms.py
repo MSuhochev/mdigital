@@ -1,5 +1,5 @@
 from django import forms
-from .models import Subscriber, ConsultationRequest, CostCalculationRequest
+from .models import Subscriber, ConsultationRequest, CostCalculationRequest, MonetizationQuestionsRequest
 
 
 class SubscriberForm(forms.ModelForm):
@@ -30,7 +30,61 @@ class ConsultationForm(forms.ModelForm):
         fields = ['name', 'phone', 'preferred_time']
 
 
+class MonetizationQuestionForm(forms.ModelForm):
+    agree_to_privacy_policy = forms.BooleanField(
+        required=True,
+        label="Оставляя заявку, вы соглашаетесь с правилами обработки персональных данных"
+    )
+
+    class Meta:
+        model = MonetizationQuestionsRequest
+        fields = ['name', 'phone', 'question']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя'}),
+            'phone': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Телефон'}),
+            'question': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Вопрос'}),
+        }
+
+
 class CostCalculationForm(forms.ModelForm):
+    FUNCTIONALITY_CHOICES = [
+        ('feature1', 'Функция 1'),
+        ('feature2', 'Функция 2'),
+        ('feature3', 'Функция 3'),
+        ('feature4', 'Функция 4'),
+    ]
+
+    functionality = forms.MultipleChoiceField(
+        choices=FUNCTIONALITY_CHOICES,
+        widget=forms.CheckboxSelectMultiple,
+        required=False,  # это поле может быть необязательным
+    )
+
     class Meta:
         model = CostCalculationRequest
         fields = ['name', 'phone', 'niche', 'functionality']
+
+
+class FeedbackForm(forms.Form):
+    email = forms.EmailField(
+        required=True,
+        label='',
+        widget=forms.EmailInput(attrs={
+            'placeholder': 'Email',  # Добавляем placeholder
+        })
+    )
+    message = forms.CharField(
+        required=True,
+        label='',
+        widget=forms.Textarea(attrs={
+            'placeholder': 'Место для сообщения, с которого начнётся отличное сотрудничество',  # Placeholder
+            'rows': 4  # Количество строк для textarea
+        })
+    )
+    attachment = forms.FileField(
+        label='Прикрепить файл',
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control',
+        })
+    )

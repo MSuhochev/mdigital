@@ -2,7 +2,6 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count
 from django.views.generic import DetailView, ListView
 from django.core.exceptions import ObjectDoesNotExist
-
 from blog.forms import ConsultationForm
 from .models import Case, CaseCategory
 

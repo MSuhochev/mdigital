@@ -7,6 +7,7 @@ class Resume(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
     resume_file = models.FileField(upload_to='resumes/')
+    cover_letter = models.TextField(max_length=200, blank=True, null=True)
     date_sent = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=20, default='pending')
 

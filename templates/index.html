@@ -20,7 +20,7 @@
 <!-- Окно согласия на использование куки -->
     <div id="cookie-consent" class="cookie-consent">
         <div class="cookie-content">
-            <p>Мы используем куки для улучшения пользовательского опыта на сайте. Продолжая использовать сайт, вы соглашаетесь на использование куки.</p>
+            <p>Мы используем cookies для улучшения пользовательского опыта на сайте Продолжая использовать сайт, вы соглашаетесь на использование cookies</p>
             <button id="accept-cookies">Согласен</button>
         </div>
     </div>
@@ -289,17 +289,16 @@
 <!-- END pricing section -->
 
 <!-- latest media section -->
-<section class="xs-section-padding gray-bg" id="blogs">
+<section class="xs-section-padding gray-bg latest-posts-section" id="blogs">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 mx-auto">
                 <div class="xs-heading text-center">
-                    <h2 class="section-subtitle">Последние посты</h2>
                     <h3 class="section-title ">Может быть интересно</h3>
                 </div><!-- .xs-heading END -->
             </div>
         </div><!-- .row END -->
-        <div class="row">
+        <div class="row equal-height-row">
 			{% for post in posts %}
             <div class="col-lg-4 col-md-6">
                 <div class="single-blog-post-thumb">
@@ -326,17 +325,16 @@
                     <i class="icon icon-message fly-icons"></i>
                     <div class="newsletter-thumb-content">
                         <h4 class="xs-content-title">Подпишитесь на рассылку</h4>
-                        <p>Введите свой адрес электронной почты в поле ниже, чтобы получать последние Digital новости</p>
+                        <p>Укажите адрес электронной почты, чтобы получать последние Digital новости</p>
                         <form id="subscribe-form" class="subscribe-form2" data-url="{{ request.path }}">
                             {% csrf_token %}
                             {{ form.email }}
                             <div class="form-check">
                                 <label class="form-check-label" for="agree_to_privacy_policy_order">
                                     {{ form.agree_to_privacy_policy }}
-                                    <span class="checkbox-text">Согласие с</span>
-                                    <a href="#" data-toggle="modal" data-target="#privacyPolicyModal" class="modal-link">правилами обработки персональных данных</a>
-                                    <span class="checkbox-text"> ознакомиться </span>
-                                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">здесь</a>..
+                                    <span class="checkbox-text">Соглашаюсь с</span>
+                                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">правилами</a>
+                                    <span class="checkbox-text">  обработки персональных данных</span>
                                 </label>
                                 {% if form.agree_to_privacy_policy.errors %}
                                     <div class="invalid-feedback">

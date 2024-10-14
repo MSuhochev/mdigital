@@ -7,8 +7,8 @@
             <div class="col-lg-9 mx-auto">
                 <div class="text-center">
                     <h2 class="section-subtitle">Готовы к росту?</h2>
-                    <a href="https://pub.adfinity.pro/register/?utm_source=site&utm_medium=invite&utm_campaign=mdigital">
-                        <h5 class="section-title">Пройдите регистрацию на сайте нашего партнёра - <img src="{% static 'assets/images/partner/adfinity-logo.svg' %}" alt="adfinity logo"></h5>
+                    <a href="https://pub.adfinity.pro/register/?utm_source=site&utm_medium=invite&utm_campaign=mdigital"  target="_blank" rel="noopener noreferrer">
+                        <h5 class="section-title">Зарегистрируйтесь на сайте нашего партнёра <br><button class="registration-menu-button">РЕГИСТРАЦИЯ </button> <img src="{% static 'assets/images/partner/adfinity-logo.svg' %}" alt="adfinity logo"></h5>
                     </a>
                 </div>
                 <!-- .xs-heading END -->
@@ -26,7 +26,7 @@
                                     <button class="faq-toggle"><i class="plus-icon">+</i></button>
                                 </div>
                                 <div class="faq-answer">
-                                    <p>- Для регистрации перейдите по <a href="https://pub.adfinity.pro/register/?utm_source=site&utm_medium=invite&utm_campaign=mdigital">ссылке
+                                    <p>- Для регистрации перейдите по <a href="https://pub.adfinity.pro/register/?utm_source=site&utm_medium=invite&utm_campaign=mdigital" target="_blank" rel="noopener noreferrer">ссылке
                                         </a>и заполните форму регистрации.</p>
                                 </div>
                             </div>
@@ -99,19 +99,59 @@
                                     <p>- Блоки убирать не обязательно, всё будет работать параллельно.</p>
                                 </div>
                             </div>
+                            <div class="faq-item">
+                                <div class="faq-question">
+                                    <span>Остались вопросы?</span>
+                                    <button class="faq-toggle"><i class="plus-icon">+</i></button>
+                                </div>
+                                <div class="faq-answer">
+                                    <p><button id="openModalBtn" class="monetization-menu-button">Задать вопрос по монетизации</button></p>
+                                </div>
+                            </div>
                             <!-- Добавьте дополнительные вопросы и ответы здесь -->
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- end FAQ section -->
-
+        </section>  <!-- end FAQ section -->
     </div><!-- .row END -->
-    <div class="parallax-icon-wraper">
-        <img src="{% static 'assets/images/hand-bloom.png' %}" class="parallax-icon icon-one" alt="hand-bloom">
-        <img src="{% static 'assets/images/chart.png' %}" class="parallax-icon icon-two" alt="chart">
-    </div>
 </section>
 <!-- end get free quo -->
 
+<!-- Модальное окно -->
+<div id="questionModal" class="modal">
+    <div class="modal-content">
+        <!-- Кнопка для закрытия модального окна -->
+        <span id="close-question-modal" class="close">&times;</span>
+        <h2>Задать вопрос по монетизации</h2>
+        <form id="questionForm" action="/send-question/" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+            <label for="question">Вопрос:</label>
+            <textarea id="question" name="question" required></textarea>
+            </div>
+
+            <label>
+                <input type="checkbox" name="agree_to_privacy_policy" required>
+                <span class="checkbox-text-dark">Соглашаюсь с</span>
+                <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">правилами</a>
+                <span class="checkbox-text-dark">  обработки персональных данных</span>
+            </label>
+
+            <!-- Токен CSRF для защиты -->
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+            <button type="submit" class="submit-btn">Отправить</button>
+        </form>
+    </div>
+</div>

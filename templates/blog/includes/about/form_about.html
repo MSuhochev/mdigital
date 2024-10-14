@@ -1,0 +1,48 @@
+{% load static %}
+
+<section class="xs-section-padding xs-seo-info form-about" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="section-title text-center">Вы не нашли продукт, который хотели:</h3>
+                <span class="line"></span>
+            </div>
+        </div>
+        <div class="row">
+             <div class="col-lg-6">
+                <div class="xs-info-wraper wow fadeInUp">
+                    <h4>Расскажите нам об этом</h4>
+                    <p>Опишите пожелания и приложите примеры. <br>
+                        Мы внимательно относимся ко мнению потенциальных клиентов
+                        и стремимся максимально удовлетворять их потребности</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <form id="feedbackForm" method="post" action="{% url 'feedback' %}" enctype="multipart/form-data" class="feedback-form">
+                    {% csrf_token %}
+                    {{ feedback_form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">Отправить</button>
+                </form>
+                <div id="feedbackMessage"></div> <!-- Здесь будет отображаться ответ -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Модальное окно для отображения сообщения -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalLabel">Сообщение</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalMessage">
+                <!-- Здесь будет текст сообщения -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

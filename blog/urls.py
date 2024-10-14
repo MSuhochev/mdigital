@@ -2,18 +2,21 @@ from django.urls import path, re_path
 from . import views
 from .views import PostSearchView, SubmitQuestionView, IncomingOrdersView, ContactFormSubmitView, Custom404View, \
     PrivacyPolicyView, ConsultationRequestView, CookieConsentView, \
-    CostCalculationView
+    CostCalculationView, MonetizationQuestionsView, FeedbackView
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
     path('cookie-consent/', CookieConsentView.as_view(), name='cookie_consent'),
     path('search/', PostSearchView.as_view(), name='search'),
     path('submit-question/', SubmitQuestionView.as_view(), name='submit_question'),
+    path('send-question/', MonetizationQuestionsView.as_view(), name='send_question'),
     path('incoming-order/', IncomingOrdersView.as_view(), name='incoming_order'),
     path('calculate-cost/', CostCalculationView.as_view(), name='calculate_cost'),
+    path('feedback/', FeedbackView.as_view(), name='feedback'),
     path('contact-form-submit/', ContactFormSubmitView.as_view(), name='contact_form_submit'),
     path('consultation/submit/', ConsultationRequestView.as_view(), name='consultation_submit'),
     path('about/', views.AboutView.as_view(), name='about'),
+    path('team/', views.TeamView.as_view(), name='team'),
     path('contacts/', views.ContactsView.as_view(), name='contacts'),
     path('monetization/', views.MonetizationView.as_view(), name='monetization'),
     path('post_grid/', views.PostGridView.as_view(), name='post_grid'),

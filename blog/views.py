@@ -11,9 +11,11 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, TemplateView, FormView
-from .forms import SubscriberForm, ConsultationForm, CostCalculationForm
-from .models import Post, Employee, Category, UserMessage, IncomingOrders, ContactFormSubmission
+from .forms import SubscriberForm, ConsultationForm, CostCalculationForm, MonetizationQuestionForm, FeedbackForm
+from .models import Post, Employee, Category, UserMessage, IncomingOrders, ContactFormSubmission, Subscriber
 import requests
+from django.core.mail import send_mail
+from django.conf import settings  # Для использования настроек email
 
 
 class HomeView(ListView):
@@ -31,13 +33,30 @@ class HomeView(ListView):
 
     def post(self, request, *args, **kwargs):
         form = SubscriberForm(request.POST)
+
+        # Проверяем, существует ли подписчик с таким email
+        if Subscriber.objects.filter(email=form.data.get('email')).exists():
+            return JsonResponse({'message': "Этот email уже подписан на рассылку"}, status=400)
+
         if form.is_valid():
-            form.save()
+            subscriber = form.save()
+
+            # Отправка приветственного письма
+            subject = 'Добро пожаловать в нашу рассылку!'
+            message = f'Здравствуйте, {subscriber.email}!\n\nСпасибо, что подписались на нашу рассылку.'
+            from_email = settings.DEFAULT_FROM_EMAIL
+            recipient_list = [subscriber.email]
+
+            send_mail(subject, message, from_email, recipient_list)
             messages.success(request, "Вы успешно подписались на рассылку")
             return JsonResponse({'message': "Вы успешно подписались на рассылку"})
+
         else:
-            messages.error(request, "Произошла ошибка при подписке")
-            return JsonResponse({'message': "Произошла ошибка при подписке"})
+            # Здесь получаем ошибки формы в JSON формате
+            error_messages = form.errors.as_json()
+            print(f"Форма не валидна: {error_messages}")
+            return JsonResponse({'message': "Произошла ошибка при отправке формы подписки", 'errors': error_messages},
+                                status=400)
 
 
 class Custom404View(View):
@@ -158,20 +177,7 @@ class AboutView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'О нас'
         context['form'] = ConsultationForm()
-
-        # Получаем queryset сотрудников, отсортированный по ID
-        employees = Employee.objects.all().order_by('id')
-
-        # Применяем пагинацию к списку сотрудников
-        paginator = Paginator(employees, self.paginate_by)
-        page_number = self.request.GET.get('page')
-
-        try:
-            page_obj = paginator.get_page(page_number)
-        except Exception as e:
-            page_obj = paginator.get_page(1)
-
-        context['employees'] = page_obj  # Добавляем объект страницы с сотрудниками в контекст
+        context['feedback_form'] = FeedbackForm()
         return context
 
 
@@ -230,6 +236,36 @@ class SupportView(ListView):
         return context
 
 
+class TeamView(ListView):
+    model = Employee
+    template_name = "blog/team.html"
+    paginate_by = 4
+
+    def get_queryset(self):
+        # Сортируем сотрудников по ID
+        return Employee.objects.all().order_by('id')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'О нас'
+        context['form'] = ConsultationForm()
+
+        # Получаем queryset сотрудников, отсортированный по ID
+        employees = Employee.objects.all().order_by('id')
+
+        # Применяем пагинацию к списку сотрудников
+        paginator = Paginator(employees, self.paginate_by)
+        page_number = self.request.GET.get('page')
+
+        try:
+            page_obj = paginator.get_page(page_number)
+        except Exception as e:
+            page_obj = paginator.get_page(1)
+
+        context['employees'] = page_obj  # Добавляем объект страницы с сотрудниками в контекст
+        return context
+
+
 class PostSearchView(CategoryMixin, ListView):
     model = Post
     template_name = 'blog/search_results.html'
@@ -273,14 +309,31 @@ class PostSearchView(CategoryMixin, ListView):
 class BaseTelegramNotificationView(View):
     telegram_bot_token = 'TOKEN'
 
-    def send_telegram_message(self, message):
-        url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendMessage"
-        payload = {
-            'chat_id': self.telegram_chat_id,
-            'text': message
-        }
-        response = requests.post(url, json=payload)
-        return response.json()
+    def send_telegram_message(self, message, file=None):
+        """
+        Отправляет сообщение в Telegram. Если передан файл, отправляет его вместе с текстом.
+        """
+        if file:
+            # Отправка файла в Telegram с подписью
+            url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendDocument"
+            files = {
+                'document': file
+            }
+            data = {
+                'chat_id': self.telegram_chat_id,
+                'caption': message  # Сообщение отправляется как подпись к файлу
+            }
+            response = requests.post(url, data=data, files=files)
+        else:
+            # Отправка только текстового сообщения
+            url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendMessage"
+            payload = {
+                'chat_id': self.telegram_chat_id,
+                'text': message
+            }
+            response = requests.post(url, json=payload)
+
+        return response.json()  # Возвращаем ответ Telegram API
 
 
 class SubmitQuestionView(BaseTelegramNotificationView):
@@ -370,13 +423,20 @@ class CostCalculationView(BaseTelegramNotificationView):
         if form.is_valid():
             # Сохраняем форму, но не отправляем в базу данных сразу
             cost_request = form.save(commit=False)
+
+            # Получаем функционал как список
+            functionality = request.POST.getlist('functionality')
+            cost_request.functionality = ', '.join(functionality)  # Преобразуем в строку
+
             # Отправляем сообщение в Telegram
             message = (f"Новая заявка:\nИмя: {cost_request.name}\nТелефон: {cost_request.phone}\n"
                        f"Ниша: {cost_request.niche}\nФункционал: {cost_request.functionality}")
             self.send_telegram_message(message)
+
             # Теперь сохраняем в базу данных
             cost_request.save()
             return JsonResponse({'success': True, 'message': 'Заявка принята, мы свяжемся с вами в ближайшее время.'})
+
         return JsonResponse({'success': False, 'message': 'Ошибка в заполнении формы.'})
 
 
@@ -405,6 +465,65 @@ class ConsultationRequestView(BaseTelegramNotificationView, FormView):
 
     def form_invalid(self, form):
         return JsonResponse({'success': False, 'errors': form.errors})
+
+
+class MonetizationQuestionsView(BaseTelegramNotificationView, FormView):
+    telegram_chat_id = '-1002254397318'  # ID чата в Telegram
+    form_class = MonetizationQuestionForm
+    success_url = reverse_lazy('home')  # Укажите свой URL для перенаправления после успешной отправки формы
+
+    def form_valid(self, form):
+        # Сохранение данных формы
+        monetization_question = form.save()
+
+        # Формирование текста сообщения для отправки в Telegram
+        message_text = (
+            f"Новый вопрос по монетизации:\n"
+            f"Имя: {monetization_question.name}\n"
+            f"Телефон: {monetization_question.phone}\n"
+            f"Вопрос: {monetization_question.question}\n"
+        )
+
+        # Отправка сообщения в Telegram
+        self.send_telegram_message(message_text)
+
+        return JsonResponse({'success': True})
+
+    def form_invalid(self, form):
+        # Возвращение ошибки в формате JSON, если форма некорректна
+        return JsonResponse({'success': False, 'errors': form.errors})
+
+
+class FeedbackView(BaseTelegramNotificationView):
+    telegram_chat_id = '-1002229106132'  # Ваш Telegram чат ID
+    success_url = reverse_lazy('home')
+
+    def post(self, request, *args, **kwargs):
+        form = FeedbackForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Получаем данные из формы
+            email = form.cleaned_data['email']
+            message_text = form.cleaned_data['message']
+            attachment = form.cleaned_data.get('attachment')
+
+            # Формируем сообщение для отправки в Telegram
+            telegram_message = (
+                f"Новое сообщение обратной связи:\n\n"
+                f"Email: {email}\n"
+                f"Сообщение: {message_text}\n"
+            )
+
+            # Если есть прикрепленный файл, отправляем его
+            if attachment:
+                self.send_telegram_message(telegram_message, file=attachment)
+            else:
+                self.send_telegram_message(telegram_message)
+
+            # Возвращаем ответ об успешной отправке
+            return JsonResponse({'message': "Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время."})
+
+        # Если форма не валидна, возвращаем ошибки
+        return JsonResponse({'errors': form.errors}, status=400)
 
 
 class CookieConsentView(View):

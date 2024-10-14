@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Category(MPTTModel):
@@ -72,7 +73,7 @@ class Employee(models.Model):
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     position = models.CharField(max_length=100, verbose_name='Должность')
     direction = models.CharField(max_length=100, verbose_name='Направление')
-    quote = models.CharField(max_length=200, verbose_name='Девиз', blank=True, null=True)
+    quote = CKEditor5Field('Quote', config_name='default', blank=True, null=True)
     phone = models.CharField(max_length=14, blank=True, null=True, verbose_name='Phone')
     email = models.EmailField(verbose_name='E-mail')
     telegram_id = models.CharField(max_length=100, blank=True, null=True, verbose_name='Telegram ID')
@@ -156,6 +157,16 @@ class ConsultationRequest(models.Model):
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
     preferred_time = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+class MonetizationQuestionsRequest(models.Model):
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=20)
+    question = models.TextField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

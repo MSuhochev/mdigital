@@ -73,7 +73,7 @@
                                             </li>
                                         </ul>
                                         <div class="btn-wraper">
-                                            <button class="open-form btn btn-primary">Хочу узнать</button>
+                                            <button class="open-form btn btn-primary">Заявить о себе</button>
                                         </div>
                                     </div><!-- .service-preview-content END -->
                                 </div>
@@ -256,19 +256,23 @@
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <label for="first_name">Имя:</label>
-                                            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Введите ваше имя" required>
+                                            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Введите имя" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="last_name">Фамилия:</label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Введите вашу фамилию" required>
+                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Введите фамилию" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email:</label>
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="Введите ваш email" required>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Введите email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="resume_file">Резюме:</label>
                                             <input type="file" name="resume_file" id="resume_file" class="form-control-file" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cover_letter">Сопроводительное письмо:</label>
+                                            <input type="text" name="cover_letter" id="cover_letter" class="form-control-text" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Отправить</button>
                                     </form>

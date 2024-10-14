@@ -30,13 +30,16 @@
             <li><a href="#">О НАС</a>
                 <ul class="nav-dropdown xs-icon-menu clearfix">
                     <li class="single-menu-item">
-                        <a href="{% url 'case_grid' %}"><i class="icon icon-line-chart"></i>Проекты</a>
+                        <a href="{% url 'about' %}"><i class="icon icon-briefcase"></i>Компания</a>
                     </li>
                     <li class="single-menu-item">
-                        <a href="{% url 'career' %}"><i class="icon icon-users"></i>Карьера</a>
+                        <a href="{% url 'team' %}"><i class="icon icon-users"></i>Команда</a>
                     </li>
                     <li class="single-menu-item">
-                        <a href="{% url 'about' %}"><i class="icon icon-briefcase"></i>Команда</a>
+                        <a href="{% url 'career' %}"><i class="icon icon-line-chart"></i>Карьера</a>
+                    </li>
+                    <li class="single-menu-item">
+                        <a href="{% url 'case_grid' %}"><i class="icon icon-presentation"></i>Проекты</a>
                     </li>
                     <li class="single-menu-item">
                         <a href="{% url 'contacts' %}"><i class="icon icon-agenda3"></i>Контакты</a>
@@ -82,14 +85,14 @@
                 </div>
                 <div class="form-group">
                     <label for="modal-preferred-time">Время для связи:</label>
-                    <input type="text" id="modal-preferred-time" name="preferred_time" required>
+                    <input type="text" id="modal-preferred-time" name="preferred_time" class="form-control datepicker" required>
                 </div>
                  <div class="form-check">
                                 <label class="form-check-label">
                                     {{ form.agree_to_privacy_policy }}
-                                    Оставляя заявку, вы соглашаетесь с
-                                    <a href="#" data-toggle="modal" data-target="#privacyPolicyModal">правилами обработки персональных данных</a>
-                                    ознакомиться <a href="{% url 'privacy_policy' %}" target="_blank">здесь</a>.
+                                    <span class="checkbox-text-dark">Соглашаюсь с</span>
+                                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">правилами</a>
+                                    <span class="checkbox-text-dark">  обработки персональных данных</span>
                                 </label>
                                 {% if form.agree_to_privacy_policy.errors %}
                                     <div class="invalid-feedback">

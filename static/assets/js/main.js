@@ -1561,39 +1561,44 @@
 $(document).ready(function () {
     $('.contact-form').on('submit', function (event) {
         event.preventDefault(); // Предотвращаем отправку формы по умолчанию
-        // Получаем значения полей формы
+
         var email = $('#email').val();
         var message = $('#message').val();
 
-        // Проверяем, заполнены ли поля
         if (email.trim() === '' || message.trim() === '') {
-            // Если одно из полей пустое, показываем сообщение об ошибке
             $('#question-message').text('Пожалуйста, заполните все поля.').addClass('error-message response-message');
-            hideMessageAfterDelay('#question-message'); // Скрываем сообщение через время по умолчанию
-            return; // Прерываем выполнение функции
+            hideMessageAfterDelay('#question-message');
+            return;
         }
 
         var formData = $(this).serialize(); // Получаем данные формы
+
+        // Получаем CSRF-токен из метатега
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
             data: formData,
             dataType: 'json',
+            beforeSend: function (xhr) {
+                // Добавляем CSRF-токен в заголовок запроса
+                xhr.setRequestHeader('X-CSRFToken', csrfToken);
+            },
             success: function (data) {
-                // Вставляем ответ на страницу
                 $('#question-message').text(data.message).addClass('success-message response-message');
-                hideMessageAfterDelay('#question-message'); // Скрываем сообщение через время по умолчанию
+                hideMessageAfterDelay('#question-message');
                 $('.contact-form')[0].reset();
             },
             error: function (xhr, status, error) {
                 console.error('Ошибка:', error);
                 $('#question-message').text('Произошла ошибка при отправке вопроса.');
-                hideMessageAfterDelay('#question-message'); // Скрываем сообщение через время по умолчанию
+                hideMessageAfterDelay('#question-message');
             }
         });
     });
 });
+
 
 $(document).ready(function () {
     $('.xs-contact-form').on('submit', function (event) {
@@ -1666,14 +1671,32 @@ $(document).ready(function () {
                 $('#subscribe-message').text(response.message).addClass('success-message response-message');
                 hideMessageAfterDelay('#subscribe-message'); // Скрываем сообщение через время по умолчанию
             },
-            error: function (response) {
+            error: function (xhr) {
                 // Обновляем содержимое поля вывода сообщений пользователю в случае ошибки
-                $('#subscribe-message').text("Произошла ошибка при отправке формы подписки.");
+                let errorMessage = "Произошла ошибка при отправке формы подписки."; // Общее сообщение по умолчанию
+
+                if (xhr.responseJSON) {
+                    if (xhr.responseJSON.message) {
+                        errorMessage = xhr.responseJSON.message; // Получаем сообщение из JSON
+                    }
+
+                    // Проверяем, есть ли ошибки формы
+                    if (xhr.responseJSON.errors) {
+                        errorMessage = '';
+                        for (const key in xhr.responseJSON.errors) {
+                            // Извлекаем сообщение об ошибке для каждого поля
+                            errorMessage += xhr.responseJSON.errors[key][0].message + ' ';
+                        }
+                    }
+                }
+
+                $('#subscribe-message').text(errorMessage.trim()); // Обновляем сообщение для пользователя
                 hideMessageAfterDelay('#subscribe-message'); // Скрываем сообщение через время по умолчанию
             }
         });
     });
 });
+
 /*==========================================================
 			48. incoming_orders
 ======================================================================*/
@@ -1723,7 +1746,7 @@ function hideMessageAfterDelay(selector, delay = 5000) {
 }
 
 
-// Подтягиваем описание направлений в мобильной версии для services
+/* Подтягиваем описание направлений в мобильной версии для services START*/
 document.addEventListener('DOMContentLoaded', function () {
     var tabs = document.querySelectorAll('.nav-link');
 
@@ -1766,7 +1789,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+/* Подтягиваем описание направлений в мобильной версии для services END*/
 
+/*Кнопка наверх START*/
 document.addEventListener('DOMContentLoaded', function () {
     var backToTopButton = document.getElementById('back-to-top');
 
@@ -1782,6 +1807,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.scrollTo({top: 0, behavior: 'smooth'});
     };
 });
+/*Кнопка наверх END*/
 
 document.addEventListener("DOMContentLoaded", function () {
     // Находим чекбокс согласия с политикой конфиденциальности
@@ -1886,7 +1912,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
 /* End управления модальным окном консультации */
 
 /*FAQ js start*/
@@ -2022,9 +2047,11 @@ $(document).ready(function() {
             processData: false,
             contentType: false,
             success: function(response) {
-                $('#form-message').text(response.message).show();
+                $('#form-message').text(response.message).show(); // Отображение сообщения об успехе
                 $('#resume-form')[0].reset(); // Очищает форму
-                $('#resumeModal').modal('hide'); // Закрывает модальное окно после успешной отправки
+                setTimeout(function() { // Закрытие модального окна через 2 секунды
+                    $('#resumeModal').modal('hide'); // Закрывает модальное окно после успешной отправки
+                }, 2000);
             },
             error: function(xhr) {
                 var errors = xhr.responseJSON.errors;
@@ -2032,10 +2059,285 @@ $(document).ready(function() {
                 for (var key in errors) {
                     errorMessages += errors[key].join('<br>') + '<br>';
                 }
-                $('#form-message').html(errorMessages).show();
+                $('#form-message').html(errorMessages).show(); // Отображение ошибок
             }
         });
     });
 });
-
 /* SendResumeForm END */
+
+/* Управление модальным окном вопросов по монетизации */
+document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById("questionModal");
+    var btn = document.getElementById("openModalBtn");
+    var closeBtn = document.getElementById("close-question-modal");
+    var form = document.getElementById("questionForm");
+    var mobileMenu = document.querySelector(".nav-menus-wrapper");
+    var menuToggleBtn = document.querySelector(".menu-toggle-btn");
+
+    function openModal() {
+        if (modal) {
+            modal.style.display = "block";
+        }
+
+        // Закрытие мобильного меню при открытии модального окна на малых экранах
+        if (window.innerWidth <= 768 && mobileMenu && mobileMenu.style.display !== "none") {
+            mobileMenu.style.display = "none";
+            mobileMenu.setAttribute('data-hidden-by-modal', 'true');
+
+            if (menuToggleBtn && mobileMenu.classList.contains('open')) {
+                menuToggleBtn.click();
+            }
+        }
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.style.display = "none";
+        }
+
+        // Возврат мобильного меню при закрытии модального окна
+        if (window.innerWidth <= 768 && mobileMenu && mobileMenu.getAttribute('data-hidden-by-modal') === 'true') {
+            mobileMenu.style.display = "block";
+            mobileMenu.removeAttribute('data-hidden-by-modal');
+        }
+    }
+
+    // Открытие модального окна
+    if (btn) {
+        btn.onclick = openModal;
+    }
+
+    // Закрытие модального окна
+    if (closeBtn) {
+        closeBtn.onclick = closeModal;
+    }
+
+    // Закрытие модального окна при клике вне его области
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
+    // Обработка отправки формы
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var formData = new FormData(form);
+
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    var successMessage = document.createElement('p');
+                    successMessage.textContent = 'Спасибо за ваш вопрос! Мы свяжемся с вами в ближайшее время.';
+                    successMessage.style.color = 'green';
+
+                    // Очищаем форму и добавляем сообщение
+                    form.reset();
+                    form.innerHTML = ''; // Убедитесь, что это не удаляет successMessage
+                    form.appendChild(successMessage);
+
+                    setTimeout(closeModal, 2000);
+                } else {
+                    var errorMessage = document.createElement('p');
+                    errorMessage.textContent = 'Ошибка: ' + JSON.stringify(data.errors);
+                    errorMessage.style.color = 'red';
+                    form.appendChild(errorMessage);
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+            });
+        });
+    }
+});
+/* End управления модальным окном вопросов по монетизации */
+
+/* Управление выпадающим списком START */
+// Открытие и закрытие выпадающего списка при клике на текстовое поле
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdowns = document.querySelectorAll('.custom-dropdown');
+
+    dropdowns.forEach(dropdown => {
+        const dropdownToggle = dropdown.querySelector('.form-control');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        const selectedText = dropdownToggle.querySelector('span');
+
+        dropdownToggle.addEventListener('click', function () {
+            dropdown.classList.toggle('show');
+            dropdownMenu.style.display = dropdown.classList.contains('show') ? 'block' : 'none';
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('show');
+                dropdownMenu.style.display = 'none';
+            }
+        });
+
+        // Отслеживание выбора функционала
+        const checkboxes = dropdownMenu.querySelectorAll('input[type="checkbox"]');
+
+        checkboxes.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', function () {
+                const selectedCheckboxes = Array.from(checkboxes) // Преобразуем NodeList в массив
+                    .filter(checkbox => checkbox.checked) // Фильтруем отмеченные чекбоксы
+                    .map((checkbox, i) => i + 1); // Получаем индексы (начиная с 1)
+
+                if (selectedCheckboxes.length > 0) {
+                    selectedText.innerText = selectedCheckboxes.join(', '); // Обновляем текст дропдауна
+                } else {
+                    selectedText.innerText = 'Выберите функционал'; // Сбрасываем текст, если ничего не выбрано
+                }
+            });
+        });
+
+        // Отслеживание выбора ниши
+        const nicheRadios = dropdownMenu.querySelectorAll('input[type="radio"]');
+
+        nicheRadios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                const selectedNiche = this.nextSibling.textContent; // Получаем текст выбранной ниши
+                selectedText.innerText = selectedNiche || 'Выберите нишу'; // Обновляем текст в поле ниши
+                dropdown.classList.remove('show'); // Закрываем меню после выбора
+                dropdownMenu.style.display = 'none'; // Скрываем меню
+            });
+        });
+    });
+});
+/* Управление выпадающим списком END */
+
+/* Счётчик слайдов START*/
+$(document).ready(function() {
+    var totalSlides = $('.carousel-item').length;
+    var currentIndex = 0;
+
+    $('#carouselExampleControls').on('slide.bs.carousel', function (e) {
+        currentIndex = $(e.relatedTarget).index();
+        $('.carousel-counter').html('<span style="color: #008dd2;">' + (currentIndex + 1) + '</span><span style="color: gray;">/' + totalSlides + '</span>');
+    });
+});
+/* Счётчик слайдов END*/
+
+/*Выбор даты времени в окне консультации START*/
+$(document).ready(function() {
+        $('#modal-preferred-time').flatpickr({
+            enableTime: true,
+            dateFormat: "Y-m-d H:i", // Формат даты и времени
+            minDate: "today", // Выбор только будущих дат
+            locale: "ru" // Установка русского языка
+        });
+    });
+/*Выбор даты времени в окне консультации END*/
+
+/*Блок раздела Команда TEAM START*/
+document.addEventListener("DOMContentLoaded", function() {
+    // Получаем скрытый input с цитатами
+    const quotesData = document.getElementById('employee-quotes').value;
+    const quotes = JSON.parse(quotesData); // Преобразуем строку JSON в массив
+    const quoteBox = document.getElementById('team-quote');
+    const quoteArrow = document.getElementById('quote-arrow');
+
+    let currentQuoteIndex = 0;
+
+    // Функция для отображения текущей цитаты
+    function showQuote(index) {
+        // Поддержка HTML-форматирования цитат
+        quoteBox.innerHTML = quotes[index];
+
+        // Позиционируем стрелку под текущим сотрудником
+        const currentEmployee = document.getElementById(`employee-${index + 1}`); // Получаем блок с фото
+        const employeeRect = currentEmployee.getBoundingClientRect(); // Получаем размеры и позицию блока с фото
+        const quoteRect = quoteBox.getBoundingClientRect(); // Получаем размеры и позицию блока с цитатой
+
+        // Рассчитываем положение стрелки
+        const leftPosition = employeeRect.left + (employeeRect.width / 2) - quoteRect.left; // Центрируем стрелку под фото
+
+        // Адаптация top позиции для разных экранов
+        let topPosition;
+        if (window.innerWidth < 1200) {
+            topPosition = employeeRect.bottom - quoteRect.top + 105 // Корректируем отступ для экранов меньше 1200px
+        } else {
+            topPosition = employeeRect.bottom - quoteRect.top + currentEmployee.offsetHeight / 2 - 20; // Для больших экранов
+        }
+
+        // Устанавливаем положение стрелки
+        quoteArrow.style.left = `${leftPosition}px`;
+        quoteArrow.style.top = `${topPosition}px`; // Перемещаем стрелку вниз под блок
+    }
+
+    // Инициализируем показ первой цитаты
+    showQuote(currentQuoteIndex);
+
+    // Переключение цитат через интервал времени
+    setInterval(function() {
+        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        showQuote(currentQuoteIndex);
+    }, 5000); // меняем цитату каждые 5 секунд
+
+    // Переключение цитат по клику
+    quoteBox.addEventListener('click', function() {
+        currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+        showQuote(currentQuoteIndex);
+    });
+
+    // Пересчитываем позицию стрелки при изменении размеров окна
+    window.addEventListener('resize', function() {
+        showQuote(currentQuoteIndex); // Пересчитываем положение стрелки
+    });
+});
+/*Блок раздела Команда TEAM END*/
+
+
+/*Блок формы FeedbackForm раздела О НАС  */
+document.addEventListener('DOMContentLoaded', function() {
+    const feedbackUrl = document.getElementById('feedbackForm').action; // Получаем URL для отправки формы
+
+    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение формы
+        let formData = new FormData(this); // Собираем данные формы
+
+        fetch(feedbackUrl, {
+            method: "POST",
+            body: formData,
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // CSRF токен
+            },
+        }).then(response => response.json())  // Ответ в формате JSON
+        .then(data => {
+            if (data.errors) {
+                // Если есть ошибки, отображаем их
+                document.getElementById('modalMessage').innerHTML =
+                    '<div class="alert alert-danger">Ошибка: ' + JSON.stringify(data.errors) + '</div>';
+            } else {
+                // Если всё прошло успешно
+                document.getElementById('modalMessage').innerHTML =
+                    '<div class="alert alert-success">' + data.message + '</div>';
+                // Очищаем форму после отправки
+                document.getElementById('feedbackForm').reset();
+            }
+            // Открываем модальное окно
+            let feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+            feedbackModal.show();
+
+            // Закрываем модальное окно через 3 секунды
+            setTimeout(function() {
+                feedbackModal.hide();
+            }, 3000); // Закрываем модальное окно через 3 секунды
+        }).catch(error => console.log(error)); // Ловим ошибки сети
+    });
+});
+/*Блок формы FeedbackForm раздела О НАС END*/
+
+
+

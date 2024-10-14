@@ -14,7 +14,7 @@
 				<div class="col-md-10">
 					<ul class="address-info-list list-inline">
 						<li>
-							<a href="https://yandex.ru/maps/org/mdigital/128234723196/?ll=38.279200%2C46.680868&z=16">
+							<a href="https://yandex.ru/maps/org/mdigital/128234723196/?ll=38.279200%2C46.680868&z=16" target="_blank" class="external-link">
 								<div>
 									<div class="address-icon">
 										<img src="{% static 'assets/images/pin.png' %}" alt="icon-address">
@@ -26,7 +26,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="https://t.me/MDigital_ibot">
+							<a href="https://t.me/MDigital_ibot" target="_blank" class="external-link">
 								<div>
 									<div class="address-icon"><img src="{% static 'assets/images/telezhka.png' %}" alt="icon-telegram"></div>
 									<div class="address-info">MDigital <br>Bot</div>
@@ -36,8 +36,8 @@
 						<li>
 							<div class="address-icon"><img src="{% static 'assets/images/massage.png' %}" alt="icon-contacts"></div>
 							<div class="address-info">
-								<a href="tel:+7%20(902)%407-7776">+7 (902) 407-7776</a>
-								<br> <a href="mailto:mdigital@mdigital.su">partners@mdigital.su</a>
+								<a href="tel:+7%20(902)%407-7776" target="_blank" class="external-link">+7 (902) 407-7776</a>
+								<br> <a href="mailto:mdigital@mdigital.su" target="_blank" class="external-link">partners@mdigital.su</a>
 							</div>
 						</li>
 					</ul><!-- .address-info-list END -->
@@ -50,12 +50,14 @@
 			<div class="row">
 				<div class="col-md-6 col-lg-3">
 					<div class="footer-widget">
-						<h4 class="xs-content-title">Наша компания</h4>
+						<h4 class="xs-content-title">О нас</h4>
 						<ul class="xs-list">
-							<li><a href="{% url 'about' %}">О нас</a></li>
+							<li><a href="{% url 'about' %}">Компания</a></li>
+							<li><a href="{% url 'team' %}">Команда</a></li>
+							<li><a href="{% url 'career' %}">Карьера</a></li>
 							<li><a href="{% url 'case_grid' %}">Проекты</a></li>
 							<li><a href="{% url 'contacts' %}">Контакты</a></li>
-							<li><a href="{% url 'career' %}">Карьера</a></li>
+
 						</ul>
 					</div><!-- .footer-widget END -->
 				</div>
@@ -83,16 +85,15 @@
 					<h4 class="xs-content-title">Задать вопрос</h4>
 					<form action="{% url 'submit_question' %}" class="contact-form" method="post">
 						{% csrf_token %}
-						<input type="email" id="email" name="email" placeholder="Введите Ваш Email" class="form-control" required>
-						<textarea name="message" id="message" class="form-control" placeholder="Ваш вопрос" cols="30" rows="10" required></textarea>
+						<input type="email" id="email" name="email" placeholder="Email" class="form-control" required>
+						<textarea name="message" id="message" class="form-control" placeholder="Вопрос" cols="30" rows="10" required></textarea>
 
 						<div class="form-check">
 							<input type="checkbox" class="form-check-input" id="agree_to_privacy_policy" name="agree_to_privacy_policy" required>
 							<label class="form-check-label">
-								<span class="checkbox-text">Согласие с</span>
-								<a href="#" data-toggle="modal" data-target="#privacyPolicyModal" class="modal-link">правилами обработки персональных данных</a>
-								<span class="checkbox-text"> ознакомиться </span>
-								<a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">здесь</a>.
+								<span class="checkbox-text">Соглашаюсь с</span>
+								<a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">правилами</a>
+								<span class="checkbox-text">  обработки персональных данных</span>
                         	</label>
 						</div>
 
@@ -115,19 +116,19 @@
                     <ul class="xs-list list-inline">
                         <li class="title">ПАРТНЁРЫ:</li>
                         <li>
-                            <a href="https://adfinity.pro/?utm_source=site&utm_medium=invite&utm_campaign=mdigital">
+                            <a href="https://adfinity.pro/?utm_source=site&utm_medium=invite&utm_campaign=mdigital" target="_blank" class="external-link">
                                 <img src="{% static 'assets/images/partner/adfinity-logo.svg' %}" alt="logo adfinity partner">
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-6 payment-block">
-                    <ul class="xs-list list-inline text-lg-right">
-                        <li class="title">ОПЛАТА:</li>
-                        <li><img src="{% static 'assets/images/card/world.svg' %}" alt="icon bank card"></li>
-                        <li><img src="{% static 'assets/images/card/emoney.svg' %}" alt="icon e-money"></li>
-                    </ul>
-                </div>
+<!--                <div class="col-md-6 payment-block">-->
+<!--                    <ul class="xs-list list-inline text-lg-right">-->
+<!--                        <li class="title">ОПЛАТА:</li>-->
+<!--                        <li><img src="{% static 'assets/images/card/world.svg' %}" alt="icon bank card"></li>-->
+<!--                        <li><img src="{% static 'assets/images/card/emoney.svg' %}" alt="icon e-money"></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
         </div><!-- .partner-area END -->
     </div>
@@ -138,7 +139,10 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="copyright-text">
-					<p>Copyright &copy; 2018-2024, Все права защищены <a href="/">MDigital</a></p>
+					<p>ИП Морозов Максим Павлович <br>
+						ИНН 236100197878 <br>
+						Copyright &copy; 2018-2024, Все права защищены <a href="/">MDigital</a>
+					</p>
 				</div><!-- .copyright-text END -->
 			</div>
 			<div class="col-md-6">

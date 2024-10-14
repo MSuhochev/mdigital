@@ -2479,7 +2479,7 @@ button:focus {
 }
 
 /*=================================================
-    19. news letter thumd
+    19. news letter thumb
 ==============================================================*/
 .newsletter-thumb-wraper {
     background-color: #008dd2;
@@ -2493,7 +2493,6 @@ button:focus {
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
     color: #FFFFFF;
     position: relative;
     z-index: 1;
@@ -2531,8 +2530,9 @@ button:focus {
 }
 
 .newsletter-thumb-content p {
-    color: #a7baee;
+    color: #ffffff;
     margin-bottom: 30px;
+    font-size: 1.1rem;
 }
 
 .subscribe-form2 .form-control {
@@ -2582,7 +2582,21 @@ button:focus {
 .subscribe-form2 label {
     display: block;
 }
+.subscribe-form2 .form-check {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    padding-left: 1.15rem;
+}
 
+.subscribe-form2 .form-check .form-check-label {
+    margin: 20px 0 20px 0;
+}
+
+.subscribe-form2 input {
+   font-size: large;
+}
 /*=================================================
     20. contact form
 ==============================================================*/
@@ -5407,6 +5421,7 @@ button:focus {
 
 .single-box:hover .image::before {
     opacity: 1;
+    border-radius: 5%;
 }
 
 .single-box:hover .image .hover-area {
@@ -5493,7 +5508,7 @@ button:focus {
 }
 
 .single-box .box-footer {
-    padding: 30px 10px;
+    padding: 8px 10px;
 }
 
 .team-inner-style .single-box {
@@ -7553,8 +7568,9 @@ h1, .banner-title {
 }
 
 h3, .section-title {
-    font-size: 2.4rem;
-    font-weight: 900;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: inherit;
 }
 
 h3 a, .section-title a {
@@ -7870,6 +7886,48 @@ body.fixed-scroll {
     color: white;
 }
 
+/*кнопка вопрос по монетизации Основные стили кнопки */
+.monetization-menu-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #008dd2;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    min-width: 150px; /* Минимальная ширина */
+    height: 50px; /* Фиксированная высота */
+    line-height: 30px; /* Вертикальное выравнивание текста */
+}
+
+.monetization-menu-button:hover {
+    background-color: #0c5adb;
+    color: white;
+}
+
+/*кнопка регистрация Основные стили кнопки */
+.registration-menu-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #008dd2;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    min-width: 150px; /* Минимальная ширина */
+    height: 50px; /* Фиксированная высота */
+    line-height: 30px; /* Вертикальное выравнивание текста */
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.registration-menu-button:hover {
+    background-color: #0c5adb;
+    color: white;
+}
+
 /* Распределение элементов в меню */
 .nav-menus-wrapper {
     display: flex;
@@ -7949,6 +8007,14 @@ body.fixed-scroll {
         line-height: normal; /* Отменяем вертикальное выравнивание текста */
         padding: 10px; /* Регулируем padding для мобильных устройств */
         margin-bottom: 450px;
+    }
+
+    .monetization-menu-button {
+        width: 100%;
+        min-width: unset; /* Отменяем минимальную ширину */
+        height: auto; /* Отменяем фиксированную высоту */
+        line-height: normal; /* Отменяем вертикальное выравнивание текста */
+        padding: 10px; /* Регулируем padding для мобильных устройств */
     }
 }
 
@@ -8041,7 +8107,12 @@ body.fixed-scroll {
 
 /*стили для текста в чекбоксе*/
 .checkbox-text {
-    color: #ffffff; /* черный цвет текста */
+    color: #ffffff; /* белый цвет текста */
+    font-weight: normal; /* обычный вес шрифта */
+}
+
+.checkbox-text-dark {
+    color: #7a7a7a; /* тёмный цвет текста */
     font-weight: normal; /* обычный вес шрифта */
 }
 
@@ -8064,7 +8135,7 @@ body.fixed-scroll {
 
 /*FAQ styles start*/
 .faq-wrapper {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .faq-item {
@@ -8081,6 +8152,7 @@ body.fixed-scroll {
     align-items: center;
     cursor: pointer;
     font-size: 18px;
+    position: relative; /* Нужно для абсолютного позиционирования внутри элемента */
 }
 
 .faq-toggle {
@@ -8088,6 +8160,15 @@ body.fixed-scroll {
     border: none;
     font-size: 20px;
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; /* Заставляем кнопку занимать всю область */
+    width: 100%; /* Опционально: делаем кнопку широкой на 100% */
+    height: 100%;
+    z-index: 1; /* Убедитесь, что кнопка находится над текстом */
+    text-align: right;
 }
 
 .faq-answer {
@@ -8920,3 +9001,544 @@ section.career-section#service.xs-section-padding {
     }
 }
 /*Webdev-section Custom Styles End*/
+
+
+/* Стилизация модального окна монетизации */
+/* Модальное окно (фон) */
+#questionModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+/* Модальное окно (контейнер) */
+#questionModal .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Кнопка закрытия модального окна */
+#questionModal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#questionModal .close:hover,
+#questionModal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Стили для формы */
+#questionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Стили для кнопки отправки */
+#questionForm .submit-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #008dd2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#questionForm .submit-btn:hover {
+    background-color: #0c5adb;
+}
+
+/* END Стилизация модального окна монетизации */
+
+/* Для десктопной версии (например, начиная с ширины экрана 992px) */
+@media (min-width: 992px) {
+    .equal-height-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch; /* Блоки одинаковой высоты */
+    }
+
+    .equal-height-row > .col-lg-4 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px; /* Чтобы блоки не слипались между собой */
+    }
+
+    .single-blog-post-thumb {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%; /* Растягиваем блоки на всю высоту */
+    }
+
+    .post-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+    .post-image {
+        margin-bottom: 20px; /* Отступ под изображением */
+        flex-shrink: 0; /* Изображение фиксированной высоты */
+    }
+
+    .entry-header {
+        flex-shrink: 0; /* Заголовок и текст фиксированы и не растягиваются */
+        margin-bottom: 20px; /* Отступ под заголовком и текстом */
+    }
+
+    .entry-content {
+        flex-grow: 1; /* Контент растягивается на всё свободное пространство */
+        margin-bottom: 20px; /* Отступ под контентом, если есть свободное место */
+    }
+
+    .entry-meta {
+        margin-top: auto; /* Мета-данные прижимаются к низу блока */
+        padding-top: 10px; /* Визуальная разрядка сверху для мета-данных */
+        margin-bottom: 5px; /* Минимальный отступ снизу */
+    }
+
+    /* Ограничиваем стили для секции с последними постами */
+    .latest-posts-section .single-blog-post-thumb {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%; /* Карточки растягиваются до одинаковой высоты */
+    }
+
+    .latest-posts-section .post-image {
+        margin-bottom: 10px; /* Отступ под изображением */
+    }
+
+    .latest-posts-section .entry-header {
+        margin-bottom: 10px; /* Отступ под заголовком */
+    }
+
+    .latest-posts-section .entry-meta {
+        margin-top: auto; /* Прижимаем мета-данные к низу */
+        margin-bottom: 1px; /* Небольшой отступ снизу */
+    }
+}
+
+/* Стили для выпадающего списка START */
+.custom-dropdown {
+    position: relative; /* Для правильного отображения выпадающего меню */
+}
+
+.custom-dropdown .form-control {
+    cursor: pointer;
+    user-select: none;
+    padding: 10px 10px; /* Отступы для текста и стрелки */
+    border: 1px solid #ced4da; /* Граница */
+    background-color: #fff; /* Цвет фона */
+    border-radius: .25rem; /* Радиус границ */
+    display: flex; /* Занимает всю ширину */
+    justify-content: space-between; /* Для текста и стрелки */
+    align-items: center; /* Центрируем элементы */
+}
+
+.custom-dropdown .arrow {
+    font-size: 14px; /* Размер стрелки */
+    color: #008dd2; /* Цвет стрелки */
+    margin-left: 10px; /* Отступ от текста */
+}
+
+.custom-dropdown .dropdown-menu {
+    display: none; /* Скрываем меню по умолчанию */
+    position: absolute;
+    background-color: white; /* Цвет фона меню */
+    width: 100%; /* Ширина меню */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Тень для меню */
+    z-index: 1000; /* Порядок отображения */
+}
+
+.custom-dropdown.show .dropdown-menu {
+    display: block; /* Показываем меню при нажатии */
+}
+
+.custom-dropdown .dropdown-item {
+    display: flex; /* Устанавливаем флекс-контейнер */
+    align-items: center; /* Центрируем элементы по вертикали */
+    padding: 10px; /* Отступы для пунктов меню */
+}
+
+.custom-dropdown .dropdown-item input[type="checkbox"] {
+    margin-right: 10px; /* Отступ для чекбоксов */
+}
+
+.input-niche {
+    margin-right: 10px;
+}
+/* Стили для выпадающего списка END */
+
+/*Счётчик карусели START*/
+.carousel-counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 90%;
+    right: 53%;
+    transform: translateY(-50%);
+    padding: 0 15px; /* Обеспечивает небольшое расстояние от краёв */
+}
+
+/* Скрыть счётчик на мобильных устройствах */
+@media (max-width: 768px) {
+    .carousel-counter {
+        display: none; /* Скрыть счётчик */
+    }
+}
+
+/* Показать счётчик только на десктопе */
+@media (min-width: 769px) and (max-width: 991px) {
+    .mobile-counter {
+        display: none; /* Скрыть мобильный счётчик */
+    }
+    .carousel-counter {
+    top: 86%;
+    right: 16%;
+}
+}
+/*Счётчик карусели END*/
+
+/* Оформление блока цитаты Команда START */
+/* Общие стили */
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5%;
+}
+
+.quote-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+    background: white;
+    z-index: 1;
+    font-size: 1.2rem;
+}
+
+.quote-box p {
+    text-align: left;
+}
+
+#quote-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid #008dd2;
+    z-index: 2;
+}
+
+/* Мобильные стили */
+.quote-box-mobile {
+    display: none; /* Скрываем цитаты на десктопе */
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    font-size: 1rem;
+    border-radius: 8px;
+}
+
+/* Адаптация для мобильных устройств (экраны до 991px) */
+@media (max-width: 991px) {
+    .col-lg-3, .col-md-6 {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .image img {
+        max-width: 200px; /* Уменьшаем размер фото сотрудников */
+    }
+
+    .quote-box {
+        display: none; /* Скрываем общий блок с цитатой */
+    }
+
+    .quote-box-mobile {
+        display: block; /* Отображаем цитаты под сотрудниками */
+    }
+
+    .xs-heading.text-center.box-team {
+        margin-bottom: 10px;
+    }
+
+    .xs-heading.text-center.box-team .line{
+        padding-top: 0;
+    }
+
+    .single-box.text-center.box-team .box-footer{
+        padding: 5px;
+    }
+
+    .single-box.text-center.box-team p:last-child{
+        margin: 0 30px;
+        text-align: justify;
+    }
+}
+/* Оформление блока цитаты Команда END */
+
+/*ABOUT sections START*/
+/* Оформление блока история компании START */
+.xs-section-padding.xs-seo-info.about-company .xs-info-img {
+    margin-top: 140px;
+}
+
+.xs-section-padding.xs-seo-info.about-company h3 {
+    color: black;
+}
+
+.xs-section-padding.xs-seo-info.about-company p {
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 991px) {
+    .xs-section-padding.xs-seo-info.about-company .xs-info-img {
+        max-width: 200px;
+        margin-top: 0;
+    }
+}
+
+/* Оформление блока SPECTRUM продукты компании START */
+.xs-section-padding.xs-seo-info.about-products {
+    background-color: #008dd2;
+}
+
+.xs-section-padding.xs-seo-info.about-products .xs-info-img {
+    margin-top: 80px;
+}
+
+.xs-section-padding.xs-seo-info.about-products h5, h3 {
+    text-align: justify;
+    color: #FFFFFF;
+}
+
+.xs-section-padding.xs-seo-info.about-products p {
+    text-align: justify;
+    color: black;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 991px) {
+    .xs-section-padding.xs-seo-info.about-products .xs-info-img {
+        max-width: 200px;
+        margin-top: 0;
+    }
+}
+
+/* Оформление блока преимущества benefits компании START */
+.xs-section-padding.xs-seo-info.benefits-about .xs-info-img {
+    margin-top: 40px;
+}
+
+.xs-section-padding.xs-seo-info.benefits-about h3 {
+    color: black;
+}
+
+.xs-section-padding.xs-seo-info.benefits-about p {
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 991px) {
+    .xs-section-padding.xs-seo-info.benefits-about .xs-info-img {
+        max-width: 200px;
+        margin-top: 0;
+    }
+}
+
+/* Оформление блока principies START */
+.xs-section-padding.xs-seo-info.principies-about {
+    background-color: #008dd2;
+}
+
+.xs-section-padding.xs-seo-info.principies-about .xs-info-img {
+    margin-top: 0;
+}
+
+.xs-section-padding.xs-seo-info.principies-about h5, h3 {
+    text-align: justify;
+    color: #FFFFFF;
+}
+
+.xs-section-padding.xs-seo-info.principies-about p {
+    text-align: justify;
+    color: black;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 991px) {
+    .xs-section-padding.xs-seo-info.principies-about .xs-info-img {
+        max-width: 200px;
+        margin-top: 0;
+    }
+}
+
+/* Оформление блока преимущества pricing компании START */
+.xs-section-padding.xs-seo-info.pricing-about .xs-info-img {
+    margin-top: 0;
+}
+
+.xs-section-padding.xs-seo-info.pricing-about h3 {
+    color: black;
+}
+
+.xs-section-padding.xs-seo-info.pricing-about p {
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 991px) {
+    .xs-section-padding.xs-seo-info.pricing-about .xs-info-img {
+        max-width: 200px;
+        margin-top: 0;
+    }
+}
+
+/* Оформление блока stop-list START */
+.xs-section-padding.xs-seo-info.stop-list {
+    background-color: #008dd2;
+}
+
+.xs-section-padding.xs-seo-info.stop-list .xs-info-img {
+    margin-top: 0;
+}
+
+.xs-section-padding.xs-seo-info.stop-list h5, h3 {
+    text-align: justify;
+    color: #FFFFFF;
+}
+
+.xs-section-padding.xs-seo-info.stop-list p {
+    text-align: justify;
+    color: black;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 991px) {
+    .xs-section-padding.xs-seo-info.stop-list .xs-info-img {
+        max-width: 200px;
+        margin-top: 0;
+    }
+}
+
+/* Оформление блока form-about START */
+.xs-section-padding.xs-seo-info.form-about h3 {
+    text-align: center;
+    color: black;
+    font-size: 24px;
+    margin-bottom: 20px; /* Отступ под заголовком */
+}
+
+.xs-section-padding.xs-seo-info.form-about p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Форма обратной связи раздела о компании */
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form textarea,
+.feedback-form input[type="file"],
+.feedback-form button {
+    width: 100%;           /* Поля занимают всю ширину */
+    padding: 10px;          /* Внутренний отступ */
+    margin-bottom: 0;    /* Отступ между полями */
+    box-sizing: border-box; /* Учет отступов и ширины */
+    border: 1px solid #ccc; /* Легкая граница для полей */
+    border-radius: 5px;     /* Скругленные углы */
+    font-size: 14px;        /* Размер шрифта в полях */
+}
+
+.feedback-form input[type="file"] {
+    padding: 5px;           /* Уменьшенный отступ для input type="file" */
+}
+
+.feedback-form textarea {
+    resize: none;           /* Отключить изменение размера для textarea */
+    height: 150px;          /* Фиксированная высота для textarea */
+}
+
+.feedback-form button {
+    width: 30%;
+    background-color: #008dd2;
+    border: none;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;      /* Более жирный текст на кнопке */
+    border-radius: 5px;     /* Скругленные углы кнопки */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Плавный переход на hover */
+}
+
+.feedback-form button:hover {
+    background-color: #0c5adb; /* Темнее на ховере */
+}
+
+.feedback-form .btn {
+    line-height: 0;
+}
+
+/* Стилизация сообщения об ошибках/успехе */
+#feedbackMessage {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Стили для текста и секции справа */
+.xs-info-wraper h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.xs-info-wraper p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+}

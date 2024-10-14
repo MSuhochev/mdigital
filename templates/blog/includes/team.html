@@ -1,49 +1,67 @@
 {% load static %}
-
-<!-- team section -->
-<section class="xs-section-padding">
+<section class="xs-section-padding team-section">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <div class="xs-heading text-center">
+                <div class="xs-heading text-center box-team">
                     <h2 class="section-subtitle"></h2>
                     <h3 class="section-title">Наша команда:</h3>
                     <span class="line"></span>
                 </div>
             </div>
         </div><!-- .row END -->
-            <div class="row">
-              {% for employee in employees %}
-                <div class="col-lg-3 col-md-6">
-                  <div class="single-box text-center">
-                    <div class="image">
-                      {% if employee.photo %}
-                        <img src="{{ employee.photo.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}">
-                      {% else %}
-                        <img src="{% static 'assets/images/team/default_photo.jpg' %}" alt="Default Photo">
-                      {% endif %}
-                      <div class="hover-area">
-                        <h4 class="title"><a href="{{ employee.telegram_id }}">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
-                        <p class="description">{{ employee.position }}</p>
+
+        <div class="row">
+            {% for employee in employees %}
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="single-box text-center box-team">
+                        <div class="image" id="employee-{{ forloop.counter }}">
+                            {% if employee.photo %}
+                                <img src="{{ employee.photo.url }}" alt="{{ employee.first_name }} {{ employee.last_name }}">
+                            {% else %}
+                                <img src="{% static 'assets/images/team/default_photo.jpg' %}" alt="Default Photo">
+                            {% endif %}
+                            <div class="hover-area">
+                                <h4 class="title"><a href="{{ employee.telegram_id }}" target="_blank" class="external-link">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
+                                <p class="description">{{ employee.position }}</p>
+                                <span class="line"></span>
+                                <ul class="xs-list list-inline">
+                                    {% if employee.telegram_id %}
+                                        <li><a href="{{ employee.telegram_id }}" target="_blank" class="external-link"><i class="fa fa-telegram"></i></a></li>
+                                    {% endif %}
+                                    {% if employee.vk_id %}
+                                        <li><a href="{{ employee.vk_id }}" target="_blank" class="external-link"><i class="fa fa-vk"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </div><!-- .hover-area END -->
+                        </div><!-- .image END -->
+
+                        <div class="box-footer">
+                            <h4 class="title"><a href="{{ employee.telegram_id }}" target="_blank" class="external-link">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
+                        </div><!-- .box-footer END -->
+
+                        <!-- Блок с цитатой для мобильной версии -->
+                        <div class="quote-box-mobile" id="quote-mobile-{{ forloop.counter }}">
+                            {{ employee.quote|safe }} <!-- Отображаем цитату с форматированием -->
+                        </div>
                         <span class="line"></span>
-                        <ul class="xs-list list-inline">
-                          {% if employee.telegram_id %}
-                            <li><a href="{{ employee.telegram_id }}"><i class="fa fa-telegram"></i></a></li>
-                          {% endif %}
-                          {% if employee.vk_id %}
-                            <li><a href="{{ employee.vk_id }}"><i class="fa fa-vk"></i></a></li>
-                          {% endif %}
-                          <!-- Добавьте другие социальные сети по аналогии -->
-                        </ul>
-                      </div><!-- .hover-area END -->
-                    </div><!-- .image END -->
-                    <div class="box-footer">
-                      <h4 class="title"><a href="{{ employee.telegram_id }}">{{ employee.first_name }} {{ employee.last_name }}</a></h4>
-                    </div><!-- .box-footer END -->
-                  </div><!-- .single-box END -->
+                    </div><!-- .single-box END -->
                 </div>
-              {% endfor %}
-            </div>
+            {% endfor %}
         </div><!-- .row END -->
+
+        <!-- Блок цитаты для десктопной версии -->
+        <div class="row d-none d-md-block">
+            <div class="col-md-12 text-center">
+                <div class="quote-box">
+                    <p id="team-quote">Здесь будет отображаться цитата сотрудника</p>
+                    <!-- Стрелка -->
+                    <div id="quote-arrow"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Скрытый элемент для хранения всех цитат сотрудников -->
+        <input type="hidden" id="employee-quotes" value='[{% for employee in employees %} "{{ employee.quote|escapejs }}" {% if not forloop.last %}, {% endif %} {% endfor %}]'>
     </div><!-- .container END -->
 </section><!-- END team section -->

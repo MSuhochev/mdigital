@@ -2,9 +2,29 @@
 
 {% block content %}
   <h1>Отправить резюме</h1>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Отправить</button>
-  </form>
+
+  <!-- Кнопка для открытия модального окна -->
+  <button class="btn btn-primary open-form">Отправить резюме</button>
+
+  <!-- Модальное окно -->
+  <div class="modal fade" id="resumeModal" tabindex="-1" role="dialog" aria-labelledby="resumeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resumeModalLabel">Форма отправки резюме</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="resume-form" method="post" enctype="multipart/form-data" data-url="{% url 'resume_view' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div id="form-message" class="alert alert-success" style="display: none;"></div> <!-- Сообщение об успешной отправке -->
+            <button type="submit" class="btn btn-primary">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

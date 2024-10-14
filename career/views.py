@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.views.generic import ListView
-
+import requests
 from blog.forms import ConsultationForm
 from blog.models import Post
 from blog.views import BaseTelegramNotificationView
@@ -33,15 +33,35 @@ class ResumeView(BaseTelegramNotificationView):
                 f"Имя: {resume.first_name}\n"
                 f"Фамилия: {resume.last_name}\n"
                 f"Email: {resume.email}\n"
-                f"Файл резюме: {resume.resume_file.url}\n"
+                f"Сопроводительное письмо: {resume.cover_letter}\n"
                 f"Дата отправки: {resume.date_sent}\n"
                 f"Статус: {resume.status}"
             )
-            # Отправка сообщения в Telegram
-            self.send_telegram_message(message_text)
 
-            response_data = {'message': "Спасибо за ваше обращение! Мы рассмотрим ваше резюме в ближайшее время."}
+            # Отправка сообщения и файла резюме в Telegram
+            if resume.resume_file:
+                self.send_resume_with_file_to_telegram(message_text, resume.resume_file)
+
+            response_data = {'message': "Спасибо за ваше обращение! Мы рассмотрим его в ближайшее время."}
             return JsonResponse(response_data)
 
         # Если форма не валидна, возвращаем ошибки
         return JsonResponse({'errors': form.errors}, status=400)
+
+    def send_resume_with_file_to_telegram(self, message_text, resume_file):
+        """
+        Отправка сообщения с файлом резюме в Telegram.
+        """
+        url = f"https://api.telegram.org/bot{self.telegram_bot_token}/sendDocument"
+
+        with resume_file.open('rb') as file_data:  # Открываем файл в режиме чтения байтов
+            files = {'document': file_data}
+            data = {
+                'chat_id': self.telegram_chat_id,
+                'caption': message_text  # Используем текст сообщения как подпись
+            }
+
+            response = requests.post(url, data=data, files=files)
+            if response.status_code != 200:
+                # Обработка ошибки отправки файла
+                print(f"Ошибка отправки файла: {response.text}")
