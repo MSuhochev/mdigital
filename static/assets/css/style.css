@@ -3529,6 +3529,20 @@ button:focus {
     padding-bottom: 20px;
 }
 
+.cases-sidebar-wraper .widget {
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+.cases-sidebar-wraper .widget h3{
+    color: black;
+}
+
+.cases-sidebar-wraper .widget-search-cases {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .widget .list-group li {
     font-size: 0.9333333333rem;
 }
@@ -8546,8 +8560,8 @@ body.fixed-scroll {
 
     .case-carousel-container .case-carousel .case-carousel-inner .case-carousel-item .col-md-4 img {
         max-width: 100%; /* Обеспечение того, чтобы изображение вписывалось в контейнер */
-        margin-top: 20px; /* Отступ между h4 и изображением */
-        margin-bottom: 95px;
+        margin-top: 0; /* Отступ между h4 и изображением */
+        margin-bottom: 140px;
     }
 }
 
@@ -9209,7 +9223,7 @@ section.career-section#service.xs-section-padding {
 }
 /* Стили для выпадающего списка END */
 
-/*Счётчик карусели START*/
+/*Счётчик карусели TG-development START*/
 .carousel-counter {
     display: flex;
     align-items: center;
@@ -9238,7 +9252,47 @@ section.career-section#service.xs-section-padding {
     right: 16%;
 }
 }
-/*Счётчик карусели END*/
+/*Счётчик карусели TG-development END*/
+
+/*Счётчик карусели WEB-development START*/
+.carousel-web-counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 90%;
+    right: 53%;
+    transform: translateY(-50%);
+    padding: 0 15px; /* Обеспечивает небольшое расстояние от краёв */
+}
+
+/* Скрыть счётчик на мобильных устройствах */
+@media (max-width: 768px) {
+    .carousel-web-counter {
+        display: none; /* Скрыть счётчик */
+    }
+}
+
+/* Показать счётчик только на десктопе */
+@media (min-width: 769px) and (max-width: 991px) {
+    .mobile-web-counter {
+        display: none; /* Скрыть мобильный счётчик */
+    }
+    .carousel-web-counter {
+    top: 86%;
+    right: 16%;
+}
+}
+/*Счётчик карусели WEB-development END*/
+
+/*Счётчик карусели CASE START*/
+.case-carousel-counter {
+    position: absolute;
+    top: 90%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+}
+/*Счётчик карусели CASE END*/
 
 /* Оформление блока цитаты Команда START */
 /* Общие стили */
@@ -9324,6 +9378,7 @@ section.career-section#service.xs-section-padding {
 /* Оформление блока история компании START */
 .xs-section-padding.xs-seo-info.about-company .xs-info-img {
     margin-top: 140px;
+    width: 100%;
 }
 
 .xs-section-padding.xs-seo-info.about-company h3 {
@@ -9339,6 +9394,30 @@ section.career-section#service.xs-section-padding {
     .xs-section-padding.xs-seo-info.about-company .xs-info-img {
         max-width: 200px;
         margin-top: 0;
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .xs-section-padding {
+        padding: 20px 0; /* Уменьшаем отступы секции */
+    }
+
+    .xs-info-img {
+        display: none; /* Скрываем картинки на мобильных устройствах */
+    }
+
+    .section-title {
+        font-size: 18px; /* Уменьшаем размер заголовка */
+    }
+
+    p {
+        font-size: 14px; /* Уменьшаем размер текста */
+        line-height: 1.4; /* Немного уменьшаем интерлиньяж для мобильных устройств */
+    }
+
+    h5 {
+        font-size: 16px; /* Уменьшаем размер подзаголовков */
     }
 }
 
@@ -9358,7 +9437,7 @@ section.career-section#service.xs-section-padding {
 
 .xs-section-padding.xs-seo-info.about-products p {
     text-align: justify;
-    color: black;
+    color: #FFFFFF;
     font-size: 1.2rem;
 }
 
@@ -9376,6 +9455,7 @@ section.career-section#service.xs-section-padding {
 
 .xs-section-padding.xs-seo-info.benefits-about h3 {
     color: black;
+    text-align: left;
 }
 
 .xs-section-padding.xs-seo-info.benefits-about p {
@@ -9406,7 +9486,7 @@ section.career-section#service.xs-section-padding {
 
 .xs-section-padding.xs-seo-info.principies-about p {
     text-align: justify;
-    color: black;
+    color: #FFFFFF;
     font-size: 1.2rem;
 }
 
@@ -9447,8 +9527,13 @@ section.career-section#service.xs-section-padding {
     margin-top: 0;
 }
 
-.xs-section-padding.xs-seo-info.stop-list h5, h3 {
+.xs-section-padding.xs-seo-info.stop-list h5 {
     text-align: justify;
+    color: #FFFFFF;
+}
+
+.xs-section-padding.xs-seo-info.stop-list h3 {
+    text-align: left;
     color: #FFFFFF;
 }
 
@@ -9541,4 +9626,5 @@ section.career-section#service.xs-section-padding {
     font-size: 16px;
     color: #666;
     line-height: 1.8;
+    margin-bottom: 20px;
 }

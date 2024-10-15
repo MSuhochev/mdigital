@@ -2217,7 +2217,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 /* Управление выпадающим списком END */
 
-/* Счётчик слайдов START*/
+/* Счётчик слайдов TG-DEVELOPMENT START*/
 $(document).ready(function() {
     var totalSlides = $('.carousel-item').length;
     var currentIndex = 0;
@@ -2227,7 +2227,17 @@ $(document).ready(function() {
         $('.carousel-counter').html('<span style="color: #008dd2;">' + (currentIndex + 1) + '</span><span style="color: gray;">/' + totalSlides + '</span>');
     });
 });
-/* Счётчик слайдов END*/
+/* Счётчик слайдов TG-DEVELOPMENT END*/
+
+/* Счётчик слайдов CASE START*/
+$('#caseCarouselControls').on('slide.bs.carousel', function (e) {
+    // Получаем индекс текущего слайда
+    var nextSlideIndex = $(e.relatedTarget).index() + 1;
+
+    // Обновляем текст в десктопном счетчике
+    document.getElementById('desktop-counter').innerText = nextSlideIndex;
+});
+/* Счётчик слайдов CASE END*/
 
 /*Выбор даты времени в окне консультации START*/
 $(document).ready(function() {
@@ -2266,7 +2276,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Адаптация top позиции для разных экранов
         let topPosition;
         if (window.innerWidth < 1200) {
-            topPosition = employeeRect.bottom - quoteRect.top + 105 // Корректируем отступ для экранов меньше 1200px
+            topPosition = employeeRect.bottom - quoteRect.top + 105; // Корректируем отступ для экранов меньше 1200px
         } else {
             topPosition = employeeRect.bottom - quoteRect.top + currentEmployee.offsetHeight / 2 - 20; // Для больших экранов
         }
@@ -2279,13 +2289,23 @@ document.addEventListener("DOMContentLoaded", function() {
     // Инициализируем показ первой цитаты
     showQuote(currentQuoteIndex);
 
-    // Переключение цитат через интервал времени
-    setInterval(function() {
+    // Переключение цитат через интервал времени (если это необходимо)
+    const autoSwitch = setInterval(function() {
         currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
         showQuote(currentQuoteIndex);
     }, 5000); // меняем цитату каждые 5 секунд
 
-    // Переключение цитат по клику
+    // Переключение цитаты при клике на сотрудника
+    const employeeBoxes = document.querySelectorAll('.single-box .image');
+    employeeBoxes.forEach((box, index) => {
+        box.addEventListener('click', function() {
+            clearInterval(autoSwitch); // Останавливаем автопереключение при клике
+            currentQuoteIndex = index; // Устанавливаем индекс цитаты на выбранного сотрудника
+            showQuote(currentQuoteIndex); // Показ цитаты выбранного сотрудника
+        });
+    });
+
+    // Переключение цитат по клику на блок с цитатой
     quoteBox.addEventListener('click', function() {
         currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
         showQuote(currentQuoteIndex);
