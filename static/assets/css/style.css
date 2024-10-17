@@ -9433,6 +9433,7 @@ section.career-section#service.xs-section-padding {
 .xs-section-padding.xs-seo-info.about-products h5, h3 {
     text-align: justify;
     color: #FFFFFF;
+    font-weight: 800;
 }
 
 .xs-section-padding.xs-seo-info.about-products p {
@@ -9482,6 +9483,7 @@ section.career-section#service.xs-section-padding {
 .xs-section-padding.xs-seo-info.principies-about h5, h3 {
     text-align: justify;
     color: #FFFFFF;
+    font-weight: 800;
 }
 
 .xs-section-padding.xs-seo-info.principies-about p {
@@ -9628,3 +9630,16 @@ section.career-section#service.xs-section-padding {
     line-height: 1.8;
     margin-bottom: 20px;
 }
+
+/*Переопределяем стили intl-tel-input */
+/* Расширяем поле ввода телефона на всю ширину */
+.iti--allow-dropdown input, .iti--allow-dropdown input[type=text],
+.iti--allow-dropdown input[type=tel], .iti--separate-dial-code input,
+.iti--separate-dial-code input[type=text], .iti--separate-dial-code input[type=tel] {
+    width: 100%;
+}
+
+.iti {
+    width: 100%;
+}
+

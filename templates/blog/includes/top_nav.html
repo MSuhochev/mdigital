@@ -1,5 +1,6 @@
 {% load menu_tags %}
 
+
 <nav class="xs-menus align-to-right">
     <div class="nav-header">
         <a class="nav-brand" href="/"></a>
@@ -70,37 +71,38 @@
 
 <!-- Modal Structure -->
 <div id="consultation-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" id="close-consultation-modal">&times;</span>
-            <h2>Заявка на консультацию</h2>
-            <form id="consultation-form" method="post" action="{% url 'consultation_submit' %}">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="modal-name">Имя:</label>
-                    <input type="text" id="modal-name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="modal-phone">Телефон:</label>
-                    <input type="text" id="modal-phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="modal-preferred-time">Время для связи:</label>
-                    <input type="text" id="modal-preferred-time" name="preferred_time" class="form-control datepicker" required>
-                </div>
-                 <div class="form-check">
-                                <label class="form-check-label">
-                                    {{ form.agree_to_privacy_policy }}
-                                    <span class="checkbox-text-dark">Соглашаюсь с</span>
-                                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">правилами</a>
-                                    <span class="checkbox-text-dark">  обработки персональных данных</span>
-                                </label>
-                                {% if form.agree_to_privacy_policy.errors %}
-                                    <div class="invalid-feedback">
-                                        {{ form.agree_to_privacy_policy.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                <button type="submit">Отправить</button>
-            </form>
-        </div>
+    <div class="modal-content">
+        <span class="close-modal" id="close-consultation-modal">&times;</span>
+        <h2>Заявка на консультацию</h2>
+        <form id="consultation-form" method="post" action="{% url 'consultation_submit' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="modal-name">Имя:</label>
+                <input type="text" id="modal-name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="modal-phone">Телефон:</label>
+                <input type="tel" id="modal-phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="modal-preferred-time">Время для связи:</label>
+                <input type="text" id="modal-preferred-time" name="preferred_time" class="form-control datepicker" required>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    {{ form.agree_to_privacy_policy }}
+                    <span class="checkbox-text-dark">Соглашаюсь с</span>
+                    <a href="{% url 'privacy_policy' %}" target="_blank" class="external-link">правилами</a>
+                    <span class="checkbox-text-dark"> обработки персональных данных</span>
+                </label>
+                {% if form.agree_to_privacy_policy.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.agree_to_privacy_policy.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit">Отправить</button>
+        </form>
     </div>
+</div>
+

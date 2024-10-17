@@ -307,7 +307,7 @@ class PostSearchView(CategoryMixin, ListView):
 
 
 class BaseTelegramNotificationView(View):
-    telegram_bot_token = 'TOKEN'
+    telegram_bot_token = '1324392228:AAE0FzG9fMD_nX622EwMmC0_FlDPnmTNRN0'
 
     def send_telegram_message(self, message, file=None):
         """
@@ -425,10 +425,14 @@ class CostCalculationView(BaseTelegramNotificationView):
             cost_request = form.save(commit=False)
 
             # Получаем функционал как список
-            functionality = request.POST.getlist('functionality')
-            cost_request.functionality = ', '.join(functionality)  # Преобразуем в строку
+            functionality = request.POST.get('functionality-hidden')  # Получаем текстовые значения функционала
+            cost_request.functionality = functionality  # Присваиваем текстовое значение функционала
 
-            # Отправляем сообщение в Telegram
+            # Получаем выбранную нишу
+            niche = request.POST.get('niche-hidden')  # Получаем текстовое значение ниши
+            cost_request.niche = niche
+
+            # Отправляем сообщение в Telegram с текстовыми значениями
             message = (f"Новая заявка:\nИмя: {cost_request.name}\nТелефон: {cost_request.phone}\n"
                        f"Ниша: {cost_request.niche}\nФункционал: {cost_request.functionality}")
             self.send_telegram_message(message)
@@ -438,6 +442,8 @@ class CostCalculationView(BaseTelegramNotificationView):
             return JsonResponse({'success': True, 'message': 'Заявка принята, мы свяжемся с вами в ближайшее время.'})
 
         return JsonResponse({'success': False, 'message': 'Ошибка в заполнении формы.'})
+
+
 
 
 class PrivacyPolicyView(TemplateView):
@@ -450,9 +456,10 @@ class ConsultationRequestView(BaseTelegramNotificationView, FormView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        # Сохраняем данные заявки
         consultation = form.save()
 
-        # Отправка данных в Telegram
+        # Формируем сообщение для Telegram
         message_text = (
             f"Новая заявка на консультацию:\n"
             f"Имя: {consultation.name}\n"
@@ -461,10 +468,17 @@ class ConsultationRequestView(BaseTelegramNotificationView, FormView):
         )
         self.send_telegram_message(message_text)
 
+        # Возвращаем успешный ответ
         return JsonResponse({'success': True})
 
     def form_invalid(self, form):
-        return JsonResponse({'success': False, 'errors': form.errors})
+        # Собираем ошибки
+        errors = {}
+        for field, messages in form.errors.items():
+            errors[field] = messages  # Собираем ошибки для каждого поля
+
+        # Возвращаем ошибки в формате JSON
+        return JsonResponse({'success': False, 'errors': errors})
 
 
 class MonetizationQuestionsView(BaseTelegramNotificationView, FormView):

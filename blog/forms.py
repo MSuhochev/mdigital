@@ -1,4 +1,5 @@
 from django import forms
+from phonenumber_field.formfields import PhoneNumberField
 from .models import Subscriber, ConsultationRequest, CostCalculationRequest, MonetizationQuestionsRequest
 
 
@@ -20,6 +21,8 @@ class SubscriberForm(forms.ModelForm):
 
 
 class ConsultationForm(forms.ModelForm):
+    phone = forms.CharField(required=True)
+
     agree_to_privacy_policy = forms.BooleanField(
         required=True,
         label="Оставляя заявку, вы соглашаетесь с правилами обработки персональных данных"
@@ -41,12 +44,13 @@ class MonetizationQuestionForm(forms.ModelForm):
         fields = ['name', 'phone', 'question']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя'}),
-            'phone': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Телефон'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Телефон', 'id': 'phone'}),
             'question': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Вопрос'}),
         }
 
 
 class CostCalculationForm(forms.ModelForm):
+    phone = PhoneNumberField(region="RU")
     FUNCTIONALITY_CHOICES = [
         ('feature1', 'Функция 1'),
         ('feature2', 'Функция 2'),

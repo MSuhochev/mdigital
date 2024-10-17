@@ -1558,6 +1558,7 @@
 /*==========================================================
 			46. submit_question(contact-form, xs-contact-form)
 ======================================================================*/
+/* Форма обратной связи блока Footer START*/
 $(document).ready(function () {
     $('.contact-form').on('submit', function (event) {
         event.preventDefault(); // Предотвращаем отправку формы по умолчанию
@@ -1598,11 +1599,22 @@ $(document).ready(function () {
         });
     });
 });
+/* Форма обратной связи блока Footer END*/
 
-
+/* Форма обратной связи страницы КОНТАКТЫ START*/
 $(document).ready(function () {
+    // Инициализируем intl-tel-input для поля телефона
+    var phoneInput = document.querySelector("#phone");
+    var iti = window.intlTelInput(phoneInput, {
+        initialCountry: "ru", // Начальная страна
+        separateDialCode: true, // Отделение кода страны
+        preferredCountries: ['ru', 'us', 'gb'], // Предпочтительные страны
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+    });
+
     $('.xs-contact-form').on('submit', function (event) {
         event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
         // Получаем значения полей формы
         var name = $('#name').val();
         var email = $('#email').val();
@@ -1610,44 +1622,52 @@ $(document).ready(function () {
         var subject = $('#subject').val();
         var message = $('#message').val();
 
-        // Проверяем, заполнены ли поля
+        // Проверяем, заполнены ли обязательные поля
         if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-            // Если одно из полей пустое, показываем сообщение об ошибке
-            $('#xs-form-message').text('Пожалуйста, заполните все поля.').addClass('error-message response-message');
-            hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время по умолчанию
-            return; // Прерываем выполнение функции
+            $('#xs-form-message').text('Пожалуйста, заполните все обязательные поля.').addClass('error-message response-message');
+            hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
+            return;
         }
 
-        // Проверяем формат телефона
-        var phoneRegex = /^\+?7?\d{9,15}$/;
-        if (!phoneRegex.test(phone)) {
-            // Если формат телефона некорректен, показываем сообщение об ошибке
+        // Используем intl-tel-input для проверки валидности телефона
+        if (!iti.isValidNumber()) {
             $('#xs-form-message').text('Пожалуйста, введите корректный номер телефона.').addClass('error-message response-message');
-            hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время по умолчанию
-            return; // Прерываем выполнение функции
+            hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
+            return;
         }
+
+        // Устанавливаем полный номер с кодом страны в поле
+        $('#phone').val(iti.getNumber());
 
         var formData = $(this).serialize(); // Получаем данные формы
 
+        // AJAX-запрос для отправки формы
         $.ajax({
             url: $(this).attr('action'),
             type: $(this).attr('method'),
             data: formData,
             dataType: 'json',
             success: function (data) {
-                // Вставляем ответ на страницу
+                // Вставляем успешный ответ на страницу
                 $('#xs-form-message').text(data.message).addClass('success-message response-message');
-                hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время по умолчанию
+                hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
                 $('.xs-contact-form')[0].reset();
+                iti.reset(); // Сбрасываем intl-tel-input поле
             },
             error: function (xhr, status, error) {
                 console.error('Ошибка:', error);
-                $('#xs-form-message').text('Произошла ошибка при отправке формы.');
-                hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время по умолчанию
+                $('#xs-form-message').text('Произошла ошибка при отправке формы.').addClass('error-message response-message');
+                hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
             }
         });
     });
+
+    // Убираем сообщение об ошибке при изменении ввода телефона
+    phoneInput.addEventListener('input', function () {
+        $('#xs-form-message').text('').removeClass('error-message response-message');
+    });
 });
+/* Форма обратной связи страницы КОНТАКТЫ END*/
 
 /*==========================================================
 			47. subscribe_question
@@ -1821,98 +1841,135 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* Управление модальным окном консультации */
 document.addEventListener('DOMContentLoaded', function () {
+    // Элементы модального окна
     var modal = document.getElementById("consultation-modal");
     var btn = document.getElementById("open-consultation-modal");
-    var anotherBtn = document.getElementById("open-another-consultation-modal");
-    var span = document.getElementById("close-consultation-modal");
+    var closeModalBtn = document.getElementById("close-consultation-modal");
     var form = document.getElementById("consultation-form");
     var mobileMenu = document.querySelector(".nav-menus-wrapper");
-    var menuToggleBtn = document.querySelector(".menu-toggle-btn");
+    var modalInput = document.querySelector("#modal-phone");
 
+    // Создание элемента для отображения сообщения об ошибке
+    var errorMessage = document.createElement('div');
+    errorMessage.id = "phone-error"; // Устанавливаем ID для элемента
+    errorMessage.style.color = "red"; // Цвет текста
+    errorMessage.style.display = "none"; // Скрываем его изначально
+    modalInput.parentNode.insertBefore(errorMessage, modalInput.nextSibling); // Вставляем сообщение сразу после поля ввода телефона
+
+    // Функция для открытия модального окна
     function openModal() {
         if (modal) {
             modal.style.display = "block";
         }
-
         if (window.innerWidth <= 768 && mobileMenu && mobileMenu.style.display !== "none") {
             mobileMenu.style.display = "none";
             mobileMenu.setAttribute('data-hidden-by-modal', 'true');
-
-            if (menuToggleBtn && mobileMenu.classList.contains('open')) {
-                menuToggleBtn.click();
-            }
         }
     }
 
+    // Функция для закрытия модального окна
     function closeModal() {
         if (modal) {
             modal.style.display = "none";
         }
-
         if (window.innerWidth <= 768 && mobileMenu && mobileMenu.getAttribute('data-hidden-by-modal') === 'true') {
             mobileMenu.style.display = "block";
             mobileMenu.removeAttribute('data-hidden-by-modal');
         }
     }
 
-    if (btn) {
-        btn.onclick = openModal;
-    }
+    // Открытие модального окна при клике
+    if (btn) btn.onclick = openModal;
+    if (closeModalBtn) closeModalBtn.onclick = closeModal;
 
-    if (anotherBtn) {
-        anotherBtn.onclick = openModal;
-    }
-
-    if (span) {
-        span.onclick = closeModal;
-    }
-
+    // Закрытие модального окна при клике вне его
     window.onclick = function (event) {
-        if (event.target === modal) {
-            closeModal();
-        }
-    }
+        if (event.target === modal) closeModal();
+    };
 
-    if (form) {
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            var formData = new FormData(form);
-
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    var successMessage = document.createElement('p');
-                    successMessage.textContent = 'Спасибо! Мы свяжемся с вами в ближайшее время.';
-                    successMessage.style.color = 'green';
-
-                    form.reset();
-                    form.innerHTML = '';
-                    form.appendChild(successMessage);
-
-                    setTimeout(closeModal, 2000);
-                } else {
-                    var errorMessage = document.createElement('p');
-                    errorMessage.textContent = 'Ошибка: ' + JSON.stringify(data.errors);
-                    errorMessage.style.color = 'red';
-                    form.appendChild(errorMessage);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+    // Инициализация intl-tel-input для поля телефона
+    if (modalInput) {
+        var utilsScriptUrl = "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.0/js/utils.js"; // Убедитесь, что этот путь верный
+        var itiModal = window.intlTelInput(modalInput, {
+            initialCountry: "ru", // Начальная страна (например, Россия)
+            separateDialCode: true, // Отделение кода страны
+            preferredCountries: ['ru', 'us', 'gb'], // Предпочтительные страны
+            utilsScript: utilsScriptUrl
         });
     }
+
+    // Обработка отправки формы
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+        // Проверяем номер телефона на валидность
+        if (!itiModal.isValidNumber()) {
+            errorMessage.textContent = "Пожалуйста, введите корректный номер телефона."; // Сообщение об ошибке
+            errorMessage.style.display = "block"; // Показываем сообщение об ошибке
+            console.log("Номер телефона невалидный"); // Отладка
+            return; // Выходим из функции, не отправляя форму
+        } else {
+            errorMessage.style.display = "none"; // Скрываем сообщение об ошибке, если номер валиден
+            console.log("Номер телефона валиден: " + itiModal.getNumber()); // Отладка
+        }
+
+        // Устанавливаем полный номер с кодом страны в поле ввода
+        modalInput.value = itiModal.getNumber();
+
+        // Отправляем форму через Fetch API
+        var formData = new FormData(form);
+        fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Обработка успешного ответа
+            if (data.success) {
+                var successMessage = document.createElement('p');
+                successMessage.textContent = 'Спасибо! Мы свяжемся с вами в ближайшее время.';
+                successMessage.style.color = 'green';
+                form.reset();
+                form.innerHTML = '';
+                form.appendChild(successMessage);
+                setTimeout(closeModal, 2000);
+            } else {
+                // Очищаем предыдущие сообщения об ошибках
+                let errorList = document.createElement('ul');
+                errorList.style.color = 'red';
+                for (const [field, messages] of Object.entries(data.errors)) {
+                    messages.forEach(message => {
+                        let listItem = document.createElement('li');
+                        listItem.textContent = message;
+                        errorList.appendChild(listItem);
+                    });
+                }
+                form.appendChild(errorList);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    // Инициализация Flatpickr для выбора даты и времени
+    $('#modal-preferred-time').flatpickr({
+        enableTime: true,
+        dateFormat: "Y-m-d H:i", // Формат даты и времени
+        minDate: "today", // Выбор только будущих дат
+        locale: "ru" // Установка русского языка
+    });
+
+    // Убираем сообщение об ошибке при вводе нового номера
+    modalInput.addEventListener("input", function () {
+        if (errorMessage) {
+            errorMessage.style.display = "none"; // Скрываем сообщение об ошибке при вводе
+        }
+    });
 });
-/* End управления модальным окном консультации */
+/* Инициализация плагина на поле с номером телефона модального окна консультации END */
 
 /*FAQ js start*/
 document.addEventListener("DOMContentLoaded", function () {
@@ -2186,35 +2243,42 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Отслеживание выбора функционала
-        const checkboxes = dropdownMenu.querySelectorAll('input[type="checkbox"]');
+const functionalityHiddenInput = document.querySelector('input[name="functionality-hidden"]');
+const checkboxes = dropdownMenu.querySelectorAll('input[type="checkbox"]');
 
-        checkboxes.forEach((checkbox, index) => {
-            checkbox.addEventListener('change', function () {
-                const selectedCheckboxes = Array.from(checkboxes) // Преобразуем NodeList в массив
-                    .filter(checkbox => checkbox.checked) // Фильтруем отмеченные чекбоксы
-                    .map((checkbox, i) => i + 1); // Получаем индексы (начиная с 1)
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        const selectedFunctionalities = Array.from(checkboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.nextSibling.textContent.trim()); // Получаем текстовые значения
 
-                if (selectedCheckboxes.length > 0) {
-                    selectedText.innerText = selectedCheckboxes.join(', '); // Обновляем текст дропдауна
-                } else {
-                    selectedText.innerText = 'Выберите функционал'; // Сбрасываем текст, если ничего не выбрано
-                }
-            });
-        });
-
-        // Отслеживание выбора ниши
-        const nicheRadios = dropdownMenu.querySelectorAll('input[type="radio"]');
-
-        nicheRadios.forEach(radio => {
-            radio.addEventListener('change', function () {
-                const selectedNiche = this.nextSibling.textContent; // Получаем текст выбранной ниши
-                selectedText.innerText = selectedNiche || 'Выберите нишу'; // Обновляем текст в поле ниши
-                dropdown.classList.remove('show'); // Закрываем меню после выбора
-                dropdownMenu.style.display = 'none'; // Скрываем меню
-            });
-        });
+        if (selectedFunctionalities.length > 0) {
+            selectedText.innerText = selectedFunctionalities.join(', ');
+            functionalityHiddenInput.value = selectedFunctionalities.join(', '); // Обновляем скрытое поле
+        } else {
+            selectedText.innerText = 'Выберите функционал';
+            functionalityHiddenInput.value = ''; // Сбрасываем скрытое поле
+        }
     });
 });
+
+// Отслеживание выбора ниши
+const nicheHiddenInput = document.querySelector('input[name="niche-hidden"]');
+const nicheRadios = dropdownMenu.querySelectorAll('input[type="radio"]');
+
+nicheRadios.forEach(radio => {
+    radio.addEventListener('change', function () {
+        const selectedNiche = this.nextSibling.textContent.trim(); // Получаем текст выбранной ниши
+        selectedText.innerText = selectedNiche || 'Выберите нишу';
+        nicheHiddenInput.value = selectedNiche; // Обновляем скрытое поле
+        dropdown.classList.remove('show'); // Закрываем меню после выбора
+        dropdownMenu.style.display = 'none';
+    });
+});
+
+    });
+});
+
 /* Управление выпадающим списком END */
 
 /* Счётчик слайдов TG-DEVELOPMENT START*/
@@ -2238,17 +2302,6 @@ $('#caseCarouselControls').on('slide.bs.carousel', function (e) {
     document.getElementById('desktop-counter').innerText = nextSlideIndex;
 });
 /* Счётчик слайдов CASE END*/
-
-/*Выбор даты времени в окне консультации START*/
-$(document).ready(function() {
-        $('#modal-preferred-time').flatpickr({
-            enableTime: true,
-            dateFormat: "Y-m-d H:i", // Формат даты и времени
-            minDate: "today", // Выбор только будущих дат
-            locale: "ru" // Установка русского языка
-        });
-    });
-/*Выбор даты времени в окне консультации END*/
 
 /*Блок раздела Команда TEAM START*/
 document.addEventListener("DOMContentLoaded", function() {
@@ -2359,5 +2412,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 /*Блок формы FeedbackForm раздела О НАС END*/
 
+/* Инициализация плагина на поле с номером телефона START*/
+document.addEventListener('DOMContentLoaded', function() {
+    var input = document.querySelector("#phone");  // Находим поле ввода телефона
+
+    if (input) {
+        var iti = window.intlTelInput(input, {
+            initialCountry: "ru",  // Начальная страна (Россия)
+            separateDialCode: true,  // Показывать код страны отдельно
+            preferredCountries: ['ru', 'us', 'gb'],  // Предпочтительные страны
+            utilsScript: "/static/js/utils.js"  // Убедитесь, что utils.js находится по правильному пути
+        });
+
+        // Когда форма отправляется, передаем полный номер с кодом страны на сервер
+        var form = document.querySelector("form");
+        if (form) {
+            form.addEventListener("submit", function(event) {
+                var phoneInput = iti.getNumber();  // Получаем полный номер
+                input.value = phoneInput;  // Устанавливаем его в поле формы
+            });
+        }
+    }
+});
+/* Инициализация плагина на поле с номером телефона END */
 
 

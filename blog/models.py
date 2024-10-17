@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
 from django_ckeditor_5.fields import CKEditor5Field
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Category(MPTTModel):
@@ -155,7 +156,7 @@ class ContactFormSubmission(models.Model):
 
 class ConsultationRequest(models.Model):
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=20)
+    phone = PhoneNumberField(region="RU")
     preferred_time = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -165,7 +166,7 @@ class ConsultationRequest(models.Model):
 
 class MonetizationQuestionsRequest(models.Model):
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=20)
+    phone = PhoneNumberField(region="RU")
     question = models.TextField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -175,7 +176,7 @@ class MonetizationQuestionsRequest(models.Model):
 
 class CostCalculationRequest(models.Model):
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15)
+    phone = PhoneNumberField(region="RU")
     niche = models.CharField(max_length=100)
     functionality = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
