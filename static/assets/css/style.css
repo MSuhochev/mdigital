@@ -4829,6 +4829,7 @@ button:focus {
 
 .primary-bg .section-subtitle, .primary-bg .section-title {
     color: #FFFFFF;
+    text-align: center;
 }
 
 /*=================================================
