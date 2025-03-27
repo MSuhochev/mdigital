@@ -81,6 +81,101 @@
         </div><!-- .row END -->
     </div><!-- .container END -->
 </section>
+
+
+    <!-- Modal Window Start -->
+<div class="modal fade" id="costCalculationModal" tabindex="-1" role="dialog"
+     aria-labelledby="costCalculationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="costCalculationModalLabel">Рассчитать стоимость</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="costCalculationForm" data-url="{% url 'calculate_cost' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Имя</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="text" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group custom-dropdown">
+                    <label for="niche">Ниша</label>
+                    <div class="form-control" id="niche" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="selected-niche">Выберите нишу</span>
+                        <span class="arrow">&#x25BC;</span> <!-- Стрелка для выпадающего меню -->
+                    </div>
+                    <div class="dropdown-menu">
+                        <label class="dropdown-item">
+                            <input class="input-niche" type="radio" name="niche" value="Ниша 1"> Продажи
+                        </label>
+                        <label class="dropdown-item">
+                            <input class="input-niche" type="radio" name="niche" value="Ниша 2"> Консультации
+                        </label>
+                        <label class="dropdown-item">
+                            <input class="input-niche" type="radio" name="niche" value="Ниша 3"> Услуги
+                        </label>
+                        <label class="dropdown-item">
+                            <input class="input-niche" type="radio" name="niche" value="Другое"> Другое
+                        </label>
+                        <input type="hidden" name="niche-hidden" value="">
+                    </div>
+                </div>
+
+                <div class="form-group custom-dropdown">
+                    <label for="functionality">Желаемый функционал</label>
+                    <div class="form-control" id="functionality" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="selected-functionality">Выберите функционал</span>
+                        <span class="arrow">&#x25BC;</span> <!-- Стрелка для выпадающего меню -->
+                    </div>
+                    <div class="dropdown-menu">
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature1">Создание клиентских баз
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature2">Рассылки
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature3">Прием заявок
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature4">Интернет-магазин
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature5">Удержание и возврат
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature6">Запись онлайн / бронирование
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature7">Автоматизированные воронки продаж
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature8">Прием платежей
+                        </label>
+                        <label class="dropdown-item">
+                            <input type="checkbox" name="functionality" value="feature9">Автоматизация рутинных процессов
+                        </label>
+                        <input type="hidden" name="functionality-hidden" value="">
+                    </div>
+                </div>
+
+
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+                <div id="successMessage" style="display:none;">
+                    <p class="text-success"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Modal Window End -->
 
 {% endblock content %}

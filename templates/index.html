@@ -303,7 +303,7 @@
                     </div>
                     <div class="post-body">
                         <div class="entry-header">
-                            <h4 class="entry-title"><a href="blog-single.html">{{ post.title }}</a></h4>
+                            <h4 class="entry-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
                             <div class="entry-content">
                                 <p>{{ post.text | truncatewords:20|safe}} </p>
                             </div>

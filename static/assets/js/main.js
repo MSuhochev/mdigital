@@ -1,6 +1,8 @@
+/* jshint esversion: 6, jquery: true */
+"use strict";
+
 (function ($) {
     "use strict";
-
     /*------------------------------------------------------------------
     [Table of contents]
 
@@ -205,9 +207,9 @@
             subFrom = $('.newsletter-thumb-wraper');
 
         if ($(window).width() >= 991) {
-            subFrom.css('height', post.outerHeight())
+            subFrom.css('height', post.outerHeight());
         } else {
-            subFrom.css('height', 'auto')
+            subFrom.css('height', 'auto');
         }
     }
 
@@ -219,9 +221,9 @@
             child = navwraper.children();
 
         if (child.length > 1) {
-            navwraper.css('width', (child.outerWidth(true) * child.length))
+            navwraper.css('width', (child.outerWidth(true) * child.length));
         } else {
-            navwraper.css('width', '')
+            navwraper.css('width', '');
         }
     }
 
@@ -256,11 +258,11 @@
                 if (input.val() < parseInt(input.attr('max'), 10)) {
                     input.val(function (i, oldvalue) {
                         return ++oldvalue;
-                    })
+                    });
                 }
             });
         });
-    }
+    };
 
     /*==========================================================
                     10. scroll view function
@@ -2435,5 +2437,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 /* Инициализация плагина на поле с номером телефона END */
+
+/* Поделиться в соцсетях START*/
+document.addEventListener("DOMContentLoaded", function () {
+    let url = encodeURIComponent(window.location.href);
+    document.getElementById("share-vk").href = `https://vk.com/share.php?url=${url}`;
+    document.getElementById("share-tg").href = `https://t.me/share/url?url=${url}`;
+  });
+/* Поделиться в соцсетях END */
+
+document.addEventListener("DOMContentLoaded", function () {
+    let path = window.location.pathname;
+    let parts = path.split("/").filter(part => part); // Разбиваем URL и убираем пустые части
+
+    // Проверяем, что путь начинается с "/post/" и содержит хотя бы два сегмента после "post" (категорию и статью)
+    if (parts.length > 2 && parts[0] === "post") {
+        let titleElement = document.getElementById("article-title");
+        if (titleElement) {
+            titleElement.style.display = "none";
+        }
+    }
+});
 
 

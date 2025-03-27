@@ -4030,10 +4030,15 @@ button:focus {
 }
 
 .post-list .entry-title {
-    font-size: 2.4rem;
     font-weight: 700;
-    margin-bottom: 24px;
-    padding-right: 60px;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+.blog-post-lists .post-list .entry-title {
+
+    margin-left: 0;
+
 }
 
 .post-list .entry-title a {
@@ -4174,7 +4179,7 @@ button:focus {
 }
 
 .single-blog-post .post-body {
-    padding: 60px 50px;
+    padding: 20px 50px;
 }
 
 .single-blog-post .post-body .entry-header .entry-meta {
@@ -7056,7 +7061,7 @@ blockquote > p {
     33. author card
 ==============================================================*/
 .author-card {
-    background-color: #0c5adb;
+    background-color: #008dd2;
     border-radius: 5px;
     -webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.12);
@@ -7599,8 +7604,6 @@ h3 a:hover, .section-title a:hover {
 h4, .xs-content-title {
     font-size: 1.6rem;
     font-weight: 700;
-    padding-bottom: 10px;
-    padding-top: 20px;
 }
 
 h4.small, .xs-content-title.small {

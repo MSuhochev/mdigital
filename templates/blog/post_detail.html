@@ -15,17 +15,18 @@
                     <div class="post-image">
                             <img src="{{ post.image.url|safe }}" alt="">
                     </div><!-- .post-image END -->
-                    <div class="text-lg-left"><H3>{{ post.title }}</H3></div>
+                    <div class="text-lg-left"><h2 class="entry-title">{{ post.title|safe }}</h2></div>
                     <div class="post-body">
                         <div class="entry-header">
+                        <div class="my-ckeditor">
+                                <p>{{ post.text|safe }}</p>
+                            </div>
                             <div class="entry-meta">
                                 <span class="post-author"><a href="#"><i class="icon icon-user2"></i> {{ post.author }}</a></span>
                                 <span class="post-publish-date"><a href="#"><i class="icon icon-calendar-1"></i> {{ post.create_at|date:"d M Y"}}</a></span>
                                 <span class="post-cat"><a href="#"><i class="icon icon-folders"></i> {{ post.category }}</a></span>
                             </div>
-                            <div class="my-ckeditor">
-                                <p>{{ post.text | safe }}</p>
-                            </div>
+
 
                             <div class="post-footer">
                                 <div class="divider">
@@ -40,18 +41,8 @@
                                 <div class="social-share">
                                     <ul class="social-list version-2">
                                         <li class="title">Поделиться в </li>
-                                        <li><a href="#" class="twitter"><i class="fa fa-telegram"></i></a></li>
-                                        <li><a href="#" class="linkedin"><i class="fa fa-vk"></i></a></li>
-                                        <li><a href="#" class="twitter"><i class="fa fa-whatsapp"></i></a></li>
-                                        <li class="floating-btn-wraper">
-                                            <a href="#" class="btn-floating">
-                                                <span class="vertical-dots"></span>
-                                            </a>
-                                            <ul class="floating-icons-list social-list version-2">
-                                                <li><a href="#" class="twitter"><i class="fa fa-telegram"></i></a></li>
-                                                <li><a href="#" class="linkedin"><i class="fa fa-vk"></i></a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="#" class="twitter" id="share-tg" target="_blank" rel="noopener noreferrer"><i class="fa fa-telegram"></i></a></li>
+                                        <li><a href="#" class="linkedin" id="share-vk" target="_blank" rel="noopener noreferrer"><i class="fa fa-vk"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -83,7 +74,7 @@
                                 {% with employee=profile.employee %}
                                     <h3 class="author-name">{{ employee.first_name }} {{ employee.last_name }}</h3>
                                     <h4 class="authr-designation">{{ employee.position }}</h4>
-                                    <p>{{ employee.quote }}</p>
+                                    <p>{{ employee.quote|safe }}</p>
                                     <ul class="simple-social-list">
                                         <li><a href="{{ employee.telegram_id }}" target="_blank"><i class="fa fa-telegram" ></i></a></li>
                                         <li><a href="{{ employee.vk_id }}" target="_blank"><i class="fa fa-vk"></i></a></li>
