@@ -1605,69 +1605,72 @@ $(document).ready(function () {
 
 /* Форма обратной связи страницы КОНТАКТЫ START*/
 $(document).ready(function () {
-    // Инициализируем intl-tel-input для поля телефона
-    var phoneInput = document.querySelector("#phone");
-    var iti = window.intlTelInput(phoneInput, {
-        initialCountry: "ru", // Начальная страна
-        separateDialCode: true, // Отделение кода страны
-        preferredCountries: ['ru', 'us', 'gb'], // Предпочтительные страны
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
-    });
-
-    $('.xs-contact-form').on('submit', function (event) {
-        event.preventDefault(); // Предотвращаем отправку формы по умолчанию
-
-        // Получаем значения полей формы
-        var name = $('#name').val();
-        var email = $('#email').val();
-        var phone = $('#phone').val();
-        var subject = $('#subject').val();
-        var message = $('#message').val();
-
-        // Проверяем, заполнены ли обязательные поля
-        if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-            $('#xs-form-message').text('Пожалуйста, заполните все обязательные поля.').addClass('error-message response-message');
-            hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
-            return;
-        }
-
-        // Используем intl-tel-input для проверки валидности телефона
-        if (!iti.isValidNumber()) {
-            $('#xs-form-message').text('Пожалуйста, введите корректный номер телефона.').addClass('error-message response-message');
-            hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
-            return;
-        }
-
-        // Устанавливаем полный номер с кодом страны в поле
-        $('#phone').val(iti.getNumber());
-
-        var formData = $(this).serialize(); // Получаем данные формы
-
-        // AJAX-запрос для отправки формы
-        $.ajax({
-            url: $(this).attr('action'),
-            type: $(this).attr('method'),
-            data: formData,
-            dataType: 'json',
-            success: function (data) {
-                // Вставляем успешный ответ на страницу
-                $('#xs-form-message').text(data.message).addClass('success-message response-message');
-                hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
-                $('.xs-contact-form')[0].reset();
-                iti.reset(); // Сбрасываем intl-tel-input поле
-            },
-            error: function (xhr, status, error) {
-                console.error('Ошибка:', error);
-                $('#xs-form-message').text('Произошла ошибка при отправке формы.').addClass('error-message response-message');
-                hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
-            }
+    // Проверяем, что мы на странице /contacts/
+    if (window.location.pathname === "/contacts/") {
+        // Инициализируем intl-tel-input для поля телефона
+        var phoneInput = document.querySelector("#phone");
+        var iti = window.intlTelInput(phoneInput, {
+            initialCountry: "ru", // Начальная страна
+            separateDialCode: true, // Отделение кода страны
+            preferredCountries: ['ru', 'us', 'gb'], // Предпочтительные страны
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
         });
-    });
 
-    // Убираем сообщение об ошибке при изменении ввода телефона
-    phoneInput.addEventListener('input', function () {
-        $('#xs-form-message').text('').removeClass('error-message response-message');
-    });
+        $('.xs-contact-form').on('submit', function (event) {
+            event.preventDefault(); // Предотвращаем отправку формы по умолчанию
+
+            // Получаем значения полей формы
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var phone = $('#phone').val();
+            var subject = $('#subject').val();
+            var message = $('#message').val();
+
+            // Проверяем, заполнены ли обязательные поля
+            if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                $('#xs-form-message').text('Пожалуйста, заполните все обязательные поля.').addClass('error-message response-message');
+                hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
+                return;
+            }
+
+            // Используем intl-tel-input для проверки валидности телефона
+            if (!iti.isValidNumber()) {
+                $('#xs-form-message').text('Пожалуйста, введите корректный номер телефона.').addClass('error-message response-message');
+                hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
+                return;
+            }
+
+            // Устанавливаем полный номер с кодом страны в поле
+            $('#phone').val(iti.getNumber());
+
+            var formData = $(this).serialize(); // Получаем данные формы
+
+            // AJAX-запрос для отправки формы
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    // Вставляем успешный ответ на страницу
+                    $('#xs-form-message').text(data.message).addClass('success-message response-message');
+                    hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
+                    $('.xs-contact-form')[0].reset();
+                    iti.reset(); // Сбрасываем intl-tel-input поле
+                },
+                error: function (xhr, status, error) {
+                    console.error('Ошибка:', error);
+                    $('#xs-form-message').text('Произошла ошибка при отправке формы.').addClass('error-message response-message');
+                    hideMessageAfterDelay('#xs-form-message'); // Скрываем сообщение через время
+                }
+            });
+        });
+
+        // Убираем сообщение об ошибке при изменении ввода телефона
+        phoneInput.addEventListener('input', function () {
+            $('#xs-form-message').text('').removeClass('error-message response-message');
+        });
+    }
 });
 /* Форма обратной связи страницы КОНТАКТЫ END*/
 
